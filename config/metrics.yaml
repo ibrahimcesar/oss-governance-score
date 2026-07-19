@@ -1,0 +1,62 @@
+# Catálogo de métricas — dimensão, limiares de normalização e pesos.
+# Limiares absolutos (não min-max amostral) para que o score seja interpretável
+# fora da amostra ("valores de referência", objetivo do TCC).
+# Fundamentação: CHAOSS (Goggins et al., 2021); Coelho & Valente (2017);
+# Avelino et al. (2016).
+
+weights:            # Σ = 1.0 — submeter à análise de sensibilidade
+  artifacts: 0.25       # D1
+  distribution: 0.25    # D2
+  responsiveness: 0.20  # D3
+  diversity: 0.15       # D4
+  security: 0.15        # D5
+
+artifacts:          # D1 — binárias (presença), média simples
+  items:
+    - readme
+    - contributing
+    - code_of_conduct
+    - license
+    - issue_template
+    - pull_request_template
+    - codeowners
+    - governance
+
+distribution:       # D2 — invertidas: menor concentração = melhor
+  top1_share:       # share de commits do maior contribuidor
+    best: 0.20      # ≤ 20%  → 1.0
+    worst: 0.80     # ≥ 80%  → 0.0
+  hhi:              # índice Herfindahl-Hirschman da distribuição de commits
+    best: 0.10
+    worst: 0.60
+  truck_factor:     # menor k com ≥50% dos commits (proxy Avelino et al., 2016)
+    best: 5         # ≥ 5 → 1.0
+    worst: 1        # 1  → 0.0
+
+responsiveness:     # D3 — horas; menor = melhor
+  median_issue_close_hours:     # PILOTO: tempo até fechamento (full run: 1ª resposta via GraphQL)
+    best: 72        # ≤ 3 dias  → 1.0
+    worst: 2160     # ≥ 90 dias → 0.0
+  median_pr_merge_hours:
+    best: 48
+    worst: 1440     # 60 dias
+  pr_merge_ratio:   # PRs merged / PRs fechados — maior = melhor
+    best: 0.8
+    worst: 0.2
+
+diversity:          # D4
+  contributors_5plus:   # contribuidores com ≥5 commits
+    best: 30
+    worst: 1
+  commit_entropy:       # entropia de Shannon normalizada da distribuição de commits
+    best: 0.8
+    worst: 0.1
+
+security:           # D5 — binárias, média simples
+  items:
+    - security_policy
+    - ci_configured
+    - dependency_automation
+  releases_12m:         # frequência de releases (12 meses)
+    best: 6
+    worst: 0

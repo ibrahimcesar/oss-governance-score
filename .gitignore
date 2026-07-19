@@ -216,3 +216,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Research data cache (never re-queried; raw API/git responses)
+data/raw/*
+!data/raw/.gitkeep
+.pytest_cache/

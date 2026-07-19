@@ -1,0 +1,23 @@
+# Amostra estratificada pelos arquétipos de Asparouhova (2020).
+# Fase piloto: 1 repositório por arquétipo, para desenvolvimento do pipeline.
+# Fase completa: 25 por arquétipo (n=100), preenchida pelo script de amostragem.
+#
+# Proxies de classificação (ver plano, §3.1):
+#   contribuidores ativos 12m: Federação ≥100 | Estádio ≤10 | Clube ≥20 | Brinquedo ≤3
+#   base de usuários (stars/dependentes): alta ≥10k stars | baixa <5k
+
+pilot:
+  - repo: kubernetes/kubernetes
+    archetype: federation
+    classification_notes: "CNCF; milhares de contribuidores; ecossistema inteiro"
+  - repo: expressjs/express
+    archetype: stadium
+    classification_notes: "~30M downloads/semana no npm; núcleo pequeno de mantenedores"
+  - repo: astropy/astropy
+    archetype: club
+    classification_notes: "comunidade científica de nicho; exemplo citado em Working in Public"
+  - repo: ibrahimcesar/react-lite-youtube-embed
+    archetype: toy
+    classification_notes: "projeto pessoal; placeholder — substituir por Brinquedo típico (baixa adoção)"
+
+full: []   # preenchido na fase de amostragem (semanas 3–4)

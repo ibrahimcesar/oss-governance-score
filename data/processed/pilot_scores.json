@@ -1,0 +1,187 @@
+[
+  {
+    "artifacts": {
+      "readme": true,
+      "contributing": true,
+      "code_of_conduct": true,
+      "license": true,
+      "issue_template": true,
+      "pull_request_template": true,
+      "codeowners": false,
+      "governance": false
+    },
+    "security": {
+      "security_policy": true,
+      "ci_configured": true,
+      "dependency_automation": true,
+      "releases_12m": null
+    },
+    "distribution": {
+      "top1_share": 0.059756333397795396,
+      "top2_share": 0.10346161284084315,
+      "hhi": 0.01408203770630613,
+      "truck_factor": 31,
+      "contributors_5plus": 176,
+      "commit_entropy": 0.802555888580399,
+      "n_contributors_listed": 591,
+      "n_commits_window": 5171
+    },
+    "responsiveness": {
+      "median_issue_close_hours": null,
+      "median_pr_merge_hours": null,
+      "pr_merge_ratio": null
+    },
+    "window": "12 months ago",
+    "backend": "git",
+    "repo": "kubernetes/kubernetes",
+    "subscores": {
+      "artifacts": 0.75,
+      "distribution": 1.0,
+      "responsiveness": null,
+      "diversity": 1.0,
+      "security": 1.0
+    },
+    "score": 92.1875,
+    "archetype": "federation"
+  },
+  {
+    "artifacts": {
+      "readme": true,
+      "contributing": true,
+      "code_of_conduct": true,
+      "license": true,
+      "issue_template": true,
+      "pull_request_template": true,
+      "codeowners": false,
+      "governance": false,
+      "contributing_inherited": true,
+      "code_of_conduct_inherited": true,
+      "issue_template_inherited": true,
+      "pull_request_template_inherited": true
+    },
+    "security": {
+      "security_policy": true,
+      "ci_configured": true,
+      "dependency_automation": true,
+      "security_policy_inherited": true,
+      "releases_12m": null
+    },
+    "distribution": {
+      "top1_share": 0.4069767441860465,
+      "top2_share": 0.5,
+      "hhi": 0.18577609518658747,
+      "truck_factor": 2,
+      "contributors_5plus": 3,
+      "commit_entropy": 0.7365399792425666,
+      "n_contributors_listed": 33,
+      "n_commits_window": 86
+    },
+    "responsiveness": {
+      "median_issue_close_hours": null,
+      "median_pr_merge_hours": null,
+      "pr_merge_ratio": null
+    },
+    "window": "12 months ago",
+    "backend": "git",
+    "repo": "expressjs/express",
+    "subscores": {
+      "artifacts": 0.75,
+      "distribution": 0.5778288564389159,
+      "responsiveness": null,
+      "diversity": 0.4891541723653801,
+      "security": 1.0
+    },
+    "score": 69.416292495567,
+    "archetype": "stadium"
+  },
+  {
+    "artifacts": {
+      "readme": true,
+      "contributing": true,
+      "code_of_conduct": true,
+      "license": true,
+      "issue_template": true,
+      "pull_request_template": true,
+      "codeowners": true,
+      "governance": true
+    },
+    "security": {
+      "security_policy": true,
+      "ci_configured": true,
+      "dependency_automation": true,
+      "releases_12m": null
+    },
+    "distribution": {
+      "top1_share": 0.1911504424778761,
+      "top2_share": 0.3584070796460177,
+      "hhi": 0.08667710862244513,
+      "truck_factor": 4,
+      "contributors_5plus": 34,
+      "commit_entropy": 0.6905398562477706,
+      "n_contributors_listed": 105,
+      "n_commits_window": 1130
+    },
+    "responsiveness": {
+      "median_issue_close_hours": null,
+      "median_pr_merge_hours": null,
+      "pr_merge_ratio": null
+    },
+    "window": "12 months ago",
+    "backend": "git",
+    "repo": "astropy/astropy",
+    "subscores": {
+      "artifacts": 1.0,
+      "distribution": 0.9166666666666666,
+      "responsiveness": null,
+      "diversity": 0.9218141830341218,
+      "security": 1.0
+    },
+    "score": 95.92984926522313,
+    "archetype": "club"
+  },
+  {
+    "artifacts": {
+      "readme": true,
+      "contributing": true,
+      "code_of_conduct": true,
+      "license": true,
+      "issue_template": true,
+      "pull_request_template": false,
+      "codeowners": false,
+      "governance": false
+    },
+    "security": {
+      "security_policy": false,
+      "ci_configured": true,
+      "dependency_automation": true,
+      "releases_12m": null
+    },
+    "distribution": {
+      "top1_share": 0.668918918918919,
+      "top2_share": 0.8513513513513514,
+      "hhi": 0.4929693206720235,
+      "truck_factor": 1,
+      "contributors_5plus": 3,
+      "commit_entropy": 0.5139875785592467,
+      "n_contributors_listed": 7,
+      "n_commits_window": 148
+    },
+    "responsiveness": {
+      "median_issue_close_hours": null,
+      "median_pr_merge_hours": null,
+      "pr_merge_ratio": null
+    },
+    "window": "12 months ago",
+    "backend": "git",
+    "repo": "ibrahimcesar/react-lite-youtube-embed",
+    "subscores": {
+      "artifacts": 0.625,
+      "distribution": 0.1441766090414738,
+      "responsiveness": null,
+      "diversity": 0.33018817187729443,
+      "security": 0.6666666666666666
+    },
+    "score": 42.727797255245314,
+    "archetype": "toy"
+  }
+]
