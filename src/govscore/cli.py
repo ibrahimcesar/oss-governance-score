@@ -35,9 +35,20 @@ def extract_repo(gh: GitHubClient, repo: str) -> dict:
     }
 
 
+def extract_both(gh: GitHubClient, repo: str) -> dict:
+    """Modo canônico da fase completa: API (D1/D3/D5, releases, stars) +
+    git (D2/D4 na janela de 12 meses — método §3.2.2)."""
+    from govscore.extract.git_extractor import extract_via_git
+    m = extract_repo(gh, repo)
+    g = extract_via_git(repo)
+    m["distribution"] = g["distribution"]
+    m["backend"] = "api+git"
+    return m
+
+
 def run(repos: list[dict], backend: str = "api") -> list[dict]:
     cfg = load_config()
-    gh = GitHubClient() if backend == "api" else None
+    gh = GitHubClient() if backend in ("api", "both") else None
     out = []
     for entry in repos:
         repo = entry["repo"] if isinstance(entry, dict) else entry
@@ -46,8 +57,8 @@ def run(repos: list[dict], backend: str = "api") -> list[dict]:
             from govscore.extract.git_extractor import extract_via_git
             m = extract_via_git(repo)
             m["repo"] = repo
-        else:
-            m = extract_repo(gh, repo)
+        elif backend == "both":
+            m = extract_both(gh, repo)
         subs = compute_subscores(m, cfg)
         m["subscores"] = subs
         m["score"] = compute_score(subs, cfg["weights"])
@@ -61,10 +72,10 @@ def main() -> None:
     ap = argparse.ArgumentParser(prog="govscore")
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("pilot")
-    p.add_argument("--backend", choices=["api", "git"], default="api")
+    p.add_argument("--backend", choices=["api", "git", "both"], default="api")
     ex = sub.add_parser("extract")
     ex.add_argument("--repo", required=True)
-    ex.add_argument("--backend", choices=["api", "git"], default="api")
+    ex.add_argument("--backend", choices=["api", "git", "both"], default="api")
     args = ap.parse_args()
 
     if args.cmd == "pilot":

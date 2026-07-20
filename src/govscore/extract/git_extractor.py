@@ -31,6 +31,17 @@ ARTIFACT_PATTERNS = {
     "pull_request_template": r"^(\.github/|docs/)?pull_request_template(\.[a-z]+)?$",
     "codeowners": r"^(\.github/|docs/)?codeowners$",
     "governance": r"^(\.github/|docs/)?governance(\.[a-z]+)?$",
+    "funding": r"^(\.github/)?funding\.ya?ml$",
+}
+
+# Provedores genéricos: e-mail conta por PESSOA, não por "organização"
+# (prática GrimoireLab para o Elephant Factor).
+GENERIC_DOMAINS = {
+    "gmail.com", "googlemail.com", "hotmail.com", "outlook.com", "live.com",
+    "msn.com", "yahoo.com", "icloud.com", "me.com", "mac.com",
+    "protonmail.com", "proton.me", "gmx.de", "gmx.net", "fastmail.com",
+    "qq.com", "163.com", "126.com", "mail.ru", "yandex.ru",
+    "users.noreply.github.com", "localhost",
 }
 
 SECURITY_PATTERNS = {
@@ -75,7 +86,7 @@ def extract_via_git(repo: str, window: str = WINDOW) -> dict:
         # (invisíveis no clone do repositório individual; a API community/profile
         #  os contabiliza — sem isto o backend git subestimaria D1/D5).
         inheritable = ["contributing", "code_of_conduct", "issue_template",
-                       "pull_request_template", "governance"]
+                       "pull_request_template", "governance", "funding"]
         needs_org = ([k for k in inheritable if not artifacts[k]]
                      + (["security_policy"] if not security["security_policy"] else []))
         if needs_org:
@@ -99,15 +110,69 @@ def extract_via_git(repo: str, window: str = WINDOW) -> dict:
 
         # --- D2/D4: distribuição de commits na janela ------------------------
         log = _git("log", "--no-merges", f"--since={window}",
-                   "--format=%ae", cwd=dest)
-        counts = Counter(e.strip().lower() for e in log.splitlines() if e.strip())
+                   "--format=%ae%x09%at", cwd=dest)
+        counts: Counter = Counter()
+        email_times: dict[str, list[int]] = {}
+        for line in log.splitlines():
+            if "\t" not in line:
+                continue
+            email, ts = line.rsplit("\t", 1)
+            email = email.strip().lower()
+            if not email:
+                continue
+            counts[email] += 1
+            email_times.setdefault(email, []).append(int(ts))
         dist = _distribution_metrics(counts)
+        dist["elephant_factor"] = elephant_factor(counts)
+        dist["contributor_retention"] = contributor_retention(email_times)
 
     return {"artifacts": artifacts, "security": security, "distribution": dist,
             "responsiveness": {"median_issue_close_hours": None,
                                "median_pr_merge_hours": None,
                                "pr_merge_ratio": None},
             "window": window, "backend": "git"}
+
+
+def elephant_factor(email_counts: Counter) -> int | None:
+    """CHAOSS Elephant Factor: mín. de organizações cujos commits somam ≥50%.
+
+    Organização ≈ domínio do e-mail; e-mails de provedores genéricos contam
+    individualmente (uma pessoa = uma unidade).
+    """
+    units: Counter = Counter()
+    for email, n in email_counts.items():
+        domain = email.rsplit("@", 1)[-1] if "@" in email else ""
+        unit = domain if domain and domain not in GENERIC_DOMAINS else email
+        units[unit] += n
+    total = sum(units.values())
+    if total == 0:
+        return None
+    acc, ef = 0, 0
+    for _, n in units.most_common():
+        acc += n
+        ef += 1
+        if acc >= total / 2:
+            return ef
+    return ef
+
+
+def contributor_retention(email_times: dict[str, list[int]],
+                          now_ts: float | None = None,
+                          window_days: int = 365) -> float | None:
+    """Share dos autores ativos na 1ª metade da janela que seguem na 2ª.
+
+    Metades ancoradas na data de extração (Constantinou & Mens, 2017).
+    None se a 1ª metade não tem autores (janela curta ou repo dormente).
+    """
+    import time
+    now_ts = time.time() if now_ts is None else now_ts
+    start = now_ts - window_days * 86400
+    half = now_ts - window_days * 86400 / 2
+    first = {e for e, ts in email_times.items() if any(start <= t < half for t in ts)}
+    if not first:
+        return None
+    second = {e for e, ts in email_times.items() if any(t >= half for t in ts)}
+    return len(first & second) / len(first)
 
 
 def _distribution_metrics(counts: Counter) -> dict:

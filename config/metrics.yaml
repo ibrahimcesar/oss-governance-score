@@ -3,6 +3,8 @@
 # fora da amostra ("valores de referência", objetivo do TCC).
 # Fundamentação: CHAOSS (Goggins et al., 2021); Coelho & Valente (2017);
 # Avelino et al. (2016).
+# Expansão pós-piloto (6 métricas): ver
+# docs/decisions/2026-07-19-expansao-catalogo-pos-piloto.md
 
 weights:            # Σ = 1.0 — submeter à análise de sensibilidade
   artifacts: 0.25       # D1
@@ -21,6 +23,7 @@ artifacts:          # D1 — binárias (presença), média simples
     - pull_request_template
     - codeowners
     - governance
+    - funding         # FUNDING.yml (herda de {org}/.github) — Overney et al. 2020
 
 distribution:       # D2 — invertidas: menor concentração = melhor
   top1_share:       # share de commits do maior contribuidor
@@ -34,15 +37,18 @@ distribution:       # D2 — invertidas: menor concentração = melhor
     worst: 1        # 1  → 0.0
 
 responsiveness:     # D3 — horas; menor = melhor
-  median_issue_close_hours:     # PILOTO: tempo até fechamento (full run: 1ª resposta via GraphQL)
-    best: 72        # ≤ 3 dias  → 1.0
-    worst: 2160     # ≥ 90 dias → 0.0
+  median_first_response_hours:  # 1ª resposta em issues (CHAOSS), via GraphQL;
+    best: 48        # substitui median_issue_close_hours no score (piloto)
+    worst: 720      # ≥ 30 dias → 0.0
   median_pr_merge_hours:
     best: 48
     worst: 1440     # 60 dias
   pr_merge_ratio:   # PRs merged / PRs fechados — maior = melhor
     best: 0.8
     worst: 0.2
+  pr_review_coverage:   # share de PRs merged com ≥1 review (CHAOSS Review Coverage)
+    best: 0.9
+    worst: 0.3
 
 diversity:          # D4
   contributors_5plus:   # contribuidores com ≥5 commits
@@ -50,6 +56,12 @@ diversity:          # D4
     worst: 1
   commit_entropy:       # entropia de Shannon normalizada da distribuição de commits
     best: 0.8
+    worst: 0.1
+  elephant_factor:      # mín. de organizações (domínio de e-mail) com ≥50% dos commits
+    best: 3             # CHAOSS Elephant Factor; provedores genéricos contam por pessoa
+    worst: 1
+  contributor_retention:    # ativos na 1ª metade da janela que seguem na 2ª
+    best: 0.5               # Constantinou & Mens (2017)
     worst: 0.1
 
 security:           # D5 — binárias, média simples
@@ -60,3 +72,6 @@ security:           # D5 — binárias, média simples
   releases_12m:         # frequência de releases (12 meses)
     best: 6
     worst: 0
+  release_notes_share:  # share das releases (12m) com notas não vazias
+    best: 0.8
+    worst: 0.0

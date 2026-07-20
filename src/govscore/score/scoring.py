@@ -31,14 +31,17 @@ def compute_subscores(metrics: dict, cfg: dict) -> dict:
 
     resp_cfg = cfg["responsiveness"]
     d3 = _mean([
-        linear(metrics["responsiveness"].get("median_issue_close_hours"),
-               resp_cfg["median_issue_close_hours"]["best"],
-               resp_cfg["median_issue_close_hours"]["worst"]),
+        linear(metrics["responsiveness"].get("median_first_response_hours"),
+               resp_cfg["median_first_response_hours"]["best"],
+               resp_cfg["median_first_response_hours"]["worst"]),
         linear(metrics["responsiveness"].get("median_pr_merge_hours"),
                resp_cfg["median_pr_merge_hours"]["best"],
                resp_cfg["median_pr_merge_hours"]["worst"]),
         linear(metrics["responsiveness"].get("pr_merge_ratio"),
                resp_cfg["pr_merge_ratio"]["best"], resp_cfg["pr_merge_ratio"]["worst"]),
+        linear(metrics["responsiveness"].get("pr_review_coverage"),
+               resp_cfg["pr_review_coverage"]["best"],
+               resp_cfg["pr_review_coverage"]["worst"]),
     ])
 
     div_cfg = cfg["diversity"]
@@ -47,13 +50,21 @@ def compute_subscores(metrics: dict, cfg: dict) -> dict:
                div_cfg["contributors_5plus"]["best"], div_cfg["contributors_5plus"]["worst"]),
         linear(metrics["distribution"].get("commit_entropy"),
                div_cfg["commit_entropy"]["best"], div_cfg["commit_entropy"]["worst"]),
+        linear(metrics["distribution"].get("elephant_factor"),
+               div_cfg["elephant_factor"]["best"], div_cfg["elephant_factor"]["worst"]),
+        linear(metrics["distribution"].get("contributor_retention"),
+               div_cfg["contributor_retention"]["best"],
+               div_cfg["contributor_retention"]["worst"]),
     ])
 
     sec_cfg = cfg["security"]
     d5 = _mean(
         [binary(metrics["security"].get(item)) for item in sec_cfg["items"]]
         + [linear(metrics["security"].get("releases_12m"),
-                  sec_cfg["releases_12m"]["best"], sec_cfg["releases_12m"]["worst"])]
+                  sec_cfg["releases_12m"]["best"], sec_cfg["releases_12m"]["worst"]),
+           linear(metrics["security"].get("release_notes_share"),
+                  sec_cfg["release_notes_share"]["best"],
+                  sec_cfg["release_notes_share"]["worst"])]
     )
 
     return {"artifacts": d1, "distribution": d2, "responsiveness": d3,

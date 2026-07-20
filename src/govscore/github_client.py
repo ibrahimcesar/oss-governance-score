@@ -68,6 +68,37 @@ class GitHubClient:
              "data": data}, ensure_ascii=False))
         return data
 
+    # ---------------------------------------------------------------- graphql
+    def graphql(self, repo: str, query: str, variables: dict, key: str,
+                max_retries: int = 3) -> dict | None:
+        """POST /graphql com o mesmo cache em disco das respostas REST."""
+        cache = self._cache_path(repo, key)
+        if cache.exists():
+            return json.loads(cache.read_text())["data"]
+        if "Authorization" not in self.session.headers:
+            raise RuntimeError("GraphQL exige GITHUB_TOKEN")
+
+        data = None
+        for attempt in range(max_retries + 1):
+            resp = self.session.post(f"{API}/graphql",
+                                     json={"query": query, "variables": variables},
+                                     timeout=60)
+            if resp.status_code in (502, 503):  # instável em queries pesadas
+                time.sleep(2 * (attempt + 1))
+                continue
+            resp.raise_for_status()
+            payload = resp.json()
+            if payload.get("errors") and not payload.get("data"):
+                raise RuntimeError(f"GraphQL: {payload['errors'][0].get('message')}")
+            data = payload.get("data")
+            break
+
+        cache.write_text(json.dumps(
+            {"query_key": key, "variables": variables,
+             "fetched_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+             "data": data}, ensure_ascii=False))
+        return data
+
     def remaining(self) -> int:
         resp = self.session.get(f"{API}/rate_limit", timeout=15)
         return resp.json()["resources"]["core"]["remaining"]
