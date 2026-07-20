@@ -26,10 +26,29 @@ def extract_artifacts(gh: GitHubClient, repo: str) -> dict:
     }
 
 
+# community/profile NÃO expõe a security policy (só readme, contributing,
+# code_of_conduct, license e templates) — verificar convenções de caminho.
+SECURITY_POLICY_PATHS = [
+    ("security_md", "SECURITY.md"),
+    ("security_md_github", ".github/SECURITY.md"),
+    ("security_md_docs", "docs/SECURITY.md"),
+]
+
+
+def has_security_policy(gh: GitHubClient, repo: str) -> tuple[bool, bool]:
+    """Retorna (presente, herdada). Herança: {owner}/.github, como no backend git."""
+    for key, path in SECURITY_POLICY_PATHS:
+        if gh.get(repo, f"/repos/{repo}/contents/{path}", key) is not None:
+            return True, False
+    org = f"{repo.split('/')[0]}/.github"
+    if gh.get(org, f"/repos/{org}/contents/SECURITY.md", "security_md") is not None:
+        return True, True
+    return False, False
+
+
 def extract_security(gh: GitHubClient, repo: str) -> dict:
     """D5 — política de segurança, CI e automação de dependências, releases."""
-    profile = gh.get(repo, f"/repos/{repo}/community/profile", "community_profile") or {}
-    files = profile.get("files") or {}
+    policy, inherited = has_security_policy(gh, repo)
 
     workflows = gh.get(repo, f"/repos/{repo}/contents/.github/workflows", "workflows")
     dependabot = gh.get(repo, f"/repos/{repo}/contents/.github/dependabot.yml", "dependabot")
@@ -44,10 +63,12 @@ def extract_security(gh: GitHubClient, repo: str) -> dict:
         and datetime.fromisoformat(r["published_at"].replace("Z", "+00:00")) >= cutoff
     )
 
-    return {
-        "security_policy": files.get("security") is not None
-                           or files.get("security_policy") is not None,
+    out = {
+        "security_policy": policy,
         "ci_configured": bool(workflows),
         "dependency_automation": dependabot is not None,
         "releases_12m": releases_12m,
     }
+    if inherited:
+        out["security_policy_inherited"] = True
+    return out

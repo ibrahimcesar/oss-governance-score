@@ -19,21 +19,24 @@ from pathlib import Path
 
 WINDOW = "12 months ago"
 
+# Padrões ANCORADOS ao início do caminho (achado do piloto: re.search sem
+# âncora casava caminhos aninhados — vendor/**/.circleci/, staging/**/docs/
+# security.md — inflando D1/D5 em monorepos como kubernetes/kubernetes).
 ARTIFACT_PATTERNS = {
-    "readme": r"(^|/)readme(\.[a-z]+)?$",
-    "contributing": r"(^|\.github/|docs/)contributing(\.[a-z]+)?$",
-    "code_of_conduct": r"(^|\.github/|docs/)code[-_]of[-_]conduct(\.[a-z]+)?$",
-    "license": r"(^|/)(licen[sc]e|copying)(\.[a-z]+)?$",
-    "issue_template": r"\.github/issue_template|\.github/ISSUE_TEMPLATE",
-    "pull_request_template": r"(^|\.github/|docs/)pull_request_template(\.[a-z]+)?$",
-    "codeowners": r"(^|\.github/|docs/)codeowners$",
-    "governance": r"(^|\.github/|docs/)governance(\.[a-z]+)?$",
+    "readme": r"^readme(\.[a-z]+)?$",
+    "contributing": r"^(\.github/|docs/)?contributing(\.[a-z]+)?$",
+    "code_of_conduct": r"^(\.github/|docs/)?code[-_]of[-_]conduct(\.[a-z]+)?$",
+    "license": r"^(licen[sc]e|copying)(\.[a-z]+)?$",
+    "issue_template": r"^\.github/issue_template",
+    "pull_request_template": r"^(\.github/|docs/)?pull_request_template(\.[a-z]+)?$",
+    "codeowners": r"^(\.github/|docs/)?codeowners$",
+    "governance": r"^(\.github/|docs/)?governance(\.[a-z]+)?$",
 }
 
 SECURITY_PATTERNS = {
-    "security_policy": r"(^|\.github/|docs/)security(\.[a-z]+)?$",
-    "ci_configured": r"\.github/workflows/.+\.ya?ml$|\.travis\.yml$|\.circleci/",
-    "dependency_automation": r"\.github/dependabot\.ya?ml$|renovate\.json5?$|\.github/renovate\.json5?$",
+    "security_policy": r"^(\.github/|docs/)?security(\.[a-z]+)?$",
+    "ci_configured": r"^\.github/workflows/.+\.ya?ml$|^\.travis\.yml$|^\.circleci/",
+    "dependency_automation": r"^\.github/dependabot\.ya?ml$|^(\.github/)?renovate\.json5?$",
 }
 
 
