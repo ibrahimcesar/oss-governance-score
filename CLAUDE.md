@@ -46,6 +46,7 @@ Setup (uma vez): `uv venv && uv pip install -r requirements.txt`.
 make test                 # unit tests (sempre rodar antes de commit)
 GITHUB_TOKEN=$(gh auth token) make pilot      # extração+score dos 4 pilotos (backend api)
 GITHUB_TOKEN=$(gh auth token) PYTHONPATH=src uv run python -m govscore.cli pilot --backend both
+GITHUB_TOKEN=$(gh auth token) PYTHONPATH=src uv run python -m govscore.cli sample   # amostragem n=100
 PYTHONPATH=src uv run python -m govscore.cli pilot --backend git    # sem token
 PYTHONPATH=src uv run python -m govscore.cli extract --repo owner/name
 ```
@@ -70,8 +71,10 @@ PYTHONPATH=src uv run python -m govscore.cli extract --repo owner/name
    e contribuidores ativos em janela de 12 meses) — D3 via GraphQL; D4
    janelado via backend git no modo `both`. Catálogo expandido com 6 métricas
    (ver `docs/decisions/2026-07-19-expansao-catalogo-pos-piloto.md`)
-4. [ ] Script de amostragem: Search API + classificação de arquétipos
-   (limiares no plano, §3.1) até n=100 em `config/sample.yaml` (`full`)
+4. [x] Script de amostragem: Search API + classificação de arquétipos
+   (limiares no plano, §3.1) até n=100 — parâmetros em `config/sampling.yaml`,
+   amostra gerada em `config/sample_full.yaml` (com lista `ambiguous` para
+   inspeção manual; critério de inclusão: ≥1 commit no branch default em 12m)
 5. [ ] Extração completa (janela < 1 semana) + QA do dataset
 6. [ ] Análise de sensibilidade dos pesos (`score/sensitivity.py`: pesos
    iguais, ±25%, leave-one-dimension-out)
