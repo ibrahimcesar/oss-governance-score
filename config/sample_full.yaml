@@ -1,0 +1,3157 @@
+# GERADO por `govscore sample` — amostra estratificada (plano §3.1–3.2).
+# Edições manuais permitidas apenas em casos ambíguos, com nota em
+# classification_notes (decisão de pesquisa auditável).
+generated_at: '2026-07-20'
+window_days: 365
+thresholds:
+  min_commits_per_contributor: 2
+  federation_min_contributors: 100
+  stadium_max_contributors: 10
+  club_min_contributors: 20
+  toy_max_contributors: 3
+  stars_high_min: 10000
+  club_stars_max: 5000
+  toy_stars_max: 500
+counts:
+  federation: 25
+  stadium: 25
+  club: 25
+  toy: 25
+full:
+- repo: torvalds/linux
+  language: c
+  stars: 239888
+  active_contributors_2plus: 101
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 101 contribuidores ≥2 commits/12m, 239888 stars (limiares §3.1)'
+- repo: tensorflow/tensorflow
+  language: c++
+  stars: 196402
+  active_contributors_2plus: 103
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 103 contribuidores ≥2 commits/12m, 196402 stars (limiares §3.1)'
+- repo: rails/rails
+  language: ruby
+  stars: 58628
+  active_contributors_2plus: 101
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 101 contribuidores ≥2 commits/12m, 58628 stars (limiares §3.1)'
+- repo: freeCodeCamp/freeCodeCamp
+  language: typescript
+  stars: 452119
+  active_contributors_2plus: 103
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 103 contribuidores ≥2 commits/12m, 452119 stars (limiares §3.1)'
+- repo: react/react-native
+  language: c++
+  stars: 126239
+  active_contributors_2plus: 101
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 101 contribuidores ≥2 commits/12m, 126239 stars (limiares §3.1)'
+- repo: affaan-m/ECC
+  language: javascript
+  stars: 231402
+  active_contributors_2plus: 101
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 101 contribuidores ≥2 commits/12m, 231402 stars (limiares §3.1)'
+- repo: golang/go
+  language: go
+  stars: 135296
+  active_contributors_2plus: 108
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 108 contribuidores ≥2 commits/12m, 135296 stars (limiares §3.1)'
+- repo: ggml-org/llama.cpp
+  language: c++
+  stars: 121012
+  active_contributors_2plus: 104
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 104 contribuidores ≥2 commits/12m, 121012 stars (limiares §3.1)'
+- repo: laravel/framework
+  language: php
+  stars: 34802
+  active_contributors_2plus: 100
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 100 contribuidores ≥2 commits/12m, 34802 stars (limiares §3.1)'
+- repo: rust-lang/rust
+  language: rust
+  stars: 114739
+  active_contributors_2plus: 103
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 103 contribuidores ≥2 commits/12m, 114739 stars (limiares §3.1)'
+- repo: godotengine/godot
+  language: c++
+  stars: 114372
+  active_contributors_2plus: 104
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 104 contribuidores ≥2 commits/12m, 114372 stars (limiares §3.1)'
+- repo: filamentphp/filament
+  language: php
+  stars: 31510
+  active_contributors_2plus: 103
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 103 contribuidores ≥2 commits/12m, 31510 stars (limiares §3.1)'
+- repo: FFmpeg/FFmpeg
+  language: c
+  stars: 62223
+  active_contributors_2plus: 100
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 100 contribuidores ≥2 commits/12m, 62223 stars (limiares §3.1)'
+- repo: elastic/elasticsearch
+  language: java
+  stars: 77563
+  active_contributors_2plus: 102
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 102 contribuidores ≥2 commits/12m, 77563 stars (limiares §3.1)'
+- repo: NousResearch/hermes-agent
+  language: python
+  stars: 217527
+  active_contributors_2plus: 101
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 101 contribuidores ≥2 commits/12m, 217527 stars (limiares §3.1)'
+- repo: openai/codex
+  language: rust
+  stars: 99925
+  active_contributors_2plus: 103
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 103 contribuidores ≥2 commits/12m, 99925 stars (limiares §3.1)'
+- repo: git/git
+  language: c
+  stars: 62105
+  active_contributors_2plus: 100
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 100 contribuidores ≥2 commits/12m, 62105 stars (limiares §3.1)'
+- repo: nodejs/node
+  language: javascript
+  stars: 118317
+  active_contributors_2plus: 101
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 101 contribuidores ≥2 commits/12m, 118317 stars (limiares §3.1)'
+- repo: langgenius/dify
+  language: typescript
+  stars: 149460
+  active_contributors_2plus: 103
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 103 contribuidores ≥2 commits/12m, 149460 stars (limiares §3.1)'
+- repo: infiniflow/ragflow
+  language: go
+  stars: 85452
+  active_contributors_2plus: 100
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 100 contribuidores ≥2 commits/12m, 85452 stars (limiares §3.1)'
+- repo: zed-industries/zed
+  language: rust
+  stars: 87272
+  active_contributors_2plus: 101
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 101 contribuidores ≥2 commits/12m, 87272 stars (limiares §3.1)'
+- repo: huggingface/transformers
+  language: python
+  stars: 162756
+  active_contributors_2plus: 104
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 104 contribuidores ≥2 commits/12m, 162756 stars (limiares §3.1)'
+- repo: openinterpreter/openinterpreter
+  language: rust
+  stars: 66901
+  active_contributors_2plus: 101
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 101 contribuidores ≥2 commits/12m, 66901 stars (limiares §3.1)'
+- repo: supabase/supabase
+  language: typescript
+  stars: 106642
+  active_contributors_2plus: 101
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 101 contribuidores ≥2 commits/12m, 106642 stars (limiares §3.1)'
+- repo: google-gemini/gemini-cli
+  language: typescript
+  stars: 106083
+  active_contributors_2plus: 104
+  classified_at: '2026-07-20'
+  archetype: federation
+  classification_notes: 'auto: 104 contribuidores ≥2 commits/12m, 106083 stars (limiares §3.1)'
+- repo: krahets/hello-algo
+  language: java
+  stars: 128604
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 4 contribuidores ≥2 commits/12m, 128604 stars (limiares §3.1)'
+- repo: danielmiessler/SecLists
+  language: php
+  stars: 72297
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 6 contribuidores ≥2 commits/12m, 72297 stars (limiares §3.1)'
+- repo: Genymobile/scrcpy
+  language: c
+  stars: 146041
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 5 contribuidores ≥2 commits/12m, 146041 stars (limiares §3.1)'
+- repo: jekyll/jekyll
+  language: ruby
+  stars: 51579
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 1 contribuidores ≥2 commits/12m, 51579 stars (limiares §3.1)'
+- repo: ventoy/Ventoy
+  language: c
+  stars: 78133
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 5 contribuidores ≥2 commits/12m, 78133 stars (limiares §3.1)'
+- repo: macrozheng/mall
+  language: java
+  stars: 84265
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 1 contribuidores ≥2 commits/12m, 84265 stars (limiares §3.1)'
+- repo: huginn/huginn
+  language: ruby
+  stars: 49647
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 2 contribuidores ≥2 commits/12m, 49647 stars (limiares §3.1)'
+- repo: fatedier/frp
+  language: go
+  stars: 108188
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 3 contribuidores ≥2 commits/12m, 108188 stars (limiares §3.1)'
+- repo: gohugoio/hugo
+  language: go
+  stars: 89032
+  active_contributors_2plus: 8
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 8 contribuidores ≥2 commits/12m, 89032 stars (limiares §3.1)'
+- repo: doocs/advanced-java
+  language: java
+  stars: 79000
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 2 contribuidores ≥2 commits/12m, 79000 stars (limiares §3.1)'
+- repo: gin-gonic/gin
+  language: go
+  stars: 88933
+  active_contributors_2plus: 10
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 10 contribuidores ≥2 commits/12m, 88933 stars (limiares §3.1)'
+- repo: MisterBooo/LeetCodeAnimation
+  language: java
+  stars: 76631
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 1 contribuidores ≥2 commits/12m, 76631 stars (limiares §3.1)'
+- repo: tmux/tmux
+  language: c
+  stars: 47897
+  active_contributors_2plus: 7
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 7 contribuidores ≥2 commits/12m, 47897 stars (limiares §3.1)'
+- repo: tesseract-ocr/tesseract
+  language: c++
+  stars: 75455
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 6 contribuidores ≥2 commits/12m, 75455 stars (limiares §3.1)'
+- repo: monicahq/monica
+  language: php
+  stars: 24876
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 1 contribuidores ≥2 commits/12m, 24876 stars (limiares §3.1)'
+- repo: junegunn/fzf
+  language: go
+  stars: 81857
+  active_contributors_2plus: 8
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 8 contribuidores ≥2 commits/12m, 81857 stars (limiares §3.1)'
+- repo: firefly-iii/firefly-iii
+  language: php
+  stars: 24079
+  active_contributors_2plus: 7
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 7 contribuidores ≥2 commits/12m, 24079 stars (limiares §3.1)'
+- repo: microsoft/markitdown
+  language: python
+  stars: 167535
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 2 contribuidores ≥2 commits/12m, 167535 stars (limiares §3.1)'
+- repo: hashicorp/vagrant
+  language: ruby
+  stars: 27194
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 3 contribuidores ≥2 commits/12m, 27194 stars (limiares §3.1)'
+- repo: pbatard/rufus
+  language: c
+  stars: 36968
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 1 contribuidores ≥2 commits/12m, 36968 stars (limiares §3.1)'
+- repo: guzzle/guzzle
+  language: php
+  stars: 23453
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 1 contribuidores ≥2 commits/12m, 23453 stars (limiares §3.1)'
+- repo: WerWolv/ImHex
+  language: c++
+  stars: 54226
+  active_contributors_2plus: 8
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 8 contribuidores ≥2 commits/12m, 54226 stars (limiares §3.1)'
+- repo: anthropics/skills
+  language: python
+  stars: 162856
+  active_contributors_2plus: 7
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 7 contribuidores ≥2 commits/12m, 162856 stars (limiares §3.1)'
+- repo: gitlabhq/gitlabhq
+  language: ruby
+  stars: 24501
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 2 contribuidores ≥2 commits/12m, 24501 stars (limiares §3.1)'
+- repo: garrytan/gstack
+  language: typescript
+  stars: 123094
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  archetype: stadium
+  classification_notes: 'auto: 4 contribuidores ≥2 commits/12m, 123094 stars (limiares §3.1)'
+- repo: flatpak/flatpak
+  language: c
+  stars: 4994
+  active_contributors_2plus: 25
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 25 contribuidores ≥2 commits/12m, 4994 stars (limiares §3.1)'
+- repo: lemonade-sdk/lemonade
+  language: c++
+  stars: 4997
+  active_contributors_2plus: 54
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 54 contribuidores ≥2 commits/12m, 4997 stars (limiares §3.1)'
+- repo: vllm-project/semantic-router
+  language: go
+  stars: 4996
+  active_contributors_2plus: 80
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 80 contribuidores ≥2 commits/12m, 4996 stars (limiares §3.1)'
+- repo: SwiftOldDriver/iOS-Weekly
+  language: javascript
+  stars: 4991
+  active_contributors_2plus: 22
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 22 contribuidores ≥2 commits/12m, 4991 stars (limiares §3.1)'
+- repo: raspberrypi/pico-sdk
+  language: c
+  stars: 4892
+  active_contributors_2plus: 20
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 20 contribuidores ≥2 commits/12m, 4892 stars (limiares §3.1)'
+- repo: github/explore
+  language: ruby
+  stars: 4819
+  active_contributors_2plus: 72
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 72 contribuidores ≥2 commits/12m, 4819 stars (limiares §3.1)'
+- repo: cilium/tetragon
+  language: c
+  stars: 4845
+  active_contributors_2plus: 48
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 48 contribuidores ≥2 commits/12m, 4845 stars (limiares §3.1)'
+- repo: vllm-project/aibrix
+  language: go
+  stars: 4968
+  active_contributors_2plus: 49
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 49 contribuidores ≥2 commits/12m, 4968 stars (limiares §3.1)'
+- repo: statamic/cms
+  language: php
+  stars: 4849
+  active_contributors_2plus: 49
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 49 contribuidores ≥2 commits/12m, 4849 stars (limiares §3.1)'
+- repo: lobsters/lobsters
+  language: ruby
+  stars: 4801
+  active_contributors_2plus: 33
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 33 contribuidores ≥2 commits/12m, 4801 stars (limiares §3.1)'
+- repo: Expensify/App
+  language: typescript
+  stars: 4968
+  active_contributors_2plus: 100
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 100 contribuidores ≥2 commits/12m, 4968 stars (limiares §3.1)'
+- repo: SolaceLabs/solace-agent-mesh
+  language: python
+  stars: 4966
+  active_contributors_2plus: 39
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 39 contribuidores ≥2 commits/12m, 4966 stars (limiares §3.1)'
+- repo: hashicorp/terraform-provider-azurerm
+  language: go
+  stars: 4958
+  active_contributors_2plus: 56
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 56 contribuidores ≥2 commits/12m, 4958 stars (limiares §3.1)'
+- repo: NVIDIA/nccl
+  language: c++
+  stars: 4893
+  active_contributors_2plus: 48
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 48 contribuidores ≥2 commits/12m, 4893 stars (limiares §3.1)'
+- repo: Gentleman-Programming/gentle-ai
+  language: go
+  stars: 4943
+  active_contributors_2plus: 21
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 21 contribuidores ≥2 commits/12m, 4943 stars (limiares §3.1)'
+- repo: spring-cloud/spring-cloud-gateway
+  language: java
+  stars: 4891
+  active_contributors_2plus: 21
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 21 contribuidores ≥2 commits/12m, 4891 stars (limiares §3.1)'
+- repo: librenms/librenms
+  language: php
+  stars: 4791
+  active_contributors_2plus: 80
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 80 contribuidores ≥2 commits/12m, 4791 stars (limiares §3.1)'
+- repo: mozilla/uniffi-rs
+  language: rust
+  stars: 4805
+  active_contributors_2plus: 24
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 24 contribuidores ≥2 commits/12m, 4805 stars (limiares §3.1)'
+- repo: microsoft/FluidFramework
+  language: typescript
+  stars: 4935
+  active_contributors_2plus: 47
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 47 contribuidores ≥2 commits/12m, 4935 stars (limiares §3.1)'
+- repo: X11Libre/xserver
+  language: c
+  stars: 4724
+  active_contributors_2plus: 46
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 46 contribuidores ≥2 commits/12m, 4724 stars (limiares §3.1)'
+- repo: asterinas/asterinas
+  language: rust
+  stars: 4772
+  active_contributors_2plus: 42
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 42 contribuidores ≥2 commits/12m, 4772 stars (limiares §3.1)'
+- repo: dtyq/magic
+  language: typescript
+  stars: 4932
+  active_contributors_2plus: 29
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 29 contribuidores ≥2 commits/12m, 4932 stars (limiares §3.1)'
+- repo: Martian-Engineering/lossless-claw
+  language: typescript
+  stars: 4890
+  active_contributors_2plus: 27
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 27 contribuidores ≥2 commits/12m, 4890 stars (limiares §3.1)'
+- repo: mavlink/qgroundcontrol
+  language: c++
+  stars: 4776
+  active_contributors_2plus: 31
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 31 contribuidores ≥2 commits/12m, 4776 stars (limiares §3.1)'
+- repo: ydb-platform/ydb
+  language: c++
+  stars: 4752
+  active_contributors_2plus: 100
+  classified_at: '2026-07-20'
+  archetype: club
+  classification_notes: 'auto: 100 contribuidores ≥2 commits/12m, 4752 stars (limiares §3.1)'
+- repo: bcoles/kasld
+  language: c
+  stars: 499
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 1 contribuidores ≥2 commits/12m, 499 stars (limiares §3.1)'
+- repo: LnYo-Cly/ai4j
+  language: java
+  stars: 421
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 2 contribuidores ≥2 commits/12m, 421 stars (limiares §3.1)'
+- repo: pietheinstrengholt/rssmonster
+  language: javascript
+  stars: 477
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 2 contribuidores ≥2 commits/12m, 477 stars (limiares §3.1)'
+- repo: yan-labs/serenity-aleabitoreddit
+  language: python
+  stars: 450
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 2 contribuidores ≥2 commits/12m, 450 stars (limiares §3.1)'
+- repo: amalshaji/dbcooper
+  language: typescript
+  stars: 456
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 2 contribuidores ≥2 commits/12m, 456 stars (limiares §3.1)'
+- repo: haxenme/nme
+  language: c
+  stars: 496
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 1 contribuidores ≥2 commits/12m, 496 stars (limiares §3.1)'
+- repo: erickong/penecho
+  language: javascript
+  stars: 369
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 1 contribuidores ≥2 commits/12m, 369 stars (limiares §3.1)'
+- repo: edbrowse/edbrowse
+  language: c
+  stars: 471
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 3 contribuidores ≥2 commits/12m, 471 stars (limiares §3.1)'
+- repo: fustyles/Arduino
+  language: c++
+  stars: 426
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 1 contribuidores ≥2 commits/12m, 426 stars (limiares §3.1)'
+- repo: JungHoonGhae/tossinvest-cli
+  language: go
+  stars: 455
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 2 contribuidores ≥2 commits/12m, 455 stars (limiares §3.1)'
+- repo: spring-cloud/spring-cloud-circuitbreaker
+  language: java
+  stars: 358
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 2 contribuidores ≥2 commits/12m, 358 stars (limiares §3.1)'
+- repo: test-unit/test-unit
+  language: ruby
+  stars: 275
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 3 contribuidores ≥2 commits/12m, 275 stars (limiares §3.1)'
+- repo: AITabby/opencodex
+  language: typescript
+  stars: 377
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 3 contribuidores ≥2 commits/12m, 377 stars (limiares §3.1)'
+- repo: justnullname/QuickView
+  language: c++
+  stars: 362
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 3 contribuidores ≥2 commits/12m, 362 stars (limiares §3.1)'
+- repo: gittower/git-flow-next
+  language: go
+  stars: 390
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 3 contribuidores ≥2 commits/12m, 390 stars (limiares §3.1)'
+- repo: morshedalam/rename
+  language: ruby
+  stars: 245
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 2 contribuidores ≥2 commits/12m, 245 stars (limiares §3.1)'
+- repo: containers/conmon-rs
+  language: rust
+  stars: 243
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 2 contribuidores ≥2 commits/12m, 243 stars (limiares §3.1)'
+- repo: JChristensen/Timezone
+  language: c++
+  stars: 304
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 1 contribuidores ≥2 commits/12m, 304 stars (limiares §3.1)'
+- repo: yolfinance/yolfi-agent
+  language: javascript
+  stars: 212
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 2 contribuidores ≥2 commits/12m, 212 stars (limiares §3.1)'
+- repo: EFanZh/LeetCode
+  language: rust
+  stars: 228
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 1 contribuidores ≥2 commits/12m, 228 stars (limiares §3.1)'
+- repo: Au1rxx/free-vpn-subscriptions
+  language: go
+  stars: 350
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 3 contribuidores ≥2 commits/12m, 350 stars (limiares §3.1)'
+- repo: Aleksefo/react-native-webp-format
+  language: ruby
+  stars: 172
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 2 contribuidores ≥2 commits/12m, 172 stars (limiares §3.1)'
+- repo: Defelo/nixpkgs-review-gha
+  language: rust
+  stars: 212
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 3 contribuidores ≥2 commits/12m, 212 stars (limiares §3.1)'
+- repo: tailuge/billiards
+  language: typescript
+  stars: 231
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 2 contribuidores ≥2 commits/12m, 231 stars (limiares §3.1)'
+- repo: ImageMagick/ImageMagick6
+  language: c
+  stars: 248
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  archetype: toy
+  classification_notes: 'auto: 2 contribuidores ≥2 commits/12m, 248 stars (limiares §3.1)'
+ambiguous:
+- repo: react/react
+  language: javascript
+  stars: 246590
+  active_contributors_2plus: 35
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: public-apis/public-apis
+  language: python
+  stars: 451493
+  active_contributors_2plus: 23
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ultraworkers/claw-code
+  language: rust
+  stars: 194836
+  active_contributors_2plus: 16
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ollama/ollama
+  language: go
+  stars: 176494
+  active_contributors_2plus: 27
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: coollabsio/coolify
+  language: php
+  stars: 59026
+  active_contributors_2plus: 75
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: farion1231/cc-switch
+  language: rust
+  stars: 119167
+  active_contributors_2plus: 43
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: openclaw/openclaw
+  language: typescript
+  stars: 383552
+  active_contributors_2plus: 94
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: microsoft/PowerToys
+  language: c
+  stars: 136581
+  active_contributors_2plus: 44
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: electron/electron
+  language: c++
+  stars: 122101
+  active_contributors_2plus: 42
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Stirling-Tools/Stirling-PDF
+  language: java
+  stars: 87494
+  active_contributors_2plus: 23
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: nextcloud/server
+  language: php
+  stars: 36212
+  active_contributors_2plus: 72
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: mastodon/mastodon
+  language: ruby
+  stars: 50133
+  active_contributors_2plus: 24
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: rustdesk/rustdesk
+  language: rust
+  stars: 118554
+  active_contributors_2plus: 42
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: n8n-io/n8n
+  language: typescript
+  stars: 197153
+  active_contributors_2plus: 88
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: redis/redis
+  language: c
+  stars: 75596
+  active_contributors_2plus: 44
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: spring-projects/spring-boot
+  language: java
+  stars: 81128
+  active_contributors_2plus: 35
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: Homebrew/brew
+  language: ruby
+  stars: 48879
+  active_contributors_2plus: 68
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: tauri-apps/tauri
+  language: rust
+  stars: 109240
+  active_contributors_2plus: 20
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: microsoft/vscode
+  language: typescript
+  stars: 187717
+  active_contributors_2plus: 73
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: obsproject/obs-studio
+  language: c
+  stars: 73980
+  active_contributors_2plus: 32
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: microsoft/terminal
+  language: c++
+  stars: 104298
+  active_contributors_2plus: 14
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: vercel/next.js
+  language: javascript
+  stars: 141024
+  active_contributors_2plus: 48
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: symfony/symfony
+  language: php
+  stars: 31105
+  active_contributors_2plus: 87
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: discourse/discourse
+  language: ruby
+  stars: 47483
+  active_contributors_2plus: 43
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: denoland/deno
+  language: rust
+  stars: 107748
+  active_contributors_2plus: 66
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: anomalyco/opencode
+  language: typescript
+  stars: 187713
+  active_contributors_2plus: 32
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: opencv/opencv
+  language: c++
+  stars: 90017
+  active_contributors_2plus: 73
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: composer/composer
+  language: php
+  stars: 29486
+  active_contributors_2plus: 15
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: fastlane/fastlane
+  language: ruby
+  stars: 41841
+  active_contributors_2plus: 22
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: firecrawl/firecrawl
+  language: typescript
+  stars: 153348
+  active_contributors_2plus: 30
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: bitcoin/bitcoin
+  language: c++
+  stars: 89654
+  active_contributors_2plus: 71
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: syncthing/syncthing
+  language: go
+  stars: 86670
+  active_contributors_2plus: 16
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: bagisto/bagisto
+  language: php
+  stars: 27762
+  active_contributors_2plus: 36
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Significant-Gravitas/AutoGPT
+  language: python
+  stars: 185618
+  active_contributors_2plus: 20
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: oven-sh/bun
+  language: rust
+  stars: 94895
+  active_contributors_2plus: 28
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: NationalSecurityAgency/ghidra
+  language: java
+  stars: 71109
+  active_contributors_2plus: 50
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: mrdoob/three.js
+  language: javascript
+  stars: 113859
+  active_contributors_2plus: 58
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: yt-dlp/yt-dlp
+  language: python
+  stars: 179036
+  active_contributors_2plus: 29
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: rapid7/metasploit-framework
+  language: ruby
+  stars: 38615
+  active_contributors_2plus: 85
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: astral-sh/uv
+  language: rust
+  stars: 87667
+  active_contributors_2plus: 51
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: curl/curl
+  language: c
+  stars: 42426
+  active_contributors_2plus: 38
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: ocornut/imgui
+  language: c++
+  stars: 74850
+  active_contributors_2plus: 22
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: TheAlgorithms/Java
+  language: java
+  stars: 66032
+  active_contributors_2plus: 39
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: axios/axios
+  language: javascript
+  stars: 109126
+  active_contributors_2plus: 29
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: chatwoot/chatwoot
+  language: ruby
+  stars: 34574
+  active_contributors_2plus: 30
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: iptv-org/iptv
+  language: typescript
+  stars: 133534
+  active_contributors_2plus: 50
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: php/php-src
+  language: c
+  stars: 40244
+  active_contributors_2plus: 52
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: protocolbuffers/protobuf
+  language: c++
+  stars: 71590
+  active_contributors_2plus: 56
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: jesseduffield/lazygit
+  language: go
+  stars: 80536
+  active_contributors_2plus: 16
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: spring-projects/spring-framework
+  language: java
+  stars: 60129
+  active_contributors_2plus: 31
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: mui/material-ui
+  language: javascript
+  stars: 98620
+  active_contributors_2plus: 37
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: livewire/livewire
+  language: php
+  stars: 23551
+  active_contributors_2plus: 19
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: clash-verge-rev/clash-verge-rev
+  language: typescript
+  stars: 132611
+  active_contributors_2plus: 25
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: LadybirdBrowser/ladybird
+  language: c++
+  stars: 64621
+  active_contributors_2plus: 27
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: netdata/netdata
+  language: go
+  stars: 79703
+  active_contributors_2plus: 16
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: AUTOMATIC1111/stable-diffusion-webui
+  language: python
+  stars: 164250
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: sem commits no branch default na janela
+- repo: unionlabs/union
+  language: rust
+  stars: 73896
+  active_contributors_2plus: 12
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: excalidraw/excalidraw
+  language: typescript
+  stars: 127916
+  active_contributors_2plus: 11
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: mpv-player/mpv
+  language: c
+  stars: 36080
+  active_contributors_2plus: 39
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: caddyserver/caddy
+  language: go
+  stars: 74202
+  active_contributors_2plus: 31
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: google/guava
+  language: java
+  stars: 51527
+  active_contributors_2plus: 14
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: JuliusBrussee/caveman
+  language: javascript
+  stars: 91008
+  active_contributors_2plus: 15
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: PHPMailer/PHPMailer
+  language: php
+  stars: 22252
+  active_contributors_2plus: 13
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: rtk-ai/rtk
+  language: rust
+  stars: 71991
+  active_contributors_2plus: 50
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: moby/moby
+  language: go
+  stars: 71882
+  active_contributors_2plus: 37
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: dbeaver/dbeaver
+  language: java
+  stars: 51065
+  active_contributors_2plus: 35
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: louislam/uptime-kuma
+  language: javascript
+  stars: 89298
+  active_contributors_2plus: 87
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: matomo-org/matomo
+  language: php
+  stars: 21705
+  active_contributors_2plus: 16
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: shadcn-ui/ui
+  language: typescript
+  stars: 119368
+  active_contributors_2plus: 89
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: skylot/jadx
+  language: java
+  stars: 49695
+  active_contributors_2plus: 11
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: thedotmack/claude-mem
+  language: javascript
+  stars: 87929
+  active_contributors_2plus: 44
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: langflow-ai/langflow
+  language: python
+  stars: 152079
+  active_contributors_2plus: 48
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ruby/ruby
+  language: ruby
+  stars: 23659
+  active_contributors_2plus: 78
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: microsoft/TypeScript
+  language: typescript
+  stars: 109890
+  active_contributors_2plus: 11
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: raysan5/raylib
+  language: c
+  stars: 33942
+  active_contributors_2plus: 71
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: x64dbg/x64dbg
+  language: c++
+  stars: 48944
+  active_contributors_2plus: 16
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: prometheus/prometheus
+  language: go
+  stars: 65235
+  active_contributors_2plus: 96
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: sveltejs/svelte
+  language: javascript
+  stars: 87625
+  active_contributors_2plus: 29
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: WordPress/WordPress
+  language: php
+  stars: 21266
+  active_contributors_2plus: 41
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: open-webui/open-webui
+  language: python
+  stars: 146049
+  active_contributors_2plus: 35
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: forem/forem
+  language: ruby
+  stars: 22752
+  active_contributors_2plus: 15
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: immich-app/immich
+  language: typescript
+  stars: 108256
+  active_contributors_2plus: 89
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ClickHouse/ClickHouse
+  language: c++
+  stars: 48747
+  active_contributors_2plus: 77
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: traefik/traefik
+  language: go
+  stars: 64046
+  active_contributors_2plus: 40
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: DietrichGebert/ponytail
+  language: javascript
+  stars: 86378
+  active_contributors_2plus: 16
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: sebastianbergmann/phpunit
+  language: php
+  stars: 20041
+  active_contributors_2plus: 20
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: langchain-ai/langchain
+  language: python
+  stars: 142155
+  active_contributors_2plus: 75
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Homebrew/homebrew-cask
+  language: ruby
+  stars: 22116
+  active_contributors_2plus: 25
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: DeusData/codebase-memory-mcp
+  language: c
+  stars: 33114
+  active_contributors_2plus: 41
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: usememos/memos
+  language: go
+  stars: 61675
+  active_contributors_2plus: 24
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: diggerhq/digger
+  language: go
+  stars: 4999
+  active_contributors_2plus: 14
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Trinea/android-common
+  language: java
+  stars: 4999
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: opentypejs/opentype.js
+  language: javascript
+  stars: 4998
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: antonkomarev/github-profile-views-counter
+  language: php
+  stars: 4972
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: google/google-ctf
+  language: python
+  stars: 4988
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: mbleigh/acts-as-taggable-on
+  language: ruby
+  stars: 4992
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ArroyoSystems/arroyo
+  language: rust
+  stars: 4966
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: tiajinsha/JKVideo
+  language: typescript
+  stars: 4997
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: tectonic-typesetting/tectonic
+  language: c
+  stars: 4989
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: opentrack/opentrack
+  language: c++
+  stars: 4988
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: rubensousa/GravitySnapHelper
+  language: java
+  stars: 4985
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: sintaxi/harp
+  language: javascript
+  stars: 4995
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Ocramius/ProxyManager
+  language: php
+  stars: 4951
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: sem commits no branch default na janela
+- repo: pritunl/pritunl
+  language: python
+  stars: 4986
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ddnexus/pagy
+  language: ruby
+  stars: 4976
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: huggingface/text-embeddings-inference
+  language: rust
+  stars: 4945
+  active_contributors_2plus: 7
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: hustcc/echarts-for-react
+  language: typescript
+  stars: 4996
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: raysan5/raygui
+  language: c
+  stars: 4976
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: sorayuki/obs-multi-rtmp
+  language: c++
+  stars: 4947
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: nsf/gocode
+  language: go
+  stars: 4994
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: JodaOrg/joda-time
+  language: java
+  stars: 4983
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: catfan/Medoo
+  language: php
+  stars: 4943
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: su-kaka/gcli2api
+  language: python
+  stars: 4984
+  active_contributors_2plus: 16
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: opal/opal
+  language: ruby
+  stars: 4924
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: matter-labs/zksync
+  language: rust
+  stars: 4931
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Tencent/wujie
+  language: typescript
+  stars: 4989
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: V4bel/dirtyfrag
+  language: c
+  stars: 4939
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: PetoiCamp/OpenCat-Quadruped-Robot
+  language: c++
+  stars: 4945
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: alecthomas/chroma
+  language: go
+  stars: 4992
+  active_contributors_2plus: 15
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: react-native-webrtc/react-native-webrtc
+  language: java
+  stars: 4980
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: shoutem/ui
+  language: javascript
+  stars: 4979
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: chriskacerguis/codeigniter-restserver
+  language: php
+  stars: 4875
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: SCIR-HI/Huatuo-Llama-Med-Chinese
+  language: python
+  stars: 4981
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: simplecov-ruby/simplecov
+  language: ruby
+  stars: 4913
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: triwinds/ns-emu-tools
+  language: rust
+  stars: 4927
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: actions/github-script
+  language: typescript
+  stars: 4989
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: begeekmyfriend/yasea
+  language: c++
+  stars: 4941
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: BurntSushi/toml
+  language: go
+  stars: 4985
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: orientechnologies/orientdb
+  language: java
+  stars: 4972
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ClearURLs/Addon
+  language: javascript
+  stars: 4974
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: sem commits no branch default na janela
+- repo: yajra/laravel-datatables
+  language: php
+  stars: 4871
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: jazzband/django-silk
+  language: python
+  stars: 4980
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: mayocream/koharu
+  language: rust
+  stars: 4910
+  active_contributors_2plus: 15
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: stoplightio/prism
+  language: typescript
+  stars: 4989
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: openvenues/libpostal
+  language: c
+  stars: 4848
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: paolo-projects/auto-unlocker
+  language: c++
+  stars: 4939
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: gopl-zh/gopl-zh.github.com
+  language: go
+  stars: 4976
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: spring-cloud/spring-cloud-netflix
+  language: java
+  stars: 4971
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: frontend-collective/react-sortable-tree
+  language: javascript
+  stars: 4970
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: sem commits no branch default na janela
+- repo: Codeception/Codeception
+  language: php
+  stars: 4858
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: 1nchaos/adata
+  language: python
+  stars: 4979
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: tauri-apps/wry
+  language: rust
+  stars: 4871
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: colanode/colanode
+  language: typescript
+  stars: 4988
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: KDE/ghostwriter
+  language: c++
+  stars: 4931
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: arduino/arduino-cli
+  language: go
+  stars: 4968
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: querydsl/querydsl
+  language: java
+  stars: 4969
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: sem commits no branch default na janela
+- repo: brentvollebregt/auto-py-to-exe
+  language: javascript
+  stars: 4961
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: moneyphp/money
+  language: php
+  stars: 4854
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: shibing624/text2vec
+  language: python
+  stars: 4974
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: prawnpdf/prawn
+  language: ruby
+  stars: 4817
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: unhappychoice/gitlogue
+  language: rust
+  stars: 4862
+  active_contributors_2plus: 8
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: emqx/MQTTX
+  language: typescript
+  stars: 4988
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Bodmer/TFT_eSPI
+  language: c
+  stars: 4844
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: TwilitRealm/dusklight
+  language: c++
+  stars: 4925
+  active_contributors_2plus: 50
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: tencentmusic/supersonic
+  language: java
+  stars: 4967
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: pablof7z/chardin.js
+  language: javascript
+  stars: 4958
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: togethercomputer/RedPajama-Data
+  language: python
+  stars: 4969
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: sem commits no branch default na janela
+- repo: lolcommits/lolcommits
+  language: ruby
+  stars: 4814
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: microsoft/coreutils
+  language: rust
+  stars: 4853
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: bitpay/bitcore
+  language: typescript
+  stars: 4988
+  active_contributors_2plus: 13
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: FalkorDB/FalkorDB
+  language: c
+  stars: 4805
+  active_contributors_2plus: 9
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: CrowCpp/Crow
+  language: c++
+  stars: 4920
+  active_contributors_2plus: 12
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: johnste/finicky
+  language: go
+  stars: 4966
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: react-native-config/react-native-config
+  language: java
+  stars: 4960
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: GargantuaX/gemini-watermark-remover
+  language: javascript
+  stars: 4952
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: doctrine/DoctrineBundle
+  language: php
+  stars: 4834
+  active_contributors_2plus: 11
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Kiln-AI/Kiln
+  language: python
+  stars: 4967
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: ArthurBrussee/brush
+  language: rust
+  stars: 4833
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: google/wuffs
+  language: c
+  stars: 4787
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: hedge-dev/UnleashedRecomp
+  language: c++
+  stars: 4915
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: go-mysql-org/go-mysql
+  language: go
+  stars: 4964
+  active_contributors_2plus: 11
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Kodezi/Chronos
+  language: java
+  stars: 4925
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: coreui/coreui-free-react-admin-template
+  language: javascript
+  stars: 4944
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: kimai/kimai
+  language: php
+  stars: 4827
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ankane/blazer
+  language: ruby
+  stars: 4793
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: gyscos/cursive
+  language: rust
+  stars: 4830
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: excalidraw/excalidraw-mcp
+  language: typescript
+  stars: 4964
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: alandefreitas/matplotplusplus
+  language: c++
+  stars: 4905
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: mock-server/mockserver-monorepo
+  language: java
+  stars: 4920
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Qix-/color
+  language: javascript
+  stars: 4937
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: yiisoft/yii
+  language: php
+  stars: 4825
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: googlemaps/google-maps-services-python
+  language: python
+  stars: 4965
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: sem commits no branch default na janela
+- repo: red-data-tools/YouPlot
+  language: ruby
+  stars: 4789
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: dtolnay/proc-macro-workshop
+  language: rust
+  stars: 4829
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: react-native-linear-gradient/react-native-linear-gradient
+  language: typescript
+  stars: 4957
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: yshui/picom
+  language: c
+  stars: 4767
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: arrayfire/arrayfire
+  language: c++
+  stars: 4896
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: slack-go/slack
+  language: go
+  stars: 4954
+  active_contributors_2plus: 7
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: apocas/dockerode
+  language: javascript
+  stars: 4931
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: endroid/qr-code
+  language: php
+  stars: 4797
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: dschep/ntfy
+  language: python
+  stars: 4964
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: sem commits no branch default na janela
+- repo: SteveLTN/https-portal
+  language: ruby
+  stars: 4697
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: rusterlium/rustler
+  language: rust
+  stars: 4828
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: aws/s2n-tls
+  language: c
+  stars: 4744
+  active_contributors_2plus: 16
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: oracle/opengrok
+  language: java
+  stars: 4891
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: appbaseio/reactivesearch
+  language: javascript
+  stars: 4923
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: orchidsoftware/platform
+  language: php
+  stars: 4791
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: python-jsonschema/jsonschema
+  language: python
+  stars: 4962
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: activemerchant/active_merchant
+  language: ruby
+  stars: 4596
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ProvableHQ/leo
+  language: rust
+  stars: 4821
+  active_contributors_2plus: 18
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: 53AI/53AIHub
+  language: typescript
+  stars: 4945
+  active_contributors_2plus: 8
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: microsoft/msquic
+  language: c
+  stars: 4740
+  active_contributors_2plus: 15
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: spaceandtimefdn/blitzar
+  language: c++
+  stars: 4877
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: TalAter/UpUp
+  language: javascript
+  stars: 4920
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: sem commits no branch default na janela
+- repo: dmMaze/BallonsTranslator
+  language: python
+  stars: 4958
+  active_contributors_2plus: 8
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: sferik/twitter-ruby
+  language: ruby
+  stars: 4577
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: FellouAI/eko
+  language: typescript
+  stars: 4938
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: troydhanson/uthash
+  language: c
+  stars: 4736
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Chlumsky/msdfgen
+  language: c++
+  stars: 4872
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: clidey/whodb
+  language: go
+  stars: 4930
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: micrometer-metrics/micrometer
+  language: java
+  stars: 4871
+  active_contributors_2plus: 10
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: krakenjs/kraken-js
+  language: javascript
+  stars: 4919
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: doctrine/migrations
+  language: php
+  stars: 4770
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: huggingface/nanoVLM
+  language: python
+  stars: 4957
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: TheOdinProject/theodinproject
+  language: ruby
+  stars: 4534
+  active_contributors_2plus: 10
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: anordal/shellharden
+  language: rust
+  stars: 4793
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: melonDS-emu/melonDS
+  language: c++
+  stars: 4867
+  active_contributors_2plus: 9
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: testcontainers/testcontainers-go
+  language: go
+  stars: 4923
+  active_contributors_2plus: 8
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: deepjavalibrary/djl
+  language: java
+  stars: 4834
+  active_contributors_2plus: 8
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Tencent/kbone
+  language: javascript
+  stars: 4914
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: easy-swoole/easyswoole
+  language: php
+  stars: 4762
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: sktime/pytorch-forecasting
+  language: python
+  stars: 4956
+  active_contributors_2plus: 15
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: github/gemoji
+  language: ruby
+  stars: 4530
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: sem commits no branch default na janela
+- repo: sayanarijit/xplr
+  language: rust
+  stars: 4781
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: NLnetLabs/unbound
+  language: c
+  stars: 4724
+  active_contributors_2plus: 7
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: mhogomchungu/media-downloader
+  language: c++
+  stars: 4854
+  active_contributors_2plus: 7
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: pomerium/pomerium
+  language: go
+  stars: 4915
+  active_contributors_2plus: 10
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: AsamK/signal-cli
+  language: java
+  stars: 4798
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: json-editor/json-editor
+  language: javascript
+  stars: 4897
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: anonaddy/anonaddy
+  language: php
+  stars: 4760
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: dpgaspar/Flask-AppBuilder
+  language: python
+  stars: 4956
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: octobox/octobox
+  language: ruby
+  stars: 4475
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: open-sdr/openwifi
+  language: c
+  stars: 4715
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ztxz16/fastllm
+  language: c++
+  stars: 4853
+  active_contributors_2plus: 12
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: mailru/easyjson
+  language: go
+  stars: 4908
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: iflytek/skillhub
+  language: java
+  stars: 4791
+  active_contributors_2plus: 17
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: eKoopmans/html2pdf.js
+  language: javascript
+  stars: 4896
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: webonyx/graphql-php
+  language: php
+  stars: 4716
+  active_contributors_2plus: 8
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: blocklistproject/Lists
+  language: python
+  stars: 4950
+  active_contributors_2plus: 7
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ankane/ahoy
+  language: ruby
+  stars: 4468
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: dimforge/nalgebra
+  language: rust
+  stars: 4765
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Marker-Inc-Korea/AutoRAG
+  language: typescript
+  stars: 4932
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: OHF-Voice/piper1-gpl
+  language: c++
+  stars: 4840
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: yuin/goldmark
+  language: go
+  stars: 4908
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: dromara/dynamic-tp
+  language: java
+  stars: 4791
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: certd/certd
+  language: javascript
+  stars: 4889
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: mpdf/mpdf
+  language: php
+  stars: 4700
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: dograh-hq/dograh
+  language: python
+  stars: 4946
+  active_contributors_2plus: 18
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: seyhunak/twitter-bootstrap-rails
+  language: ruby
+  stars: 4464
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: immunant/c2rust
+  language: rust
+  stars: 4758
+  active_contributors_2plus: 14
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Tencent/tmagic-editor
+  language: typescript
+  stars: 4929
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: attractivechaos/klib
+  language: c
+  stars: 4700
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: zufuliu/notepad4
+  language: c++
+  stars: 4825
+  active_contributors_2plus: 10
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: unidoc/unioffice
+  language: go
+  stars: 4897
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: zq2599/blog_demos
+  language: java
+  stars: 4749
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: jgraph/drawio-mcp
+  language: javascript
+  stars: 4886
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: MlgmXyysd/Xiaomi-HyperOS-BootLoader-Bypass
+  language: php
+  stars: 4693
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: cloudtools/troposphere
+  language: python
+  stars: 4943
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: sparklemotion/mechanize
+  language: ruby
+  stars: 4442
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: pgcentralfoundation/pgrx
+  language: rust
+  stars: 4747
+  active_contributors_2plus: 12
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: campfirein/byterover-cli
+  language: typescript
+  stars: 4925
+  active_contributors_2plus: 21
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: apache/age
+  language: c
+  stars: 4690
+  active_contributors_2plus: 8
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: rakshasa/rtorrent
+  language: c++
+  stars: 4818
+  active_contributors_2plus: 13
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: m3db/m3
+  language: go
+  stars: 4894
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: bepass-org/oblivion
+  language: java
+  stars: 4719
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: shower/shower
+  language: javascript
+  stars: 4876
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: dokuwiki/dokuwiki
+  language: php
+  stars: 4683
+  active_contributors_2plus: 16
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: camel-ai/oasis
+  language: python
+  stars: 4943
+  active_contributors_2plus: 8
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ankane/strong_migrations
+  language: ruby
+  stars: 4429
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: domcyrus/rustnet
+  language: rust
+  stars: 4747
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: gajus/slonik
+  language: typescript
+  stars: 4918
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: martanne/vis
+  language: c
+  stars: 4663
+  active_contributors_2plus: 11
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: lightvector/KataGo
+  language: c++
+  stars: 4814
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: uptrace/bun
+  language: go
+  stars: 4890
+  active_contributors_2plus: 10
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: stleary/JSON-java
+  language: java
+  stars: 4716
+  active_contributors_2plus: 13
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: nunomaduro/collision
+  language: php
+  stars: 4652
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: lincolnloop/python-qrcode
+  language: python
+  stars: 4923
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: rails/jbuilder
+  language: ruby
+  stars: 4418
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: tokio-rs/mini-redis
+  language: rust
+  stars: 4738
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: parca-dev/parca
+  language: typescript
+  stars: 4914
+  active_contributors_2plus: 8
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: nanomsg/nng
+  language: c
+  stars: 4634
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: bambulab/BambuStudio
+  language: c++
+  stars: 4810
+  active_contributors_2plus: 75
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: WuKongIM/WuKongIM
+  language: go
+  stars: 4890
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: cjlin1/libsvm
+  language: java
+  stars: 4709
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: SadeghHayeri/GreenTunnel
+  language: javascript
+  stars: 4871
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: symfony/filesystem
+  language: php
+  stars: 4640
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: makerspet/oomwoo
+  language: python
+  stars: 4919
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: basecamp/once-campfire
+  language: ruby
+  stars: 4417
+  active_contributors_2plus: 14
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: tokio-rs/prost
+  language: rust
+  stars: 4725
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: samuelmtimbo/unit
+  language: typescript
+  stars: 4914
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: xroche/httrack
+  language: c
+  stars: 4627
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: boostorg/beast
+  language: c++
+  stars: 4809
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: rosedblabs/rosedb
+  language: go
+  stars: 4883
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ant-media/Ant-Media-Server
+  language: java
+  stars: 4708
+  active_contributors_2plus: 7
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: IsmaelMartinez/teams-for-linux
+  language: javascript
+  stars: 4863
+  active_contributors_2plus: 11
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: php-amqplib/php-amqplib
+  language: php
+  stars: 4599
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: TomBadash/Mouser
+  language: python
+  stars: 4905
+  active_contributors_2plus: 11
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: binarylogic/authlogic
+  language: ruby
+  stars: 4344
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: greenbone/openvas-scanner
+  language: rust
+  stars: 4725
+  active_contributors_2plus: 13
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: unplugin/unplugin-icons
+  language: typescript
+  stars: 4907
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: dankamongmen/notcurses
+  language: c
+  stars: 4620
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: clangen/musikcube
+  language: c++
+  stars: 4803
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: xvzc/spoofdpi
+  language: go
+  stars: 4879
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: bytedeco/javacpp
+  language: java
+  stars: 4700
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: GoogleTrends/data
+  language: javascript
+  stars: 4859
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: exposedev/expose
+  language: php
+  stars: 4569
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ets-labs/python-dependency-injector
+  language: python
+  stars: 4899
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: blackcandy-org/blackcandy
+  language: ruby
+  stars: 4323
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: rust-ml/linfa
+  language: rust
+  stars: 4707
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: tech-leads-club/agent-skills
+  language: typescript
+  stars: 4904
+  active_contributors_2plus: 8
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: acassen/keepalived
+  language: c
+  stars: 4619
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: maximegmd/CyberEngineTweaks
+  language: c++
+  stars: 4796
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: taigrr/spank
+  language: go
+  stars: 4871
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: SPLWare/esProc
+  language: java
+  stars: 4686
+  active_contributors_2plus: 7
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: mermaid-js/mermaid-cli
+  language: javascript
+  stars: 4857
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: cedar2025/Xboard
+  language: php
+  stars: 4566
+  active_contributors_2plus: 10
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: bitsadmin/wesng
+  language: python
+  stars: 4894
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: eventmachine/eventmachine
+  language: ruby
+  stars: 4281
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: aya-rs/aya
+  language: rust
+  stars: 4689
+  active_contributors_2plus: 13
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: fastmail/Squire
+  language: typescript
+  stars: 4899
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: google/security-research
+  language: c
+  stars: 4575
+  active_contributors_2plus: 15
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: jarro2783/cxxopts
+  language: c++
+  stars: 4793
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: tidwall/buntdb
+  language: go
+  stars: 4861
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: discord-jda/JDA
+  language: java
+  stars: 4672
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: gnmyt/Nexterm
+  language: javascript
+  stars: 4853
+  active_contributors_2plus: 12
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: tecnickcom/TCPDF
+  language: php
+  stars: 4543
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: s3tools/s3cmd
+  language: python
+  stars: 4892
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: errbit/errbit
+  language: ruby
+  stars: 4268
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: cberner/redb
+  language: rust
+  stars: 4670
+  active_contributors_2plus: 5
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: actions/setup-node
+  language: typescript
+  stars: 4891
+  active_contributors_2plus: 8
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: riscv-collab/riscv-gnu-toolchain
+  language: c
+  stars: 4567
+  active_contributors_2plus: 10
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: nikivdev/go
+  language: go
+  stars: 4857
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: 201206030/novel-plus
+  language: java
+  stars: 4671
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: mpetroff/pannellum
+  language: javascript
+  stars: 4850
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Hanson/vbot
+  language: php
+  stars: 4543
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Picovoice/porcupine
+  language: python
+  stars: 4888
+  active_contributors_2plus: 8
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: grosser/parallel
+  language: ruby
+  stars: 4264
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ggez/ggez
+  language: rust
+  stars: 4664
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Dav1dde/glad
+  language: c
+  stars: 4556
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: uber-go/automaxprocs
+  language: go
+  stars: 4851
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: sem commits no branch default na janela
+- repo: NotHarshhaa/DevOps-Projects
+  language: java
+  stars: 4666
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: globalizejs/globalize
+  language: javascript
+  stars: 4843
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: cakephp/phinx
+  language: php
+  stars: 4538
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: hynek/structlog
+  language: python
+  stars: 4881
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: crmne/ruby_llm
+  language: ruby
+  stars: 4255
+  active_contributors_2plus: 16
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: build-trust/ockam
+  language: rust
+  stars: 4631
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ntop/nDPI
+  language: c
+  stars: 4539
+  active_contributors_2plus: 7
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: fritzing/fritzing-app
+  language: c++
+  stars: 4753
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: flipt-io/flipt
+  language: go
+  stars: 4851
+  active_contributors_2plus: 9
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Heeexy/SpringBoot-Shiro-Vue
+  language: java
+  stars: 4663
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: sem commits no branch default na janela
+- repo: babel/babel-loader
+  language: javascript
+  stars: 4841
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: opnsense/core
+  language: php
+  stars: 4537
+  active_contributors_2plus: 14
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: shinnytech/tqsdk-python
+  language: python
+  stars: 4881
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: flyerhzm/rails_best_practices
+  language: ruby
+  stars: 4165
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: plotters-rs/plotters
+  language: rust
+  stars: 4593
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: chanind/hanzi-writer
+  language: typescript
+  stars: 4879
+  active_contributors_2plus: 0
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: marcobambini/gravity
+  language: c
+  stars: 4537
+  active_contributors_2plus: 3
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: antgroup/vsag
+  language: c++
+  stars: 490
+  active_contributors_2plus: 19
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: kdlbs/kandev
+  language: go
+  stars: 462
+  active_contributors_2plus: 16
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: hitobito/hitobito
+  language: ruby
+  stars: 475
+  active_contributors_2plus: 18
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: reyamira/models
+  language: rust
+  stars: 475
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: OpenVicProject/OpenVic
+  language: c++
+  stars: 456
+  active_contributors_2plus: 7
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: tektoncd/cli
+  language: go
+  stars: 461
+  active_contributors_2plus: 7
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ehrbase/ehrbase
+  language: java
+  stars: 375
+  active_contributors_2plus: 7
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: sinavm/SVM
+  language: php
+  stars: 426
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: aiskillstore/marketplace
+  language: python
+  stars: 393
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: xichan96/dinotty
+  language: rust
+  stars: 394
+  active_contributors_2plus: 13
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ryantsai/KKTerm
+  language: typescript
+  stars: 421
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: allure-framework/allure-java
+  language: java
+  stars: 373
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: EdgeTypE/better-deepseek
+  language: javascript
+  stars: 335
+  active_contributors_2plus: 7
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: canyongbs/advisingapp
+  language: php
+  stars: 333
+  active_contributors_2plus: 13
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: 1mancompany/OneManCompany
+  language: python
+  stars: 356
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: DataDog/dd-trace-rb
+  language: ruby
+  stars: 411
+  active_contributors_2plus: 40
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: decocms/studio
+  language: typescript
+  stars: 391
+  active_contributors_2plus: 15
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: FUjr/QModem
+  language: c
+  stars: 401
+  active_contributors_2plus: 14
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: MonsterDruide1/OdysseyDecomp
+  language: c++
+  stars: 380
+  active_contributors_2plus: 15
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: mautrix/meta
+  language: go
+  stars: 405
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: smithersai/smithers
+  language: javascript
+  stars: 331
+  active_contributors_2plus: 9
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: cognesy/instructor-php
+  language: php
+  stars: 325
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: caura-ai/caura-memclaw
+  language: python
+  stars: 341
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Scille/parsec-cloud
+  language: rust
+  stars: 308
+  active_contributors_2plus: 11
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: cucumber/gherkin
+  language: c
+  stars: 372
+  active_contributors_2plus: 11
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Anuken/MindustryMods
+  language: java
+  stars: 341
+  active_contributors_2plus: 2
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: 1024pix/pix
+  language: javascript
+  stars: 281
+  active_contributors_2plus: 49
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: MhdiTaheri/V2rayCollector
+  language: php
+  stars: 301
+  active_contributors_2plus: 1
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: google/weather-tools
+  language: python
+  stars: 249
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: honeybadger-io/honeybadger-ruby
+  language: ruby
+  stars: 270
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: Corgea/Sighthound
+  language: rust
+  stars: 251
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: greenbone/gvmd
+  language: c
+  stars: 365
+  active_contributors_2plus: 11
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: xifan2333/fcitx5-vinput
+  language: c++
+  stars: 339
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: caidaoli/ccLoad
+  language: go
+  stars: 364
+  active_contributors_2plus: 7
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: confluentinc/ksql
+  language: java
+  stars: 310
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: atrocore/atrocore
+  language: javascript
+  stars: 225
+  active_contributors_2plus: 18
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: woocommerce/woocommerce-gateway-stripe
+  language: php
+  stars: 288
+  active_contributors_2plus: 17
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: pythermalcomfort/pythermalcomfort
+  language: python
+  stars: 218
+  active_contributors_2plus: 12
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: pantoniou/libfyaml
+  language: c
+  stars: 338
+  active_contributors_2plus: 10
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: evstack/ev-node
+  language: go
+  stars: 363
+  active_contributors_2plus: 15
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: radekhulan/myinvoice
+  language: php
+  stars: 275
+  active_contributors_2plus: 11
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: The-AI-Alliance/tapestry
+  language: python
+  stars: 218
+  active_contributors_2plus: 13
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: OpenVoxProject/openvox
+  language: ruby
+  stars: 177
+  active_contributors_2plus: 17
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: open-software-network/os-june
+  language: typescript
+  stars: 308
+  active_contributors_2plus: 9
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: cppcheck-opensource/simplecpp
+  language: c
+  stars: 263
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: ORNL/HeCBench
+  language: c++
+  stars: 300
+  active_contributors_2plus: 25
+  classified_at: '2026-07-20'
+  reason: contagem truncada em 3000 commits — confirmar manualmente
+- repo: DenizenScript/Denizen
+  language: java
+  stars: 244
+  active_contributors_2plus: 6
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: wikimedia/VisualEditor
+  language: javascript
+  stars: 211
+  active_contributors_2plus: 12
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
+- repo: cachethq/core
+  language: php
+  stars: 225
+  active_contributors_2plus: 4
+  classified_at: '2026-07-20'
+  reason: fora das faixas da §3.1
