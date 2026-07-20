@@ -1,0 +1,85 @@
+# Parâmetros da amostragem estratificada (plano de pesquisa, §3.1–3.2).
+# Limiares são decisões de pesquisa — sujeitos à verificação de sensibilidade
+# (reclassificação com ±50%) e NUNCA ajustados para "melhorar" resultados.
+#
+# Proxy de contribuidores: nº de autores com ≥2 commits nos últimos 12 meses
+# (bots excluídos pela heurística de login). Proxy de usuários: stars.
+# deps.dev entra apenas na validação (§6) — não usado aqui.
+
+window_days: 365
+quota_per_archetype: 25
+
+thresholds:
+  min_commits_per_contributor: 2
+  federation_min_contributors: 100   # Federação: contribuidores alto
+  stadium_max_contributors: 10       # Estádio: contribuidores baixo
+  club_min_contributors: 20          # Clube: contribuidores médio/alto
+  toy_max_contributors: 3            # Brinquedo: contribuidores baixo
+  stars_high_min: 10000              # base de usuários alta (Federação/Estádio)
+  club_stars_max: 5000               # Clube: nicho
+  toy_stars_max: 500                 # Brinquedo: baixa adoção
+
+search:
+  # Piso de stars do estrato Brinquedo: decisão pragmática (repositórios com
+  # ~0 stars são indescobríveis/ruidosos na Search API); registrado como
+  # limitação amostral.
+  toy_stars_min: 5
+  club_stars_min: 500
+  per_page: 100
+  pages_high: 2       # estrato stars>=10000 alimenta Federação E Estádio
+  pages_club: 1
+  pages_toy: 1
+  languages:          # diversidade de linguagem dentro de cada estrato (§3.2)
+    - python
+    - javascript
+    - typescript
+    - go
+    - rust
+    - java
+    - c++
+    - c
+    - ruby
+    - php
+
+diversity:
+  max_per_language: 4   # por arquétipo
+  max_per_owner: 2      # global
+
+classification:
+  # Contagem de autores ativos: pagina /commits?since= até confirmar Federação
+  # (early stop) ou esgotar a janela; teto de páginas para repositórios de
+  # altíssimo volume (marcados capped → inspeção manual).
+  max_commit_pages: 30
+
+# Exclusão de repositórios que não são software (§3.2, item 1)
+exclusions:
+  topics:
+    - awesome
+    - awesome-list
+    - tutorial
+    - tutorials
+    - documentation
+    - interview
+    - interview-preparation
+    - roadmap
+    - cheatsheet
+    - books
+    - curated-list
+    - styleguide
+    - style-guide
+  name_patterns:
+    - "^awesome[-_.]"
+    - "[-_.]awesome$"
+    - "tutorial"
+    - "roadmap"
+    - "interview"
+    - "cheat[-_ ]?sheet"
+    - "[-_.]docs$"
+    - "^docs[-_.]"
+  # Pilotos ficam fora da amostra completa: calibraram limiares na fase de
+  # desenvolvimento (out-of-sample).
+  repos:
+    - kubernetes/kubernetes
+    - expressjs/express
+    - astropy/astropy
+    - ibrahimcesar/react-lite-youtube-embed

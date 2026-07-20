@@ -76,7 +76,22 @@ def main() -> None:
     ex = sub.add_parser("extract")
     ex.add_argument("--repo", required=True)
     ex.add_argument("--backend", choices=["api", "git", "both"], default="api")
+    sp = sub.add_parser("sample", help="amostragem estratificada (plano §3.1–3.2)")
+    sp.add_argument("--quota", type=int, default=None,
+                    help="repositórios por arquétipo (default: sampling.yaml)")
     args = ap.parse_args()
+
+    if args.cmd == "sample":
+        from govscore.sampling import build_sample, load_sampling_config, write_sample
+        cfg = load_sampling_config()
+        quota = args.quota or cfg["quota_per_archetype"]
+        result = build_sample(GitHubClient(), cfg, quota)
+        out = ROOT / "config" / "sample_full.yaml"
+        write_sample(result, out)
+        print(json.dumps({"counts": result["counts"],
+                          "ambiguous": len(result["ambiguous"]),
+                          "written_to": str(out)}, indent=2, ensure_ascii=False))
+        return
 
     if args.cmd == "pilot":
         sample = yaml.safe_load((ROOT / "config" / "sample.yaml").read_text())
