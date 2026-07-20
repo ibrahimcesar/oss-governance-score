@@ -1,187 +1,229 @@
 [
   {
+    "repo": "kubernetes/kubernetes",
+    "stars": 123826,
+    "forks": 43711,
     "artifacts": {
       "readme": true,
       "contributing": true,
       "code_of_conduct": true,
       "license": true,
-      "issue_template": true,
+      "issue_template": false,
       "pull_request_template": true,
       "codeowners": false,
-      "governance": false
+      "governance": false,
+      "funding": false,
+      "health_percentage": 100
     },
     "security": {
       "security_policy": true,
-      "ci_configured": true,
-      "dependency_automation": true,
-      "releases_12m": null
+      "ci_configured": false,
+      "dependency_automation": false,
+      "releases_12m": 30,
+      "release_notes_share": 1.0
     },
     "distribution": {
       "top1_share": 0.059756333397795396,
       "top2_share": 0.10346161284084315,
-      "hhi": 0.01408203770630613,
+      "hhi": 0.014082037706305875,
       "truck_factor": 31,
       "contributors_5plus": 176,
-      "commit_entropy": 0.802555888580399,
+      "commit_entropy": 0.8025558885803854,
       "n_contributors_listed": 591,
-      "n_commits_window": 5171
+      "n_commits_window": 5171,
+      "elephant_factor": 4,
+      "contributor_retention": 0.47041420118343197
     },
     "responsiveness": {
-      "median_issue_close_hours": null,
-      "median_pr_merge_hours": null,
-      "pr_merge_ratio": null
+      "median_first_response_hours": 15.569166666666666,
+      "pr_review_coverage": 0.7,
+      "median_issue_close_hours": 2462.9368055555556,
+      "median_pr_merge_hours": 356.7011111111111,
+      "pr_merge_ratio": 0.78,
+      "n_issues_sampled": 24,
+      "n_prs_sampled": 50,
+      "n_first_responses": 43
     },
-    "window": "12 months ago",
-    "backend": "git",
-    "repo": "kubernetes/kubernetes",
+    "backend": "api+git",
     "subscores": {
-      "artifacts": 0.75,
+      "artifacts": 0.5555555555555556,
       "distribution": 1.0,
-      "responsiveness": null,
-      "diversity": 1.0,
-      "security": 1.0
+      "responsiveness": 0.8528913234355044,
+      "diversity": 0.981508875739645,
+      "security": 0.6
     },
-    "score": 92.1875,
+    "score": 79.66934849369365,
     "archetype": "federation"
   },
   {
+    "repo": "expressjs/express",
+    "stars": 69225,
+    "forks": 24256,
     "artifacts": {
       "readme": true,
       "contributing": true,
       "code_of_conduct": true,
       "license": true,
-      "issue_template": true,
+      "issue_template": false,
       "pull_request_template": true,
       "codeowners": false,
       "governance": false,
-      "contributing_inherited": true,
-      "code_of_conduct_inherited": true,
-      "issue_template_inherited": true,
-      "pull_request_template_inherited": true
+      "funding": true,
+      "health_percentage": 87,
+      "funding_inherited": true
     },
     "security": {
       "security_policy": true,
       "ci_configured": true,
       "dependency_automation": true,
-      "security_policy_inherited": true,
-      "releases_12m": null
+      "releases_12m": 5,
+      "release_notes_share": 1.0,
+      "security_policy_inherited": true
     },
     "distribution": {
       "top1_share": 0.4069767441860465,
       "top2_share": 0.5,
-      "hhi": 0.18577609518658747,
+      "hhi": 0.18577609518658736,
       "truck_factor": 2,
       "contributors_5plus": 3,
-      "commit_entropy": 0.7365399792425666,
+      "commit_entropy": 0.7365399792425669,
       "n_contributors_listed": 33,
-      "n_commits_window": 86
+      "n_commits_window": 86,
+      "elephant_factor": 2,
+      "contributor_retention": 0.25
     },
     "responsiveness": {
-      "median_issue_close_hours": null,
-      "median_pr_merge_hours": null,
-      "pr_merge_ratio": null
+      "median_first_response_hours": 0.9634722222222222,
+      "pr_review_coverage": 1.0,
+      "median_issue_close_hours": 8.949722222222222,
+      "median_pr_merge_hours": 273.0736111111111,
+      "pr_merge_ratio": 0.26,
+      "n_issues_sampled": 8,
+      "n_prs_sampled": 50,
+      "n_first_responses": 32
     },
-    "window": "12 months ago",
-    "backend": "git",
-    "repo": "expressjs/express",
+    "backend": "api+git",
     "subscores": {
-      "artifacts": 0.75,
+      "artifacts": 0.6666666666666666,
       "distribution": 0.5778288564389159,
-      "responsiveness": null,
-      "diversity": 0.4891541723653801,
-      "security": 1.0
+      "responsiveness": 0.7345772968550447,
+      "diversity": 0.46332708618269014,
+      "security": 0.9666666666666666
     },
-    "score": 69.416292495567,
+    "score": 67.2538403074808,
     "archetype": "stadium"
   },
   {
+    "repo": "astropy/astropy",
+    "stars": 5240,
+    "forks": 2138,
     "artifacts": {
       "readme": true,
       "contributing": true,
       "code_of_conduct": true,
       "license": true,
-      "issue_template": true,
+      "issue_template": false,
       "pull_request_template": true,
       "codeowners": true,
-      "governance": true
+      "governance": true,
+      "funding": true,
+      "health_percentage": 87,
+      "funding_inherited": true
     },
     "security": {
       "security_policy": true,
       "ci_configured": true,
       "dependency_automation": true,
-      "releases_12m": null
+      "releases_12m": 6,
+      "release_notes_share": 1.0
     },
     "distribution": {
       "top1_share": 0.1911504424778761,
       "top2_share": 0.3584070796460177,
-      "hhi": 0.08667710862244513,
+      "hhi": 0.08667710862244499,
       "truck_factor": 4,
       "contributors_5plus": 34,
-      "commit_entropy": 0.6905398562477706,
+      "commit_entropy": 0.690539856247768,
       "n_contributors_listed": 105,
-      "n_commits_window": 1130
+      "n_commits_window": 1130,
+      "elephant_factor": 4,
+      "contributor_retention": 0.43636363636363634
     },
     "responsiveness": {
-      "median_issue_close_hours": null,
-      "median_pr_merge_hours": null,
-      "pr_merge_ratio": null
+      "median_first_response_hours": 12.420416666666666,
+      "pr_review_coverage": 0.92,
+      "median_issue_close_hours": 63.10513888888889,
+      "median_pr_merge_hours": 7.072222222222223,
+      "pr_merge_ratio": 0.72,
+      "n_issues_sampled": 8,
+      "n_prs_sampled": 50,
+      "n_first_responses": 42
     },
-    "window": "12 months ago",
-    "backend": "git",
-    "repo": "astropy/astropy",
+    "backend": "api+git",
     "subscores": {
-      "artifacts": 1.0,
+      "artifacts": 0.8888888888888888,
       "distribution": 0.9166666666666666,
-      "responsiveness": null,
-      "diversity": 0.9218141830341218,
+      "responsiveness": 0.9666666666666667,
+      "diversity": 0.9211343642443327,
       "security": 1.0
     },
-    "score": 95.92984926522313,
+    "score": 93.28923768588722,
     "archetype": "club"
   },
   {
+    "repo": "ibrahimcesar/react-lite-youtube-embed",
+    "stars": 379,
+    "forks": 49,
     "artifacts": {
       "readme": true,
       "contributing": true,
       "code_of_conduct": true,
       "license": true,
-      "issue_template": true,
+      "issue_template": false,
       "pull_request_template": false,
       "codeowners": false,
-      "governance": false
+      "governance": false,
+      "funding": true,
+      "health_percentage": 85
     },
     "security": {
       "security_policy": false,
       "ci_configured": true,
       "dependency_automation": true,
-      "releases_12m": null
+      "releases_12m": 25,
+      "release_notes_share": 0.96
     },
     "distribution": {
       "top1_share": 0.668918918918919,
       "top2_share": 0.8513513513513514,
-      "hhi": 0.4929693206720235,
+      "hhi": 0.4929693206720234,
       "truck_factor": 1,
       "contributors_5plus": 3,
-      "commit_entropy": 0.5139875785592467,
+      "commit_entropy": 0.5139875785592468,
       "n_contributors_listed": 7,
-      "n_commits_window": 148
+      "n_commits_window": 148,
+      "elephant_factor": 1,
+      "contributor_retention": 0.3333333333333333
     },
     "responsiveness": {
-      "median_issue_close_hours": null,
-      "median_pr_merge_hours": null,
-      "pr_merge_ratio": null
+      "median_first_response_hours": 313.7029166666667,
+      "pr_review_coverage": 0.06,
+      "median_issue_close_hours": 2333.508333333333,
+      "median_pr_merge_hours": 0.012916666666666667,
+      "pr_merge_ratio": 0.12,
+      "n_issues_sampled": 5,
+      "n_prs_sampled": 50,
+      "n_first_responses": 34
     },
-    "window": "12 months ago",
-    "backend": "git",
-    "repo": "ibrahimcesar/react-lite-youtube-embed",
+    "backend": "api+git",
     "subscores": {
-      "artifacts": 0.625,
-      "distribution": 0.1441766090414738,
-      "responsiveness": null,
-      "diversity": 0.33018817187729443,
-      "security": 0.6666666666666666
+      "artifacts": 0.5555555555555556,
+      "distribution": 0.14417660904147386,
+      "responsiveness": 0.40115218874007935,
+      "diversity": 0.3109274192719806,
+      "security": 0.8
     },
-    "score": 42.727797255245314,
+    "score": 42.180259178807034,
     "archetype": "toy"
   }
 ]
