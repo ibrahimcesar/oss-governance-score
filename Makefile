@@ -9,4 +9,7 @@ test:
 extract:
 	$(PY) -m govscore.cli extract --repo $(REPO)
 
-.PHONY: pilot test extract
+figures:
+	$(PY) -m govscore.figures
+
+.PHONY: pilot test extract figures
