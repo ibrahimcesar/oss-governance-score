@@ -168,12 +168,89 @@ def fig_pilot_subscores(scores_path: Path, out_stem: Path) -> None:
     plt.close(fig)
 
 
+def fig_sample_languages(sample_path: Path, out_stem: Path) -> None:
+    """Empilhado por arquétipo (4 séries da paleta; linguagem é o eixo,
+    nunca 10 cores — teto categórico)."""
+    d = yaml.safe_load(sample_path.read_text())
+    langs = sorted({e["language"] for e in d["full"]})
+    counts = {a: [sum(1 for e in d["full"]
+                      if e["archetype"] == a and e["language"] == lg)
+                  for lg in langs] for a in ARCH_ORDER}
+
+    fig, ax = plt.subplots(figsize=(7.2, 3.8), dpi=200)
+    fig.patch.set_facecolor(SURFACE)
+    _style(ax)
+    ax.grid(axis="x", visible=False)
+
+    bottom = [0] * len(langs)
+    for arch in ARCH_ORDER:
+        ax.bar(langs, counts[arch], bottom=bottom, width=0.62,
+               color=ARCH_COLOR[arch], edgecolor=SURFACE, linewidth=1.2,
+               zorder=3, label=ARCH_LABEL[arch])
+        bottom = [b + c for b, c in zip(bottom, counts[arch])]
+
+    ax.set_ylabel("Repositórios na amostra", color=INK_2, fontsize=9)
+    ax.set_ylim(0, max(bottom) + 1.5)
+    ax.tick_params(axis="x", labelsize=8)
+    ax.set_title("Composição da amostra: linguagem × arquétipo",
+                 color=INK, fontsize=11, loc="left", pad=14)
+    ax.text(0, 1.02, "n=100; máx. 4 por linguagem dentro de cada arquétipo "
+            "(cap de diversidade)", transform=ax.transAxes,
+            color=INK_2, fontsize=8)
+    leg = ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.13), ncol=4,
+                    fontsize=7.5, frameon=False)
+    for txt in leg.get_texts():
+        txt.set_color(INK_2)
+    fig.tight_layout()
+    for ext in ("png", "pdf"):
+        fig.savefig(f"{out_stem}.{ext}", facecolor=SURFACE,
+                    bbox_inches="tight")
+    plt.close(fig)
+
+
+def fig_pilot_ranking(scores_path: Path, out_stem: Path) -> None:
+    """Barras horizontais ordenadas; 4 valores → rótulo direto em cada."""
+    data = sorted(json.loads(scores_path.read_text()), key=lambda r: r["score"])
+
+    fig, ax = plt.subplots(figsize=(7.2, 2.9), dpi=200)
+    fig.patch.set_facecolor(SURFACE)
+    _style(ax)
+    ax.grid(axis="y", visible=False)
+
+    names = [f"{ARCH_LABEL[r['archetype']]} — {r['repo']}" for r in data]
+    scores = [r["score"] for r in data]
+    ax.barh(names, scores, height=0.55,
+            color=[ARCH_COLOR[r["archetype"]] for r in data],
+            edgecolor=SURFACE, linewidth=1.0, zorder=3)
+    for i, s in enumerate(scores):
+        ax.text(s + 1.2, i, f"{s:.1f}", va="center", color=INK_2,
+                fontsize=8.5, fontweight="bold")
+
+    ax.set_xlim(0, 100)
+    ax.set_xlabel("Score de governança (0–100)", color=INK_2, fontsize=9)
+    ax.tick_params(axis="y", labelsize=8.5)
+    ax.set_title("Score composto dos pilotos", color=INK, fontsize=11,
+                 loc="left", pad=14)
+    ax.text(0, 1.03, "extração 2026-07-19, backend api+git; pesos da "
+            "literatura (D1/D2 25%, D3 20%, D4/D5 15%)",
+            transform=ax.transAxes, color=INK_2, fontsize=8)
+    fig.tight_layout()
+    for ext in ("png", "pdf"):
+        fig.savefig(f"{out_stem}.{ext}", facecolor=SURFACE,
+                    bbox_inches="tight")
+    plt.close(fig)
+
+
 def main() -> None:
     FIG_DIR.mkdir(exist_ok=True)
     fig_sample_map(ROOT / "config" / "sample_full.yaml",
                    FIG_DIR / "fig_amostra_classificacao")
     fig_pilot_subscores(ROOT / "data" / "processed" / "pilot_scores.json",
                         FIG_DIR / "fig_pilotos_subscores")
+    fig_sample_languages(ROOT / "config" / "sample_full.yaml",
+                         FIG_DIR / "fig_amostra_linguagens")
+    fig_pilot_ranking(ROOT / "data" / "processed" / "pilot_scores.json",
+                      FIG_DIR / "fig_pilotos_ranking")
     print(f"figuras em {FIG_DIR}/")
 
 
