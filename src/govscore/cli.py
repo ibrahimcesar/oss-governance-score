@@ -23,6 +23,10 @@ def load_config() -> dict:
 
 def extract_repo(gh: GitHubClient, repo: str) -> dict:
     meta = gh.get(repo, f"/repos/{repo}", "repo_metadata") or {}
+    if not meta:
+        # 404 (removido/privado desde a amostragem): erro explícito — nunca
+        # pontuar ausência de acesso como ausência de artefatos
+        raise RuntimeError(f"{repo}: metadata inacessível (404)")
     return {
         "repo": repo,
         "stars": meta.get("stargazers_count"),
@@ -59,6 +63,8 @@ def run(repos: list[dict], backend: str = "api") -> list[dict]:
             m["repo"] = repo
         elif backend == "both":
             m = extract_both(gh, repo)
+        else:
+            m = extract_repo(gh, repo)
         subs = compute_subscores(m, cfg)
         m["subscores"] = subs
         m["score"] = compute_score(subs, cfg["weights"])
@@ -79,7 +85,56 @@ def main() -> None:
     sp = sub.add_parser("sample", help="amostragem estratificada (plano §3.1–3.2)")
     sp.add_argument("--quota", type=int, default=None,
                     help="repositórios por arquétipo (default: sampling.yaml)")
+    rn = sub.add_parser("run", help="extração completa da amostra (item 5)")
+    rn.add_argument("--backend", choices=["api", "git", "both"], default="both")
+    rn.add_argument("--sample-file",
+                    default=str(ROOT / "config" / "sample_full.yaml"))
+    rn.add_argument("--fresh", action="store_true",
+                    help="ignora o progresso salvo e reextrai tudo")
     args = ap.parse_args()
+
+    if args.cmd == "run":
+        import os
+        import subprocess
+
+        from govscore.run_full import qa_report, run_sample, write_outputs
+        if args.backend in ("api", "both") and not os.environ.get("GITHUB_TOKEN"):
+            sys.exit("GITHUB_TOKEN ausente — backends api/both exigem token "
+                     "(sem autenticação o limite é 60 req/h e a rodada trava)")
+        cfg = load_config()
+        entries = yaml.safe_load(Path(args.sample_file).read_text())["full"]
+        gh = GitHubClient()
+        if args.backend == "both":
+            fn = lambda repo: extract_both(gh, repo)  # noqa: E731
+        elif args.backend == "git":
+            from govscore.extract.git_extractor import extract_via_git
+            fn = extract_via_git
+        else:
+            fn = lambda repo: extract_repo(gh, repo)  # noqa: E731
+        progress = ROOT / "data" / "processed" / "full_metrics_progress.jsonl"
+        progress.parent.mkdir(parents=True, exist_ok=True)
+        if args.fresh and progress.exists():
+            progress.unlink()
+        expected = {"both": "api+git", "git": "git", "api": "api"}[args.backend]
+        results, errors = run_sample(entries, fn, cfg,
+                                     progress_path=progress,
+                                     resume=not args.fresh,
+                                     expected_backend=expected)
+        paths = write_outputs(results, errors, ROOT / "data" / "processed")
+        rev = subprocess.run(["git", "rev-parse", "--short", "HEAD"],
+                             capture_output=True, text=True,
+                             cwd=ROOT).stdout.strip()
+        if subprocess.run(["git", "status", "--porcelain"], capture_output=True,
+                          text=True, cwd=ROOT).stdout.strip():
+            rev += "-dirty"  # proveniência honesta: código não commitado
+        report = qa_report(results, errors, code_version=rev)
+        qa_path = ROOT / "results" / "qa_extracao.md"
+        qa_path.parent.mkdir(exist_ok=True)
+        qa_path.write_text(report)
+        print(json.dumps({"ok": len(results), "falhas": len(errors),
+                          "saidas": {k: str(v) for k, v in paths.items()},
+                          "qa": str(qa_path)}, indent=2, ensure_ascii=False))
+        return
 
     if args.cmd == "sample":
         from govscore.sampling import build_sample, load_sampling_config, write_sample

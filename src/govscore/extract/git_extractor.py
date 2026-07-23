@@ -51,17 +51,18 @@ SECURITY_PATTERNS = {
 }
 
 
-def _git(*args: str, cwd: Path | None = None) -> str:
+def _git(*args: str, cwd: Path | None = None, timeout: int = 600) -> str:
     r = subprocess.run(["git", *args], cwd=cwd, capture_output=True, text=True,
-                       timeout=600)
+                       timeout=timeout)
     if r.returncode != 0:
         raise RuntimeError(f"git {' '.join(args[:2])}: {r.stderr.strip()[:200]}")
     return r.stdout
 
 
 def _tree_paths(url: str, dest: Path, *clone_args: str) -> list[str]:
+    # monorepos de Federação (kubernetes, gitlab) podem passar de 10 min
     _git("clone", "--quiet", "--no-checkout", "--single-branch",
-         *clone_args, url, str(dest))
+         *clone_args, url, str(dest), timeout=1800)
     tree = _git("ls-tree", "-r", "HEAD", "--name-only", cwd=dest)
     return [p.lower() for p in tree.splitlines()]
 

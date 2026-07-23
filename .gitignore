@@ -222,3 +222,5 @@ data/raw/*
 !data/raw/.gitkeep
 .pytest_cache/
 .vscode/branch-timer.json
+# progresso incremental da extração (retomável; artefato final é full_metrics.json)
+data/processed/*_progress.jsonl
