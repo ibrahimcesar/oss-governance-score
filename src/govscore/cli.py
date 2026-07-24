@@ -97,7 +97,23 @@ def main() -> None:
                     default=str(ROOT / "config" / "sample_full.yaml"))
     rn.add_argument("--fresh", action="store_true",
                     help="ignora o progresso salvo e reextrai tudo")
+    sub.add_parser("sensitivity",
+                   help="análise de sensibilidade dos pesos (item 6)")
     args = ap.parse_args()
+
+    if args.cmd == "sensitivity":
+        from govscore.score.sensitivity import analyze, report
+        cfg = load_config()
+        data = json.loads((ROOT / "data" / "processed" /
+                           "full_metrics.json").read_text())
+        subs = [r["subscores"] for r in data["results"]]
+        res = analyze(subs, cfg["weights"])
+        out_md = ROOT / "results" / "sensibilidade.md"
+        out_md.write_text(report(res))
+        (ROOT / "results" / "sensitivity.json").write_text(
+            json.dumps(res, indent=2, ensure_ascii=False))
+        print(report(res))
+        return
 
     if args.cmd == "run":
         import os
