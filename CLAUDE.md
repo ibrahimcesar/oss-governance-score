@@ -80,8 +80,10 @@ PYTHONPATH=src uv run python -m govscore.cli extract --repo owner/name
    (full_metrics.json, metrics.parquet, scores.csv), QA em
    `results/qa_extracao.md`. Pendência de inspeção manual: possíveis
    não-software na amostra (ex.: `github/explore`, `EFanZh/LeetCode`)
-6. [ ] Análise de sensibilidade dos pesos (`score/sensitivity.py`: pesos
-   iguais, ±25%, leave-one-dimension-out)
+6. [x] Análise de sensibilidade dos pesos (`score/sensitivity.py`: pesos
+   iguais, ±25%, leave-one-dimension-out) — ranking robusto (ρ ≥ 0,935 em
+   todas as variantes; critério DSR ≥ 0,8 satisfeito). Relatório em
+   `results/sensibilidade.md`; comando `govscore sensitivity`
 7. [ ] Validação: deps.dev (dependentes), OpenSSF Scorecard, stars/forks/
    releases → Spearman + Holm–Bonferroni (`validate/`)
 8. [ ] Figuras e tabelas para as seções 4.2/4.3 do TCC
