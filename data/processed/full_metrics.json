@@ -1,0 +1,5821 @@
+{
+  "results": [
+    {
+      "repo": "torvalds/linux",
+      "stars": 240237,
+      "forks": 63440,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 42
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": false,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.008106458631852678,
+        "top2_share": 0.016040439420474447,
+        "hhi": 0.001602245858824298,
+        "truck_factor": 274,
+        "contributors_5plus": 2313,
+        "commit_entropy": 0.8439740091949733,
+        "n_contributors_listed": 6243,
+        "n_commits_window": 75372,
+        "elephant_factor": 16,
+        "contributor_retention": 0.4957397366382649
+      },
+      "responsiveness": {
+        "median_first_response_hours": null,
+        "pr_review_coverage": null,
+        "median_issue_close_hours": null,
+        "median_pr_merge_hours": null,
+        "pr_merge_ratio": null,
+        "n_issues_sampled": 0,
+        "n_prs_sampled": 0,
+        "n_first_responses": 0
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.2222222222222222,
+        "distribution": 1.0,
+        "responsiveness": null,
+        "diversity": 0.9973373353989156,
+        "security": 0.0
+      },
+      "score": 56.89451948317411,
+      "archetype": "federation",
+      "language": "c",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "tensorflow/tensorflow",
+      "stars": 196481,
+      "forks": 75506,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 6,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.3332027577561893,
+        "top2_share": 0.35897837668442495,
+        "hhi": 0.11575653811679099,
+        "truck_factor": 13,
+        "contributors_5plus": 225,
+        "commit_entropy": 0.6432274544881891,
+        "n_contributors_listed": 545,
+        "n_commits_window": 12764,
+        "elephant_factor": 1,
+        "contributor_retention": 0.5808383233532934
+      },
+      "responsiveness": {
+        "median_first_response_hours": 87.29861111111111,
+        "pr_review_coverage": 0.14,
+        "median_issue_close_hours": 964.4872222222223,
+        "median_pr_merge_hours": 30.427777777777777,
+        "pr_merge_ratio": 0.78,
+        "n_issues_sampled": 3,
+        "n_prs_sampled": 50,
+        "n_first_responses": 49
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 0.9154941091687009,
+        "responsiveness": 0.7270466476521165,
+        "diversity": 0.6940098051743533,
+        "security": 1.0
+      },
+      "score": 73.94954387098626,
+      "archetype": "federation",
+      "language": "c++",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "rails/rails",
+      "stars": 58636,
+      "forks": 22219,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 19,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.12127440904419322,
+        "top2_share": 0.19424460431654678,
+        "hhi": 0.032232032609120456,
+        "truck_factor": 13,
+        "contributors_5plus": 61,
+        "commit_entropy": 0.756878012302032,
+        "n_contributors_listed": 399,
+        "n_commits_window": 1946,
+        "elephant_factor": 9,
+        "contributor_retention": 0.2843601895734597
+      },
+      "responsiveness": {
+        "median_first_response_hours": 18.764166666666668,
+        "pr_review_coverage": 0.16,
+        "median_issue_close_hours": 29.240277777777777,
+        "median_pr_merge_hours": 6.213055555555556,
+        "pr_merge_ratio": 0.64,
+        "n_issues_sampled": 1,
+        "n_prs_sampled": 50,
+        "n_first_responses": 32
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.6666666666666666,
+        "distribution": 1.0,
+        "responsiveness": 0.6833333333333333,
+        "diversity": 0.8498244085912808,
+        "security": 0.6
+      },
+      "score": 77.08069946220255,
+      "archetype": "federation",
+      "language": "ruby",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "freeCodeCamp/freeCodeCamp",
+      "stars": 452563,
+      "forks": 45643,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 100
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null,
+        "security_policy_inherited": true
+      },
+      "distribution": {
+        "top1_share": 0.05939429579535431,
+        "top2_share": 0.11673037341958248,
+        "hhi": 0.022461612333436014,
+        "truck_factor": 15,
+        "contributors_5plus": 59,
+        "commit_entropy": 0.7298542964762502,
+        "n_contributors_listed": 698,
+        "n_commits_window": 3401,
+        "elephant_factor": 15,
+        "contributor_retention": 0.15730337078651685
+      },
+      "responsiveness": {
+        "median_first_response_hours": 9.390833333333333,
+        "pr_review_coverage": 1.0,
+        "median_issue_close_hours": 20.39861111111111,
+        "median_pr_merge_hours": 11.258611111111112,
+        "pr_merge_ratio": 0.56,
+        "n_issues_sampled": 14,
+        "n_prs_sampled": 50,
+        "n_first_responses": 31
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.7777777777777778,
+        "distribution": 1.0,
+        "responsiveness": 0.9,
+        "diversity": 0.7607625697688052,
+        "security": 0.5
+      },
+      "score": 81.35588299097653,
+      "archetype": "federation",
+      "language": "typescript",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "react/react-native",
+      "stars": 126252,
+      "forks": 25188,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": true,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 75
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.07096199524940618,
+        "top2_share": 0.13331353919239905,
+        "hhi": 0.027842210605898185,
+        "truck_factor": 13,
+        "contributors_5plus": 67,
+        "commit_entropy": 0.7238081317131918,
+        "n_contributors_listed": 342,
+        "n_commits_window": 3368,
+        "elephant_factor": 1,
+        "contributor_retention": 0.3815028901734104
+      },
+      "responsiveness": {
+        "median_first_response_hours": 38.103611111111114,
+        "pr_review_coverage": 0.46,
+        "median_issue_close_hours": 4502.071944444445,
+        "median_pr_merge_hours": 1.212361111111111,
+        "pr_merge_ratio": 0.12,
+        "n_issues_sampled": 7,
+        "n_prs_sampled": 50,
+        "n_first_responses": 31
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.6666666666666666,
+        "distribution": 1.0,
+        "responsiveness": 0.5666666666666667,
+        "diversity": 0.6487279248273785,
+        "security": 0.6
+      },
+      "score": 71.73091887241068,
+      "archetype": "federation",
+      "language": "c++",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "affaan-m/ECC",
+      "stars": 232566,
+      "forks": 35443,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 100
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 14,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.5159420289855072,
+        "top2_share": 0.6270531400966184,
+        "hhi": 0.2801614973511634,
+        "truck_factor": 1,
+        "contributors_5plus": 39,
+        "commit_entropy": 0.5000383891653387,
+        "n_contributors_listed": 314,
+        "n_commits_window": 2070,
+        "elephant_factor": 1,
+        "contributor_retention": 1.0
+      },
+      "responsiveness": {
+        "median_first_response_hours": 91.0975,
+        "pr_review_coverage": 0.92,
+        "median_issue_close_hours": 388.27194444444444,
+        "median_pr_merge_hours": 113.77583333333334,
+        "pr_merge_ratio": 0.58,
+        "n_issues_sampled": 13,
+        "n_prs_sampled": 50,
+        "n_first_responses": 27
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.7777777777777778,
+        "distribution": 0.37103565232949814,
+        "responsiveness": 0.8804868487445265,
+        "diversity": 0.6428708532733353,
+        "security": 1.0
+      },
+      "score": 70.97313552667246,
+      "archetype": "federation",
+      "language": "javascript",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "golang/go",
+      "stars": 135332,
+      "forks": 19125,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": false,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.050891316848763656,
+        "top2_share": 0.0980448533640023,
+        "hhi": 0.021769466234982,
+        "truck_factor": 16,
+        "contributors_5plus": 80,
+        "commit_entropy": 0.7605708863087028,
+        "n_contributors_listed": 317,
+        "n_commits_window": 3478,
+        "elephant_factor": 2,
+        "contributor_retention": 0.4602272727272727
+      },
+      "responsiveness": {
+        "median_first_response_hours": 0.5052777777777778,
+        "pr_review_coverage": 0.0,
+        "median_issue_close_hours": 162.99666666666667,
+        "median_pr_merge_hours": null,
+        "pr_merge_ratio": 0.0,
+        "n_issues_sampled": 49,
+        "n_prs_sampled": 50,
+        "n_first_responses": 39
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 1.0,
+        "responsiveness": 0.3333333333333333,
+        "diversity": 0.836060219136225,
+        "security": 0.25
+      },
+      "score": 61.84645884259893,
+      "archetype": "federation",
+      "language": "go",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "ggml-org/llama.cpp",
+      "stars": 121402,
+      "forks": 20933,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 75
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.12097749818533753,
+        "top2_share": 0.1843697072344544,
+        "hhi": 0.030960462984661527,
+        "truck_factor": 13,
+        "contributors_5plus": 99,
+        "commit_entropy": 0.7215005571269257,
+        "n_contributors_listed": 764,
+        "n_commits_window": 4133,
+        "elephant_factor": 10,
+        "contributor_retention": 0.2529411764705882
+      },
+      "responsiveness": {
+        "median_first_response_hours": 19.004444444444445,
+        "pr_review_coverage": 1.0,
+        "median_issue_close_hours": 1102.9919444444445,
+        "median_pr_merge_hours": 34.11027777777778,
+        "pr_merge_ratio": 0.6,
+        "n_issues_sampled": 21,
+        "n_prs_sampled": 50,
+        "n_first_responses": 38
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 1.0,
+        "responsiveness": 0.9166666666666666,
+        "diversity": 0.8175527199823054,
+        "security": 0.8
+      },
+      "score": 78.70773524417902,
+      "archetype": "federation",
+      "language": "c++",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "laravel/framework",
+      "stars": 34812,
+      "forks": 11922,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 30,
+        "release_notes_share": 0.9666666666666667
+      },
+      "distribution": {
+        "top1_share": 0.1481149012567325,
+        "top2_share": 0.22845601436265708,
+        "hhi": 0.039491263469020044,
+        "truck_factor": 12,
+        "contributors_5plus": 60,
+        "commit_entropy": 0.7377627640076481,
+        "n_contributors_listed": 502,
+        "n_commits_window": 2228,
+        "elephant_factor": 12,
+        "contributor_retention": 0.23024054982817868
+      },
+      "responsiveness": {
+        "median_first_response_hours": 4.2122222222222225,
+        "pr_review_coverage": 0.08,
+        "median_issue_close_hours": 139.77722222222224,
+        "median_pr_merge_hours": 5.038472222222222,
+        "pr_merge_ratio": 0.6,
+        "n_issues_sampled": 5,
+        "n_prs_sampled": 50,
+        "n_first_responses": 32
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 1.0,
+        "responsiveness": 0.6666666666666666,
+        "diversity": 0.8091727593596288,
+        "security": 1.0
+      },
+      "score": 79.35981361261666,
+      "archetype": "federation",
+      "language": "php",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "rust-lang/rust",
+      "stars": 114779,
+      "forks": 15193,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 14,
+        "release_notes_share": 1.0,
+        "security_policy_inherited": true
+      },
+      "distribution": {
+        "top1_share": 0.03706750295614621,
+        "top2_share": 0.06616626394529844,
+        "hhi": 0.010490696998819857,
+        "truck_factor": 36,
+        "contributors_5plus": 414,
+        "commit_entropy": 0.7599690676736223,
+        "n_contributors_listed": 1317,
+        "n_commits_window": 19451,
+        "elephant_factor": 33,
+        "contributor_retention": 0.39094650205761317
+      },
+      "responsiveness": {
+        "median_first_response_hours": 4.060833333333333,
+        "pr_review_coverage": 0.74,
+        "median_issue_close_hours": 129.23916666666668,
+        "median_pr_merge_hours": 52.62972222222222,
+        "pr_merge_ratio": 0.7,
+        "n_issues_sampled": 15,
+        "n_prs_sampled": 50,
+        "n_first_responses": 37
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.6666666666666666,
+        "distribution": 1.0,
+        "responsiveness": 0.8908351791985951,
+        "diversity": 0.9175448022408733,
+        "security": 0.8
+      },
+      "score": 85.24654228425167,
+      "archetype": "federation",
+      "language": "rust",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "godotengine/godot",
+      "stars": 114541,
+      "forks": 26087,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 100,
+        "funding_inherited": true
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 10,
+        "release_notes_share": 1.0,
+        "security_policy_inherited": true
+      },
+      "distribution": {
+        "top1_share": 0.08090379008746355,
+        "top2_share": 0.1586491739552964,
+        "hhi": 0.02362972816504083,
+        "truck_factor": 19,
+        "contributors_5plus": 104,
+        "commit_entropy": 0.7489436171999269,
+        "n_contributors_listed": 630,
+        "n_commits_window": 4116,
+        "elephant_factor": 18,
+        "contributor_retention": 0.345821325648415
+      },
+      "responsiveness": {
+        "median_first_response_hours": 14.23875,
+        "pr_review_coverage": 1.0,
+        "median_issue_close_hours": 2378.4562499999997,
+        "median_pr_merge_hours": 133.20916666666668,
+        "pr_merge_ratio": 0.52,
+        "n_issues_sampled": 18,
+        "n_prs_sampled": 50,
+        "n_first_responses": 46
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.7777777777777778,
+        "distribution": 1.0,
+        "responsiveness": 0.8680299628831417,
+        "diversity": 0.8854039061016618,
+        "security": 0.8
+      },
+      "score": 87.08610229363221,
+      "archetype": "federation",
+      "language": "c++",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "filamentphp/filament",
+      "stars": 31551,
+      "forks": 4198,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.430159497341711,
+        "top2_share": 0.47800869985500244,
+        "hhi": 0.18982629490410702,
+        "truck_factor": 3,
+        "contributors_5plus": 51,
+        "commit_entropy": 0.6082330343467581,
+        "n_contributors_listed": 429,
+        "n_commits_window": 2069,
+        "elephant_factor": 3,
+        "contributor_retention": 0.1930379746835443
+      },
+      "responsiveness": {
+        "median_first_response_hours": 62.76833333333333,
+        "pr_review_coverage": 0.68,
+        "median_issue_close_hours": 15.267222222222223,
+        "median_pr_merge_hours": 2.0994444444444444,
+        "pr_merge_ratio": 0.78,
+        "n_issues_sampled": 14,
+        "n_prs_sampled": 50,
+        "n_first_responses": 27
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.6666666666666666,
+        "distribution": 0.6455827493185337,
+        "responsiveness": 0.8945058283730158,
+        "diversity": 0.7396605321582003,
+        "security": 1.0
+      },
+      "score": 76.79125994946332,
+      "archetype": "federation",
+      "language": "php",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "FFmpeg/FFmpeg",
+      "stars": 62334,
+      "forks": 14047,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 50
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": false,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.18615441722345955,
+        "top2_share": 0.3277654046028211,
+        "hhi": 0.08146364739151978,
+        "truck_factor": 5,
+        "contributors_5plus": 77,
+        "commit_entropy": 0.5896888326074801,
+        "n_contributors_listed": 310,
+        "n_commits_window": 5388,
+        "elephant_factor": 5,
+        "contributor_retention": 0.3333333333333333
+      },
+      "responsiveness": {
+        "median_first_response_hours": null,
+        "pr_review_coverage": null,
+        "median_issue_close_hours": null,
+        "median_pr_merge_hours": null,
+        "pr_merge_ratio": null,
+        "n_issues_sampled": 0,
+        "n_prs_sampled": 0,
+        "n_first_responses": 0
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.3333333333333333,
+        "distribution": 1.0,
+        "responsiveness": null,
+        "diversity": 0.8207222021217191,
+        "security": 0.0
+      },
+      "score": 57.05520795644889,
+      "archetype": "federation",
+      "language": "c",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "elastic/elasticsearch",
+      "stars": 77582,
+      "forks": 25927,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 75
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 30,
+        "release_notes_share": 1.0,
+        "security_policy_inherited": true
+      },
+      "distribution": {
+        "top1_share": 0.21121816416461275,
+        "top2_share": 0.23332586451564719,
+        "hhi": 0.050732740438960866,
+        "truck_factor": 24,
+        "contributors_5plus": 183,
+        "commit_entropy": 0.7512201168553088,
+        "n_contributors_listed": 359,
+        "n_commits_window": 13389,
+        "elephant_factor": 2,
+        "contributor_retention": 0.6970954356846473
+      },
+      "responsiveness": {
+        "median_first_response_hours": 2.0797222222222222,
+        "pr_review_coverage": 0.64,
+        "median_issue_close_hours": 91.52277777777778,
+        "median_pr_merge_hours": 7.438888888888889,
+        "pr_merge_ratio": 0.9,
+        "n_issues_sampled": 6,
+        "n_prs_sampled": 50,
+        "n_first_responses": 43
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 0.9937676865752151,
+        "responsiveness": 0.8916666666666666,
+        "diversity": 0.8575786131626102,
+        "security": 0.8
+      },
+      "score": 81.43009358404176,
+      "archetype": "federation",
+      "language": "java",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "NousResearch/hermes-agent",
+      "stars": 219494,
+      "forks": 41653,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 75
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 22,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.2865182591295648,
+        "top2_share": 0.38913206603301653,
+        "hhi": 0.1048999987737741,
+        "truck_factor": 4,
+        "contributors_5plus": 243,
+        "commit_entropy": 0.5610638730301578,
+        "n_contributors_listed": 2233,
+        "n_commits_window": 15992,
+        "elephant_factor": 4,
+        "contributor_retention": 0.75
+      },
+      "responsiveness": {
+        "median_first_response_hours": 63.92791666666666,
+        "pr_review_coverage": 0.08,
+        "median_issue_close_hours": 356.53791666666666,
+        "median_pr_merge_hours": 2.1315277777777775,
+        "pr_merge_ratio": 0.12,
+        "n_issues_sampled": 14,
+        "n_prs_sampled": 50,
+        "n_first_responses": 38
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 0.865334301301059,
+        "responsiveness": 0.4940744357638889,
+        "diversity": 0.9146656689393421,
+        "security": 1.0
+      },
+      "score": 71.34594239300549,
+      "archetype": "federation",
+      "language": "python",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "openai/codex",
+      "stars": 100977,
+      "forks": 15135,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 75
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.15773067331670823,
+        "top2_share": 0.25835411471321695,
+        "hhi": 0.0546183170502671,
+        "truck_factor": 7,
+        "contributors_5plus": 111,
+        "commit_entropy": 0.6345331786207108,
+        "n_contributors_listed": 433,
+        "n_commits_window": 8020,
+        "elephant_factor": 1,
+        "contributor_retention": 0.2119815668202765
+      },
+      "responsiveness": {
+        "median_first_response_hours": 39.32236111111111,
+        "pr_review_coverage": 0.0,
+        "median_issue_close_hours": 2.3274999999999997,
+        "median_pr_merge_hours": 0.0375,
+        "pr_merge_ratio": 0.88,
+        "n_issues_sampled": 20,
+        "n_prs_sampled": 50,
+        "n_first_responses": 30
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 1.0,
+        "responsiveness": 0.75,
+        "diversity": 0.5108931859129267,
+        "security": 0.8
+      },
+      "score": 73.55228667758279,
+      "archetype": "federation",
+      "language": "rust",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "git/git",
+      "stars": 62169,
+      "forks": 28170,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.22687545520757466,
+        "top2_share": 0.3142753095411508,
+        "hhi": 0.07259847999792056,
+        "truck_factor": 7,
+        "contributors_5plus": 66,
+        "commit_entropy": 0.685694929823609,
+        "n_contributors_listed": 219,
+        "n_commits_window": 2746,
+        "elephant_factor": 7,
+        "contributor_retention": 0.5412844036697247
+      },
+      "responsiveness": {
+        "median_first_response_hours": null,
+        "pr_review_coverage": 0.25,
+        "median_issue_close_hours": null,
+        "median_pr_merge_hours": null,
+        "pr_merge_ratio": 0.0,
+        "n_issues_sampled": 0,
+        "n_prs_sampled": 50,
+        "n_first_responses": 0
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 0.9850691915513474,
+        "responsiveness": 0.0,
+        "diversity": 0.9591767606512889,
+        "security": 0.5
+      },
+      "score": 60.40327008744191,
+      "archetype": "federation",
+      "language": "c",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "nodejs/node",
+      "stars": 118327,
+      "forks": 36087,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": true,
+        "funding": true,
+        "health_percentage": 100,
+        "funding_inherited": true
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.08834782608695652,
+        "top2_share": 0.17426086956521739,
+        "hhi": 0.03251744423440454,
+        "truck_factor": 11,
+        "contributors_5plus": 79,
+        "commit_entropy": 0.7293011322036658,
+        "n_contributors_listed": 395,
+        "n_commits_window": 2875,
+        "elephant_factor": 11,
+        "contributor_retention": 0.3347826086956522
+      },
+      "responsiveness": {
+        "median_first_response_hours": 11.321388888888889,
+        "pr_review_coverage": 1.0,
+        "median_issue_close_hours": 30595.796388888888,
+        "median_pr_merge_hours": 58.5025,
+        "pr_merge_ratio": 0.72,
+        "n_issues_sampled": 27,
+        "n_prs_sampled": 50,
+        "n_first_responses": 43
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.8888888888888888,
+        "distribution": 1.0,
+        "responsiveness": 0.9647804418103448,
+        "diversity": 0.8714895347932347,
+        "security": 1.0
+      },
+      "score": 94.59017408032764,
+      "archetype": "federation",
+      "language": "javascript",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "langgenius/dify",
+      "stars": 149992,
+      "forks": 23633,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 100
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 29,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.1063480481576067,
+        "top2_share": 0.1711054359722729,
+        "hhi": 0.028355078296107814,
+        "truck_factor": 14,
+        "contributors_5plus": 124,
+        "commit_entropy": 0.7194565025285647,
+        "n_contributors_listed": 607,
+        "n_commits_window": 5482,
+        "elephant_factor": 14,
+        "contributor_retention": 0.19578313253012047
+      },
+      "responsiveness": {
+        "median_first_response_hours": 39.31,
+        "pr_review_coverage": 1.0,
+        "median_issue_close_hours": 0.49819444444444444,
+        "median_pr_merge_hours": 0.7158333333333333,
+        "pr_merge_ratio": 0.18,
+        "n_issues_sampled": 2,
+        "n_prs_sampled": 50,
+        "n_first_responses": 19
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.6666666666666666,
+        "distribution": 1.0,
+        "responsiveness": 0.75,
+        "diversity": 0.7810989230200984,
+        "security": 1.0
+      },
+      "score": 83.38315051196814,
+      "archetype": "federation",
+      "language": "typescript",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "infiniflow/ragflow",
+      "stars": 85799,
+      "forks": 10047,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 62
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 26,
+        "release_notes_share": 0.9615384615384616
+      },
+      "distribution": {
+        "top1_share": 0.09461077844311377,
+        "top2_share": 0.18251497005988024,
+        "hhi": 0.03601712503137438,
+        "truck_factor": 10,
+        "contributors_5plus": 79,
+        "commit_entropy": 0.6871656356909533,
+        "n_contributors_listed": 429,
+        "n_commits_window": 4175,
+        "elephant_factor": 10,
+        "contributor_retention": 0.21311475409836064
+      },
+      "responsiveness": {
+        "median_first_response_hours": 14.392777777777777,
+        "pr_review_coverage": 0.94,
+        "median_issue_close_hours": 12058.93236111111,
+        "median_pr_merge_hours": 5.255138888888889,
+        "pr_merge_ratio": 0.88,
+        "n_issues_sampled": 4,
+        "n_prs_sampled": 50,
+        "n_first_responses": 23
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.3333333333333333,
+        "distribution": 1.0,
+        "responsiveness": 1.0,
+        "diversity": 0.7803987340582444,
+        "security": 0.8
+      },
+      "score": 77.039314344207,
+      "archetype": "federation",
+      "language": "go",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "zed-industries/zed",
+      "stars": 87461,
+      "forks": 9682,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.07184997892962494,
+        "top2_share": 0.1357985672144964,
+        "hhi": 0.02232052400149242,
+        "truck_factor": 16,
+        "contributors_5plus": 142,
+        "commit_entropy": 0.6843450103052439,
+        "n_contributors_listed": 1168,
+        "n_commits_window": 9492,
+        "elephant_factor": 5,
+        "contributor_retention": 0.24615384615384617
+      },
+      "responsiveness": {
+        "median_first_response_hours": 24.974166666666665,
+        "pr_review_coverage": 0.76,
+        "median_issue_close_hours": 3676.3405555555555,
+        "median_pr_merge_hours": 79.65805555555555,
+        "pr_merge_ratio": 0.62,
+        "n_issues_sampled": 49,
+        "n_prs_sampled": 50,
+        "n_first_responses": 43
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.6666666666666666,
+        "distribution": 1.0,
+        "responsiveness": 0.860980952666028,
+        "diversity": 0.8000408003837409,
+        "security": 0.6
+      },
+      "score": 79.88689772574334,
+      "archetype": "federation",
+      "language": "rust",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "huggingface/transformers",
+      "stars": 162923,
+      "forks": 34008,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 100
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.07650862068965517,
+        "top2_share": 0.1478987068965517,
+        "hhi": 0.02320453584832045,
+        "truck_factor": 16,
+        "contributors_5plus": 79,
+        "commit_entropy": 0.7384722179351099,
+        "n_contributors_listed": 760,
+        "n_commits_window": 3712,
+        "elephant_factor": 12,
+        "contributor_retention": 0.19908466819221968
+      },
+      "responsiveness": {
+        "median_first_response_hours": 19.293333333333333,
+        "pr_review_coverage": 0.98,
+        "median_issue_close_hours": 1465.1191666666666,
+        "median_pr_merge_hours": 223.51388888888889,
+        "pr_merge_ratio": 0.48,
+        "n_issues_sampled": 14,
+        "n_prs_sampled": 50,
+        "n_first_responses": 39
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 1.0,
+        "responsiveness": 0.8351447757024265,
+        "diversity": 0.7899537097398194,
+        "security": 1.0
+      },
+      "score": 82.44109004903471,
+      "archetype": "federation",
+      "language": "python",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "openinterpreter/openinterpreter",
+      "stars": 67230,
+      "forks": 5772,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 75
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 14,
+        "release_notes_share": 0.0
+      },
+      "distribution": {
+        "top1_share": 0.1538951931658804,
+        "top2_share": 0.2541119469590718,
+        "hhi": 0.05374015025755109,
+        "truck_factor": 7,
+        "contributors_5plus": 108,
+        "commit_entropy": 0.635136297151858,
+        "n_contributors_listed": 419,
+        "n_commits_window": 7843,
+        "elephant_factor": 1,
+        "contributor_retention": 0.21100917431192662
+      },
+      "responsiveness": {
+        "median_first_response_hours": 16.204305555555557,
+        "pr_review_coverage": 0.08,
+        "median_issue_close_hours": 1328.8816666666667,
+        "median_pr_merge_hours": 0.25375,
+        "pr_merge_ratio": 0.36,
+        "n_issues_sampled": 4,
+        "n_prs_sampled": 50,
+        "n_first_responses": 38
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 1.0,
+        "responsiveness": 0.5666666666666667,
+        "diversity": 0.5105008400706177,
+        "security": 0.6
+      },
+      "score": 66.8797348232815,
+      "archetype": "federation",
+      "language": "rust",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "supabase/supabase",
+      "stars": 106886,
+      "forks": 13234,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 7,
+        "release_notes_share": 1.0,
+        "security_policy_inherited": true
+      },
+      "distribution": {
+        "top1_share": 0.10397553516819572,
+        "top2_share": 0.15974096060442525,
+        "hhi": 0.031518019540243386,
+        "truck_factor": 12,
+        "contributors_5plus": 102,
+        "commit_entropy": 0.6924696050056418,
+        "n_contributors_listed": 493,
+        "n_commits_window": 5559,
+        "elephant_factor": 10,
+        "contributor_retention": 0.3541666666666667
+      },
+      "responsiveness": {
+        "median_first_response_hours": 8.25361111111111,
+        "pr_review_coverage": 1.0,
+        "median_issue_close_hours": 32.5775,
+        "median_pr_merge_hours": 14.530833333333334,
+        "pr_merge_ratio": 0.74,
+        "n_issues_sampled": 3,
+        "n_prs_sampled": 50,
+        "n_first_responses": 35
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.7777777777777778,
+        "distribution": 1.0,
+        "responsiveness": 0.975,
+        "diversity": 0.8704504541686816,
+        "security": 1.0
+      },
+      "score": 92.00120125697467,
+      "archetype": "federation",
+      "language": "typescript",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "google-gemini/gemini-cli",
+      "stars": 106148,
+      "forks": 14308,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 75
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.06376456161863887,
+        "top2_share": 0.11220110361741263,
+        "hhi": 0.020415681607241064,
+        "truck_factor": 17,
+        "contributors_5plus": 101,
+        "commit_entropy": 0.7339072849442035,
+        "n_contributors_listed": 597,
+        "n_commits_window": 4893,
+        "elephant_factor": 5,
+        "contributor_retention": 0.1907356948228883
+      },
+      "responsiveness": {
+        "median_first_response_hours": 16.9875,
+        "pr_review_coverage": 1.0,
+        "median_issue_close_hours": 3107.804722222222,
+        "median_pr_merge_hours": 34.14138888888889,
+        "pr_merge_ratio": 0.22,
+        "n_issues_sampled": 42,
+        "n_prs_sampled": 50,
+        "n_first_responses": 20
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 1.0,
+        "responsiveness": 0.7583333333333333,
+        "diversity": 0.7831052681729492,
+        "security": 1.0
+      },
+      "score": 80.8021345781498,
+      "archetype": "federation",
+      "language": "typescript",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "krahets/hello-algo",
+      "stars": 128764,
+      "forks": 15342,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 57
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 1,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.6862745098039216,
+        "top2_share": 0.7450980392156863,
+        "hhi": 0.4801999231064975,
+        "truck_factor": 1,
+        "contributors_5plus": 1,
+        "commit_entropy": 0.5305206424590914,
+        "n_contributors_listed": 14,
+        "n_commits_window": 51,
+        "elephant_factor": 1,
+        "contributor_retention": 0.1
+      },
+      "responsiveness": {
+        "median_first_response_hours": 290.24958333333336,
+        "pr_review_coverage": 0.32,
+        "median_issue_close_hours": 1313.6741666666667,
+        "median_pr_merge_hours": 0.016666666666666666,
+        "pr_merge_ratio": 0.82,
+        "n_issues_sampled": 11,
+        "n_prs_sampled": 50,
+        "n_first_responses": 40
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.3333333333333333,
+        "distribution": 0.1430475458157119,
+        "responsiveness": 0.6682107204861111,
+        "diversity": 0.15375737230681832,
+        "security": 0.4333333333333333
+      },
+      "score": 34.08009697305063,
+      "archetype": "stadium",
+      "language": "java",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "danielmiessler/SecLists",
+      "stars": 72379,
+      "forks": 25074,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 71
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 2,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.9269882659713168,
+        "top2_share": 0.9595827900912647,
+        "hhi": 0.8606832696174839,
+        "truck_factor": 1,
+        "contributors_5plus": 4,
+        "commit_entropy": 0.12513538591583698,
+        "n_contributors_listed": 26,
+        "n_commits_window": 1534,
+        "elephant_factor": 1,
+        "contributor_retention": 0.21428571428571427
+      },
+      "responsiveness": {
+        "median_first_response_hours": 46.905,
+        "pr_review_coverage": 0.12,
+        "median_issue_close_hours": 74.58194444444445,
+        "median_pr_merge_hours": 87.46930555555555,
+        "pr_merge_ratio": 0.4,
+        "n_issues_sampled": 13,
+        "n_prs_sampled": 50,
+        "n_first_responses": 26
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 0.0,
+        "responsiveness": 0.5762447367895913,
+        "diversity": 0.106267563935459,
+        "security": 0.4666666666666667
+      },
+      "score": 31.23001930593482,
+      "archetype": "stadium",
+      "language": "php",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "Genymobile/scrcpy",
+      "stars": 146316,
+      "forks": 13488,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 50
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 5,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.8920863309352518,
+        "top2_share": 0.9028776978417267,
+        "hhi": 0.7963614719735004,
+        "truck_factor": 1,
+        "contributors_5plus": 1,
+        "commit_entropy": 0.20943245398110175,
+        "n_contributors_listed": 26,
+        "n_commits_window": 278,
+        "elephant_factor": 1,
+        "contributor_retention": 0.1
+      },
+      "responsiveness": {
+        "median_first_response_hours": 0.4372222222222222,
+        "pr_review_coverage": 0.36,
+        "median_issue_close_hours": 22.537777777777777,
+        "median_pr_merge_hours": 69.67263888888888,
+        "pr_merge_ratio": 0.52,
+        "n_issues_sampled": 29,
+        "n_prs_sampled": 50,
+        "n_first_responses": 46
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.3333333333333333,
+        "distribution": 0.0,
+        "responsiveness": 0.6544409772110472,
+        "diversity": 0.0390830192789649,
+        "security": 0.5666666666666667
+      },
+      "score": 30.508398166738747,
+      "archetype": "stadium",
+      "language": "c",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "jekyll/jekyll",
+      "stars": 51591,
+      "forks": 10297,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 75
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.4230769230769231,
+        "top2_share": 0.5,
+        "hhi": 0.20414201183431951,
+        "truck_factor": 2,
+        "contributors_5plus": 1,
+        "commit_entropy": 0.8088045669775803,
+        "n_contributors_listed": 15,
+        "n_commits_window": 26,
+        "elephant_factor": 2,
+        "contributor_retention": 0.14285714285714285
+      },
+      "responsiveness": {
+        "median_first_response_hours": 17.230138888888888,
+        "pr_review_coverage": 0.76,
+        "median_issue_close_hours": 16.355,
+        "median_pr_merge_hours": 102.36902777777777,
+        "pr_merge_ratio": 0.36,
+        "n_issues_sampled": 23,
+        "n_prs_sampled": 50,
+        "n_first_responses": 24
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.7777777777777778,
+        "distribution": 0.5566403681788298,
+        "responsiveness": 0.7485687809307151,
+        "diversity": 0.4017857142857143,
+        "security": 0.5
+      },
+      "score": 61.85861498181521,
+      "archetype": "stadium",
+      "language": "ruby",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "ventoy/Ventoy",
+      "stars": 78216,
+      "forks": 4867,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 42
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 11,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.40404040404040403,
+        "top2_share": 0.7777777777777778,
+        "hhi": 0.30578512396694213,
+        "truck_factor": 2,
+        "contributors_5plus": 2,
+        "commit_entropy": 0.5626891056293962,
+        "n_contributors_listed": 21,
+        "n_commits_window": 99,
+        "elephant_factor": 2,
+        "contributor_retention": 0.2857142857142857
+      },
+      "responsiveness": {
+        "median_first_response_hours": 150.4063888888889,
+        "pr_review_coverage": 0.06,
+        "median_issue_close_hours": 170.075,
+        "median_pr_merge_hours": 585.28,
+        "pr_merge_ratio": 0.44,
+        "n_issues_sampled": 39,
+        "n_prs_sampled": 50,
+        "n_first_responses": 44
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.3333333333333333,
+        "distribution": 0.49945413733292526,
+        "responsiveness": 0.4654081322124156,
+        "diversity": 0.4149382273799567,
+        "security": 0.6
+      },
+      "score": 45.35192282160413,
+      "archetype": "stadium",
+      "language": "c",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "macrozheng/mall",
+      "stars": 84400,
+      "forks": 29812,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 42
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": false,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 1.0,
+        "top2_share": 1.0,
+        "hhi": 1.0,
+        "truck_factor": 1,
+        "contributors_5plus": 1,
+        "commit_entropy": -0.0,
+        "n_contributors_listed": 1,
+        "n_commits_window": 22,
+        "elephant_factor": 1,
+        "contributor_retention": 1.0
+      },
+      "responsiveness": {
+        "median_first_response_hours": 52.83763888888889,
+        "pr_review_coverage": 0.0,
+        "median_issue_close_hours": 7.0929166666666665,
+        "median_pr_merge_hours": null,
+        "pr_merge_ratio": 0.0,
+        "n_issues_sampled": 14,
+        "n_prs_sampled": 50,
+        "n_first_responses": 34
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.2222222222222222,
+        "distribution": 0.0,
+        "responsiveness": 0.3309337108686067,
+        "diversity": 0.25,
+        "security": 0.0
+      },
+      "score": 15.924229772927688,
+      "archetype": "stadium",
+      "language": "java",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "huginn/huginn",
+      "stars": 49676,
+      "forks": 4277,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 37
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.6036866359447005,
+        "top2_share": 0.935483870967742,
+        "hhi": 0.4767355433328379,
+        "truck_factor": 1,
+        "contributors_5plus": 3,
+        "commit_entropy": 0.4685262455963695,
+        "n_contributors_listed": 7,
+        "n_commits_window": 217,
+        "elephant_factor": 1,
+        "contributor_retention": 1.0
+      },
+      "responsiveness": {
+        "median_first_response_hours": 32.1025,
+        "pr_review_coverage": 0.76,
+        "median_issue_close_hours": 30054.320694444446,
+        "median_pr_merge_hours": 7.476388888888889,
+        "pr_merge_ratio": 0.8,
+        "n_issues_sampled": 2,
+        "n_prs_sampled": 50,
+        "n_first_responses": 37
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.3333333333333333,
+        "distribution": 0.19123928447549665,
+        "responsiveness": 0.9416666666666667,
+        "diversity": 0.3988578955947625,
+        "security": 0.25
+      },
+      "score": 41.68051721247552,
+      "archetype": "stadium",
+      "language": "ruby",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "fatedier/frp",
+      "stars": 108315,
+      "forks": 15137,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 57
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 10,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.8874172185430463,
+        "top2_share": 0.9139072847682119,
+        "hhi": 0.7888689092583657,
+        "truck_factor": 1,
+        "contributors_5plus": 1,
+        "commit_entropy": 0.23680754141559945,
+        "n_contributors_listed": 14,
+        "n_commits_window": 151,
+        "elephant_factor": 1,
+        "contributor_retention": 0.16666666666666666
+      },
+      "responsiveness": {
+        "median_first_response_hours": 49.580555555555556,
+        "pr_review_coverage": 0.28,
+        "median_issue_close_hours": 430.57430555555555,
+        "median_pr_merge_hours": 0.24333333333333335,
+        "pr_merge_ratio": 0.68,
+        "n_issues_sampled": 10,
+        "n_prs_sampled": 50,
+        "n_first_responses": 36
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 0.0,
+        "responsiveness": 0.6994119957010582,
+        "diversity": 0.0905265028865236,
+        "security": 0.6
+      },
+      "score": 35.457248568430124,
+      "archetype": "stadium",
+      "language": "go",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "gohugoio/hugo",
+      "stars": 89132,
+      "forks": 8301,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 75,
+        "funding_inherited": true
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.48204419889502764,
+        "top2_share": 0.6781767955801106,
+        "hhi": 0.298613442813101,
+        "truck_factor": 2,
+        "contributors_5plus": 6,
+        "commit_entropy": 0.4474344724587833,
+        "n_contributors_listed": 41,
+        "n_commits_window": 724,
+        "elephant_factor": 2,
+        "contributor_retention": 0.25925925925925924
+      },
+      "responsiveness": {
+        "median_first_response_hours": 3.6908333333333334,
+        "pr_review_coverage": 0.26,
+        "median_issue_close_hours": 114.31083333333333,
+        "median_pr_merge_hours": 25.010416666666664,
+        "pr_merge_ratio": 0.56,
+        "n_issues_sampled": 12,
+        "n_prs_sampled": 50,
+        "n_first_responses": 24
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 0.4608998165162506,
+        "responsiveness": 0.65,
+        "diversity": 0.3917242254767503,
+        "security": 1.0
+      },
+      "score": 56.50946990616863,
+      "archetype": "stadium",
+      "language": "go",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "doocs/advanced-java",
+      "stars": 79014,
+      "forks": 19190,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 50,
+        "funding_inherited": true
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.75,
+        "top2_share": 0.9166666666666666,
+        "hhi": 0.5972222222222222,
+        "truck_factor": 1,
+        "contributors_5plus": 1,
+        "commit_entropy": 0.6567045482143385,
+        "n_contributors_listed": 3,
+        "n_commits_window": 12,
+        "elephant_factor": 1,
+        "contributor_retention": 0.5
+      },
+      "responsiveness": {
+        "median_first_response_hours": 0.3516666666666667,
+        "pr_review_coverage": 0.76,
+        "median_issue_close_hours": 816.4436111111111,
+        "median_pr_merge_hours": 0.28194444444444444,
+        "pr_merge_ratio": 0.68,
+        "n_issues_sampled": 18,
+        "n_prs_sampled": 50,
+        "n_first_responses": 33
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 0.029629629629629645,
+        "responsiveness": 0.8916666666666666,
+        "diversity": 0.4488230529336923,
+        "security": 0.25
+      },
+      "score": 40.167530979190566,
+      "archetype": "stadium",
+      "language": "java",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "gin-gonic/gin",
+      "stars": 88947,
+      "forks": 8649,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 75
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 2,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.2589928057553957,
+        "top2_share": 0.4676258992805755,
+        "hhi": 0.12188810102996739,
+        "truck_factor": 3,
+        "contributors_5plus": 3,
+        "commit_entropy": 0.7462790655645983,
+        "n_contributors_listed": 54,
+        "n_commits_window": 139,
+        "elephant_factor": 3,
+        "contributor_retention": 0.10344827586206896
+      },
+      "responsiveness": {
+        "median_first_response_hours": 161.37277777777777,
+        "pr_review_coverage": 0.9,
+        "median_issue_close_hours": 997.5475,
+        "median_pr_merge_hours": 270.0963888888889,
+        "pr_merge_ratio": 0.38,
+        "n_issues_sampled": 6,
+        "n_prs_sampled": 50,
+        "n_first_responses": 47
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 0.785967485004802,
+        "responsiveness": 0.7429346264367815,
+        "diversity": 0.5002105037114944,
+        "security": 0.6666666666666667
+      },
+      "score": 65.89992609841698,
+      "archetype": "stadium",
+      "language": "go",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "MisterBooo/LeetCodeAnimation",
+      "stars": 76636,
+      "forks": 13894,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": false,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 42
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 1.0,
+        "top2_share": 1.0,
+        "hhi": 1.0,
+        "truck_factor": 1,
+        "contributors_5plus": 1,
+        "commit_entropy": -0.0,
+        "n_contributors_listed": 1,
+        "n_commits_window": 7,
+        "elephant_factor": 1,
+        "contributor_retention": null
+      },
+      "responsiveness": {
+        "median_first_response_hours": 10.358888888888888,
+        "pr_review_coverage": 0.0,
+        "median_issue_close_hours": 88.72805555555556,
+        "median_pr_merge_hours": 26.31111111111111,
+        "pr_merge_ratio": 0.92,
+        "n_issues_sampled": 12,
+        "n_prs_sampled": 50,
+        "n_first_responses": 33
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.2222222222222222,
+        "distribution": 0.0,
+        "responsiveness": 0.75,
+        "diversity": 0.0,
+        "security": 0.25
+      },
+      "score": 24.305555555555557,
+      "archetype": "stadium",
+      "language": "java",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "tmux/tmux",
+      "stars": 48010,
+      "forks": 2792,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 75
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 6,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.6559734513274337,
+        "top2_share": 0.8982300884955753,
+        "hhi": 0.49302265251781663,
+        "truck_factor": 1,
+        "contributors_5plus": 5,
+        "commit_entropy": 0.3705080866532867,
+        "n_contributors_listed": 15,
+        "n_commits_window": 904,
+        "elephant_factor": 1,
+        "contributor_retention": 0.6
+      },
+      "responsiveness": {
+        "median_first_response_hours": 4.667222222222223,
+        "pr_review_coverage": 0.08571428571428572,
+        "median_issue_close_hours": 59.26041666666667,
+        "median_pr_merge_hours": 0.14083333333333334,
+        "pr_merge_ratio": 0.38,
+        "n_issues_sampled": 30,
+        "n_prs_sampled": 50,
+        "n_first_responses": 43
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 0.15133298091732575,
+        "responsiveness": 0.575,
+        "diversity": 0.38109278956829207,
+        "security": 0.8
+      },
+      "score": 44.110827477568634,
+      "archetype": "stadium",
+      "language": "c",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "tesseract-ocr/tesseract",
+      "stars": 75531,
+      "forks": 10702,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 62
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 1,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.6016260162601627,
+        "top2_share": 0.6829268292682927,
+        "hhi": 0.384228964240862,
+        "truck_factor": 1,
+        "contributors_5plus": 5,
+        "commit_entropy": 0.5716003192420874,
+        "n_contributors_listed": 15,
+        "n_commits_window": 123,
+        "elephant_factor": 1,
+        "contributor_retention": 0.5
+      },
+      "responsiveness": {
+        "median_first_response_hours": 8.999722222222223,
+        "pr_review_coverage": 0.72,
+        "median_issue_close_hours": 110.3025,
+        "median_pr_merge_hours": 20.70722222222222,
+        "pr_merge_ratio": 0.74,
+        "n_issues_sampled": 15,
+        "n_prs_sampled": 50,
+        "n_first_responses": 39
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.3333333333333333,
+        "distribution": 0.2540551259171127,
+        "responsiveness": 0.8999999999999999,
+        "diversity": 0.4529114440642923,
+        "security": 0.8333333333333334
+      },
+      "score": 51.97838314222554,
+      "archetype": "stadium",
+      "language": "c++",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "monicahq/monica",
+      "stars": 24894,
+      "forks": 2558,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.7058823529411765,
+        "top2_share": 0.8823529411764707,
+        "hhi": 0.536332179930796,
+        "truck_factor": 1,
+        "contributors_5plus": 1,
+        "commit_entropy": 0.6386009056011303,
+        "n_contributors_listed": 4,
+        "n_commits_window": 17,
+        "elephant_factor": 1,
+        "contributor_retention": 0.0
+      },
+      "responsiveness": {
+        "median_first_response_hours": 620.1822222222222,
+        "pr_review_coverage": 0.12,
+        "median_issue_close_hours": null,
+        "median_pr_merge_hours": 6.372777777777777,
+        "pr_merge_ratio": 0.52,
+        "n_issues_sampled": 0,
+        "n_prs_sampled": 50,
+        "n_first_responses": 41
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 0.09473279507881575,
+        "responsiveness": 0.42046792328042326,
+        "diversity": 0.19235746628611794,
+        "security": 0.75
+      },
+      "score": 36.02415144798174,
+      "archetype": "stadium",
+      "language": "php",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "junegunn/fzf",
+      "stars": 81942,
+      "forks": 2820,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 71
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 14,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.6938202247191011,
+        "top2_share": 0.7724719101123595,
+        "hhi": 0.49056306021966917,
+        "truck_factor": 1,
+        "contributors_5plus": 6,
+        "commit_entropy": 0.4037303347701112,
+        "n_contributors_listed": 47,
+        "n_commits_window": 356,
+        "elephant_factor": 1,
+        "contributor_retention": 0.17391304347826086
+      },
+      "responsiveness": {
+        "median_first_response_hours": 4.890555555555555,
+        "pr_review_coverage": 0.62,
+        "median_issue_close_hours": 23.678055555555556,
+        "median_pr_merge_hours": 14.902222222222223,
+        "pr_merge_ratio": 0.62,
+        "n_issues_sampled": 31,
+        "n_prs_sampled": 50,
+        "n_first_responses": 47
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 0.13194672389849774,
+        "responsiveness": 0.8083333333333332,
+        "diversity": 0.1977742200105291,
+        "security": 1.0
+      },
+      "score": 51.32083695317593,
+      "archetype": "stadium",
+      "language": "go",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "firefly-iii/firefly-iii",
+      "stars": 24119,
+      "forks": 2232,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.6359223300970874,
+        "top2_share": 0.8925970873786409,
+        "hhi": 0.4739070305872373,
+        "truck_factor": 1,
+        "contributors_5plus": 7,
+        "commit_entropy": 0.33511520805090017,
+        "n_contributors_listed": 23,
+        "n_commits_window": 1648,
+        "elephant_factor": 1,
+        "contributor_retention": 0.3333333333333333
+      },
+      "responsiveness": {
+        "median_first_response_hours": 1.894861111111111,
+        "pr_review_coverage": 0.0,
+        "median_issue_close_hours": 477.46416666666664,
+        "median_pr_merge_hours": 0.0008333333333333334,
+        "pr_merge_ratio": 0.56,
+        "n_issues_sampled": 26,
+        "n_prs_sampled": 50,
+        "n_first_responses": 46
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.6666666666666666,
+        "distribution": 0.1752162406656821,
+        "responsiveness": 0.65,
+        "diversity": 0.2815271884254036,
+        "security": 0.8
+      },
+      "score": 50.26998050968977,
+      "archetype": "stadium",
+      "language": "php",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "microsoft/markitdown",
+      "stars": 168701,
+      "forks": 12181,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 62
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 5,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.2647058823529412,
+        "top2_share": 0.4117647058823529,
+        "hhi": 0.11072664359861592,
+        "truck_factor": 4,
+        "contributors_5plus": 2,
+        "commit_entropy": 0.8760936728818339,
+        "n_contributors_listed": 21,
+        "n_commits_window": 34,
+        "elephant_factor": 4,
+        "contributor_retention": 0.13333333333333333
+      },
+      "responsiveness": {
+        "median_first_response_hours": 1611.6922222222222,
+        "pr_review_coverage": 0.54,
+        "median_issue_close_hours": 481.1911111111111,
+        "median_pr_merge_hours": 18.907777777777778,
+        "pr_merge_ratio": 0.1,
+        "n_issues_sampled": 13,
+        "n_prs_sampled": 50,
+        "n_first_responses": 45
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.3333333333333333,
+        "distribution": 0.8735678585159553,
+        "responsiveness": 0.35,
+        "diversity": 0.5294540229885057,
+        "security": 0.9666666666666666
+      },
+      "score": 59.6143401410598,
+      "archetype": "stadium",
+      "language": "python",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "hashicorp/vagrant",
+      "stars": 27196,
+      "forks": 4405,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": true,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 28,
+        "release_notes_share": 1.0,
+        "security_policy_inherited": true
+      },
+      "distribution": {
+        "top1_share": 0.3,
+        "top2_share": 0.55,
+        "hhi": 0.18555555555555556,
+        "truck_factor": 2,
+        "contributors_5plus": 4,
+        "commit_entropy": 0.7528867264601189,
+        "n_contributors_listed": 15,
+        "n_commits_window": 60,
+        "elephant_factor": 2,
+        "contributor_retention": 0.08333333333333333
+      },
+      "responsiveness": {
+        "median_first_response_hours": 206.5402777777778,
+        "pr_review_coverage": 0.86,
+        "median_issue_close_hours": 742.5991666666666,
+        "median_pr_merge_hours": 163.64222222222222,
+        "pr_merge_ratio": 0.5,
+        "n_issues_sampled": 5,
+        "n_prs_sampled": 50,
+        "n_first_responses": 39
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 0.6374074074074073,
+        "responsiveness": 0.7785834979645594,
+        "diversity": 0.3840358998441311,
+        "security": 1.0
+      },
+      "score": 66.15628253102723,
+      "archetype": "stadium",
+      "language": "ruby",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "pbatard/rufus",
+      "stars": 37017,
+      "forks": 3120,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 71
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 6,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.6356589147286822,
+        "top2_share": 0.6434108527131783,
+        "hhi": 0.40688660537227334,
+        "truck_factor": 1,
+        "contributors_5plus": 1,
+        "commit_entropy": 0.5317838118793216,
+        "n_contributors_listed": 48,
+        "n_commits_window": 129,
+        "elephant_factor": 1,
+        "contributor_retention": 0.1
+      },
+      "responsiveness": {
+        "median_first_response_hours": 1.5497222222222222,
+        "pr_review_coverage": 0.0,
+        "median_issue_close_hours": 3.9945833333333334,
+        "median_pr_merge_hours": null,
+        "pr_merge_ratio": 0.0,
+        "n_issues_sampled": 42,
+        "n_prs_sampled": 50,
+        "n_first_responses": 42
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.3333333333333333,
+        "distribution": 0.220042866013661,
+        "responsiveness": 0.3333333333333333,
+        "diversity": 0.15420850424261484,
+        "security": 1.0
+      },
+      "score": 37.81419921398075,
+      "archetype": "stadium",
+      "language": "c",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "guzzle/guzzle",
+      "stars": 23457,
+      "forks": 2391,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": true,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 24,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.9655797101449275,
+        "top2_share": 0.9945652173913043,
+        "hhi": 0.9331941818945598,
+        "truck_factor": 1,
+        "contributors_5plus": 2,
+        "commit_entropy": 0.10610552763377264,
+        "n_contributors_listed": 5,
+        "n_commits_window": 552,
+        "elephant_factor": 1,
+        "contributor_retention": 0.5
+      },
+      "responsiveness": {
+        "median_first_response_hours": 4.300277777777778,
+        "pr_review_coverage": 0.02,
+        "median_issue_close_hours": 3.5608333333333335,
+        "median_pr_merge_hours": 0.6308333333333334,
+        "pr_merge_ratio": 0.96,
+        "n_issues_sampled": 5,
+        "n_prs_sampled": 50,
+        "n_first_responses": 39
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.6666666666666666,
+        "distribution": 0.0,
+        "responsiveness": 0.75,
+        "diversity": 0.26080123523866267,
+        "security": 0.6
+      },
+      "score": 44.57868519524661,
+      "archetype": "stadium",
+      "language": "php",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "WerWolv/ImHex",
+      "stars": 54266,
+      "forks": 2424,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 100
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 3,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.8292682926829268,
+        "top2_share": 0.887592788971368,
+        "hhi": 0.6937663129224773,
+        "truck_factor": 1,
+        "contributors_5plus": 5,
+        "commit_entropy": 0.23716612336445822,
+        "n_contributors_listed": 33,
+        "n_commits_window": 943,
+        "elephant_factor": 1,
+        "contributor_retention": 0.19047619047619047
+      },
+      "responsiveness": {
+        "median_first_response_hours": 2.1983333333333333,
+        "pr_review_coverage": 0.02,
+        "median_issue_close_hours": 30.059583333333332,
+        "median_pr_merge_hours": 22.211111111111112,
+        "pr_merge_ratio": 0.9,
+        "n_issues_sampled": 20,
+        "n_prs_sampled": 50,
+        "n_first_responses": 40
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.6666666666666666,
+        "distribution": 0.0,
+        "responsiveness": 0.75,
+        "diversity": 0.1400182788699009,
+        "security": 0.7
+      },
+      "score": 44.26694084971518,
+      "archetype": "stadium",
+      "language": "c++",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "anthropics/skills",
+      "stars": 163863,
+      "forks": 19450,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": false,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 25
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": false,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.28888888888888886,
+        "top2_share": 0.5777777777777777,
+        "hhi": 0.18320987654320986,
+        "truck_factor": 2,
+        "contributors_5plus": 2,
+        "commit_entropy": 0.7858882248047028,
+        "n_contributors_listed": 15,
+        "n_commits_window": 45,
+        "elephant_factor": 2,
+        "contributor_retention": 0.16666666666666666
+      },
+      "responsiveness": {
+        "median_first_response_hours": 30.385833333333334,
+        "pr_review_coverage": 1.0,
+        "median_issue_close_hours": 3.109861111111111,
+        "median_pr_merge_hours": 7.762777777777778,
+        "pr_merge_ratio": 0.14,
+        "n_issues_sampled": 10,
+        "n_prs_sampled": 50,
+        "n_first_responses": 13
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.1111111111111111,
+        "distribution": 0.6451440329218107,
+        "responsiveness": 0.75,
+        "diversity": 0.4202474366092329,
+        "security": 0.0
+      },
+      "score": 40.210090149961545,
+      "archetype": "stadium",
+      "language": "python",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "gitlabhq/gitlabhq",
+      "stars": 24499,
+      "forks": 5867,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": true,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 62
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": false,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.9949473684210526,
+        "top2_share": 1.0,
+        "hhi": 0.9899457950138504,
+        "truck_factor": 1,
+        "contributors_5plus": 2,
+        "commit_entropy": 0.04581621969352358,
+        "n_contributors_listed": 2,
+        "n_commits_window": 2375,
+        "elephant_factor": 1,
+        "contributor_retention": 1.0
+      },
+      "responsiveness": {
+        "median_first_response_hours": null,
+        "pr_review_coverage": 0.02,
+        "median_issue_close_hours": null,
+        "median_pr_merge_hours": 191.76833333333335,
+        "pr_merge_ratio": 0.22,
+        "n_issues_sampled": 0,
+        "n_prs_sampled": 50,
+        "n_first_responses": 0
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 0.0,
+        "responsiveness": 0.3100171615581098,
+        "diversity": 0.25862068965517243,
+        "security": 0.0
+      },
+      "score": 23.968542464878674,
+      "archetype": "stadium",
+      "language": "ruby",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "garrytan/gstack",
+      "stars": 124039,
+      "forks": 18579,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 57
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.9048991354466859,
+        "top2_share": 0.9510086455331412,
+        "hhi": 0.821358868523117,
+        "truck_factor": 1,
+        "contributors_5plus": 3,
+        "commit_entropy": 0.18486900333009545,
+        "n_contributors_listed": 14,
+        "n_commits_window": 347,
+        "elephant_factor": 1,
+        "contributor_retention": null
+      },
+      "responsiveness": {
+        "median_first_response_hours": 201.13916666666665,
+        "pr_review_coverage": 0.02,
+        "median_issue_close_hours": 1667.2380555555555,
+        "median_pr_merge_hours": 1.5863888888888888,
+        "pr_merge_ratio": 0.02,
+        "n_issues_sampled": 17,
+        "n_prs_sampled": 50,
+        "n_first_responses": 37
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.3333333333333333,
+        "distribution": 0.0,
+        "responsiveness": 0.4430285838293651,
+        "diversity": 0.06340231685669569,
+        "security": 0.25
+      },
+      "score": 21.89493976277107,
+      "archetype": "stadium",
+      "language": "typescript",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "flatpak/flatpak",
+      "stars": 4999,
+      "forks": 513,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 75
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 14,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.3972602739726027,
+        "top2_share": 0.46849315068493147,
+        "hhi": 0.1806192531431788,
+        "truck_factor": 3,
+        "contributors_5plus": 10,
+        "commit_entropy": 0.6410930115030326,
+        "n_contributors_listed": 66,
+        "n_commits_window": 365,
+        "elephant_factor": 3,
+        "contributor_retention": 0.34375
+      },
+      "responsiveness": {
+        "median_first_response_hours": 20.195555555555554,
+        "pr_review_coverage": 0.7,
+        "median_issue_close_hours": 621.2794444444444,
+        "median_pr_merge_hours": 103.0525,
+        "pr_merge_ratio": 0.74,
+        "n_issues_sampled": 22,
+        "n_prs_sampled": 50,
+        "n_first_responses": 43
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 0.6699981234753237,
+        "responsiveness": 0.8817793642241378,
+        "diversity": 0.6731774610047776,
+        "security": 0.8
+      },
+      "score": 67.59431339754862,
+      "archetype": "club",
+      "language": "c",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "lemonade-sdk/lemonade",
+      "stars": 5092,
+      "forks": 417,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": true,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 37
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.30710659898477155,
+        "top2_share": 0.4018612521150592,
+        "hhi": 0.11937952536782703,
+        "truck_factor": 4,
+        "contributors_5plus": 34,
+        "commit_entropy": 0.6588926871203112,
+        "n_contributors_listed": 116,
+        "n_commits_window": 1182,
+        "elephant_factor": 3,
+        "contributor_retention": 0.4594594594594595
+      },
+      "responsiveness": {
+        "median_first_response_hours": 4.451944444444444,
+        "pr_review_coverage": 1.0,
+        "median_issue_close_hours": 93.76638888888888,
+        "median_pr_merge_hours": 28.176388888888887,
+        "pr_merge_ratio": 0.82,
+        "n_issues_sampled": 13,
+        "n_prs_sampled": 50,
+        "n_first_responses": 21
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.3333333333333333,
+        "distribution": 0.8442433169854645,
+        "responsiveness": 1.0,
+        "diversity": 0.924266693276559,
+        "security": 0.8
+      },
+      "score": 75.30341665711833,
+      "archetype": "club",
+      "language": "c++",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "vllm-project/semantic-router",
+      "stars": 5040,
+      "forks": 775,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": true,
+        "funding": false,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 3,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.17080943275971958,
+        "top2_share": 0.24410452517527087,
+        "hhi": 0.05039116307391335,
+        "truck_factor": 10,
+        "contributors_5plus": 51,
+        "commit_entropy": 0.7514853152209695,
+        "n_contributors_listed": 164,
+        "n_commits_window": 1569,
+        "elephant_factor": 7,
+        "contributor_retention": 0.37142857142857144
+      },
+      "responsiveness": {
+        "median_first_response_hours": 20.623333333333335,
+        "pr_review_coverage": 1.0,
+        "median_issue_close_hours": 8.00138888888889,
+        "median_pr_merge_hours": 4.999444444444444,
+        "pr_merge_ratio": 0.86,
+        "n_issues_sampled": 22,
+        "n_prs_sampled": 50,
+        "n_first_responses": 11
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.6666666666666666,
+        "distribution": 1.0,
+        "responsiveness": 1.0,
+        "diversity": 0.9023161840074891,
+        "security": 0.7
+      },
+      "score": 85.70140942677901,
+      "archetype": "club",
+      "language": "go",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "SwiftOldDriver/iOS-Weekly",
+      "stars": 4992,
+      "forks": 434,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": true,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 62
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.25449101796407186,
+        "top2_share": 0.32934131736526945,
+        "hhi": 0.10220875614041378,
+        "truck_factor": 5,
+        "contributors_5plus": 18,
+        "commit_entropy": 0.8511310653922184,
+        "n_contributors_listed": 23,
+        "n_commits_window": 334,
+        "elephant_factor": 5,
+        "contributor_retention": 0.8636363636363636
+      },
+      "responsiveness": {
+        "median_first_response_hours": 20.339444444444446,
+        "pr_review_coverage": 0.08,
+        "median_issue_close_hours": 206.51319444444442,
+        "median_pr_merge_hours": 0.004166666666666667,
+        "pr_merge_ratio": 0.98,
+        "n_issues_sampled": 38,
+        "n_prs_sampled": 50,
+        "n_first_responses": 1
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 0.9682547081485731,
+        "responsiveness": 0.75,
+        "diversity": 0.896551724137931,
+        "security": 0.6
+      },
+      "score": 75.54353245467217,
+      "archetype": "club",
+      "language": "javascript",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "raspberrypi/pico-sdk",
+      "stars": 4897,
+      "forks": 1264,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 50
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 2,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.32217573221757323,
+        "top2_share": 0.4853556485355649,
+        "hhi": 0.1574727333204951,
+        "truck_factor": 3,
+        "contributors_5plus": 6,
+        "commit_entropy": 0.6654070497029916,
+        "n_contributors_listed": 48,
+        "n_commits_window": 239,
+        "elephant_factor": 2,
+        "contributor_retention": 0.34782608695652173
+      },
+      "responsiveness": {
+        "median_first_response_hours": 129.0611111111111,
+        "pr_review_coverage": 0.96,
+        "median_issue_close_hours": 1538.0655555555556,
+        "median_pr_merge_hours": 28.030555555555555,
+        "pr_merge_ratio": 0.86,
+        "n_issues_sampled": 17,
+        "n_prs_sampled": 50,
+        "n_first_responses": 50
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 0.7271427709987958,
+        "responsiveness": 0.9698433366402116,
+        "diversity": 0.524925841803328,
+        "security": 0.4666666666666667
+      },
+      "score": 63.560434745935154,
+      "archetype": "club",
+      "language": "c",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "github/explore",
+      "stars": 4827,
+      "forks": 14368,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 0,
+        "release_notes_share": null,
+        "security_policy_inherited": true
+      },
+      "distribution": {
+        "top1_share": 0.22965641952983726,
+        "top2_share": 0.3707052441229657,
+        "hhi": 0.08200216474989291,
+        "truck_factor": 6,
+        "contributors_5plus": 16,
+        "commit_entropy": 0.75171140329162,
+        "n_contributors_listed": 120,
+        "n_commits_window": 553,
+        "elephant_factor": 5,
+        "contributor_retention": 0.14285714285714285
+      },
+      "responsiveness": {
+        "median_first_response_hours": null,
+        "pr_review_coverage": 0.92,
+        "median_issue_close_hours": null,
+        "median_pr_merge_hours": 108.50638888888889,
+        "pr_merge_ratio": 0.6,
+        "n_issues_sampled": 0,
+        "n_prs_sampled": 50,
+        "n_first_responses": 0
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 0.9835242113723126,
+        "responsiveness": 0.8743998110898253,
+        "diversity": 0.6388501317174505,
+        "security": 0.75
+      },
+      "score": 76.79774237075497,
+      "archetype": "club",
+      "language": "ruby",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "cilium/tetragon",
+      "stars": 4855,
+      "forks": 574,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 87,
+        "funding_inherited": true
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 5,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.20926243567753003,
+        "top2_share": 0.4070897655803316,
+        "hhi": 0.11299800163517436,
+        "truck_factor": 4,
+        "contributors_5plus": 27,
+        "commit_entropy": 0.6185984625580538,
+        "n_contributors_listed": 83,
+        "n_commits_window": 1749,
+        "elephant_factor": 3,
+        "contributor_retention": 0.3333333333333333
+      },
+      "responsiveness": {
+        "median_first_response_hours": 32.66486111111111,
+        "pr_review_coverage": 0.92,
+        "median_issue_close_hours": 328.55444444444447,
+        "median_pr_merge_hours": 9.619583333333333,
+        "pr_merge_ratio": 0.8,
+        "n_issues_sampled": 3,
+        "n_prs_sampled": 50,
+        "n_first_responses": 28
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.7777777777777778,
+        "distribution": 0.9028555346445892,
+        "responsiveness": 1.0,
+        "diversity": 0.8051850009956925,
+        "security": 0.7666666666666667
+      },
+      "score": 85.59360782549457,
+      "archetype": "club",
+      "language": "c",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "vllm-project/aibrix",
+      "stars": 4977,
+      "forks": 628,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 5,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.28005865102639294,
+        "top2_share": 0.39002932551319647,
+        "hhi": 0.11395240839002072,
+        "truck_factor": 4,
+        "contributors_5plus": 17,
+        "commit_entropy": 0.6677159089698584,
+        "n_contributors_listed": 104,
+        "n_commits_window": 682,
+        "elephant_factor": 4,
+        "contributor_retention": 0.22641509433962265
+      },
+      "responsiveness": {
+        "median_first_response_hours": 36.46736111111111,
+        "pr_review_coverage": 0.96,
+        "median_issue_close_hours": null,
+        "median_pr_merge_hours": 9.469583333333333,
+        "pr_merge_ratio": 0.96,
+        "n_issues_sampled": 0,
+        "n_prs_sampled": 50,
+        "n_first_responses": 30
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 0.8628880327253233,
+        "responsiveness": 1.0,
+        "diversity": 0.6696961502199722,
+        "security": 0.7666666666666667
+      },
+      "score": 77.00653196032155,
+      "archetype": "club",
+      "language": "go",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "statamic/cms",
+      "stars": 4853,
+      "forks": 636,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 75
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.30730478589420657,
+        "top2_share": 0.49832073887489503,
+        "hhi": 0.16153935089719215,
+        "truck_factor": 3,
+        "contributors_5plus": 27,
+        "commit_entropy": 0.535268599763597,
+        "n_contributors_listed": 102,
+        "n_commits_window": 2382,
+        "elephant_factor": 3,
+        "contributor_retention": 0.48333333333333334
+      },
+      "responsiveness": {
+        "median_first_response_hours": 2.8258333333333336,
+        "pr_review_coverage": 0.14,
+        "median_issue_close_hours": 1050.1973611111111,
+        "median_pr_merge_hours": 4.23,
+        "pr_merge_ratio": 0.92,
+        "n_issues_sampled": 16,
+        "n_prs_sampled": 50,
+        "n_first_responses": 24
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.6666666666666666,
+        "distribution": 0.732693329460646,
+        "responsiveness": 0.75,
+        "diversity": 0.8691743357119579,
+        "security": 1.0
+      },
+      "score": 78.02161493886219,
+      "archetype": "club",
+      "language": "php",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "lobsters/lobsters",
+      "stars": 4802,
+      "forks": 981,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 75
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.42158273381294964,
+        "top2_share": 0.5280575539568345,
+        "hhi": 0.203068164173697,
+        "truck_factor": 2,
+        "contributors_5plus": 18,
+        "commit_entropy": 0.6052475847382736,
+        "n_contributors_listed": 65,
+        "n_commits_window": 695,
+        "elephant_factor": 2,
+        "contributor_retention": 0.2926829268292683
+      },
+      "responsiveness": {
+        "median_first_response_hours": 39.19847222222222,
+        "pr_review_coverage": 0.16,
+        "median_issue_close_hours": 267.30055555555555,
+        "median_pr_merge_hours": 158.85916666666665,
+        "pr_merge_ratio": 0.9,
+        "n_issues_sampled": 20,
+        "n_prs_sampled": 50,
+        "n_first_responses": 32
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 0.5581863717658967,
+        "responsiveness": 0.7300899485153257,
+        "diversity": 0.5724241193841785,
+        "security": 0.75
+      },
+      "score": 59.50393116632772,
+      "archetype": "club",
+      "language": "ruby",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "Expensify/App",
+      "stars": 4973,
+      "forks": 3955,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 75
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.0512255783291382,
+        "top2_share": 0.09798633585041353,
+        "hhi": 0.013676842521790149,
+        "truck_factor": 30,
+        "contributors_5plus": 297,
+        "commit_entropy": 0.8089070695645345,
+        "n_contributors_listed": 389,
+        "n_commits_window": 66744,
+        "elephant_factor": 10,
+        "contributor_retention": 0.740625
+      },
+      "responsiveness": {
+        "median_first_response_hours": 30.893055555555556,
+        "pr_review_coverage": 1.0,
+        "median_issue_close_hours": 595.6202777777778,
+        "median_pr_merge_hours": 171.84597222222223,
+        "pr_merge_ratio": 0.88,
+        "n_issues_sampled": 25,
+        "n_prs_sampled": 50,
+        "n_first_responses": 48
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 1.0,
+        "responsiveness": 0.9777575480922733,
+        "diversity": 1.0,
+        "security": 0.8
+      },
+      "score": 85.44403985073436,
+      "archetype": "club",
+      "language": "typescript",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "SolaceLabs/solace-agent-mesh",
+      "stars": 4968,
+      "forks": 269,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.19872136387852957,
+        "top2_share": 0.2866275972296217,
+        "hhi": 0.07473782538192612,
+        "truck_factor": 5,
+        "contributors_5plus": 37,
+        "commit_entropy": 0.7656188493951216,
+        "n_contributors_listed": 57,
+        "n_commits_window": 1877,
+        "elephant_factor": 2,
+        "contributor_retention": 0.6041666666666666
+      },
+      "responsiveness": {
+        "median_first_response_hours": 119.28222222222223,
+        "pr_review_coverage": 1.0,
+        "median_issue_close_hours": 0.020833333333333332,
+        "median_pr_merge_hours": 0.9006944444444445,
+        "pr_merge_ratio": 0.84,
+        "n_issues_sampled": 5,
+        "n_prs_sampled": 50,
+        "n_first_responses": 10
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 1.0,
+        "responsiveness": 0.9734813161375662,
+        "diversity": 0.8627210176411149,
+        "security": 0.6
+      },
+      "score": 80.29933047625694,
+      "archetype": "club",
+      "language": "python",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "hashicorp/terraform-provider-azurerm",
+      "stars": 4960,
+      "forks": 5021,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 30,
+        "release_notes_share": 1.0,
+        "security_policy_inherited": true
+      },
+      "distribution": {
+        "top1_share": 0.21315570358034971,
+        "top2_share": 0.2697751873438801,
+        "hhi": 0.06411462554449145,
+        "truck_factor": 9,
+        "contributors_5plus": 40,
+        "commit_entropy": 0.7298674520626645,
+        "n_contributors_listed": 148,
+        "n_commits_window": 1201,
+        "elephant_factor": 8,
+        "contributor_retention": 0.525
+      },
+      "responsiveness": {
+        "median_first_response_hours": 62.50722222222222,
+        "pr_review_coverage": 1.0,
+        "median_issue_close_hours": 1925.6052777777777,
+        "median_pr_merge_hours": 93.54694444444445,
+        "pr_merge_ratio": 0.82,
+        "n_issues_sampled": 6,
+        "n_prs_sampled": 50,
+        "n_first_responses": 36
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 0.9926912757886946,
+        "responsiveness": 0.9864228414066776,
+        "diversity": 0.9749526614509516,
+        "security": 1.0
+      },
+      "score": 85.28113975572631,
+      "archetype": "club",
+      "language": "go",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "NVIDIA/nccl",
+      "stars": 4904,
+      "forks": 1353,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 62
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": false,
+        "dependency_automation": false,
+        "releases_12m": 12,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.10702341137123746,
+        "top2_share": 0.1806020066889632,
+        "hhi": 0.04352859587700361,
+        "truck_factor": 9,
+        "contributors_5plus": 24,
+        "commit_entropy": 0.8282062877447101,
+        "n_contributors_listed": 69,
+        "n_commits_window": 598,
+        "elephant_factor": 1,
+        "contributor_retention": 0.75
+      },
+      "responsiveness": {
+        "median_first_response_hours": 73.89361111111111,
+        "pr_review_coverage": 0.04,
+        "median_issue_close_hours": 400.695,
+        "median_pr_merge_hours": 0.15458333333333332,
+        "pr_merge_ratio": 0.08,
+        "n_issues_sampled": 17,
+        "n_prs_sampled": 50,
+        "n_first_responses": 46
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 1.0,
+        "responsiveness": 0.4903669601521164,
+        "diversity": 0.6982758620689655,
+        "security": 0.4
+      },
+      "score": 62.392588245187916,
+      "archetype": "club",
+      "language": "c++",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "Gentleman-Programming/gentle-ai",
+      "stars": 5025,
+      "forks": 599,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 62
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.8112488083889419,
+        "top2_share": 0.8341277407054337,
+        "hhi": 0.6597912942645454,
+        "truck_factor": 1,
+        "contributors_5plus": 9,
+        "commit_entropy": 0.27614770614908507,
+        "n_contributors_listed": 67,
+        "n_commits_window": 1049,
+        "elephant_factor": 1,
+        "contributor_retention": null
+      },
+      "responsiveness": {
+        "median_first_response_hours": 84.89666666666668,
+        "pr_review_coverage": 0.94,
+        "median_issue_close_hours": 47.47138888888889,
+        "median_pr_merge_hours": 0.11861111111111111,
+        "pr_merge_ratio": 0.4,
+        "n_issues_sampled": 21,
+        "n_prs_sampled": 50,
+        "n_first_responses": 46
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 0.0,
+        "responsiveness": 0.8196068948412698,
+        "diversity": 0.17583388305949862,
+        "security": 0.6
+      },
+      "score": 39.14075725382899,
+      "archetype": "club",
+      "language": "go",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "spring-cloud/spring-cloud-gateway",
+      "stars": 4893,
+      "forks": 3465,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": true,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 16,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.2154696132596685,
+        "top2_share": 0.4088397790055249,
+        "hhi": 0.13801471261561002,
+        "truck_factor": 3,
+        "contributors_5plus": 13,
+        "commit_entropy": 0.6748311144069812,
+        "n_contributors_listed": 41,
+        "n_commits_window": 362,
+        "elephant_factor": 3,
+        "contributor_retention": 0.3157894736842105
+      },
+      "responsiveness": {
+        "median_first_response_hours": 11.354305555555555,
+        "pr_review_coverage": 0.28,
+        "median_issue_close_hours": 3860.1873611111114,
+        "median_pr_merge_hours": 11.716388888888888,
+        "pr_merge_ratio": 0.58,
+        "n_issues_sampled": 16,
+        "n_prs_sampled": 50,
+        "n_first_responses": 38
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 0.7993959620008885,
+        "responsiveness": 0.6583333333333333,
+        "diversity": 0.6936135234886224,
+        "security": 1.0
+      },
+      "score": 72.4446574579071,
+      "archetype": "club",
+      "language": "java",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "librenms/librenms",
+      "stars": 4797,
+      "forks": 2733,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 100
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 18,
+        "release_notes_share": 0.9444444444444444
+      },
+      "distribution": {
+        "top1_share": 0.3135215453194651,
+        "top2_share": 0.48588410104011887,
+        "hhi": 0.1434915847737725,
+        "truck_factor": 3,
+        "contributors_5plus": 22,
+        "commit_entropy": 0.59152616578245,
+        "n_contributors_listed": 197,
+        "n_commits_window": 1346,
+        "elephant_factor": 3,
+        "contributor_retention": 0.33
+      },
+      "responsiveness": {
+        "median_first_response_hours": 23.71763888888889,
+        "pr_review_coverage": 0.64,
+        "median_issue_close_hours": 10091.815416666668,
+        "median_pr_merge_hours": 35.736666666666665,
+        "pr_merge_ratio": 0.9,
+        "n_issues_sampled": 18,
+        "n_prs_sampled": 50,
+        "n_first_responses": 40
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.6666666666666666,
+        "distribution": 0.741271418306671,
+        "responsiveness": 0.8916666666666666,
+        "diversity": 0.7503295419666385,
+        "security": 0.8
+      },
+      "score": 76.28672858716635,
+      "archetype": "club",
+      "language": "php",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "mozilla/uniffi-rs",
+      "stars": 4817,
+      "forks": 321,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": true,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 62
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": false,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.4431818181818182,
+        "top2_share": 0.6439393939393939,
+        "hhi": 0.24279729109274564,
+        "truck_factor": 2,
+        "contributors_5plus": 7,
+        "commit_entropy": 0.6108544332197265,
+        "n_contributors_listed": 39,
+        "n_commits_window": 264,
+        "elephant_factor": 2,
+        "contributor_retention": 0.4
+      },
+      "responsiveness": {
+        "median_first_response_hours": 17.4525,
+        "pr_review_coverage": 1.0,
+        "median_issue_close_hours": 1576.046388888889,
+        "median_pr_merge_hours": 47.15222222222222,
+        "pr_merge_ratio": 0.74,
+        "n_issues_sampled": 8,
+        "n_prs_sampled": 50,
+        "n_first_responses": 41
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.5555555555555556,
+        "distribution": 0.5197007958371594,
+        "responsiveness": 0.975,
+        "diversity": 0.5466721497952226,
+        "security": 0.0
+      },
+      "score": 54.58149103174621,
+      "archetype": "club",
+      "language": "rust",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "microsoft/FluidFramework",
+      "stars": 4937,
+      "forks": 581,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.18286915396741987,
+        "top2_share": 0.2837624802942722,
+        "hhi": 0.07226883237988309,
+        "truck_factor": 5,
+        "contributors_5plus": 41,
+        "commit_entropy": 0.7750026457335092,
+        "n_contributors_listed": 57,
+        "n_commits_window": 1903,
+        "elephant_factor": 2,
+        "contributor_retention": 0.8571428571428571
+      },
+      "responsiveness": {
+        "median_first_response_hours": 694.7141666666666,
+        "pr_review_coverage": 0.94,
+        "median_issue_close_hours": null,
+        "median_pr_merge_hours": 8.7025,
+        "pr_merge_ratio": 0.5,
+        "n_issues_sampled": 0,
+        "n_prs_sampled": 50,
+        "n_first_responses": 7
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.6666666666666666,
+        "distribution": 1.0,
+        "responsiveness": 0.6344069320436507,
+        "diversity": 0.8660723734762532,
+        "security": 0.8
+      },
+      "score": 79.34589090968348,
+      "archetype": "club",
+      "language": "typescript",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "X11Libre/xserver",
+      "stars": 4732,
+      "forks": 240,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 28,
+        "release_notes_share": 1.0,
+        "security_policy_inherited": true
+      },
+      "distribution": {
+        "top1_share": 0.6935912021236253,
+        "top2_share": 0.7868790291998483,
+        "hhi": 0.49392279208584583,
+        "truck_factor": 1,
+        "contributors_5plus": 23,
+        "commit_entropy": 0.34018338042109564,
+        "n_contributors_listed": 77,
+        "n_commits_window": 2637,
+        "elephant_factor": 1,
+        "contributor_retention": 0.35135135135135137
+      },
+      "responsiveness": {
+        "median_first_response_hours": 10.825555555555555,
+        "pr_review_coverage": 0.08,
+        "median_issue_close_hours": null,
+        "median_pr_merge_hours": 16.317222222222224,
+        "pr_merge_ratio": 0.98,
+        "n_issues_sampled": 0,
+        "n_prs_sampled": 50,
+        "n_first_responses": 41
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 0.12983413742964425,
+        "responsiveness": 0.75,
+        "diversity": 0.4325295457302075,
+        "security": 0.8
+      },
+      "score": 47.84490773280533,
+      "archetype": "club",
+      "language": "c",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "asterinas/asterinas",
+      "stars": 4779,
+      "forks": 342,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 50
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 4,
+        "release_notes_share": 0.5
+      },
+      "distribution": {
+        "top1_share": 0.22416713721061546,
+        "top2_share": 0.3331451157538114,
+        "hhi": 0.09068208201588998,
+        "truck_factor": 5,
+        "contributors_5plus": 35,
+        "commit_entropy": 0.7071966498956535,
+        "n_contributors_listed": 66,
+        "n_commits_window": 1771,
+        "elephant_factor": 2,
+        "contributor_retention": 0.5294117647058824
+      },
+      "responsiveness": {
+        "median_first_response_hours": 6.394861111111111,
+        "pr_review_coverage": 1.0,
+        "median_issue_close_hours": 17538.894583333335,
+        "median_pr_merge_hours": 75.77180555555555,
+        "pr_merge_ratio": 0.64,
+        "n_issues_sampled": 12,
+        "n_prs_sampled": 50,
+        "n_first_responses": 24
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.2222222222222222,
+        "distribution": 0.9865738126607692,
+        "responsiveness": 0.9283455808987867,
+        "diversity": 0.8418559463913048,
+        "security": 0.4583333333333333
+      },
+      "score": 68.28965168592009,
+      "archetype": "club",
+      "language": "rust",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "dtyq/magic",
+      "stars": 4939,
+      "forks": 542,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 50
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.2193342453260374,
+        "top2_share": 0.37346101231190154,
+        "hhi": 0.11574135587489856,
+        "truck_factor": 4,
+        "contributors_5plus": 20,
+        "commit_entropy": 0.7511541313246953,
+        "n_contributors_listed": 27,
+        "n_commits_window": 2193,
+        "elephant_factor": 3,
+        "contributor_retention": null
+      },
+      "responsiveness": {
+        "median_first_response_hours": 14.284166666666666,
+        "pr_review_coverage": 0.25,
+        "median_issue_close_hours": 4697.6970833333335,
+        "median_pr_merge_hours": 4.124305555555555,
+        "pr_merge_ratio": 0.631578947368421,
+        "n_issues_sampled": 46,
+        "n_prs_sampled": 19,
+        "n_first_responses": 39
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.3333333333333333,
+        "distribution": 0.8954311820133801,
+        "responsiveness": 0.6798245614035088,
+        "diversity": 0.861797533799937,
+        "security": 0.25
+      },
+      "score": 60.992567118737064,
+      "archetype": "club",
+      "language": "typescript",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "Martian-Engineering/lossless-claw",
+      "stars": 4894,
+      "forks": 433,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 50
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.4866412213740458,
+        "top2_share": 0.5954198473282443,
+        "hhi": 0.25560864751471357,
+        "truck_factor": 2,
+        "contributors_5plus": 12,
+        "commit_entropy": 0.5599062489272247,
+        "n_contributors_listed": 86,
+        "n_commits_window": 524,
+        "elephant_factor": 2,
+        "contributor_retention": null
+      },
+      "responsiveness": {
+        "median_first_response_hours": 164.19694444444445,
+        "pr_review_coverage": 0.52,
+        "median_issue_close_hours": 603.8740277777778,
+        "median_pr_merge_hours": 105.74666666666667,
+        "pr_merge_ratio": 0.76,
+        "n_issues_sampled": 14,
+        "n_prs_sampled": 50,
+        "n_first_responses": 25
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.2222222222222222,
+        "distribution": 0.4870157786712766,
+        "responsiveness": 0.7714008014903758,
+        "diversity": 0.5121064239554929,
+        "security": 0.8
+      },
+      "score": 52.84056241147738,
+      "archetype": "club",
+      "language": "typescript",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "mavlink/qgroundcontrol",
+      "stars": 4792,
+      "forks": 4934,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 100
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 2,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.4828226555246054,
+        "top2_share": 0.6304549675023212,
+        "hhi": 0.27249512685690247,
+        "truck_factor": 2,
+        "contributors_5plus": 18,
+        "commit_entropy": 0.4983994634510435,
+        "n_contributors_listed": 70,
+        "n_commits_window": 1077,
+        "elephant_factor": 2,
+        "contributor_retention": 0.38636363636363635
+      },
+      "responsiveness": {
+        "median_first_response_hours": 533.6541666666667,
+        "pr_review_coverage": 0.84,
+        "median_issue_close_hours": 2886.3063888888887,
+        "median_pr_merge_hours": 1.6522222222222223,
+        "pr_merge_ratio": 0.42,
+        "n_issues_sampled": 15,
+        "n_prs_sampled": 50,
+        "n_first_responses": 22
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.7777777777777778,
+        "distribution": 0.4778795512483953,
+        "responsiveness": 0.6359917534722221,
+        "diversity": 0.5928145195262907,
+        "security": 0.8666666666666666
+      },
+      "score": 66.00348608799314,
+      "archetype": "club",
+      "language": "c++",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "ydb-platform/ydb",
+      "stars": 4757,
+      "forks": 798,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": true,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 87
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 9,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.09675418647922265,
+        "top2_share": 0.1746261456825856,
+        "hhi": 0.021480229287750126,
+        "truck_factor": 30,
+        "contributors_5plus": 269,
+        "commit_entropy": 0.7636668314609805,
+        "n_contributors_listed": 609,
+        "n_commits_window": 14511,
+        "elephant_factor": 2,
+        "contributor_retention": 0.6090047393364929
+      },
+      "responsiveness": {
+        "median_first_response_hours": 1.7904166666666668,
+        "pr_review_coverage": 0.56,
+        "median_issue_close_hours": 6120.441944444445,
+        "median_pr_merge_hours": 14.429166666666667,
+        "pr_merge_ratio": 0.86,
+        "n_issues_sampled": 12,
+        "n_prs_sampled": 50,
+        "n_first_responses": 4
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.6666666666666666,
+        "distribution": 1.0,
+        "responsiveness": 0.8583333333333334,
+        "diversity": 0.8620238683789216,
+        "security": 0.8
+      },
+      "score": 83.76369135901716,
+      "archetype": "club",
+      "language": "c++",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "bcoles/kasld",
+      "stars": 500,
+      "forks": 51,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 57
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 9,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 1.0,
+        "top2_share": 1.0,
+        "hhi": 1.0,
+        "truck_factor": 1,
+        "contributors_5plus": 1,
+        "commit_entropy": -0.0,
+        "n_contributors_listed": 1,
+        "n_commits_window": 520,
+        "elephant_factor": 1,
+        "contributor_retention": null
+      },
+      "responsiveness": {
+        "median_first_response_hours": 1164.5044444444445,
+        "pr_review_coverage": 0.0,
+        "median_issue_close_hours": 5651.149444444444,
+        "median_pr_merge_hours": 2.792777777777778,
+        "pr_merge_ratio": 1.0,
+        "n_issues_sampled": 2,
+        "n_prs_sampled": 1,
+        "n_first_responses": 2
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.3333333333333333,
+        "distribution": 0.0,
+        "responsiveness": 0.5,
+        "diversity": 0.0,
+        "security": 0.6
+      },
+      "score": 27.333333333333332,
+      "archetype": "toy",
+      "language": "c",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "LnYo-Cly/ai4j",
+      "stars": 420,
+      "forks": 55,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 42
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 9,
+        "release_notes_share": 0.8888888888888888
+      },
+      "distribution": {
+        "top1_share": 0.9212827988338192,
+        "top2_share": 0.9941690962099126,
+        "hhi": 0.8540871575619002,
+        "truck_factor": 1,
+        "contributors_5plus": 2,
+        "commit_entropy": 0.18793707144764352,
+        "n_contributors_listed": 5,
+        "n_commits_window": 686,
+        "elephant_factor": 1,
+        "contributor_retention": 0.3333333333333333
+      },
+      "responsiveness": {
+        "median_first_response_hours": 34.499722222222225,
+        "pr_review_coverage": 0.0,
+        "median_issue_close_hours": null,
+        "median_pr_merge_hours": 0.044583333333333336,
+        "pr_merge_ratio": 1.0,
+        "n_issues_sampled": 0,
+        "n_prs_sampled": 50,
+        "n_first_responses": 33
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.2222222222222222,
+        "distribution": 0.0,
+        "responsiveness": 0.75,
+        "diversity": 0.18586011993409268,
+        "security": 0.6
+      },
+      "score": 32.343457354566944,
+      "archetype": "toy",
+      "language": "java",
+      "extracted_at": "2026-07-23"
+    },
+    {
+      "repo": "pietheinstrengholt/rssmonster",
+      "stars": 477,
+      "forks": 42,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 57
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.9882491186839013,
+        "top2_share": 0.9976498237367802,
+        "hhi": 0.9767302171634671,
+        "truck_factor": 1,
+        "contributors_5plus": 2,
+        "commit_entropy": 0.06351705872055044,
+        "n_contributors_listed": 3,
+        "n_commits_window": 851,
+        "elephant_factor": 1,
+        "contributor_retention": 0.6666666666666666
+      },
+      "responsiveness": {
+        "median_first_response_hours": 30.09777777777778,
+        "pr_review_coverage": 0.08,
+        "median_issue_close_hours": null,
+        "median_pr_merge_hours": 0.025416666666666667,
+        "pr_merge_ratio": 0.36,
+        "n_issues_sampled": 0,
+        "n_prs_sampled": 50,
+        "n_first_responses": 22
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.2222222222222222,
+        "distribution": 0.0,
+        "responsiveness": 0.5666666666666667,
+        "diversity": 0.25862068965517243,
+        "security": 0.75
+      },
+      "score": 32.01819923371648,
+      "archetype": "toy",
+      "language": "javascript",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "yan-labs/serenity-aleabitoreddit",
+      "stars": 454,
+      "forks": 74,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": false,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 28
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": false,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.5725359911406424,
+        "top2_share": 0.9346622369878184,
+        "hhi": 0.46305964246163583,
+        "truck_factor": 1,
+        "contributors_5plus": 3,
+        "commit_entropy": 0.6282886010283065,
+        "n_contributors_listed": 4,
+        "n_commits_window": 903,
+        "elephant_factor": 1,
+        "contributor_retention": null
+      },
+      "responsiveness": {
+        "median_first_response_hours": 381.0855555555556,
+        "pr_review_coverage": 0.0,
+        "median_issue_close_hours": 381.0855555555556,
+        "median_pr_merge_hours": 429.9025,
+        "pr_merge_ratio": 1.0,
+        "n_issues_sampled": 1,
+        "n_prs_sampled": 1,
+        "n_first_responses": 1
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.1111111111111111,
+        "distribution": 0.21766246550299703,
+        "responsiveness": 0.5574954316616494,
+        "diversity": 0.27455450623679617,
+        "security": 0.0
+      },
+      "score": 23.487565642137636,
+      "archetype": "toy",
+      "language": "python",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "amalshaji/dbcooper",
+      "stars": 456,
+      "forks": 31,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 42
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.8988095238095238,
+        "top2_share": 0.9642857142857143,
+        "hhi": 0.8125000000000001,
+        "truck_factor": 1,
+        "contributors_5plus": 2,
+        "commit_entropy": 0.24605787445549568,
+        "n_contributors_listed": 6,
+        "n_commits_window": 168,
+        "elephant_factor": 1,
+        "contributor_retention": 1.0
+      },
+      "responsiveness": {
+        "median_first_response_hours": 129.7238888888889,
+        "pr_review_coverage": 0.02,
+        "median_issue_close_hours": 1877.7893055555555,
+        "median_pr_merge_hours": 0.3368055555555556,
+        "pr_merge_ratio": 0.96,
+        "n_issues_sampled": 4,
+        "n_prs_sampled": 50,
+        "n_first_responses": 5
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.2222222222222222,
+        "distribution": 0.0,
+        "responsiveness": 0.719596767526455,
+        "diversity": 0.3107842162464209,
+        "security": 0.6
+      },
+      "score": 33.60925414978097,
+      "archetype": "toy",
+      "language": "typescript",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "haxenme/nme",
+      "stars": 496,
+      "forks": 123,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 37
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 9,
+        "release_notes_share": 0.0
+      },
+      "distribution": {
+        "top1_share": 0.7058823529411765,
+        "top2_share": 1.0,
+        "hhi": 0.5847750865051904,
+        "truck_factor": 1,
+        "contributors_5plus": 2,
+        "commit_entropy": 0.8739810481273579,
+        "n_contributors_listed": 2,
+        "n_commits_window": 34,
+        "elephant_factor": 1,
+        "contributor_retention": 1.0
+      },
+      "responsiveness": {
+        "median_first_response_hours": 10.508055555555556,
+        "pr_review_coverage": 0.14,
+        "median_issue_close_hours": 79.47805555555556,
+        "median_pr_merge_hours": 39.04236111111111,
+        "pr_merge_ratio": 0.84,
+        "n_issues_sampled": 26,
+        "n_prs_sampled": 50,
+        "n_first_responses": 27
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.2222222222222222,
+        "distribution": 0.062437524029219454,
+        "responsiveness": 0.75,
+        "diversity": 0.5086206896551724,
+        "security": 0.4
+      },
+      "score": 35.745804001113626,
+      "archetype": "toy",
+      "language": "c",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "erickong/penecho",
+      "stars": 1374,
+      "forks": 136,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 62
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 1,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.9166666666666666,
+        "top2_share": 1.0,
+        "hhi": 0.8472222222222221,
+        "truck_factor": 1,
+        "contributors_5plus": 1,
+        "commit_entropy": 0.4138168503036338,
+        "n_contributors_listed": 2,
+        "n_commits_window": 24,
+        "elephant_factor": 1,
+        "contributor_retention": null
+      },
+      "responsiveness": {
+        "median_first_response_hours": 188.9802777777778,
+        "pr_review_coverage": 0.0,
+        "median_issue_close_hours": 190.32666666666665,
+        "median_pr_merge_hours": 0.07319444444444445,
+        "pr_merge_ratio": 0.25,
+        "n_issues_sampled": 1,
+        "n_prs_sampled": 8,
+        "n_first_responses": 1
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 0.0,
+        "responsiveness": 0.46838531332671957,
+        "diversity": 0.14943659538268275,
+        "security": 0.4333333333333333
+      },
+      "score": 29.220366308385742,
+      "archetype": "toy",
+      "language": "javascript",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "edbrowse/edbrowse",
+      "stars": 471,
+      "forks": 32,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 37
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": false,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.7739234449760766,
+        "top2_share": 0.992822966507177,
+        "hhi": 0.6468916691467687,
+        "truck_factor": 1,
+        "contributors_5plus": 2,
+        "commit_entropy": 0.3210429004394596,
+        "n_contributors_listed": 6,
+        "n_commits_window": 836,
+        "elephant_factor": 1,
+        "contributor_retention": 0.75
+      },
+      "responsiveness": {
+        "median_first_response_hours": 1.5141666666666667,
+        "pr_review_coverage": 0.0,
+        "median_issue_close_hours": 51961.37416666667,
+        "median_pr_merge_hours": 1.6166666666666667,
+        "pr_merge_ratio": 0.82,
+        "n_issues_sampled": 31,
+        "n_prs_sampled": 50,
+        "n_first_responses": 50
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.2222222222222222,
+        "distribution": 0.014486975013290817,
+        "responsiveness": 0.75,
+        "diversity": 0.3375645826692651,
+        "security": 0.0
+      },
+      "score": 25.9811986709268,
+      "archetype": "toy",
+      "language": "c",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "fustyles/Arduino",
+      "stars": 426,
+      "forks": 291,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": false,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 14
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": false,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 1.0,
+        "top2_share": 1.0,
+        "hhi": 1.0,
+        "truck_factor": 1,
+        "contributors_5plus": 1,
+        "commit_entropy": -0.0,
+        "n_contributors_listed": 1,
+        "n_commits_window": 151,
+        "elephant_factor": 1,
+        "contributor_retention": 1.0
+      },
+      "responsiveness": {
+        "median_first_response_hours": null,
+        "pr_review_coverage": null,
+        "median_issue_close_hours": 19.82611111111111,
+        "median_pr_merge_hours": null,
+        "pr_merge_ratio": 0.0,
+        "n_issues_sampled": 3,
+        "n_prs_sampled": 1,
+        "n_first_responses": 0
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.1111111111111111,
+        "distribution": 0.0,
+        "responsiveness": 0.0,
+        "diversity": 0.25,
+        "security": 0.0
+      },
+      "score": 6.527777777777777,
+      "archetype": "toy",
+      "language": "c++",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "JungHoonGhae/tossinvest-cli",
+      "stars": 461,
+      "forks": 78,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 100
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.6921296296296297,
+        "top2_share": 0.888888888888889,
+        "hhi": 0.5230731310013718,
+        "truck_factor": 1,
+        "contributors_5plus": 4,
+        "commit_entropy": 0.39775565800443424,
+        "n_contributors_listed": 11,
+        "n_commits_window": 432,
+        "elephant_factor": 1,
+        "contributor_retention": null
+      },
+      "responsiveness": {
+        "median_first_response_hours": 5.0136111111111115,
+        "pr_review_coverage": 0.0,
+        "median_issue_close_hours": 8.155138888888889,
+        "median_pr_merge_hours": 0.0325,
+        "pr_merge_ratio": 0.94,
+        "n_issues_sampled": 4,
+        "n_prs_sampled": 50,
+        "n_first_responses": 11
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.6666666666666666,
+        "distribution": 0.11121256287151347,
+        "responsiveness": 0.75,
+        "diversity": 0.17627116719422978,
+        "security": 0.8
+      },
+      "score": 49.091048246367954,
+      "archetype": "toy",
+      "language": "go",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "spring-cloud/spring-cloud-circuitbreaker",
+      "stars": 358,
+      "forks": 122,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 75
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 11,
+        "release_notes_share": 1.0,
+        "security_policy_inherited": true
+      },
+      "distribution": {
+        "top1_share": 0.4077669902912621,
+        "top2_share": 0.7961165048543689,
+        "hhi": 0.33283061551512866,
+        "truck_factor": 2,
+        "contributors_5plus": 4,
+        "commit_entropy": 0.6644675650563922,
+        "n_contributors_listed": 7,
+        "n_commits_window": 103,
+        "elephant_factor": 2,
+        "contributor_retention": 0.6
+      },
+      "responsiveness": {
+        "median_first_response_hours": 8.246944444444445,
+        "pr_review_coverage": 0.16,
+        "median_issue_close_hours": 14.116111111111111,
+        "median_pr_merge_hours": 12.489444444444445,
+        "pr_merge_ratio": 0.86,
+        "n_issues_sampled": 9,
+        "n_prs_sampled": 50,
+        "n_first_responses": 42
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.3333333333333333,
+        "distribution": 0.479353483939213,
+        "responsiveness": 0.75,
+        "diversity": 0.6024576279142287,
+        "security": 1.0
+      },
+      "score": 59.35403485052709,
+      "archetype": "toy",
+      "language": "java",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "test-unit/test-unit",
+      "stars": 275,
+      "forks": 104,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 37
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 8,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.62,
+        "top2_share": 0.8200000000000001,
+        "hhi": 0.4368,
+        "truck_factor": 1,
+        "contributors_5plus": 3,
+        "commit_entropy": 0.6327658712311418,
+        "n_contributors_listed": 6,
+        "n_commits_window": 50,
+        "elephant_factor": 1,
+        "contributor_retention": 0.6
+      },
+      "responsiveness": {
+        "median_first_response_hours": 6.9575,
+        "pr_review_coverage": 0.26,
+        "median_issue_close_hours": 10.622916666666667,
+        "median_pr_merge_hours": 9.461388888888889,
+        "pr_merge_ratio": 0.94,
+        "n_issues_sampled": 6,
+        "n_prs_sampled": 50,
+        "n_first_responses": 43
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.2222222222222222,
+        "distribution": 0.20879999999999999,
+        "responsiveness": 0.75,
+        "diversity": 0.4575149047500383,
+        "security": 0.8
+      },
+      "score": 44.63827912680613,
+      "archetype": "toy",
+      "language": "ruby",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "AITabby/opencodex",
+      "stars": 397,
+      "forks": 27,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": false,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 28
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": false,
+        "dependency_automation": false,
+        "releases_12m": 2,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.524390243902439,
+        "top2_share": 0.9634146341463414,
+        "hhi": 0.46847114812611546,
+        "truck_factor": 1,
+        "contributors_5plus": 2,
+        "commit_entropy": 0.6089791455766427,
+        "n_contributors_listed": 4,
+        "n_commits_window": 82,
+        "elephant_factor": 1,
+        "contributor_retention": null
+      },
+      "responsiveness": {
+        "median_first_response_hours": null,
+        "pr_review_coverage": null,
+        "median_issue_close_hours": 0.04722222222222222,
+        "median_pr_merge_hours": null,
+        "pr_merge_ratio": 0.0,
+        "n_issues_sampled": 1,
+        "n_prs_sampled": 2,
+        "n_first_responses": 0
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.1111111111111111,
+        "distribution": 0.24080243241456797,
+        "responsiveness": 0.0,
+        "diversity": 0.25386527457672636,
+        "security": 0.26666666666666666
+      },
+      "score": 16.605817706792873,
+      "archetype": "toy",
+      "language": "typescript",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "justnullname/QuickView",
+      "stars": 376,
+      "forks": 12,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 57
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.8550573514077163,
+        "top2_share": 0.9551616266944734,
+        "hhi": 0.7421779943262935,
+        "truck_factor": 1,
+        "contributors_5plus": 4,
+        "commit_entropy": 0.30297974580166925,
+        "n_contributors_listed": 6,
+        "n_commits_window": 959,
+        "elephant_factor": 1,
+        "contributor_retention": 1.0
+      },
+      "responsiveness": {
+        "median_first_response_hours": 9.391805555555555,
+        "pr_review_coverage": 0.0,
+        "median_issue_close_hours": 242.02694444444444,
+        "median_pr_merge_hours": 15.925,
+        "pr_merge_ratio": 0.54,
+        "n_issues_sampled": 35,
+        "n_prs_sampled": 50,
+        "n_first_responses": 42
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.2222222222222222,
+        "distribution": 0.0,
+        "responsiveness": 0.6416666666666666,
+        "diversity": 0.34835483532325623,
+        "security": 0.6
+      },
+      "score": 32.61421141873773,
+      "archetype": "toy",
+      "language": "c++",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "gittower/git-flow-next",
+      "stars": 395,
+      "forks": 27,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 62
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 9,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.9449035812672176,
+        "top2_share": 0.9862258953168044,
+        "hhi": 0.8945882567219908,
+        "truck_factor": 1,
+        "contributors_5plus": 2,
+        "commit_entropy": 0.13690638672213096,
+        "n_contributors_listed": 7,
+        "n_commits_window": 363,
+        "elephant_factor": 1,
+        "contributor_retention": 0.6666666666666666
+      },
+      "responsiveness": {
+        "median_first_response_hours": 666.8175,
+        "pr_review_coverage": 0.8,
+        "median_issue_close_hours": 2595.4269444444444,
+        "median_pr_merge_hours": 20.329722222222223,
+        "pr_merge_ratio": 0.8333333333333334,
+        "n_issues_sampled": 29,
+        "n_prs_sampled": 42,
+        "n_first_responses": 19
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 0.0,
+        "responsiveness": 0.7281184895833334,
+        "diversity": 0.2718015420559335,
+        "security": 0.6
+      },
+      "score": 38.75050403361678,
+      "archetype": "toy",
+      "language": "go",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "morshedalam/rename",
+      "stars": 245,
+      "forks": 32,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 42
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": false,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.6,
+        "top2_share": 1.0,
+        "hhi": 0.52,
+        "truck_factor": 1,
+        "contributors_5plus": 0,
+        "commit_entropy": 0.9709505944546688,
+        "n_contributors_listed": 2,
+        "n_commits_window": 5,
+        "elephant_factor": 1,
+        "contributor_retention": 0.0
+      },
+      "responsiveness": {
+        "median_first_response_hours": 90.86833333333334,
+        "pr_review_coverage": 0.5,
+        "median_issue_close_hours": 24901.75152777778,
+        "median_pr_merge_hours": 5144.206111111111,
+        "pr_merge_ratio": 0.5,
+        "n_issues_sampled": 10,
+        "n_prs_sampled": 8,
+        "n_first_responses": 9
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.2222222222222222,
+        "distribution": 0.16444444444444442,
+        "responsiveness": 0.4423852926587301,
+        "diversity": 0.25,
+        "security": 0.0
+      },
+      "score": 22.26437251984127,
+      "archetype": "toy",
+      "language": "ruby",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "containers/conmon-rs",
+      "stars": 243,
+      "forks": 48,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 62
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 7,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.8895434462444771,
+        "top2_share": 0.9823269513991163,
+        "hhi": 0.800208658232131,
+        "truck_factor": 1,
+        "contributors_5plus": 3,
+        "commit_entropy": 0.3604849800950232,
+        "n_contributors_listed": 3,
+        "n_commits_window": 679,
+        "elephant_factor": 1,
+        "contributor_retention": 1.0
+      },
+      "responsiveness": {
+        "median_first_response_hours": 6.161666666666667,
+        "pr_review_coverage": 0.66,
+        "median_issue_close_hours": 14752.745277777778,
+        "median_pr_merge_hours": 0.5077777777777778,
+        "pr_merge_ratio": 0.82,
+        "n_issues_sampled": 2,
+        "n_prs_sampled": 50,
+        "n_first_responses": 33
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.4444444444444444,
+        "distribution": 0.0,
+        "responsiveness": 0.9,
+        "diversity": 0.3602717293442817,
+        "security": 0.8
+      },
+      "score": 46.51518705127533,
+      "archetype": "toy",
+      "language": "rust",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "JChristensen/Timezone",
+      "stars": 304,
+      "forks": 108,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 71
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": false,
+        "dependency_automation": false,
+        "releases_12m": 3,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 1.0,
+        "top2_share": 1.0,
+        "hhi": 1.0,
+        "truck_factor": 1,
+        "contributors_5plus": 1,
+        "commit_entropy": -0.0,
+        "n_contributors_listed": 1,
+        "n_commits_window": 5,
+        "elephant_factor": 1,
+        "contributor_retention": 1.0
+      },
+      "responsiveness": {
+        "median_first_response_hours": 1.8143055555555556,
+        "pr_review_coverage": 0.0,
+        "median_issue_close_hours": 5.0247222222222225,
+        "median_pr_merge_hours": 64.8013888888889,
+        "pr_merge_ratio": 0.08333333333333333,
+        "n_issues_sampled": 43,
+        "n_prs_sampled": 12,
+        "n_first_responses": 44
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.3333333333333333,
+        "distribution": 0.0,
+        "responsiveness": 0.4969825091794381,
+        "diversity": 0.25,
+        "security": 0.3
+      },
+      "score": 26.522983516922093,
+      "archetype": "toy",
+      "language": "c++",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "yolfinance/yolfi-agent",
+      "stars": 207,
+      "forks": 1,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 50
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 2,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.5882352941176471,
+        "top2_share": 1.0,
+        "hhi": 0.5155709342560554,
+        "truck_factor": 1,
+        "contributors_5plus": 2,
+        "commit_entropy": 0.9774178175281716,
+        "n_contributors_listed": 2,
+        "n_commits_window": 17,
+        "elephant_factor": 1,
+        "contributor_retention": null
+      },
+      "responsiveness": {
+        "median_first_response_hours": null,
+        "pr_review_coverage": null,
+        "median_issue_close_hours": 12.113055555555556,
+        "median_pr_merge_hours": null,
+        "pr_merge_ratio": null,
+        "n_issues_sampled": 1,
+        "n_prs_sampled": 0,
+        "n_first_responses": 0
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.2222222222222222,
+        "distribution": 0.1739331026528258,
+        "responsiveness": null,
+        "diversity": 0.3448275862068966,
+        "security": 0.4666666666666667
+      },
+      "score": 27.595371143724556,
+      "archetype": "toy",
+      "language": "javascript",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "EFanZh/LeetCode",
+      "stars": 229,
+      "forks": 20,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": false,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 28
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 1.0,
+        "top2_share": 1.0,
+        "hhi": 1.0,
+        "truck_factor": 1,
+        "contributors_5plus": 1,
+        "commit_entropy": -0.0,
+        "n_contributors_listed": 1,
+        "n_commits_window": 390,
+        "elephant_factor": 1,
+        "contributor_retention": 1.0
+      },
+      "responsiveness": {
+        "median_first_response_hours": null,
+        "pr_review_coverage": 0.0,
+        "median_issue_close_hours": null,
+        "median_pr_merge_hours": 0.07763888888888888,
+        "pr_merge_ratio": 0.6666666666666666,
+        "n_issues_sampled": 0,
+        "n_prs_sampled": 3,
+        "n_first_responses": 0
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.1111111111111111,
+        "distribution": 0.0,
+        "responsiveness": 0.5925925925925926,
+        "diversity": 0.25,
+        "security": 0.25
+      },
+      "score": 22.12962962962963,
+      "archetype": "toy",
+      "language": "rust",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "Au1rxx/free-vpn-subscriptions",
+      "stars": 363,
+      "forks": 34,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": false,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 28
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": false,
+        "dependency_automation": false,
+        "releases_12m": 30,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.9442553191489361,
+        "top2_share": 0.9927659574468085,
+        "hhi": 0.8940085106382978,
+        "truck_factor": 1,
+        "contributors_5plus": 3,
+        "commit_entropy": 0.1731092871196026,
+        "n_contributors_listed": 4,
+        "n_commits_window": 2350,
+        "elephant_factor": 1,
+        "contributor_retention": null
+      },
+      "responsiveness": {
+        "median_first_response_hours": null,
+        "pr_review_coverage": null,
+        "median_issue_close_hours": null,
+        "median_pr_merge_hours": null,
+        "pr_merge_ratio": null,
+        "n_issues_sampled": 0,
+        "n_prs_sampled": 0,
+        "n_first_responses": 0
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.1111111111111111,
+        "distribution": 0.0,
+        "responsiveness": null,
+        "diversity": 0.05780245199455625,
+        "security": 0.4
+      },
+      "score": 12.05601819712015,
+      "archetype": "toy",
+      "language": "go",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "Aleksefo/react-native-webp-format",
+      "stars": 172,
+      "forks": 7,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 42
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": false,
+        "dependency_automation": false,
+        "releases_12m": 2,
+        "release_notes_share": 1.0
+      },
+      "distribution": {
+        "top1_share": 0.5,
+        "top2_share": 0.8,
+        "hhi": 0.36,
+        "truck_factor": 1,
+        "contributors_5plus": 1,
+        "commit_entropy": 0.8427376486136672,
+        "n_contributors_listed": 4,
+        "n_commits_window": 10,
+        "elephant_factor": 1,
+        "contributor_retention": 0.0
+      },
+      "responsiveness": {
+        "median_first_response_hours": 1197.7668055555555,
+        "pr_review_coverage": 0.0,
+        "median_issue_close_hours": 15797.73361111111,
+        "median_pr_merge_hours": 912.7754166666666,
+        "pr_merge_ratio": 0.52,
+        "n_issues_sampled": 11,
+        "n_prs_sampled": 50,
+        "n_first_responses": 12
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.2222222222222222,
+        "distribution": 0.32666666666666666,
+        "responsiveness": 0.2280216564894636,
+        "diversity": 0.25,
+        "security": 0.26666666666666666
+      },
+      "score": 26.032655352011492,
+      "archetype": "toy",
+      "language": "ruby",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "Defelo/nixpkgs-review-gha",
+      "stars": 211,
+      "forks": 486,
+      "artifacts": {
+        "readme": true,
+        "contributing": false,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 42
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.4824561403508772,
+        "top2_share": 0.8596491228070176,
+        "hhi": 0.37903970452446906,
+        "truck_factor": 2,
+        "contributors_5plus": 3,
+        "commit_entropy": 0.525846016770257,
+        "n_contributors_listed": 11,
+        "n_commits_window": 114,
+        "elephant_factor": 2,
+        "contributor_retention": 0.5
+      },
+      "responsiveness": {
+        "median_first_response_hours": 8.44,
+        "pr_review_coverage": 0.24,
+        "median_issue_close_hours": 271.14402777777775,
+        "median_pr_merge_hours": 12.713055555555556,
+        "pr_merge_ratio": 0.86,
+        "n_issues_sampled": 2,
+        "n_prs_sampled": 50,
+        "n_first_responses": 16
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.2222222222222222,
+        "distribution": 0.40705345234431106,
+        "responsiveness": 0.75,
+        "diversity": 0.5443292424425794,
+        "security": 0.25
+      },
+      "score": 42.646830500802025,
+      "archetype": "toy",
+      "language": "rust",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "tailuge/billiards",
+      "stars": 232,
+      "forks": 57,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": false,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": false,
+        "codeowners": false,
+        "governance": false,
+        "funding": false,
+        "health_percentage": 71
+      },
+      "security": {
+        "security_policy": false,
+        "ci_configured": true,
+        "dependency_automation": false,
+        "releases_12m": 0,
+        "release_notes_share": null
+      },
+      "distribution": {
+        "top1_share": 0.7758527341635084,
+        "top2_share": 0.9907958852192745,
+        "hhi": 0.6482327390236703,
+        "truck_factor": 1,
+        "contributors_5plus": 3,
+        "commit_entropy": 0.5192961808235139,
+        "n_contributors_listed": 3,
+        "n_commits_window": 1847,
+        "elephant_factor": 1,
+        "contributor_retention": 1.0
+      },
+      "responsiveness": {
+        "median_first_response_hours": 26.511805555555554,
+        "pr_review_coverage": 0.0,
+        "median_issue_close_hours": null,
+        "median_pr_merge_hours": 0.5102777777777778,
+        "pr_merge_ratio": 0.82,
+        "n_issues_sampled": 0,
+        "n_prs_sampled": 50,
+        "n_first_responses": 6
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.3333333333333333,
+        "distribution": 0.01341514768693979,
+        "responsiveness": 0.75,
+        "diversity": 0.41699001531874264,
+        "security": 0.25
+      },
+      "score": 33.67356225528797,
+      "archetype": "toy",
+      "language": "typescript",
+      "extracted_at": "2026-07-24"
+    },
+    {
+      "repo": "ImageMagick/ImageMagick6",
+      "stars": 249,
+      "forks": 96,
+      "artifacts": {
+        "readme": true,
+        "contributing": true,
+        "code_of_conduct": true,
+        "license": true,
+        "issue_template": false,
+        "pull_request_template": true,
+        "codeowners": false,
+        "governance": false,
+        "funding": true,
+        "health_percentage": 100
+      },
+      "security": {
+        "security_policy": true,
+        "ci_configured": true,
+        "dependency_automation": true,
+        "releases_12m": 22,
+        "release_notes_share": 0.13636363636363635,
+        "security_policy_inherited": true
+      },
+      "distribution": {
+        "top1_share": 0.6616847826086957,
+        "top2_share": 0.9429347826086957,
+        "hhi": 0.519132502362949,
+        "truck_factor": 1,
+        "contributors_5plus": 4,
+        "commit_entropy": 0.4627928649567414,
+        "n_contributors_listed": 6,
+        "n_commits_window": 736,
+        "elephant_factor": 1,
+        "contributor_retention": 0.75
+      },
+      "responsiveness": {
+        "median_first_response_hours": 17.66027777777778,
+        "pr_review_coverage": 0.4,
+        "median_issue_close_hours": 134.68097222222224,
+        "median_pr_merge_hours": 11.26361111111111,
+        "pr_merge_ratio": 0.86,
+        "n_issues_sampled": 24,
+        "n_prs_sampled": 50,
+        "n_first_responses": 44
+      },
+      "backend": "api+git",
+      "subscores": {
+        "artifacts": 0.6666666666666666,
+        "distribution": 0.1307534525309808,
+        "responsiveness": 0.7916666666666666,
+        "diversity": 0.4054309493072106,
+        "security": 0.8340909090909092
+      },
+      "score": 54.36166418924632,
+      "archetype": "toy",
+      "language": "c",
+      "extracted_at": "2026-07-24"
+    }
+  ],
+  "errors": []
+}
