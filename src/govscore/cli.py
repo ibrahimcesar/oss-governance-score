@@ -21,7 +21,8 @@ def load_config() -> dict:
     return yaml.safe_load((ROOT / "config" / "metrics.yaml").read_text())
 
 
-def extract_repo(gh: GitHubClient, repo: str) -> dict:
+def extract_repo(gh: GitHubClient, repo: str,
+                 include_contributions: bool = True) -> dict:
     meta = gh.get(repo, f"/repos/{repo}", "repo_metadata") or {}
     if not meta:
         # 404 (removido/privado desde a amostragem): erro explícito — nunca
@@ -33,7 +34,8 @@ def extract_repo(gh: GitHubClient, repo: str) -> dict:
         "forks": meta.get("forks_count"),
         "artifacts": extract_artifacts(gh, repo),
         "security": extract_security(gh, repo),
-        "distribution": extract_contributions(gh, repo),
+        "distribution": (extract_contributions(gh, repo)
+                         if include_contributions else {}),
         "responsiveness": extract_responsiveness(gh, repo),
         "backend": "api",
     }
@@ -41,9 +43,13 @@ def extract_repo(gh: GitHubClient, repo: str) -> dict:
 
 def extract_both(gh: GitHubClient, repo: str) -> dict:
     """Modo canônico da fase completa: API (D1/D3/D5, releases, stars) +
-    git (D2/D4 na janela de 12 meses — método §3.2.2)."""
+    git (D2/D4 na janela de 12 meses — método §3.2.2).
+
+    /contributors da API é dispensável aqui (D2/D4 vêm do git) e retorna
+    403 permanente em repositórios gigantes ("list is too large", ex.:
+    torvalds/linux) — por isso não é consultado neste modo."""
     from govscore.extract.git_extractor import extract_via_git
-    m = extract_repo(gh, repo)
+    m = extract_repo(gh, repo, include_contributions=False)
     g = extract_via_git(repo)
     m["distribution"] = g["distribution"]
     m["backend"] = "api+git"
