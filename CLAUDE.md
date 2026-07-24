@@ -75,7 +75,11 @@ PYTHONPATH=src uv run python -m govscore.cli extract --repo owner/name
    (limiares no plano, §3.1) até n=100 — parâmetros em `config/sampling.yaml`,
    amostra gerada em `config/sample_full.yaml` (com lista `ambiguous` para
    inspeção manual; critério de inclusão: ≥1 commit no branch default em 12m)
-5. [ ] Extração completa (janela < 1 semana) + QA do dataset
+5. [x] Extração completa (janela < 1 semana) + QA do dataset — 100/100 em
+   2026-07-23→24 (`govscore run`, retomável); dataset em `data/processed/`
+   (full_metrics.json, metrics.parquet, scores.csv), QA em
+   `results/qa_extracao.md`. Pendência de inspeção manual: possíveis
+   não-software na amostra (ex.: `github/explore`, `EFanZh/LeetCode`)
 6. [ ] Análise de sensibilidade dos pesos (`score/sensitivity.py`: pesos
    iguais, ±25%, leave-one-dimension-out)
 7. [ ] Validação: deps.dev (dependentes), OpenSSF Scorecard, stars/forks/
