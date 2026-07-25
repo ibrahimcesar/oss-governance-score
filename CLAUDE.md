@@ -89,7 +89,10 @@ PYTHONPATH=src uv run python -m govscore.cli extract --repo owner/name
    ρ=0,750, forks 0,454, stars 0,403, todos p_adj<0,001; releases excluída
    por circularidade com D5; dependentes sem poder (n=5, cobertura
    estrutural). Relatório em `results/validacao.md`
-8. [ ] Figuras e tabelas para as seções 4.2/4.3 do TCC
+8. [x] Figuras e tabelas para as seções 4.2/4.3 do TCC — `make figures`
+   regenera as 7 figuras (PNG+PDF em `figures/`) e `results/tabelas_tcc.md`.
+   **Plano de código concluído (itens 1–8)**; restam redação e empacotamento
+   (README de reprodução, dataset publicado — sem PII por construção)
 
 ## Cuidados metodológicos (não violar)
 
