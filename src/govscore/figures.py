@@ -241,6 +241,170 @@ def fig_pilot_ranking(scores_path: Path, out_stem: Path) -> None:
     plt.close(fig)
 
 
+def fig_score_boxplot(scores_csv: Path, out_stem: Path) -> None:
+    """Boxplot de score por arquétipo + pontos individuais (n=25 cada)."""
+    import numpy as np
+    import pandas as pd
+    df = pd.read_csv(scores_csv)
+
+    fig, ax = plt.subplots(figsize=(7.2, 4.2), dpi=200)
+    fig.patch.set_facecolor(SURFACE)
+    _style(ax)
+    ax.grid(axis="x", visible=False)
+
+    order = (df.groupby("archetype")["score"].median()
+             .sort_values(ascending=False).index.tolist())
+    rng = np.random.default_rng(42)  # jitter determinístico (reprodutível)
+    for i, arch in enumerate(order):
+        vals = df.loc[df.archetype == arch, "score"].dropna().values
+        bp = ax.boxplot([vals], positions=[i], widths=0.5, patch_artist=True,
+                        showfliers=False,
+                        boxprops=dict(facecolor=ARCH_COLOR[arch], alpha=0.25,
+                                      edgecolor=ARCH_COLOR[arch], linewidth=1.4),
+                        whiskerprops=dict(color=ARCH_COLOR[arch], linewidth=1.2),
+                        capprops=dict(color=ARCH_COLOR[arch], linewidth=1.2),
+                        medianprops=dict(color=INK, linewidth=1.6))
+        ax.scatter(rng.normal(i, 0.08, len(vals)), vals, s=14,
+                   color=ARCH_COLOR[arch], edgecolors=SURFACE,
+                   linewidths=0.5, zorder=3, alpha=0.9)
+
+    ax.set_xticks(range(len(order)))
+    ax.set_xticklabels([f"{ARCH_LABEL[a]}\n(n=25)" for a in order],
+                       color=INK_2, fontsize=9)
+    ax.set_ylabel("Score de governança (0–100)", color=INK_2, fontsize=9)
+    ax.set_ylim(0, 100)
+    ax.set_title("Distribuição do score por arquétipo (n=100)",
+                 color=INK, fontsize=11, loc="left", pad=14)
+    ax.text(0, 1.02, "caixas: quartis e mediana; pontos: repositórios "
+            "(variância intra-arquétipo não trivial — critério DSR §6.3)",
+            transform=ax.transAxes, color=INK_2, fontsize=8)
+    fig.tight_layout()
+    for ext in ("png", "pdf"):
+        fig.savefig(f"{out_stem}.{ext}", facecolor=SURFACE, bbox_inches="tight")
+    plt.close(fig)
+
+
+def fig_dimension_heatmap(scores_csv: Path, out_stem: Path) -> None:
+    """Heatmap de Spearman entre os sub-scores das 5 dimensões (divergente
+    azul↔vermelho com ponto médio neutro; exclusão par a par de faltantes)."""
+    import pandas as pd
+    from matplotlib.colors import LinearSegmentedColormap, Normalize
+    df = pd.read_csv(scores_csv)
+    cols = {f"subscore_{k}": lbl.replace("\n", " ")
+            for k, lbl in DIMENSIONS}
+    corr = df[list(cols)].corr(method="spearman")
+
+    cmap = LinearSegmentedColormap.from_list(
+        "div", ["#e34948", "#f0efec", "#2a78d6"])  # pares divergentes da paleta
+    norm = Normalize(-1, 1)
+
+    fig, ax = plt.subplots(figsize=(6.4, 5.2), dpi=200)
+    fig.patch.set_facecolor(SURFACE)
+    ax.set_facecolor(SURFACE)
+    im = ax.imshow(corr.values, cmap=cmap, norm=norm)
+    labels = [cols[c] for c in corr.columns]
+    ax.set_xticks(range(len(labels)))
+    ax.set_yticks(range(len(labels)))
+    ax.set_xticklabels(labels, fontsize=7.5, color=INK_2, rotation=30,
+                       ha="right")
+    ax.set_yticklabels(labels, fontsize=7.5, color=INK_2)
+    ax.tick_params(length=0)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+    for i in range(len(labels)):
+        for j in range(len(labels)):
+            v = corr.values[i, j]
+            ax.text(j, i, f"{v:.2f}", ha="center", va="center", fontsize=8,
+                    color="#ffffff" if abs(v) > 0.55 else INK)
+    cbar = fig.colorbar(im, shrink=0.8)
+    cbar.ax.tick_params(labelsize=7, colors=MUTED)
+    cbar.outline.set_visible(False)
+    ax.set_title("Correlação (ρ de Spearman) entre dimensões, n=100",
+                 color=INK, fontsize=11, loc="left", pad=12)
+    fig.tight_layout()
+    for ext in ("png", "pdf"):
+        fig.savefig(f"{out_stem}.{ext}", facecolor=SURFACE, bbox_inches="tight")
+    plt.close(fig)
+
+
+def _validation_scatter(ax, df, xcol, xlabel, log_x=False):
+    _style(ax)
+    for arch in ARCH_ORDER:
+        sub = df[(df.archetype == arch) & df[xcol].notna()]
+        ax.scatter(sub[xcol], sub.score, s=24, color=ARCH_COLOR[arch],
+                   edgecolors=SURFACE, linewidths=0.6, zorder=3,
+                   label=ARCH_LABEL[arch])
+    if log_x:
+        ax.set_xscale("log")
+    ax.set_xlabel(xlabel, color=INK_2, fontsize=9)
+    ax.set_ylabel("Score de governança", color=INK_2, fontsize=9)
+    ax.set_ylim(0, 100)
+
+
+def fig_validation_scatters(ext_csv: Path, validation_json: Path,
+                            out_stem: Path) -> None:
+    """Scatters score × Scorecard e score × stars (log), com ρ da família
+    corrigida anotado (lidos de validation.json — nunca recalculados aqui)."""
+    import pandas as pd
+    df = pd.read_csv(ext_csv)
+    val = json.loads(validation_json.read_text())["global"]
+
+    fig, axes = plt.subplots(1, 2, figsize=(7.6, 3.9), dpi=200)
+    fig.patch.set_facecolor(SURFACE)
+
+    _validation_scatter(axes[0], df, "scorecard",
+                        "OpenSSF Scorecard (0–10)")
+    g = val["scorecard"]
+    axes[0].text(0.03, 0.96, f"ρ = {g['rho']:.3f} (n={g['n']}, "
+                 f"p aj. < 0,001)", transform=axes[0].transAxes,
+                 fontsize=8, color=INK_2, va="top")
+
+    _validation_scatter(axes[1], df, "stars", "Stars (log)", log_x=True)
+    g = val["stars"]
+    axes[1].text(0.03, 0.96, f"ρ = {g['rho']:.3f} (n={g['n']}, "
+                 f"p aj. < 0,001)", transform=axes[1].transAxes,
+                 fontsize=8, color=INK_2, va="top")
+
+    axes[0].set_title("Validade convergente", color=INK, fontsize=10,
+                      loc="left", pad=10)
+    axes[1].set_title("Popularidade (proxy fraco — declarado)", color=INK,
+                      fontsize=10, loc="left", pad=10)
+    handles, lbls = axes[0].get_legend_handles_labels()
+    leg = fig.legend(handles, lbls, loc="lower center", ncol=4, fontsize=7.5,
+                     frameon=False, bbox_to_anchor=(0.5, -0.04))
+    for txt in leg.get_texts():
+        txt.set_color(INK_2)
+    fig.tight_layout()
+    for ext in ("png", "pdf"):
+        fig.savefig(f"{out_stem}.{ext}", facecolor=SURFACE, bbox_inches="tight")
+    plt.close(fig)
+
+
+def write_tcc_tables(scores_csv: Path, out_path: Path) -> None:
+    """Tabelas consolidadas para as seções 4.2/4.3 (descritiva + extremos)."""
+    import pandas as pd
+    df = pd.read_csv(scores_csv)
+    lines = ["# Tabelas para as seções 4.2/4.3", "",
+             "## Estatística descritiva do score por arquétipo", "",
+             "| Arquétipo | n | média | mediana | dp | mín | máx |",
+             "|---|---|---|---|---|---|---|"]
+    for arch in ["federation", "stadium", "club", "toy"]:
+        s = df.loc[df.archetype == arch, "score"]
+        lines.append(f"| {ARCH_LABEL[arch]} | {len(s)} | {s.mean():.1f} | "
+                     f"{s.median():.1f} | {s.std():.1f} | {s.min():.1f} | "
+                     f"{s.max():.1f} |")
+    lines += ["", "## Extremos (5 maiores e 5 menores scores)", "",
+              "| repo | arquétipo | linguagem | score |", "|---|---|---|---|"]
+    ext = pd.concat([df.nlargest(5, "score"), df.nsmallest(5, "score")])
+    for _, r in ext.iterrows():
+        lines.append(f"| {r['repo']} | {ARCH_LABEL[r['archetype']]} | "
+                     f"{r['language']} | {r['score']:.1f} |")
+    lines += ["", "Sub-scores por dimensão, sensibilidade e validação: ver "
+              "`results/qa_extracao.md`, `results/sensibilidade.md` e "
+              "`results/validacao.md`.", ""]
+    out_path.write_text("\n".join(lines))
+
+
 def main() -> None:
     FIG_DIR.mkdir(exist_ok=True)
     fig_sample_map(ROOT / "config" / "sample_full.yaml",
@@ -251,6 +415,15 @@ def main() -> None:
                          FIG_DIR / "fig_amostra_linguagens")
     fig_pilot_ranking(ROOT / "data" / "processed" / "pilot_scores.json",
                       FIG_DIR / "fig_pilotos_ranking")
+    scores_csv = ROOT / "data" / "processed" / "scores.csv"
+    if scores_csv.exists():  # figuras da fase completa (itens 5–7)
+        fig_score_boxplot(scores_csv, FIG_DIR / "fig_score_boxplot")
+        fig_dimension_heatmap(scores_csv, FIG_DIR / "fig_dimensoes_heatmap")
+        fig_validation_scatters(
+            ROOT / "data" / "processed" / "external_indicators.csv",
+            ROOT / "results" / "validation.json",
+            FIG_DIR / "fig_validacao_scatters")
+        write_tcc_tables(scores_csv, ROOT / "results" / "tabelas_tcc.md")
     print(f"figuras em {FIG_DIR}/")
 
 
