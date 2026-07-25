@@ -84,8 +84,11 @@ PYTHONPATH=src uv run python -m govscore.cli extract --repo owner/name
    iguais, ±25%, leave-one-dimension-out) — ranking robusto (ρ ≥ 0,935 em
    todas as variantes; critério DSR ≥ 0,8 satisfeito). Relatório em
    `results/sensibilidade.md`; comando `govscore sensitivity`
-7. [ ] Validação: deps.dev (dependentes), OpenSSF Scorecard, stars/forks/
-   releases → Spearman + Holm–Bonferroni (`validate/`)
+7. [x] Validação: deps.dev (dependentes), OpenSSF Scorecard, stars/forks →
+   Spearman + Holm–Bonferroni (`validate/`; `govscore validate`) — scorecard
+   ρ=0,750, forks 0,454, stars 0,403, todos p_adj<0,001; releases excluída
+   por circularidade com D5; dependentes sem poder (n=5, cobertura
+   estrutural). Relatório em `results/validacao.md`
 8. [ ] Figuras e tabelas para as seções 4.2/4.3 do TCC
 
 ## Cuidados metodológicos (não violar)
