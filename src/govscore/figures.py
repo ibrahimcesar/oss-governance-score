@@ -18,6 +18,8 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
+
+plt.rcParams["savefig.dpi"] = 300  # PNG de saída em 300 dpi (monografia)
 import yaml  # noqa: E402
 from matplotlib.patches import Patch  # noqa: E402
 
@@ -405,6 +407,337 @@ def write_tcc_tables(scores_csv: Path, out_path: Path) -> None:
     out_path.write_text("\n".join(lines))
 
 
+SEQ_BLUE = ["#cde2fb", "#86b6ef", "#3987e5", "#1c5cab", "#0d366b"]
+
+
+def fig_archetype_dimensions(scores_csv: Path, out_stem: Path) -> None:
+    """Heatmap 4×5: sub-score médio por dimensão em cada arquétipo — a
+    evidência visual de que boas práticas não são uniformes entre arquétipos."""
+    import pandas as pd
+    from matplotlib.colors import LinearSegmentedColormap, Normalize
+    df = pd.read_csv(scores_csv)
+    cols = [f"subscore_{k}" for k, _ in DIMENSIONS]
+    order = (df.groupby("archetype")["score"].median()
+             .sort_values(ascending=False).index.tolist())
+    m = df.groupby("archetype")[cols].mean().loc[order]
+
+    cmap = LinearSegmentedColormap.from_list("seq", SEQ_BLUE)
+    fig, ax = plt.subplots(figsize=(6.8, 3.4), dpi=200)
+    fig.patch.set_facecolor(SURFACE)
+    ax.set_facecolor(SURFACE)
+    im = ax.imshow(m.values, cmap=cmap, norm=Normalize(0, 1), aspect="auto")
+    ax.set_xticks(range(5), [lbl.replace("\n", " ") for _, lbl in DIMENSIONS],
+                  fontsize=7.5, color=INK_2)
+    ax.set_yticks(range(len(order)), [ARCH_LABEL[a] for a in order],
+                  fontsize=8.5, color=INK_2)
+    ax.tick_params(length=0)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+    for i in range(m.shape[0]):
+        for j in range(m.shape[1]):
+            v = m.values[i, j]
+            ax.text(j, i, f"{v:.2f}", ha="center", va="center", fontsize=8.5,
+                    color="#ffffff" if v > 0.6 else INK)
+    ax.set_title("Sub-score médio por dimensão e arquétipo (n=100)",
+                 color=INK, fontsize=11, loc="left", pad=12)
+    cbar = fig.colorbar(im, shrink=0.85)
+    cbar.ax.tick_params(labelsize=7, colors=MUTED)
+    cbar.outline.set_visible(False)
+    fig.tight_layout()
+    for ext in ("png", "pdf"):
+        fig.savefig(f"{out_stem}.{ext}", facecolor=SURFACE, bbox_inches="tight")
+    plt.close(fig)
+
+
+PRACTICES = [
+    ("artifacts_readme", "README"),
+    ("artifacts_license", "Licença"),
+    ("security_ci_configured", "CI configurada"),
+    ("artifacts_contributing", "CONTRIBUTING"),
+    ("security_security_policy", "Política de segurança"),
+    ("artifacts_code_of_conduct", "Código de conduta"),
+    ("artifacts_issue_template", "Template de issue"),
+    ("artifacts_pull_request_template", "Template de PR"),
+    ("security_dependency_automation", "Automação de dependências"),
+    ("artifacts_funding", "FUNDING"),
+    ("artifacts_codeowners", "CODEOWNERS"),
+    ("artifacts_governance", "GOVERNANCE"),
+]
+
+
+def fig_practice_prevalence(parquet: Path, out_stem: Path) -> None:
+    """Dot plot: % de repositórios com cada prática, por arquétipo."""
+    import pandas as pd
+    df = pd.read_parquet(parquet)
+    rows = []
+    for col, label in PRACTICES:
+        for arch in ARCH_ORDER:
+            share = df.loc[df.archetype == arch, col].astype(bool).mean()
+            rows.append((label, arch, share * 100))
+    prev = pd.DataFrame(rows, columns=["practice", "arch", "pct"])
+    order = (prev.groupby("practice")["pct"].mean()
+             .sort_values().index.tolist())
+
+    fig, ax = plt.subplots(figsize=(7.2, 4.8), dpi=200)
+    fig.patch.set_facecolor(SURFACE)
+    _style(ax)
+    ax.grid(axis="y", visible=False)
+    for i, practice in enumerate(order):
+        sub = prev[prev.practice == practice]
+        ax.plot([sub.pct.min(), sub.pct.max()], [i, i], color=GRID,
+                linewidth=1.2, zorder=1)
+        for _, r in sub.iterrows():
+            ax.scatter(r.pct, i, s=34, color=ARCH_COLOR[r.arch],
+                       edgecolors=SURFACE, linewidths=0.6, zorder=3)
+    ax.set_yticks(range(len(order)), order, fontsize=8, color=INK_2)
+    ax.set_xlim(-3, 103)
+    ax.set_xlabel("Repositórios com a prática (%)", color=INK_2, fontsize=9)
+    ax.set_title("Prevalência das práticas de governança por arquétipo",
+                 color=INK, fontsize=11, loc="left", pad=14)
+    ax.text(0, 1.02, "n=25 por arquétipo; presença via API + herança de "
+            "{org}/.github", transform=ax.transAxes, color=INK_2, fontsize=8)
+    handles = [plt.Line2D([], [], marker="o", linestyle="", markersize=6,
+                          color=ARCH_COLOR[a], label=ARCH_LABEL[a])
+               for a in ARCH_ORDER]
+    leg = ax.legend(handles=handles, loc="lower right", fontsize=7.5,
+                    frameon=True, framealpha=0.92, facecolor=SURFACE,
+                    edgecolor=GRID)
+    for txt in leg.get_texts():
+        txt.set_color(INK_2)
+    fig.tight_layout()
+    for ext in ("png", "pdf"):
+        fig.savefig(f"{out_stem}.{ext}", facecolor=SURFACE, bbox_inches="tight")
+    plt.close(fig)
+
+
+def _ecdf(ax, values, log_x=False):
+    xs = sorted(v for v in values if v is not None and v == v)
+    ys = [i / len(xs) for i in range(1, len(xs) + 1)]
+    ax.step(xs, ys, where="post", color=INK, linewidth=1.4, zorder=3)
+    if log_x:
+        ax.set_xscale("log")
+    ax.set_ylim(0, 1.02)
+
+
+def fig_metrics_vs_thresholds(parquet: Path, metrics_yaml: Path,
+                              out_stem: Path) -> None:
+    """ECDFs das métricas contínuas com os limiares best/worst do catálogo
+    sobrepostos — os limiares são anteriores aos dados, nunca ajustados."""
+    import pandas as pd
+    import yaml
+    df = pd.read_parquet(parquet)
+    cfg = yaml.safe_load(metrics_yaml.read_text())
+    panels = [
+        ("responsiveness_median_first_response_hours", "1ª resposta (h)",
+         cfg["responsiveness"]["median_first_response_hours"], True),
+        ("responsiveness_median_pr_merge_hours", "Merge de PR (h)",
+         cfg["responsiveness"]["median_pr_merge_hours"], True),
+        ("responsiveness_pr_review_coverage", "Cobertura de revisão",
+         cfg["responsiveness"]["pr_review_coverage"], False),
+        ("distribution_top1_share", "Share do top-1",
+         cfg["distribution"]["top1_share"], False),
+        ("distribution_elephant_factor", "Elephant factor",
+         cfg["diversity"]["elephant_factor"], False),
+        ("distribution_contributor_retention", "Retenção",
+         cfg["diversity"]["contributor_retention"], False),
+    ]
+    fig, axes = plt.subplots(2, 3, figsize=(8.2, 4.8), dpi=200)
+    fig.patch.set_facecolor(SURFACE)
+    for ax, (col, label, th, log_x) in zip(axes.flat, panels):
+        _style(ax)
+        vals = df[col].dropna()
+        _ecdf(ax, vals.tolist(), log_x=log_x)
+        # rótulos escalonados em duas alturas: best acima, worst abaixo,
+        # para não colidirem quando os limiares são próximos (ex.: elephant)
+        for key, tag, y in (("best", "→1,0", 1.12), ("worst", "→0,0", 1.04)):
+            ax.axvline(th[key], color=MUTED, linewidth=1.0, linestyle="--",
+                       zorder=2)
+            ax.text(th[key], y, f"{th[key]:g}{tag}", fontsize=6.2,
+                    color=MUTED, ha="center")
+        ax.set_title(f"{label} (n={len(vals)})", fontsize=8.5, color=INK_2,
+                     pad=14, loc="left")
+        ax.tick_params(labelsize=7)
+    fig.suptitle("Distribuições empíricas × limiares absolutos do catálogo",
+                 fontsize=11, color=INK, x=0.01, ha="left")
+    fig.tight_layout(rect=(0, 0, 1, 0.95))
+    for ext in ("png", "pdf"):
+        fig.savefig(f"{out_stem}.{ext}", facecolor=SURFACE, bbox_inches="tight")
+    plt.close(fig)
+
+
+def fig_ranking_stability(full_metrics: Path, metrics_yaml: Path,
+                          out_stem: Path) -> None:
+    """Ranking base × ranking sob a variante de pesos MAIS disruptiva (±25%),
+    para os 100 repositórios. Pontos na diagonal = posição preservada; a
+    dispersão honesta em torno dela mostra que só vizinhos quase empatados
+    trocam de lugar (o ρ global permanece altíssimo)."""
+    import yaml
+
+    from govscore.score.sensitivity import DIMENSIONS as DIMS
+    from govscore.score.sensitivity import (
+        perturbed_weights,
+        scores_for,
+        spearman,
+    )
+    data = json.loads(full_metrics.read_text())["results"]
+    subs = [r["subscores"] for r in data]
+    base_w = yaml.safe_load(metrics_yaml.read_text())["weights"]
+
+    def ranks(weights):
+        s = scores_for(subs, weights)
+        order = sorted(range(len(s)), key=lambda i: -(s[i] or 0))
+        pos = [0] * len(s)
+        for rank, i in enumerate(order):
+            pos[i] = rank + 1
+        return s, pos
+
+    base_s, base_r = ranks(base_w)
+    worst = None
+    for dim in DIMS:
+        for f in (1.25, 0.75):
+            w = perturbed_weights(base_w, dim, f)
+            rho = spearman(base_s, scores_for(subs, w))
+            if worst is None or rho < worst[0]:
+                worst = (rho, dim, f, ranks(w)[1])
+    rho, dim, factor, var_r = worst
+    tag = f"{dim} {'+' if factor > 1 else '−'}25%"
+
+    fig, ax = plt.subplots(figsize=(6.4, 6.0), dpi=200)
+    fig.patch.set_facecolor(SURFACE)
+    _style(ax)
+    ax.plot([0, 101], [0, 101], color=BASELINE, linewidth=1.0, zorder=1)
+    for i in range(len(subs)):
+        ax.scatter(base_r[i], var_r[i], s=20,
+                   color=ARCH_COLOR[data[i]["archetype"]],
+                   edgecolors=SURFACE, linewidths=0.4, zorder=3)
+    ax.set_xlim(0, 101)
+    ax.set_ylim(101, 0)
+    ax.set_xlabel("Posição no ranking (pesos da literatura)", color=INK_2,
+                  fontsize=9)
+    ax.set_ylabel(f"Posição sob a variante mais disruptiva ({tag})",
+                  color=INK_2, fontsize=9)
+    ax.set_title("Estabilidade do ranking sob perturbação de pesos (n=100)",
+                 color=INK, fontsize=11, loc="left", pad=14)
+    ax.text(0, 1.02, f"pior caso entre as 10 variantes ±25%: ρ = {rho:.3f}; "
+            "pontos na diagonal preservam a posição", transform=ax.transAxes,
+            color=INK_2, fontsize=8)
+    handles = [plt.Line2D([], [], marker="o", linestyle="", markersize=6,
+                          color=ARCH_COLOR[a], label=ARCH_LABEL[a])
+               for a in ARCH_ORDER]
+    leg = ax.legend(handles=handles, loc="lower right", fontsize=7.5,
+                    frameon=True, framealpha=0.92, facecolor=SURFACE,
+                    edgecolor=GRID)
+    for txt in leg.get_texts():
+        txt.set_color(INK_2)
+    fig.tight_layout()
+    for ext in ("png", "pdf"):
+        fig.savefig(f"{out_stem}.{ext}", facecolor=SURFACE, bbox_inches="tight")
+    plt.close(fig)
+
+
+def _fisher_ci(rho: float, n: int) -> tuple[float, float]:
+    """IC 95% aproximado para ρ de Spearman via Fisher-z (variância
+    1,06/(n−3)) — aproximação declarada na figura."""
+    import math
+    z = math.atanh(max(min(rho, 0.999), -0.999))
+    se = math.sqrt(1.06 / (n - 3))
+    return math.tanh(z - 1.96 * se), math.tanh(z + 1.96 * se)
+
+
+def fig_validation_forest(validation_json: Path, out_stem: Path) -> None:
+    """Forest plot: ρ por indicador, global e por arquétipo, com IC 95%."""
+    val = json.loads(validation_json.read_text())
+    indicators = [("scorecard", "OpenSSF Scorecard"), ("forks", "Forks"),
+                  ("stars", "Stars")]
+    rows_order = [("global", None)] + [(a, a) for a in ARCH_ORDER]
+
+    fig, axes = plt.subplots(1, 3, figsize=(8.4, 3.6), dpi=200, sharey=True)
+    fig.patch.set_facecolor(SURFACE)
+    for ax, (ind, title) in zip(axes, indicators):
+        _style(ax)
+        ax.grid(axis="y", visible=False)
+        ax.axvline(0, color=BASELINE, linewidth=0.9, zorder=1)
+        for y, (kind, arch) in enumerate(rows_order):
+            g = (val["global"][ind] if kind == "global"
+                 else val["by_archetype"][arch][ind])
+            rho, n = g.get("rho"), g.get("n", 0)
+            if rho is None or n < 4:
+                ax.text(0, y, f"n={n} — sem teste", fontsize=6.5,
+                        color=MUTED, ha="center", va="center")
+                continue
+            color = INK if kind == "global" else ARCH_COLOR[arch]
+            lo, hi = _fisher_ci(rho, n)
+            ax.plot([lo, hi], [y, y], color=color, linewidth=1.4, zorder=2)
+            ax.scatter([rho], [y], s=26, color=color, zorder=3,
+                       edgecolors=SURFACE, linewidths=0.5)
+            ax.text(1.04, y, f"n={n}", fontsize=6.5, color=MUTED, va="center")
+        ax.set_xlim(-1.05, 1.05)
+        ax.set_ylim(len(rows_order) - 0.5, -0.5)
+        ax.set_title(title, fontsize=9, color=INK_2, loc="left")
+        ax.tick_params(labelsize=7)
+    axes[0].set_yticks(range(len(rows_order)),
+                       ["Global"] + [ARCH_LABEL[a] for a in ARCH_ORDER],
+                       fontsize=8, color=INK_2)
+    fig.suptitle("Validação externa: ρ de Spearman com IC 95% "
+                 "(Fisher-z, aproximado; por arquétipo = exploratório)",
+                 fontsize=10.5, color=INK, x=0.01, ha="left")
+    fig.tight_layout(rect=(0, 0, 1, 0.93))
+    for ext in ("png", "pdf"):
+        fig.savefig(f"{out_stem}.{ext}", facecolor=SURFACE, bbox_inches="tight")
+    plt.close(fig)
+
+
+MISSING_METRICS = [
+    ("security_release_notes_share", "Notas de release"),
+    ("responsiveness_median_issue_close_hours", "Fechamento de issues*"),
+    ("distribution_contributor_retention", "Retenção"),
+    ("responsiveness_median_first_response_hours", "1ª resposta"),
+    ("responsiveness_median_pr_merge_hours", "Merge de PR"),
+    ("responsiveness_pr_review_coverage", "Cobertura de revisão"),
+    ("responsiveness_pr_merge_ratio", "Razão de merge"),
+]
+
+
+def fig_missingness(parquet: Path, out_stem: Path) -> None:
+    """Matriz de faltantes (% None) por métrica × arquétipo — apêndice QA."""
+    import pandas as pd
+    from matplotlib.colors import LinearSegmentedColormap, Normalize
+    df = pd.read_parquet(parquet)
+    m = pd.DataFrame({
+        label: df.groupby("archetype")[col].apply(lambda s: s.isna().mean())
+        for col, label in MISSING_METRICS
+    }).T[list(ARCH_ORDER)] * 100
+
+    cmap = LinearSegmentedColormap.from_list("miss", ["#fcfcfb"] + SEQ_BLUE)
+    fig, ax = plt.subplots(figsize=(6.4, 3.6), dpi=200)
+    fig.patch.set_facecolor(SURFACE)
+    ax.set_facecolor(SURFACE)
+    im = ax.imshow(m.values, cmap=cmap, norm=Normalize(0, 100), aspect="auto")
+    ax.set_xticks(range(4), [ARCH_LABEL[a] for a in ARCH_ORDER],
+                  fontsize=8, color=INK_2)
+    ax.set_yticks(range(len(m)), m.index, fontsize=8, color=INK_2)
+    ax.tick_params(length=0)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+    for i in range(m.shape[0]):
+        for j in range(m.shape[1]):
+            v = m.values[i, j]
+            ax.text(j, i, f"{v:.0f}%", ha="center", va="center", fontsize=8,
+                    color="#ffffff" if v > 55 else INK)
+    ax.set_title("Métricas faltantes por arquétipo (omitidas do score, "
+                 "nunca imputadas)", color=INK, fontsize=10.5, loc="left",
+                 pad=12)
+    ax.text(0, -0.14, "*extraída para comparabilidade com o piloto; fora do "
+            "score", transform=ax.transAxes, color=MUTED, fontsize=7)
+    cbar = fig.colorbar(im, shrink=0.85)
+    cbar.ax.tick_params(labelsize=7, colors=MUTED)
+    cbar.outline.set_visible(False)
+    fig.tight_layout()
+    for ext in ("png", "pdf"):
+        fig.savefig(f"{out_stem}.{ext}", facecolor=SURFACE, bbox_inches="tight")
+    plt.close(fig)
+
+
 def main() -> None:
     FIG_DIR.mkdir(exist_ok=True)
     fig_sample_map(ROOT / "config" / "sample_full.yaml",
@@ -424,6 +757,19 @@ def main() -> None:
             ROOT / "results" / "validation.json",
             FIG_DIR / "fig_validacao_scatters")
         write_tcc_tables(scores_csv, ROOT / "results" / "tabelas_tcc.md")
+        parquet = ROOT / "data" / "processed" / "metrics.parquet"
+        full_metrics = ROOT / "data" / "processed" / "full_metrics.json"
+        metrics_yaml = ROOT / "config" / "metrics.yaml"
+        validation_json = ROOT / "results" / "validation.json"
+        fig_archetype_dimensions(scores_csv, FIG_DIR / "fig_dimensoes_arquetipo")
+        fig_practice_prevalence(parquet, FIG_DIR / "fig_praticas_prevalencia")
+        fig_metrics_vs_thresholds(parquet, metrics_yaml,
+                                  FIG_DIR / "fig_metricas_limiares")
+        fig_ranking_stability(full_metrics, metrics_yaml,
+                              FIG_DIR / "fig_ranking_estabilidade")
+        fig_validation_forest(validation_json,
+                              FIG_DIR / "fig_validacao_forest")
+        fig_missingness(parquet, FIG_DIR / "fig_faltantes")
     print(f"figuras em {FIG_DIR}/")
 
 
