@@ -12,4 +12,7 @@ extract:
 figures:
 	$(PY) -m govscore.figures
 
-.PHONY: pilot test extract figures
+lab:
+	PYTHONPATH=src uv run jupyter lab
+
+.PHONY: pilot test extract figures lab
