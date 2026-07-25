@@ -99,7 +99,44 @@ def main() -> None:
                     help="ignora o progresso salvo e reextrai tudo")
     sub.add_parser("sensitivity",
                    help="análise de sensibilidade dos pesos (item 6)")
+    sub.add_parser("validate", help="validação externa (item 7; plano §6)")
     args = ap.parse_args()
+
+    if args.cmd == "validate":
+        import time as _time
+
+        from govscore.validate.correlation import report as vreport
+        from govscore.validate.correlation import validate_correlations
+        from govscore.validate.external import fetch_external
+        data = json.loads((ROOT / "data" / "processed" /
+                           "full_metrics.json").read_text())
+        rows = []
+        for i, r in enumerate(data["results"], 1):
+            print(f"[{i}/{len(data['results'])}] {r['repo']}", file=sys.stderr)
+            ext = fetch_external(r["repo"], r.get("language"))
+            rows.append({"repo": r["repo"], "archetype": r.get("archetype"),
+                         "language": r.get("language"),
+                         "score": r.get("score"), "stars": r.get("stars"),
+                         "forks": r.get("forks"),
+                         "extracted_at": r.get("extracted_at"),
+                         "dependents": ext["dependents"],
+                         "scorecard": ext["scorecard"]})
+            _time.sleep(0.1)  # cortesia com APIs públicas sem auth
+        snap = sorted({r["extracted_at"] for r in rows if r.get("extracted_at")})
+        from datetime import date
+        meta = {"stars_snapshot": "→".join([snap[0], snap[-1]] if snap else []),
+                "external_fetched_at": date.today().isoformat()}
+        res = validate_correlations(
+            rows, ["stars", "forks", "dependents", "scorecard"], meta=meta)
+        (ROOT / "results" / "validacao.md").write_text(vreport(res))
+        (ROOT / "results" / "validation.json").write_text(
+            json.dumps(res, indent=2, ensure_ascii=False))
+        import pandas as pd
+        pd.DataFrame(rows).to_csv(
+            ROOT / "data" / "processed" / "external_indicators.csv",
+            index=False)
+        print(vreport(res))
+        return
 
     if args.cmd == "sensitivity":
         from govscore.score.sensitivity import analyze, report
