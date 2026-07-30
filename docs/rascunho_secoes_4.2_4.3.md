@@ -33,6 +33,16 @@ não vazias. Métricas faltantes são omitidas da média da dimensão — nunca
 imputadas como zero — e os pesos são renormalizados sobre as dimensões
 disponíveis.
 
+O score é um **índice formativo**: as métricas *constituem* o construto
+de governança observável, e não o refletem como manifestações
+intercambiáveis (BOLLEN; LENNOX, 1991; DIAMANTOPOULOS; WINKLHOFER, 2001).
+Disso decorrem duas consequências de avaliação: consistência interna não
+é requisito de índices formativos (ainda assim, o α de Cronbach dos cinco
+sub-scores é 0,80, n = 96, reportado como resposta secundária); e as
+preocupações pertinentes são a colinearidade entre componentes — tratada
+na seção 4.2.6 — e a cobertura de conteúdo das dimensões, ancorada na
+revisão da seção 4.1.
+
 ### 4.2.2 Achados do piloto que moldaram a extração
 
 Quatro achados do piloto tornaram-se decisões de engenharia com implicação
@@ -79,7 +89,10 @@ manual.
 Três vieses amostrais são declarados: (i) o piso pragmático de 5 stars no
 estrato Brinquedo (repositórios com ~0 stars são indescobríveis na Search
 API); (ii) a concentração dos Clubes próximo ao teto de 5.000 stars,
-consequência da ordenação por stars na busca; (iii) a contagem de
+consequência da ordenação por stars na busca — na prática, os 25 Clubes
+foram amostrados entre 4.724 e 4.997 stars, 6% da banda nominal
+(500–4.999), de modo que as leituras sobre o arquétipo descrevem o topo
+da banda de nicho; (iii) a contagem de
 contribuidores de Federações é um piso (interrompida ao confirmar o limiar
 de 100). Os quatro pilotos ficaram fora da amostra completa por terem
 calibrado o pipeline.
@@ -99,6 +112,18 @@ merge de PRs (10% cada) — que, pela regra do método, são omitidas e nunca
 imputadas. Nenhum identificador
 de contribuidor integra os artefatos processados, que contêm apenas
 agregados.
+
+A ausência tem duas naturezas, distinguidas caso a caso: **estrutural**
+(prática não observável — repositórios sem release na janela; sem issues
+na plataforma, 7 casos) e **informativa** (silêncio observado: issues
+existem e nenhuma recebeu resposta humana — 3 casos). Para os casos
+informativos, a regra de omissão foi submetida a sensibilidade contra a
+imputação de pior caso: ρ = 0,999 entre os rankings, deslocamento máximo
+de 9 posições e médias por arquétipo praticamente inalteradas
+(`results/robustez.md`). Quatro repositórios — entre eles
+`torvalds/linux` e `FFmpeg/FFmpeg`, espelhos com processo fora das issues
+do GitHub — são pontuados sobre quatro dimensões; a comparabilidade é
+discutida nas limitações.
 
 ### 4.2.5 Distribuição do score por arquétipo
 
@@ -121,7 +146,11 @@ analítica, não empírica — a classificação de arquétipos usa a contagem d
 contribuidores ativos, da qual D2 e D4 também derivam, de modo que estratos
 de núcleo pequeno pontuarem baixo nessas dimensões é, em parte, garantido
 por construção; a evidência não mecânica está nas dimensões D1, D3 e D5 e
-na variância intra-estrato. A variância intra-arquétipo é não trivial (desvios
+na variância intra-estrato. Quantificada: o score restrito a D1/D3/D5
+(pesos renormalizados) preserva a separação entre estratos de alta e
+baixa contribuição (Federação 66,3 e Clube 67,0 contra Estádio 53,7 e
+Brinquedo 41,8), mas não a ordem Federação–Clube — que depende das
+dimensões ligadas à classificação e deve ser lida com essa reserva. A variância intra-arquétipo é não trivial (desvios
 de 9,9 a 13,7), satisfazendo o critério de capacidade discriminante do
 desenho DSR (seção 6.3 do plano): o instrumento diferencia repositórios
 *dentro* de cada arquétipo, não apenas entre arquétipos.
@@ -151,6 +180,19 @@ em relação às demais neste dataset; o desenho não permite concluir que seja
 a "mais informativa" sobre governança, pois uma dimensão ruidosa também
 deslocaria o ranking ao ser removida, e o efeito é parcialmente confundido
 com o peso da dimensão.
+
+A verificação análoga para os **limiares** foi executada sobre os dados
+extraídos (`results/robustez.md`): perturbar os limiares de normalização
+de cada métrica contínua em ±25% e ±50% — individualmente e em conjunto —
+mantém ρ ≥ 0,996 e ρ ≥ 0,989, respectivamente; e reclassificar a amostra
+com os limiares de classificação da §3.1 variados em ±50% não move nenhum
+repositório de um arquétipo para outro: os casos afetados saem das faixas
+(tornam-se não classificados), funcionando as zonas deliberadamente
+vazias da matriz como amortecimento. Ressalva declarada: elevar o limiar
+de Federação é intestável, pois as contagens de contribuidores são pisos
+(interrompidas ao confirmar o limiar). Em conjunto com a sensibilidade de
+pesos, o ranking mostra-se robusto às duas famílias de decisões
+discricionárias do catálogo.
 
 ---
 
@@ -216,7 +258,27 @@ pelo plano de riscos e fica declarada; releases e dependentes constituem
 trabalho futuro com fontes complementares (ex.: contagem de *used by* da
 própria plataforma).
 
-### 4.3.3 Análise por arquétipo (exploratória)
+### 4.3.3 Validade discriminante
+
+Se o score apenas replicasse o Scorecard, sua contribuição seria
+redundante frente a um instrumento gratuito e mantido pela Linux
+Foundation. A análise discriminante afasta essa leitura (Figura
+`fig_validade_discriminante`; `results/robustez.md`): o composto restrito
+às dimensões sociais e organizacionais (D2/D3/D4, pesos renormalizados)
+correlaciona 0,626 com o Scorecard — significativamente menos que os
+0,750 do agregado (teste de Steiger para correlações dependentes,
+z = 2,99, p = 0,003; aproximação sobre ρ de Spearman) — e nenhuma
+dimensão isolada excede 0,588. O instrumento posiciona-se, portanto, como
+**complementar** ao Scorecard, não substituto: mede continuidade
+organizacional (concentração de conhecimento, responsividade,
+diversidade, retenção) que o Scorecard não cobre, além de alcançar os 47
+repositórios da amostra fora da varredura dele (o pipeline roda em
+qualquer repositório público). Registra-se a leitura simétrica: nos
+critérios externos disponíveis (popularidade), nenhum dos dois
+instrumentos demonstra poder preditivo incremental sobre o outro — a
+separação está no construto medido, não na predição.
+
+### 4.3.4 Análise por arquétipo (exploratória)
 
 Nas correlações intra-arquétipo (n = 25 por estrato para stars e forks;
 para o Scorecard, n varia de 5 a 21; sem correção, poder apenas para
@@ -232,9 +294,16 @@ pequeno de mantenedores, mais forks podem sinalizar demanda não atendida
 pelo processo de contribuição — exatamente a tensão que Asparouhova (2020)
 descreve para o arquétipo — mas, sem correção para múltiplas comparações e
 com desenho transversal, o achado deve ser tratado como hipótese para
-trabalhos futuros, não como conclusão.
+trabalhos futuros, não como conclusão. Duas verificações o qualificam
+(`results/robustez.md`): o achado sobrevive à exclusão dos 11
+repositórios suspeitos de não-software sinalizados para inspeção manual
+(ρ = −0,456, n = 23), afastando a hipótese de artefato de contaminação
+amostral; e permanece a explicação alternativa de forks como marcador
+(*bookmark*) sem intenção de contribuição. Para os Clubes, amostrados no
+topo da banda de nicho (seção 4.2.3), a restrição de amplitude é ainda
+mais severa e limita qualquer leitura intra-estrato.
 
-### 4.3.4 Critérios de avaliação do artefato
+### 4.3.5 Critérios de avaliação do artefato
 
 Retomando os critérios DSR definidos no desenho (HEVNER et al., 2004):
 (i) correlações significativas e na direção esperada com pelo menos dois
@@ -243,13 +312,55 @@ estabilidade do ranking sob análise de sensibilidade (ρ ≥ 0,8 entre
 variantes de pesos) — satisfeito com ρ mínimo de 0,998 na perturbação e
 0,935 no leave-one-dimension-out; (iii) capacidade discriminante —
 satisfeito, com variância intra-arquétipo não trivial em todos os estratos.
+Na taxonomia de avaliação em DSR, esta é uma avaliação *ex ante* e
+artificial (VENABLE; PRIES-HEJE; BASKERVILLE, 2016): valida propriedades
+técnicas do artefato sem observação de uso real. A avaliação
+naturalística — o instrumento apoiando decisões de gestores — permanece
+como etapa futura, coerente com o escopo do trabalho.
 
-### 4.3.5 Limitações
+### 4.3.6 Implicações para a gestão
+
+Três cenários de decisão ilustram o uso do instrumento por organizações
+que consomem ou mantêm software open source:
+
+1. **Due diligence de dependências.** Na triagem de bibliotecas
+   candidatas, o score complementa a verificação de práticas de segurança
+   (Scorecard) com o risco de *continuidade*: dois pacotes funcionalmente
+   equivalentes e igualmente seguros podem diferir muito em concentração
+   de conhecimento e retenção de contribuidores — exatamente as dimensões
+   que a seção 4.3.3 mostra não serem capturadas pelo Scorecard.
+2. **Monitoramento de portfólio por um OSPO.** Um *Open Source Program
+   Office* pode acompanhar periodicamente os scores das dependências
+   críticas; deterioração em responsividade (D3) e retenção (D4) antecipa
+   risco de abandono antes que ele apareça em indicadores de
+   popularidade, que são defasados.
+3. **Risco de cadeia de suprimentos de software.** Diante de exigências
+   crescentes de SBOM e avaliação de fornecedores, o score oferece um
+   critério auditável — código aberto, cache bruto reprodutível,
+   limiares e decisões versionados — para classificar componentes por
+   risco de governança.
+
+A leitura correta do número é sempre **relativa ao arquétipo**. Os
+valores de referência (quartis) são: Federação 71,2 / 77,1 / 81,9;
+Clube 61,7 / 75,3 / 79,8; Estádio 32,7 / 41,7 / 51,6; Brinquedo
+24,7 / 32,0 / 40,7. Um Estádio com score 55 está acima do terceiro
+quartil do seu arquétipo; o mesmo 55 numa Federação estaria abaixo do
+primeiro. O caso `torvalds/linux` (56,9) ilustra a contraindicação:
+projetos com governança madura fora das convenções do GitHub são
+subestimados, e o instrumento não deve ser usado isoladamente para eles.
+O custo de execução é baixo: pipeline aberto, extração completa de 100
+repositórios em 2–3 horas com um token pessoal de leitura.
+
+### 4.3.7 Limitações
 
 Além das limitações declaradas no desenho (métricas capturam artefatos
 observáveis, não a prática vivida; amostra restrita ao GitHub; snapshot
 transversal sem inferência causal; limiares e pesos fundamentados porém
-discricionários — mitigados pela sensibilidade), a execução acrescentou:
+discricionários — a discricionariedade dos **pesos** e a dos **limiares**
+foram mitigadas por análises de sensibilidade independentes: ρ ≥ 0,935
+entre variantes de pesos e ρ ≥ 0,989 sob perturbação conjunta de limiares
+em ±50%, sem nenhuma troca de arquétipo na reclassificação ±50%, seção
+4.2.7), a execução acrescentou:
 (i) infraestrutura de governança fora das convenções do GitHub é
 subestimada (caso Kubernetes/Prow); (ii) a heurística de login para bots
 erra nas duas direções — pode reter bots não convencionais e pode tratar

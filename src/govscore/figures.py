@@ -738,6 +738,47 @@ def fig_missingness(parquet: Path, out_stem: Path) -> None:
     plt.close(fig)
 
 
+DIM_LABEL = {"artifacts": "D1 Artefatos", "distribution": "D2 Distribuição",
+             "responsiveness": "D3 Responsividade",
+             "diversity": "D4 Diversidade", "security": "D5 Segurança"}
+
+
+def fig_discriminant(robustness_json: Path, out_stem: Path) -> None:
+    """Lollipop: ρ vs Scorecard do score cheio, do composto social D2/D3/D4
+    e de cada dimensão — a evidência de validade discriminante."""
+    d = json.loads(robustness_json.read_text())["discriminante"]
+    rows = ([("Score (5 dimensões)", d["rho_score_cheio"], INK),
+             ("Composto social D2/D3/D4", d["rho_composto_social"], INK_2)]
+            + [(DIM_LABEL[k], v, "#2a78d6")
+               for k, v in d["por_dimensao"].items()])
+
+    fig, ax = plt.subplots(figsize=(6.8, 3.4), dpi=200)
+    fig.patch.set_facecolor(SURFACE)
+    _style(ax)
+    ax.grid(axis="y", visible=False)
+    for i, (label, rho, color) in enumerate(rows):
+        ax.plot([0, rho], [i, i], color=GRID, linewidth=1.2, zorder=1)
+        ax.scatter(rho, i, s=42, color=color, edgecolors=SURFACE,
+                   linewidths=0.6, zorder=3)
+        ax.text(rho + 0.02, i, f"{rho:.3f}", va="center", fontsize=8,
+                color=INK_2)
+    ax.set_yticks(range(len(rows)), [r[0] for r in rows], fontsize=8.5,
+                  color=INK_2)
+    ax.invert_yaxis()
+    ax.set_xlim(0, 1.0)
+    ax.set_xlabel("ρ de Spearman vs OpenSSF Scorecard (n=53)",
+                  color=INK_2, fontsize=9)
+    ax.set_title("Validade discriminante: o que o score mede além do "
+                 "Scorecard", color=INK, fontsize=11, loc="left", pad=14)
+    ax.text(0, 1.02, "composto social < agregado (Steiger z=2,99, p=0,003): "
+            "as dimensões sociais medem construto distinto",
+            transform=ax.transAxes, color=INK_2, fontsize=8)
+    fig.tight_layout()
+    for ext in ("png", "pdf"):
+        fig.savefig(f"{out_stem}.{ext}", facecolor=SURFACE, bbox_inches="tight")
+    plt.close(fig)
+
+
 def main() -> None:
     FIG_DIR.mkdir(exist_ok=True)
     fig_sample_map(ROOT / "config" / "sample_full.yaml",
@@ -770,6 +811,10 @@ def main() -> None:
         fig_validation_forest(validation_json,
                               FIG_DIR / "fig_validacao_forest")
         fig_missingness(parquet, FIG_DIR / "fig_faltantes")
+        robustness_json = ROOT / "results" / "robustness.json"
+        if robustness_json.exists():
+            fig_discriminant(robustness_json,
+                             FIG_DIR / "fig_validade_discriminante")
     print(f"figuras em {FIG_DIR}/")
 
 
