@@ -191,9 +191,12 @@ Os três indicadores testáveis são significativos na direção esperada após 
 correção — o critério de sucesso do desenho (correlação significativa com
 ≥ 2 indicadores externos) é satisfeito. A correlação forte com o Scorecard
 (Figura `fig_validacao_scatters`) é o resultado de validade convergente: um
-instrumento independente e consolidado, cuja sobreposição conceitual com o
-score se restringe à dimensão D5 e à prática de revisão de código, ordena
-os repositórios de forma amplamente compatível. As correlações moderadas
+instrumento independente e consolidado, cuja sobreposição com o score
+abrange a dimensão D5 (política de segurança, CI e automação de
+dependências), a prática de revisão de código e a presença de licença (D1),
+permanecendo independente nas dimensões sociais e organizacionais (D2, D3
+em primeira resposta, D4), ordena os repositórios de forma amplamente
+compatível. As correlações moderadas
 com stars e forks correspondem à expectativa teórica de que popularidade e
 saúde de governança são construtos relacionados porém distintos — o
 resultado *desejável* para proxies declaradamente fracos; nota-se ainda que
@@ -205,16 +208,19 @@ O indicador conceitualmente mais forte — adoção real por terceiros — ficou
 sem poder estatístico: a cobertura efetiva de dependentes do deps.dev
 restringe-se aos ecossistemas NPM, Cargo e PyPI (RubyGems e Packagist não
 expõem o endpoint; Java/Maven é inviável pelo mapeamento de coordenadas;
-Go, C e C++ ficam fora), e a maioria da amostra são aplicações sem pacote
-publicado, restando n = 5 pacotes verificados. A limitação era antecipada
+Go, C e C++ ficam fora), e a maior parte da amostra não teve pacote
+verificado no deps.dev — seja por não publicar pacote, seja por o nome do
+pacote não ser derivável do nome do repositório (heurística com até cinco
+candidatos) —, restando n = 5 pacotes verificados. A limitação era antecipada
 pelo plano de riscos e fica declarada; releases e dependentes constituem
 trabalho futuro com fontes complementares (ex.: contagem de *used by* da
 própria plataforma).
 
 ### 4.3.3 Análise por arquétipo (exploratória)
 
-Nas correlações intra-arquétipo (n = 25 por estrato, sem correção, poder
-apenas para efeitos grandes), o Scorecard mantém associação positiva em
+Nas correlações intra-arquétipo (n = 25 por estrato para stars e forks;
+para o Scorecard, n varia de 5 a 21; sem correção, poder apenas para
+efeitos grandes), o Scorecard mantém associação positiva em
 todos os estratos (ρ de 0,544 na Federação a 0,808 no Estádio, nominais;
 0,900 no Brinquedo com apenas n = 5). Stars e forks, por sua vez, perdem
 associação dentro dos estratos — consequência esperada da restrição de
@@ -245,8 +251,10 @@ observáveis, não a prática vivida; amostra restrita ao GitHub; snapshot
 transversal sem inferência causal; limiares e pesos fundamentados porém
 discricionários — mitigados pela sensibilidade), a execução acrescentou:
 (i) infraestrutura de governança fora das convenções do GitHub é
-subestimada (caso Kubernetes/Prow); (ii) a exclusão de bots por heurística
-de login pode reter bots não convencionais; (iii) a ausência estrutural em
+subestimada (caso Kubernetes/Prow); (ii) a heurística de login para bots
+erra nas duas direções — pode reter bots não convencionais e pode tratar
+como bot logins humanos terminados em "bot", suprimindo respostas humanas
+em D3 (falso positivo aceito em registro de decisão); (iii) a ausência estrutural em
 dependentes/Scorecard restringe as subpopulações validadas; (iv) stars
 participou da classificação amostral, contaminando parcialmente sua
 leitura como indicador global; (v) épocas distintas entre o snapshot de
