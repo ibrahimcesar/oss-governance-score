@@ -93,6 +93,13 @@ PYTHONPATH=src uv run python -m govscore.cli extract --repo owner/name
    regenera as 7 figuras (PNG+PDF em `figures/`) e `results/tabelas_tcc.md`.
    **Plano de código concluído (itens 1–8)**; restam redação e empacotamento
    (README de reprodução, dataset publicado — sem PII por construção)
+9. [x] Robustez pós-revisão adversarial (`govscore robustness`;
+   `results/robustez.md`): sensibilidade de limiares ±25/±50% (ρ ≥ 0,989),
+   reclassificação ±50% (0 trocas de arquétipo), validade discriminante vs
+   Scorecard (social 0,626 < 0,750; Steiger p=0,003), robustez a suspeitos,
+   imputação, cobertura, quartis de referência. Críticas e ações em
+   `docs/revisao_adversarial_estudo.md`. Pendências: inspeção manual
+   (notebook 01) e reescritas gerenciais (Fase 3 do plano de melhoria)
 
 ## Cuidados metodológicos (não violar)
 
