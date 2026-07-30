@@ -100,7 +100,20 @@ def main() -> None:
     sub.add_parser("sensitivity",
                    help="análise de sensibilidade dos pesos (item 6)")
     sub.add_parser("validate", help="validação externa (item 7; plano §6)")
+    sub.add_parser("robustness",
+                   help="robustez pós-revisão adversarial (limiares, "
+                        "reclassificação, discriminante, suspeitos)")
     args = ap.parse_args()
+
+    if args.cmd == "robustness":
+        from govscore.robustness import report as rreport
+        from govscore.robustness import run_all
+        res = run_all()
+        (ROOT / "results" / "robustez.md").write_text(rreport(res))
+        (ROOT / "results" / "robustness.json").write_text(
+            json.dumps(res, indent=2, ensure_ascii=False))
+        print(rreport(res))
+        return
 
     if args.cmd == "validate":
         import time as _time
