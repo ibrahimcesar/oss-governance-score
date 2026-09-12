@@ -224,3 +224,6 @@ data/raw/*
 .vscode/branch-timer.json
 # progresso incremental da extração (retomável; artefato final é full_metrics.json)
 data/processed/*_progress.jsonl
+# texto da monografia fica FORA do repositório público (docs/plano_publicacao.md)
+monografia/
+/*.docx
