@@ -51,6 +51,21 @@ Contagens de Federações são pisos (early stop) — elevar `federation_min` to
 - **Estádio × forks**: com suspeitos ρ = -0.455 (n=25); sem suspeitos ρ = -0.456 (n=23). O achado exploratório deve ser reportado com esta análise ao lado.
 - Globais sem suspeitos: scorecard ρ=0.738, stars ρ=0.367, forks ρ=0.433.
 
+### 4.1 Cenários da inspeção manual (todos mantidos na amostra)
+
+Categorias definidas na inspeção manual (notebook 01; `docs/decisions/2026-09-12-inspecao-manual-amostra.md`). **Conteúdo**: `MisterBooo/LeetCodeAnimation`, `EFanZh/LeetCode`, `github/explore`, `krahets/hello-algo`, `doocs/advanced-java`, `danielmiessler/SecLists`, `SwiftOldDriver/iOS-Weekly`, `Au1rxx/free-vpn-subscriptions`. **Espelhos**: `torvalds/linux`, `FFmpeg/FFmpeg`, `git/git`, `gitlabhq/gitlabhq`. Intra-arquétipo: ρ (p nominal, n).
+
+| cenário | n | scorecard | stars | forks | stadium×forks | federation×scorecard |
+|---|---|---|---|---|---|---|
+| completa | 100 | 0.750 | 0.403 | 0.454 | -0.455 (p=0.022, n=25) | 0.544 (p=0.036, n=15) |
+| sem_heuristica | 89 | 0.738 | 0.367 | 0.433 | -0.456 (p=0.029, n=23) | 0.109 (p=0.737, n=12) |
+| sem_conteudo | 92 | 0.726 | 0.442 | 0.507 | -0.257 (p=0.260, n=21) | 0.544 (p=0.036, n=15) |
+| sem_espelhos | 96 | 0.754 | 0.422 | 0.481 | -0.497 (p=0.013, n=24) | 0.109 (p=0.737, n=12) |
+| sem_todos | 85 | 0.725 | 0.421 | 0.508 | -0.266 (p=0.257, n=20) | 0.109 (p=0.737, n=12) |
+
+- **stadium×forks**: perde significância nominal em: `sem_conteudo`, `sem_todos` — achado NÃO robusto à composição da amostra.
+- **federation×scorecard**: perde significância nominal em: `sem_heuristica`, `sem_espelhos`, `sem_todos` — achado NÃO robusto à composição da amostra.
+
 ## 5. Faltantes: taxonomia e sensibilidade de imputação
 
 D3 informativo (silêncio observado): 3 repos; omissão vs imputação de pior caso na 1ª resposta: ρ = 0.999, deslocamento máximo de 9 posições.

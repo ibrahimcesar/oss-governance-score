@@ -50,6 +50,19 @@ SUSPECT_NAME = re.compile(
     r"leetcode|interview|awesome|explore|roadmap|tutorial|study|notes|book|"
     r"course|cheat|free[-_]?vpn|subscription", re.IGNORECASE)
 
+# Categorias da inspeção manual (notebook 01; decisão em
+# docs/decisions/2026-09-12-inspecao-manual-amostra.md). Todos MANTIDOS na
+# amostra; as categorias existem para reportar os resultados com e sem eles.
+# Conteúdo inclui 4 casos que as heurísticas de nome/silêncio não capturam.
+CONTENT_REPOS = (
+    "MisterBooo/LeetCodeAnimation", "EFanZh/LeetCode", "github/explore",
+    "krahets/hello-algo", "doocs/advanced-java", "danielmiessler/SecLists",
+    "SwiftOldDriver/iOS-Weekly", "Au1rxx/free-vpn-subscriptions",
+)
+# desenvolvimento fora do GitHub (issues desativadas; patches por lista/GitLab)
+MIRROR_REPOS = ("torvalds/linux", "FFmpeg/FFmpeg", "git/git",
+                "gitlabhq/gitlabhq")
+
 
 def _scores_with_cfg(results: list[dict], cfg: dict) -> list[float | None]:
     return [compute_score(compute_subscores(r, cfg), cfg["weights"])
@@ -243,7 +256,51 @@ def suspect_robustness(results: list[dict], ext: dict[str, dict]) -> dict:
             "global_sem_suspeitos": {
                 ind: global_rho(rows_kept, ind)
                 for ind in ("scorecard", "stars", "forks")},
-            "medias_por_arquetipo": medias}
+            "medias_por_arquetipo": medias,
+            "cenarios": exclusion_scenarios(results, ext, suspects["uniao"])}
+
+
+def stratum_rho(rows: list[dict], archetype: str, indicator: str) -> dict:
+    """ρ de Spearman score × indicador dentro de um arquétipo, com exclusão
+    par a par de faltantes; p nominal (sem correção — análise exploratória)."""
+    pairs = [(r["score"], r.get(indicator)) for r in rows
+             if r["archetype"] == archetype and r["score"] is not None
+             and r.get(indicator) is not None]
+    if len(pairs) < 3:
+        return {"rho": None, "p": None, "n": len(pairs)}
+    from scipy.stats import spearmanr
+    res = spearmanr([p[0] for p in pairs], [p[1] for p in pairs])
+    return {"rho": float(res.statistic), "p": float(res.pvalue),
+            "n": len(pairs)}
+
+
+# achados intra-arquétipo citados na seção 4.3.4 do rascunho
+STRATUM_FINDINGS = (("stadium", "forks"), ("federation", "scorecard"))
+
+
+def exclusion_scenarios(results: list[dict], ext: dict[str, dict],
+                        heuristic: list[str]) -> dict:
+    """Resultados globais e intra-arquétipo sob cada conjunto de exclusão
+    da inspeção manual (heurística, conteúdo, espelhos e a união)."""
+    sets = {
+        "completa": set(),
+        "sem_heuristica": set(heuristic),
+        "sem_conteudo": set(CONTENT_REPOS),
+        "sem_espelhos": set(MIRROR_REPOS),
+        "sem_todos": set(heuristic) | set(CONTENT_REPOS) | set(MIRROR_REPOS),
+    }
+    out = {}
+    for name, excl in sets.items():
+        rows = _rows([r for r in results if r["repo"] not in excl], ext)
+        out[name] = {
+            "n": len(rows),
+            "global": {ind: spearman([r["score"] for r in rows],
+                                     [r.get(ind) for r in rows])
+                       for ind in ("scorecard", "stars", "forks")},
+            "estratos": {f"{a}×{ind}": stratum_rho(rows, a, ind)
+                         for a, ind in STRATUM_FINDINGS},
+        }
+    return out
 
 
 # ---------------------------------------------------------------- faltantes
@@ -462,6 +519,36 @@ def report(res: dict) -> str:
               + ", ".join(f"{k} ρ={_f(v)}"
                           for k, v in s["global_sem_suspeitos"].items())
               + ".", ""]
+
+    cen = s["cenarios"]
+    finds = list(next(iter(cen.values()))["estratos"])
+    lines += ["### 4.1 Cenários da inspeção manual (todos mantidos na amostra)",
+              "",
+              "Categorias definidas na inspeção manual (notebook 01; "
+              "`docs/decisions/2026-09-12-inspecao-manual-amostra.md`). "
+              "**Conteúdo**: " + ", ".join(f"`{x}`" for x in CONTENT_REPOS)
+              + ". **Espelhos**: " + ", ".join(f"`{x}`" for x in MIRROR_REPOS)
+              + ". Intra-arquétipo: ρ (p nominal, n).", "",
+              "| cenário | n | scorecard | stars | forks | "
+              + " | ".join(finds) + " |",
+              "|---|---|---|---|---|" + "---|" * len(finds)]
+    for name, v in cen.items():
+        g = v["global"]
+        cells = [f"{_f(e['rho'])} (p={_f(e['p'])}, n={e['n']})"
+                 for e in v["estratos"].values()]
+        lines.append(f"| {name} | {v['n']} | {_f(g['scorecard'])} | "
+                     f"{_f(g['stars'])} | {_f(g['forks'])} | "
+                     + " | ".join(cells) + " |")
+    lines.append("")
+    for f in finds:
+        caem = [name for name, v in cen.items()
+                if (v["estratos"][f]["p"] or 1) >= 0.05]
+        lines.append(f"- **{f}**: " + (
+            "p nominal < 0,05 em todos os cenários." if not caem else
+            "perde significância nominal em: "
+            + ", ".join(f"`{c}`" for c in caem)
+            + " — achado NÃO robusto à composição da amostra."))
+    lines.append("")
 
     imp = res["imputacao"]
     lines += ["## 5. Faltantes: taxonomia e sensibilidade de imputação", "",

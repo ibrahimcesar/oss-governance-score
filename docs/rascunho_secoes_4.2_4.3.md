@@ -86,6 +86,17 @@ completo em `config/sample_full.yaml` documenta 406 casos ambíguos
 (incluindo 12 excluídos por inatividade no branch default) para inspeção
 manual.
 
+A triagem heurística por tópicos e nomes não é exaustiva. A inspeção manual
+da amostra final (notebook `01_inspecao_amostra`) identificou 15 casos
+limítrofes: 8 repositórios de conteúdo (guias de estudo, livros, listas e
+uma newsletter — 4 deles não capturados por nenhuma heurística), 4
+espelhos com desenvolvimento fora do GitHub e 3 repositórios de software
+sem nenhuma resposta humana nas issues. Todos atendem aos critérios de
+inclusão e foram **mantidos**: excluí-los após observar os scores seria
+decisão *post hoc*. Em compensação, os resultados são reportados com e sem
+cada categoria (seção 4.3.4; `results/robustez.md` §4.1; registro de
+decisão de 12/09/2026).
+
 Três vieses amostrais são declarados: (i) o piso pragmático de 5 stars no
 estrato Brinquedo (repositórios com ~0 stars são indescobríveis na Search
 API); (ii) a concentração dos Clubes próximo ao teto de 5.000 stars,
@@ -282,26 +293,27 @@ separação está no construto medido, não na predição.
 
 Nas correlações intra-arquétipo (n = 25 por estrato para stars e forks;
 para o Scorecard, n varia de 5 a 21; sem correção, poder apenas para
-efeitos grandes), o Scorecard mantém associação positiva em
-todos os estratos (ρ de 0,544 na Federação a 0,808 no Estádio, nominais;
-0,900 no Brinquedo com apenas n = 5). Stars e forks, por sua vez, perdem
-associação dentro dos estratos — consequência esperada da restrição de
-amplitude imposta pela própria estratificação —, com um resultado
-exploratório digno de nota: no arquétipo Estádio, forks correlaciona
-**negativamente** com o score (ρ = −0,455, p nominal = 0,022). A leitura
-teórica é sugestiva: nos projetos de base de usuários massiva e núcleo
-pequeno de mantenedores, mais forks podem sinalizar demanda não atendida
-pelo processo de contribuição — exatamente a tensão que Asparouhova (2020)
-descreve para o arquétipo — mas, sem correção para múltiplas comparações e
-com desenho transversal, o achado deve ser tratado como hipótese para
-trabalhos futuros, não como conclusão. Duas verificações o qualificam
-(`results/robustez.md`): o achado sobrevive à exclusão dos 11
-repositórios suspeitos de não-software sinalizados para inspeção manual
-(ρ = −0,456, n = 23), afastando a hipótese de artefato de contaminação
-amostral; e permanece a explicação alternativa de forks como marcador
-(*bookmark*) sem intenção de contribuição. Para os Clubes, amostrados no
-topo da banda de nicho (seção 4.2.3), a restrição de amplitude é ainda
-mais severa e limita qualquer leitura intra-estrato.
+efeitos grandes), o Scorecard tem associação positiva nominal nos quatro
+estratos (ρ de 0,544 na Federação a 0,808 no Estádio; 0,900 no Brinquedo
+com apenas n = 5). Na Federação, porém, a associação depende dos três
+espelhos com desenvolvimento fora do GitHub (`torvalds/linux`,
+`FFmpeg/FFmpeg`, `git/git`): sem eles, ρ = 0,109 (p = 0,737, n = 12).
+Stars e forks, por sua vez, perdem associação dentro dos estratos —
+consequência esperada da restrição de amplitude imposta pela própria
+estratificação. No arquétipo Estádio, forks correlaciona
+**negativamente** com o score (ρ = −0,455, p nominal = 0,022), mas o
+resultado não resiste à composição da amostra. Sem os quatro repositórios
+de conteúdo do estrato (guias de estudo, livro e listas, cuja mediana de
+forks é cerca de três vezes a dos demais), cai para ρ = −0,257 (p = 0,260,
+n = 21). A explicação mais parcimoniosa é o fork usado como marcador
+(*bookmark*) de material de estudo, e não a tensão entre base de usuários
+e núcleo de mantenedores que Asparouhova (2020) descreve para o
+arquétipo. As correlações globais, ao contrário, são robustas em todos os
+cenários de exclusão (Scorecard 0,725–0,754; stars 0,367–0,442; forks
+0,433–0,508; `results/robustez.md` §4.1). Nenhuma leitura intra-arquétipo
+deve ser tomada como conclusão. Para os Clubes, amostrados no topo da
+banda de nicho (seção 4.2.3), a restrição de amplitude é ainda mais
+severa e limita qualquer leitura intra-estrato.
 
 ### 4.3.5 Critérios de avaliação do artefato
 
@@ -370,4 +382,11 @@ dependentes/Scorecard restringe as subpopulações validadas; (iv) stars
 participou da classificação amostral, contaminando parcialmente sua
 leitura como indicador global; (v) épocas distintas entre o snapshot de
 extração (23–24/07/2026) e a consulta aos indicadores externos
-(24/07/2026), registradas nos artefatos.
+(24/07/2026), registradas nos artefatos; (vi) espelhos recebem
+tratamento assimétrico em D3: `git/git` tem artefatos de PR observados
+abaixo dos pisos e recebe D3 = 0, enquanto `torvalds/linux` e
+`FFmpeg/FFmpeg`, sem dados de PR, têm D3 omitido e pesos renormalizados.
+A regra "observado conta, ausente omite" é coerente, mas a mesma prática
+(desenvolvimento fora do GitHub) resulta em pontuações distintas; (vii) a
+amostra mantém 8 repositórios de conteúdo que a triagem heurística não
+removeu (seção 4.2.3).

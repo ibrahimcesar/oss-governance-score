@@ -104,11 +104,13 @@ descrevem o topo da banda de nicho; restrição declarada na 4.2.3 e
 reiterada na análise por arquétipo.
 
 **C3. "Tem LeetCode e listas curadas na amostra."**
-A triagem automatizada excluiu por tópicos e nomes, e a inspeção manual
-documentada (notebook 01) está em curso com 11 sinalizados. A robustez
-já foi computada: excluir todos os 11 praticamente não muda nada
-(scorecard 0,738; Estádio×forks −0,456). Nenhum resultado central
-depende deles. *(robustez.md §4)*
+Tem, e está declarado. A inspeção manual (notebook 01, concluída em
+12/09) encontrou 15 casos limítrofes: 8 de conteúdo, 4 espelhos e 3
+softwares sem resposta humana. Todos atendem aos critérios de inclusão
+e foram mantidos, porque excluí-los depois de ver os scores seria *post
+hoc*. Os resultados são reportados com e sem cada categoria. Os globais
+não mudam: sem os 15, Scorecard 0,725, stars 0,421, forks 0,508.
+*(robustez.md §4.1; decisão de 12/09/2026)*
 
 **C4. "Stars podem ser compradas."**
 Triagem de plausibilidade executada: um único caso destoante
@@ -140,10 +142,12 @@ Circularidade: `releases_12m` é insumo de D5 desde o catálogo. Usá-la
 dos dois lados inflaria a validação — correção metodológica registrada.
 
 **D4. "Estádio × forks negativo é ruído."**
-Tratado como hipótese, não conclusão: exploratório, sem correção,
-transversal. Mas sobrevive à exclusão dos suspeitos (−0,456) e tem
-leitura teórica na tensão do arquétipo (demanda sem via de
-contribuição); a alternativa fork-como-bookmark está declarada.
+Concordo, e o texto já diz isso. Sem os 4 repositórios de conteúdo do
+estrato, cai para −0,257 (p=0,26). A leitura parcimoniosa é
+fork-como-bookmark de guias de estudo, não a tensão de Asparouhova. O
+mesmo vale para Federação×Scorecard, que depende dos 3 espelhos (0,544 →
+0,109). Por isso nenhuma leitura intra-arquétipo é conclusão; as
+correlações globais é que sustentam a validação. *(robustez.md §4.1)*
 
 **D5. "Poder estatístico?"**
 Declarado por indicador: n=100 → ρ≈0,28 com 80%; exclusão par a par

@@ -4,11 +4,14 @@ import math
 import yaml
 
 from govscore.robustness import (
+    CONTENT_REPOS,
     _perturb_cfg,
+    exclusion_scenarios,
     imputation_sensitivity,
     reclassification_sensitivity,
     social_composite,
     steiger_z,
+    stratum_rho,
     threshold_sensitivity,
 )
 
@@ -92,6 +95,32 @@ def test_reclassification_federacao_vira_indeterminada_ao_subir_limiar():
     v = out["federation_min_contributors +50%"]
     assert v["federacoes_indeterminadas"] == 1  # contagem é piso — não avalia
     assert out["conjunto −50%"]["preservados"] >= 1  # toy segue toy
+
+
+def test_stratum_rho_caso_conhecido_e_exclusao_par_a_par():
+    rows = [{"repo": f"s/{i}", "archetype": "stadium", "score": s, "forks": f}
+            for i, (s, f) in enumerate([(10, 400), (20, 300), (30, 200),
+                                        (40, 100), (50, None)])]
+    rows.append({"repo": "t/1", "archetype": "toy", "score": 99, "forks": 1})
+    out = stratum_rho(rows, "stadium", "forks")
+    assert out["n"] == 4                      # None e outro estrato fora
+    assert math.isclose(out["rho"], -1.0)     # monotônica decrescente
+    assert stratum_rho(rows[:2], "stadium", "forks")["rho"] is None  # n<3
+
+
+def test_exclusion_scenarios_remove_os_conjuntos():
+    content = CONTENT_REPOS[0]
+    results = [{"repo": r, "archetype": "stadium", "score": s,
+                "stars": 10, "forks": f}
+               for r, s, f in [("a/1", 10, 4), ("a/2", 20, 3), ("a/3", 30, 2),
+                               ("a/4", 40, 1), (content, 5, 999)]]
+    out = exclusion_scenarios(results, {}, heuristic=["a/4"])
+    assert out["completa"]["n"] == 5
+    assert out["sem_conteudo"]["n"] == 4
+    assert out["sem_heuristica"]["n"] == 4
+    assert out["sem_todos"]["n"] == 3
+    assert math.isclose(out["sem_conteudo"]["estratos"]["stadium×forks"]["rho"],
+                        -1.0)
 
 
 def test_imputation_sensitivity_penaliza_silencio_observado():

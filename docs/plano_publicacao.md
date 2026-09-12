@@ -12,8 +12,9 @@ defesa.
 - [ ] **README em inglês** ao lado do PT-BR (público: OSPOs, mantenedores,
       comunidade CHAOSS — internacional).
 - [ ] **Post contando a história** (site pessoal + cross-post dev.to):
-      os 4 arquétipos, boxplot, prevalência de práticas, forks negativo
-      no Estádio como hipótese. As 14 figuras em 300 dpi já existem.
+      os 4 arquétipos, boxplot, prevalência de práticas. (Não usar o
+      forks negativo no Estádio: não resiste à exclusão dos repositórios
+      de conteúdo — robustez.md §4.1.) As 14 figuras em 300 dpi já existem.
 
 ## 2. Interativo
 
@@ -51,8 +52,9 @@ não desenhar para isso agora.
 
 ## Pré-requisitos antes de qualquer publicação
 
-- [ ] Concluir a inspeção manual da amostra (notebook 01) e reextração de
-      substitutos, se houver.
+- [x] Concluir a inspeção manual da amostra (notebook 01) — 12/09/2026,
+      todos mantidos; sem reextração
+      (`docs/decisions/2026-09-12-inspecao-manual-amostra.md`).
 - [ ] Decidir nome definitivo (checar colisões de "govscore").
 - [ ] Revisar o que fica público: paper/monografia ficam FORA do repo
       (decisão já tomada); dataset e resultados ficam.

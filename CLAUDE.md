@@ -78,8 +78,9 @@ PYTHONPATH=src uv run python -m govscore.cli extract --repo owner/name
 5. [x] Extração completa (janela < 1 semana) + QA do dataset — 100/100 em
    2026-07-23→24 (`govscore run`, retomável); dataset em `data/processed/`
    (full_metrics.json, metrics.parquet, scores.csv), QA em
-   `results/qa_extracao.md`. Pendência de inspeção manual: possíveis
-   não-software na amostra (ex.: `github/explore`, `EFanZh/LeetCode`)
+   `results/qa_extracao.md`. Inspeção manual concluída em 2026-09-12:
+   15 casos limítrofes (conteúdo, espelhos, software sem resposta),
+   **todos mantidos** — `docs/decisions/2026-09-12-inspecao-manual-amostra.md`
 6. [x] Análise de sensibilidade dos pesos (`score/sensitivity.py`: pesos
    iguais, ±25%, leave-one-dimension-out) — ranking robusto (ρ ≥ 0,935 em
    todas as variantes; critério DSR ≥ 0,8 satisfeito). Relatório em
@@ -98,8 +99,12 @@ PYTHONPATH=src uv run python -m govscore.cli extract --repo owner/name
    reclassificação ±50% (0 trocas de arquétipo), validade discriminante vs
    Scorecard (social 0,626 < 0,750; Steiger p=0,003), robustez a suspeitos,
    imputação, cobertura, quartis de referência. Críticas e ações em
-   `docs/revisao_adversarial_estudo.md`. Pendências: inspeção manual
-   (notebook 01) e reescritas gerenciais (Fase 3 do plano de melhoria)
+   `docs/revisao_adversarial_estudo.md`. Cenários de exclusão da inspeção
+   manual em `results/robustez.md` §4.1: globais robustos; Estádio×forks
+   e Federação×Scorecard NÃO robustos (texto da 4.3.4 reescrito).
+   Reescritas gerenciais (Fase 3) concluídas
+10. [x] Inspeção manual da amostra (notebook 01) — 2026-09-12, todos
+    mantidos. **Código e dados concluídos**; resta a redação final
 
 ## Cuidados metodológicos (não violar)
 
