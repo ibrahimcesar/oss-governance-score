@@ -779,44 +779,71 @@ def fig_discriminant(robustness_json: Path, out_stem: Path) -> None:
     plt.close(fig)
 
 
-def main() -> None:
-    FIG_DIR.mkdir(exist_ok=True)
-    fig_sample_map(ROOT / "config" / "sample_full.yaml",
-                   FIG_DIR / "fig_amostra_classificacao")
-    fig_pilot_subscores(ROOT / "data" / "processed" / "pilot_scores.json",
-                        FIG_DIR / "fig_pilotos_subscores")
-    fig_sample_languages(ROOT / "config" / "sample_full.yaml",
-                         FIG_DIR / "fig_amostra_linguagens")
-    fig_pilot_ranking(ROOT / "data" / "processed" / "pilot_scores.json",
-                      FIG_DIR / "fig_pilotos_ranking")
-    scores_csv = ROOT / "data" / "processed" / "scores.csv"
+def main(data_dir: Path | None = None, results_dir: Path | None = None,
+         fig_dir: Path | None = None, config_dir: Path | None = None) -> Path:
+    """Gera todas as figuras a partir de `data_dir` (default data/processed)
+    e `results_dir` (default results/), gravando em `fig_dir` (default
+    figures/). Diretórios próprios permitem regenerar o catálogo v2 sem
+    sobrescrever as figuras v1 arquivadas. Devolve `fig_dir`."""
+    data_dir = Path(data_dir) if data_dir else ROOT / "data" / "processed"
+    results_dir = Path(results_dir) if results_dir else ROOT / "results"
+    fig_dir = Path(fig_dir) if fig_dir else FIG_DIR
+    config_dir = Path(config_dir) if config_dir else ROOT / "config"
+    fig_dir.mkdir(parents=True, exist_ok=True)
+
+    fig_sample_map(config_dir / "sample_full.yaml",
+                   fig_dir / "fig_amostra_classificacao")
+    fig_pilot_subscores(data_dir / "pilot_scores.json",
+                        fig_dir / "fig_pilotos_subscores")
+    fig_sample_languages(config_dir / "sample_full.yaml",
+                         fig_dir / "fig_amostra_linguagens")
+    fig_pilot_ranking(data_dir / "pilot_scores.json",
+                      fig_dir / "fig_pilotos_ranking")
+    scores_csv = data_dir / "scores.csv"
     if scores_csv.exists():  # figuras da fase completa (itens 5–7)
-        fig_score_boxplot(scores_csv, FIG_DIR / "fig_score_boxplot")
-        fig_dimension_heatmap(scores_csv, FIG_DIR / "fig_dimensoes_heatmap")
+        results_dir.mkdir(parents=True, exist_ok=True)
+        fig_score_boxplot(scores_csv, fig_dir / "fig_score_boxplot")
+        fig_dimension_heatmap(scores_csv, fig_dir / "fig_dimensoes_heatmap")
         fig_validation_scatters(
-            ROOT / "data" / "processed" / "external_indicators.csv",
-            ROOT / "results" / "validation.json",
-            FIG_DIR / "fig_validacao_scatters")
-        write_tcc_tables(scores_csv, ROOT / "results" / "tabelas_tcc.md")
-        parquet = ROOT / "data" / "processed" / "metrics.parquet"
-        full_metrics = ROOT / "data" / "processed" / "full_metrics.json"
-        metrics_yaml = ROOT / "config" / "metrics.yaml"
-        validation_json = ROOT / "results" / "validation.json"
-        fig_archetype_dimensions(scores_csv, FIG_DIR / "fig_dimensoes_arquetipo")
-        fig_practice_prevalence(parquet, FIG_DIR / "fig_praticas_prevalencia")
+            data_dir / "external_indicators.csv",
+            results_dir / "validation.json",
+            fig_dir / "fig_validacao_scatters")
+        write_tcc_tables(scores_csv, results_dir / "tabelas_tcc.md")
+        parquet = data_dir / "metrics.parquet"
+        full_metrics = data_dir / "full_metrics.json"
+        metrics_yaml = config_dir / "metrics.yaml"
+        validation_json = results_dir / "validation.json"
+        fig_archetype_dimensions(scores_csv, fig_dir / "fig_dimensoes_arquetipo")
+        fig_practice_prevalence(parquet, fig_dir / "fig_praticas_prevalencia")
         fig_metrics_vs_thresholds(parquet, metrics_yaml,
-                                  FIG_DIR / "fig_metricas_limiares")
+                                  fig_dir / "fig_metricas_limiares")
         fig_ranking_stability(full_metrics, metrics_yaml,
-                              FIG_DIR / "fig_ranking_estabilidade")
+                              fig_dir / "fig_ranking_estabilidade")
         fig_validation_forest(validation_json,
-                              FIG_DIR / "fig_validacao_forest")
-        fig_missingness(parquet, FIG_DIR / "fig_faltantes")
-        robustness_json = ROOT / "results" / "robustness.json"
+                              fig_dir / "fig_validacao_forest")
+        fig_missingness(parquet, fig_dir / "fig_faltantes")
+        robustness_json = results_dir / "robustness.json"
         if robustness_json.exists():
             fig_discriminant(robustness_json,
-                             FIG_DIR / "fig_validade_discriminante")
-    print(f"figuras em {FIG_DIR}/")
+                             fig_dir / "fig_validade_discriminante")
+    print(f"figuras em {fig_dir}/")
+    return fig_dir
+
+
+def _cli(argv: list[str] | None = None) -> None:
+    """`python -m govscore.figures [--data-dir] [--results-dir] [--fig-dir]`
+    (alvo `make figures`); os mesmos flags existem em `govscore figures`."""
+    import argparse
+    ap = argparse.ArgumentParser(prog="govscore.figures")
+    ap.add_argument("--data-dir", type=Path, default=None,
+                    help="default: data/processed")
+    ap.add_argument("--results-dir", type=Path, default=None,
+                    help="default: results")
+    ap.add_argument("--fig-dir", type=Path, default=None,
+                    help="default: figures")
+    args = ap.parse_args(argv)
+    main(args.data_dir, args.results_dir, args.fig_dir)
 
 
 if __name__ == "__main__":
-    main()
+    _cli()

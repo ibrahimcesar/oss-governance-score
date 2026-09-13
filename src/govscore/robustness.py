@@ -422,17 +422,33 @@ def reference_values(results: list[dict]) -> dict:
 
 
 # -------------------------------------------------------------- orquestração
-def run_all() -> dict:
+def write_reports(res: dict, results_dir: Path) -> dict[str, Path]:
+    """Grava robustez.md (PT-BR) e robustness.json em `results_dir`."""
+    results_dir = Path(results_dir)
+    results_dir.mkdir(parents=True, exist_ok=True)
+    md = results_dir / "robustez.md"
+    js = results_dir / "robustness.json"
+    md.write_text(report(res))
+    js.write_text(json.dumps(res, indent=2, ensure_ascii=False))
+    return {"md": md, "json": js}
+
+
+def run_all(data_dir: Path | None = None, results_dir: Path | None = None,
+            config_dir: Path | None = None) -> dict:
+    """Executa as análises sobre `data_dir` (default data/processed) e o
+    catálogo/amostra em `config_dir` (default config/). Se `results_dir` for
+    informado, grava também robustez.md e robustness.json nele — permite
+    rodar o catálogo v2 em diretórios próprios sem sobrescrever v1."""
     import pandas as pd
     import yaml
-    cfg = yaml.safe_load((ROOT / "config" / "metrics.yaml").read_text())
-    results = json.loads((ROOT / "data" / "processed" /
-                          "full_metrics.json").read_text())["results"]
-    sample = yaml.safe_load((ROOT / "config" / "sample_full.yaml").read_text())
+    data_dir = Path(data_dir) if data_dir else ROOT / "data" / "processed"
+    config_dir = Path(config_dir) if config_dir else ROOT / "config"
+    cfg = yaml.safe_load((config_dir / "metrics.yaml").read_text())
+    results = json.loads((data_dir / "full_metrics.json").read_text())["results"]
+    sample = yaml.safe_load((config_dir / "sample_full.yaml").read_text())
     thresholds = yaml.safe_load(
-        (ROOT / "config" / "sampling.yaml").read_text())["thresholds"]
-    ext_df = pd.read_csv(ROOT / "data" / "processed" /
-                         "external_indicators.csv")
+        (config_dir / "sampling.yaml").read_text())["thresholds"]
+    ext_df = pd.read_csv(data_dir / "external_indicators.csv")
     ext = {r["repo"]: {"scorecard": (None if pd.isna(r["scorecard"])
                                      else float(r["scorecard"])),
                        "dependents": (None if pd.isna(r["dependents"])
@@ -442,7 +458,7 @@ def run_all() -> dict:
     active = {e["repo"]: e["active_contributors_2plus"]
               for e in sample["full"]}
 
-    return {
+    res = {
         "limiar_normalizacao": threshold_sensitivity(results, cfg),
         "reclassificacao": reclassification_sensitivity(
             sample["full"], thresholds),
@@ -454,6 +470,9 @@ def run_all() -> dict:
         "stars_flags": star_inflation_screens(results, active),
         "valores_referencia": reference_values(results),
     }
+    if results_dir is not None:
+        write_reports(res, results_dir)
+    return res
 
 
 def _f(v, nd=3):

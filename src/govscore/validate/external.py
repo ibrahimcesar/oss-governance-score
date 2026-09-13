@@ -31,6 +31,11 @@ SCORECARD = "https://api.securityscorecards.dev"
 MAX_PACKAGES = 5  # pacotes distintos consultados por repo (declarado)
 
 
+class CacheMissError(RuntimeError):
+    """Indicador externo ausente do cache em modo offline (a análise v2
+    nunca reconsulta a rede: os indicadores são os de julho de 2026)."""
+
+
 def _cache_path(repo: str, key: str) -> Path:
     safe = re.sub(r"[^A-Za-z0-9_.-]", "_", key)
     d = RAW_DIR / repo.replace("/", "__")
@@ -39,13 +44,17 @@ def _cache_path(repo: str, key: str) -> Path:
 
 
 def cached_get_json(repo: str, key: str, url: str,
-                    max_retries: int = 3) -> dict | None:
+                    max_retries: int = 3, offline: bool = False) -> dict | None:
     """GET sem autenticação, com cache em disco e retry para transientes.
     404 → None (cacheado: ausência é informação). Transientes esgotados
-    levantam erro — nunca são cacheados."""
+    levantam erro — nunca são cacheados. Com `offline=True` um cache ausente
+    é erro explícito (CacheMissError) — garantia de zero chamadas de rede."""
     cache = _cache_path(repo, key)
     if cache.exists():
         return json.loads(cache.read_text())["data"]
+    if offline:
+        raise CacheMissError(f"{repo}: '{key}' ausente do cache "
+                             f"({cache}) — modo offline")
     attempt = 0
     while True:
         try:
@@ -155,7 +164,8 @@ def version_matches_repo(version_response: dict | None, repo: str) -> bool:
     return False
 
 
-def fetch_dependents(repo: str, language: str | None = None) -> int | None:
+def fetch_dependents(repo: str, language: str | None = None,
+                     offline: bool = False) -> int | None:
     """Máximo de dependentes entre a última versão de cada major do pacote
     canônico verificado do repositório. None = sem pacote verificado no
     deps.dev — limitação de cobertura a declarar (§8 do plano)."""
@@ -164,37 +174,79 @@ def fetch_dependents(repo: str, language: str | None = None) -> int | None:
         s, n = quote(system, safe=""), quote(name, safe="")
         slug = re.sub(r"[^A-Za-z0-9_.-]", "_", f"{system}_{name}")
         pkg = cached_get_json(repo, f"depsdev_pkg_{slug}",
-                              f"{DEPSDEV}/systems/{s}/packages/{n}")
+                              f"{DEPSDEV}/systems/{s}/packages/{n}",
+                              offline=offline)
         ver = default_version(pkg)
         if not ver:
             continue
         # verificação pacote↔repo uma vez, na versão default
         v = quote(ver, safe="")
         detail = cached_get_json(repo, f"depsdev_ver_{slug}",
-                                 f"{DEPSDEV}/systems/{s}/packages/{n}/versions/{v}")
+                                 f"{DEPSDEV}/systems/{s}/packages/{n}/versions/{v}",
+                                 offline=offline)
         if not version_matches_repo(detail, repo):
             continue
         for probe in versions_to_probe(pkg):
             pv = quote(probe, safe="")
             dep = cached_get_json(
                 repo, f"depsdev_dependents_{slug}_{probe}",
-                f"{DEPSDEV_ALPHA}/systems/{s}/packages/{n}/versions/{pv}:dependents")
+                f"{DEPSDEV_ALPHA}/systems/{s}/packages/{n}/versions/{pv}:dependents",
+                offline=offline)
             if dep and dep.get("dependentCount") is not None:
                 counts.append(int(dep["dependentCount"]))
     return max(counts) if counts else None
 
 
 # --------------------------------------------------------------- scorecard
-def fetch_scorecard(repo: str) -> float | None:
+def fetch_scorecard(repo: str, offline: bool = False) -> float | None:
     """Score agregado do OpenSSF Scorecard (None se o repo não é varrido)."""
     data = cached_get_json(repo, "openssf_scorecard",
-                           f"{SCORECARD}/projects/github.com/{repo}")
+                           f"{SCORECARD}/projects/github.com/{repo}",
+                           offline=offline)
     if data and data.get("score") is not None:
         return float(data["score"])
     return None
 
 
-def fetch_external(repo: str, language: str | None = None) -> dict:
+def fetch_external(repo: str, language: str | None = None,
+                   offline: bool = False) -> dict:
+    """Indicadores externos do repositório. `offline=True` exige que todos
+    estejam em cache (CacheMissError caso contrário) — é o modo da análise
+    v2, que reutiliza os indicadores de julho de 2026."""
     return {"repo": repo,
-            "dependents": fetch_dependents(repo, language),
-            "scorecard": fetch_scorecard(repo)}
+            "dependents": fetch_dependents(repo, language, offline=offline),
+            "scorecard": fetch_scorecard(repo, offline=offline)}
+
+
+# ------------------------------------------------------------ proveniência
+# Chaves de cache dos indicadores externos (prefixos dos arquivos JSON)
+EXTERNAL_CACHE_GLOBS = ("openssf_scorecard.json", "depsdev_*.json")
+
+
+def cache_fetched_dates(repo: str) -> list[str]:
+    """Datas (YYYY-MM-DD, UTC) em que os indicadores externos do repositório
+    foram consultados, lidas do `fetched_at` dos arquivos de cache. Vazio se
+    nada está em cache."""
+    d = RAW_DIR / repo.replace("/", "__")
+    if not d.is_dir():
+        return []
+    dates: set[str] = set()
+    for pattern in EXTERNAL_CACHE_GLOBS:
+        for f in d.glob(pattern):
+            try:
+                fetched = json.loads(f.read_text()).get("fetched_at")
+            except (json.JSONDecodeError, OSError):
+                continue
+            if fetched:
+                dates.add(str(fetched)[:10])
+    return sorted(dates)
+
+
+def external_fetched_range(repos: list[str]) -> str | None:
+    """Intervalo `min→max` (ou data única) das consultas em cache dos
+    indicadores externos — a época honesta para `external_fetched_at` quando
+    a validação roda sobre o cache. None se nenhum repositório tem cache."""
+    dates = sorted({d for r in repos for d in cache_fetched_dates(r)})
+    if not dates:
+        return None
+    return dates[0] if dates[0] == dates[-1] else f"{dates[0]}→{dates[-1]}"
