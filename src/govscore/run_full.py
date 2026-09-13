@@ -42,17 +42,29 @@ def flatten_record(m: dict) -> dict:
     return flat
 
 
+# Registros anteriores ao reparo v2 não carregam `catalog_version`: são,
+# por definição, do catálogo v1 (decisão 2026-09-13).
+DEFAULT_CATALOG_VERSION = "v1"
+
+
 def load_progress(progress_path: Path | None,
-                  expected_backend: str | None = None) -> dict[str, dict]:
+                  expected_backend: str | None = None,
+                  catalog_version: str | None = None) -> dict[str, dict]:
     """Registros já extraídos (JSONL, um por linha; linhas corrompidas por
     interrupção no meio da escrita são ignoradas). Proveniência: registros de
-    outro backend não são retomados — serão reextraídos."""
+    outro backend não são retomados — serão reextraídos. `catalog_version`
+    (opcional) filtra pelo catálogo do registro; registros sem a chave (ou
+    com null) contam como "v1"."""
     done: dict[str, dict] = {}
     if progress_path and progress_path.exists():
         for line in progress_path.read_text().splitlines():
             try:
                 r = json.loads(line)
                 if expected_backend and r.get("backend") != expected_backend:
+                    continue
+                if (catalog_version
+                        and (r.get("catalog_version") or DEFAULT_CATALOG_VERSION)
+                        != catalog_version):
                     continue
                 done[r["repo"]] = r
             except (json.JSONDecodeError, KeyError):
@@ -63,17 +75,20 @@ def load_progress(progress_path: Path | None,
 def run_sample(entries: list[dict], extract_fn: Callable[[str], dict],
                cfg: dict, progress_path: Path | None = None,
                resume: bool = True,
-               expected_backend: str | None = None) -> tuple[list[dict], list[dict]]:
+               expected_backend: str | None = None,
+               catalog_version: str | None = None) -> tuple[list[dict], list[dict]]:
     """Extrai e pontua cada repositório da amostra; falhas não interrompem.
 
     Ponto de recuperação contínuo: cada sucesso é gravado imediatamente em
     progress_path (JSONL). Re-execuções puladas os já concluídos (resume) e
     retentam apenas os que falharam; o cache de data/raw/ garante que nenhuma
-    chamada de API é repetida.
+    chamada de API é repetida. `catalog_version` restringe a retomada aos
+    registros daquele catálogo (ver load_progress).
     """
     from govscore.score.scoring import compute_score, compute_subscores
 
-    done = load_progress(progress_path, expected_backend) if resume else {}
+    done = (load_progress(progress_path, expected_backend, catalog_version)
+            if resume else {})
     results: list[dict] = []
     errors: list[dict] = []
     for i, entry in enumerate(entries, 1):

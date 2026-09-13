@@ -1,7 +1,36 @@
 """D1 (artefatos de governança) e D5 (práticas de segurança)."""
 from __future__ import annotations
 
+from datetime import datetime, timedelta, timezone
+
 from govscore.github_client import GitHubClient
+
+# Instante do snapshot da extração completa (23–24/07/2026): âncora de toda
+# janela temporal derivada de "agora". Fonte única após o catálogo v2 é
+# `extract/patterns.py` (M1); enquanto esse módulo não existe no merge, o
+# valor é definido aqui com o mesmo conteúdo. Decisão:
+# docs/decisions/2026-09-13-catalogo-v2-reparo-d1-d5.md ("O que NÃO muda").
+try:  # fonte única após o merge do catálogo v2
+    from govscore.extract.patterns import SNAPSHOT_UTC
+except ModuleNotFoundError as exc:  # patterns.py ainda não integrado
+    if exc.name != "govscore.extract.patterns":
+        raise  # dependência ausente DENTRO de patterns.py: nunca mascarar
+    SNAPSHOT_UTC = datetime(2026, 7, 24, 23, 59, 59, tzinfo=timezone.utc)
+
+RELEASE_WINDOW_DAYS = 365
+
+
+def release_cutoff(snapshot: datetime = SNAPSHOT_UTC) -> datetime:
+    """Início da janela de releases (12 meses) ancorado no snapshot.
+
+    Antes do reparo v2 o corte era `datetime.now() − 365 d`: reproduzia v1
+    apenas enquanto executado em julho de 2026 e deslocaria silenciosamente
+    `releases_12m` de 26 repositórios em qualquer re-execução posterior.
+    Com a constante, o corte é 2025-07-24T23:59:59Z em toda re-execução.
+    """
+    if snapshot.tzinfo is None:
+        snapshot = snapshot.replace(tzinfo=timezone.utc)
+    return snapshot - timedelta(days=RELEASE_WINDOW_DAYS)
 
 
 # FUNDING.yml: no repo (.github/ ou raiz) ou herdado de {owner}/.github
@@ -76,7 +105,6 @@ def release_metrics(releases: list[dict], cutoff) -> tuple[int, float | None]:
     Share é None quando não há release na janela — prática não observável,
     omitida da média (nunca imputada como zero).
     """
-    from datetime import datetime
     recent = [
         r for r in releases
         if r.get("published_at")
@@ -88,8 +116,13 @@ def release_metrics(releases: list[dict], cutoff) -> tuple[int, float | None]:
     return len(recent), with_notes / len(recent)
 
 
-def extract_security(gh: GitHubClient, repo: str) -> dict:
-    """D5 — política de segurança, CI e automação de dependências, releases."""
+def extract_security(gh: GitHubClient, repo: str,
+                     snapshot: datetime = SNAPSHOT_UTC) -> dict:
+    """D5 — política de segurança, CI e automação de dependências, releases.
+
+    `snapshot` ancora a janela de 12 meses das releases (nunca `now()`):
+    o mesmo cache de julho produz o mesmo `releases_12m` em qualquer data.
+    """
     policy, inherited = has_security_policy(gh, repo)
 
     workflows = gh.get(repo, f"/repos/{repo}/contents/.github/workflows", "workflows")
@@ -97,9 +130,7 @@ def extract_security(gh: GitHubClient, repo: str) -> dict:
     releases = gh.get(repo, f"/repos/{repo}/releases", "releases",
                       params={"per_page": 30}) or []
 
-    from datetime import datetime, timedelta, timezone
-    cutoff = datetime.now(timezone.utc) - timedelta(days=365)
-    releases_12m, notes_share = release_metrics(releases, cutoff)
+    releases_12m, notes_share = release_metrics(releases, release_cutoff(snapshot))
 
     out = {
         "security_policy": policy,
