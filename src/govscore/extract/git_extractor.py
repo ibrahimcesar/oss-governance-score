@@ -8,6 +8,12 @@ continuam no backend de API (requer GITHUB_TOKEN).
 
 Janela temporal: clone raso com --shallow-since=12 meses, alinhado ao critério
 de atividade recente do método (seção 3.2.2 do TCC).
+
+D1/D5: desde a decisão de 2026-09-13 (catálogo v2), a detecção sobre a árvore
+usa as regras de `extract/patterns.py` — fonte única, compartilhada com a
+re-pontuação sobre a árvore de época. As tabelas `ARTIFACT_PATTERNS` e
+`SECURITY_PATTERNS` (v1: `dict[str, str]`) permanecem exportadas, agora como a
+união textual das alternativas v2, para compatibilidade dos testes.
 """
 from __future__ import annotations
 
@@ -17,22 +23,23 @@ import tempfile
 from collections import Counter
 from pathlib import Path
 
+from govscore.extract.patterns import (
+    D1_RULES,
+    D5_RULES,
+    INHERITABLE,
+    detect,
+    joined_source,
+    normalize,
+)
+
 WINDOW = "12 months ago"
 
 # Padrões ANCORADOS ao início do caminho (achado do piloto: re.search sem
 # âncora casava caminhos aninhados — vendor/**/.circleci/, staging/**/docs/
 # security.md — inflando D1/D5 em monorepos como kubernetes/kubernetes).
-ARTIFACT_PATTERNS = {
-    "readme": r"^readme(\.[a-z]+)?$",
-    "contributing": r"^(\.github/|docs/)?contributing(\.[a-z]+)?$",
-    "code_of_conduct": r"^(\.github/|docs/)?code[-_]of[-_]conduct(\.[a-z]+)?$",
-    "license": r"^(licen[sc]e|copying)(\.[a-z]+)?$",
-    "issue_template": r"^\.github/issue_template",
-    "pull_request_template": r"^(\.github/|docs/)?pull_request_template(\.[a-z]+)?$",
-    "codeowners": r"^(\.github/|docs/)?codeowners$",
-    "governance": r"^(\.github/|docs/)?governance(\.[a-z]+)?$",
-    "funding": r"^(\.github/)?funding\.ya?ml$",
-}
+# Representação v1 (fonte textual por item), derivada das regras v2 compiladas.
+ARTIFACT_PATTERNS: dict[str, str] = {k: joined_source(v) for k, v in D1_RULES.items()}
+SECURITY_PATTERNS: dict[str, str] = {k: joined_source(v) for k, v in D5_RULES.items()}
 
 # Provedores genéricos: e-mail conta por PESSOA, não por "organização"
 # (prática GrimoireLab para o Elephant Factor).
@@ -44,13 +51,6 @@ GENERIC_DOMAINS = {
     "users.noreply.github.com", "localhost",
 }
 
-SECURITY_PATTERNS = {
-    "security_policy": r"^(\.github/|docs/)?security(\.[a-z]+)?$",
-    "ci_configured": r"^\.github/workflows/.+\.ya?ml$|^\.travis\.yml$|^\.circleci/",
-    "dependency_automation": r"^\.github/dependabot\.ya?ml$|^(\.github/)?renovate\.json5?$",
-}
-
-
 def _git(*args: str, cwd: Path | None = None, timeout: int = 600) -> str:
     r = subprocess.run(["git", *args], cwd=cwd, capture_output=True, text=True,
                        timeout=timeout)
@@ -59,17 +59,40 @@ def _git(*args: str, cwd: Path | None = None, timeout: int = 600) -> str:
     return r.stdout
 
 
+def _parse_ls_tree(text: str) -> list[str]:
+    """Saída de `git ls-tree -r -z` → caminhos de BLOBS (arquivos e symlinks),
+    normalizados. Submódulos (entradas `commit`) ficam de fora: a fonte de
+    detecção v2 é a lista de blobs, nunca diretórios nem submódulos."""
+    paths: list[str] = []
+    for entry in text.split("\0"):
+        if "\t" not in entry:
+            continue
+        meta, path = entry.split("\t", 1)
+        fields = meta.split()
+        if len(fields) >= 2 and fields[1] == "blob":
+            paths.append(path)
+    return normalize(paths)
+
+
 def _tree_paths(url: str, dest: Path, *clone_args: str) -> list[str]:
     # monorepos de Federação (kubernetes, gitlab) podem passar de 10 min
     _git("clone", "--quiet", "--no-checkout", "--single-branch",
          *clone_args, url, str(dest), timeout=1800)
-    tree = _git("ls-tree", "-r", "HEAD", "--name-only", cwd=dest)
-    return [p.lower() for p in tree.splitlines()]
+    # -z: caminhos sem as aspas/escapes C do modo texto (nomes não ASCII)
+    return _parse_ls_tree(_git("ls-tree", "-r", "-z", "HEAD", cwd=dest))
 
 
-def _present(paths: list[str], pattern: str) -> bool:
-    rx = re.compile(pattern, re.IGNORECASE)
-    return any(rx.search(p) for p in paths)
+def _present(paths: list[str], pattern: str | re.Pattern) -> bool:
+    """Alguma regra (fonte textual v1 ou padrão compilado) casa algum caminho?
+    Caminhos são normalizados (minúsculas) como em `patterns.detect`."""
+    rx = pattern if isinstance(pattern, re.Pattern) else re.compile(pattern)
+    return any(rx.search(p) for p in normalize(paths))
+
+
+def _inheritance_needed(artifacts: dict, security: dict) -> bool:
+    """Só clona `{owner}/.github` quando falta algum item herdável."""
+    return any(not (artifacts.get(k) if k in artifacts else security.get(k))
+               for k in INHERITABLE)
 
 
 def extract_via_git(repo: str, window: str = WINDOW) -> dict:
@@ -79,33 +102,22 @@ def extract_via_git(repo: str, window: str = WINDOW) -> dict:
         paths = _tree_paths(f"https://github.com/{repo}.git", dest,
                             f"--shallow-since={window}")
 
-        # --- D1/D5: presença de arquivos na árvore do HEAD -------------------
-        artifacts = {k: _present(paths, v) for k, v in ARTIFACT_PATTERNS.items()}
-        security = {k: _present(paths, v) for k, v in SECURITY_PATTERNS.items()}
+        # --- D1/D5: presença de blobs na árvore do HEAD (regras v2) ----------
+        artifacts, security, meta = detect(paths)
 
         # Fallback: default community health files herdados do repo {owner}/.github
-        # (invisíveis no clone do repositório individual; a API community/profile
-        #  os contabiliza — sem isto o backend git subestimaria D1/D5).
-        inheritable = ["contributing", "code_of_conduct", "issue_template",
-                       "pull_request_template", "governance", "funding"]
-        needs_org = ([k for k in inheritable if not artifacts[k]]
-                     + (["security_policy"] if not security["security_policy"] else []))
-        if needs_org:
+        # (invisíveis no clone do repositório individual; a plataforma os
+        #  aplica — sem isto o backend git subestimaria D1/D5). Só os itens
+        #  de `patterns.INHERITABLE`, só quando o repositório não tem o seu.
+        if _inheritance_needed(artifacts, security):
             try:
                 org_paths = _tree_paths(
                     f"https://github.com/{owner}/.github.git",
                     Path(tmp) / "org", "--depth", "1")
-                for k in needs_org:
-                    src = ARTIFACT_PATTERNS.get(k) or SECURITY_PATTERNS.get(k)
-                    if _present(org_paths, src):
-                        if k in artifacts:
-                            artifacts[k] = True
-                            artifacts[f"{k}_inherited"] = True
-                        else:
-                            security[k] = True
-                            security[f"{k}_inherited"] = True
             except RuntimeError:
-                pass  # organização sem repo .github
+                org_paths = None  # organização sem repo .github
+            if org_paths:
+                artifacts, security, meta = detect(paths, org_paths)
 
         security["releases_12m"] = None  # só via API (backend api)
 
@@ -131,6 +143,9 @@ def extract_via_git(repo: str, window: str = WINDOW) -> dict:
             "responsiveness": {"median_issue_close_hours": None,
                                "median_pr_merge_hours": None,
                                "pr_merge_ratio": None},
+            # proveniência da detecção D1/D5 (caminhos casados, flags,
+            # provedores de CI, ferramentas de dependências, itens herdados)
+            "v2_meta": meta, "catalog_version": "v2",
             "window": window, "backend": "git"}
 
 

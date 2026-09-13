@@ -156,8 +156,35 @@ from govscore.extract.git_extractor import ARTIFACT_PATTERNS as _AP  # noqa: E40
 
 def test_funding_pattern_git_backend():
     assert _present([".github/funding.yml"], _AP["funding"])
-    assert _present(["funding.yml"], _AP["funding"])
+    # catálogo v2 (decisão 2026-09-13): no repositório só .github/FUNDING.yml
+    # pontua; a raiz vale apenas no repositório especial {owner}/.github
+    assert not _present(["funding.yml"], _AP["funding"])
     assert not _present(["packages/x/funding.yml"], _AP["funding"])
+
+
+def test_git_backend_patterns_are_v2_sources():
+    """As tabelas v1 (dict[str, str]) são a união textual das regras v2 —
+    fonte única em extract/patterns.py."""
+    from govscore.extract.patterns import D1_RULES, D5_RULES, joined_source
+    assert set(ARTIFACT_PATTERNS) == set(D1_RULES)
+    assert set(SECURITY_PATTERNS) == set(D5_RULES)
+    assert ARTIFACT_PATTERNS["codeowners"] == joined_source(D1_RULES["codeowners"])
+    # _present aceita a fonte textual ou o padrão compilado e normaliza a caixa
+    assert _present([".github/CODEOWNERS"], ARTIFACT_PATTERNS["codeowners"])
+    assert _present([".github/CODEOWNERS"], D1_RULES["codeowners"][0])
+
+
+def test_parse_ls_tree_keeps_blobs_and_symlinks_only():
+    from govscore.extract.git_extractor import _parse_ls_tree
+    out = "\0".join([
+        "100644 blob 1111111111111111111111111111111111111111\tREADME.md",
+        "120000 blob 2222222222222222222222222222222222222222\t.github/SECURITY.md",
+        "160000 commit 3333333333333333333333333333333333333333\tvendor/LICENSE",
+        "100755 blob 4444444444444444444444444444444444444444\tscripts/run.sh",
+        "",
+    ])
+    assert _parse_ls_tree(out) == ["readme.md", ".github/security.md", "scripts/run.sh"]
+    assert _parse_ls_tree("") == []
 
 
 def test_has_funding_repo_and_org_fallback():
