@@ -5,10 +5,14 @@ import yaml
 
 from govscore.robustness import (
     CONTENT_REPOS,
+    LOCUS_EXTERNAL_REPOS,
+    MIRROR_REPOS,
+    NEAR_DUPLICATE_REPOS,
     _perturb_cfg,
     exclusion_scenarios,
     imputation_sensitivity,
     reclassification_sensitivity,
+    scenario_section,
     social_composite,
     steiger_z,
     stratum_rho,
@@ -121,6 +125,41 @@ def test_exclusion_scenarios_remove_os_conjuntos():
     assert out["sem_todos"]["n"] == 3
     assert math.isclose(out["sem_conteudo"]["estratos"]["stadium×forks"]["rho"],
                         -1.0)
+
+
+def test_exclusion_scenarios_catalogo_v2_locus_externo_e_quase_duplicado():
+    # conjuntos pré-registrados (registro 2026-09-13)
+    assert set(LOCUS_EXTERNAL_REPOS) == {
+        "git/git", "gitlabhq/gitlabhq", "golang/go", "react/react-native",
+        "tensorflow/tensorflow"}
+    assert NEAR_DUPLICATE_REPOS == ("openinterpreter/openinterpreter",)
+    plain = [("a/1", 10, 4), ("a/2", 20, 3), ("a/3", 30, 2), ("a/4", 40, 1)]
+    # os dois excluídos quebram a monotonia; o quase-duplicado a preserva
+    special = [("golang/go", 50, 9), (MIRROR_REPOS[0], 60, 8),
+               ("openinterpreter/openinterpreter", 70, 0)]
+    results = [{"repo": r, "archetype": "stadium", "score": s,
+                "stars": 10, "forks": f} for r, s, f in plain + special]
+    out = exclusion_scenarios(results, {}, heuristic=[])
+    assert out["completa"]["n"] == 7
+    assert out["sem_locus_externo"]["n"] == 5      # golang/go + espelho
+    assert out["sem_openinterpreter"]["n"] == 6    # só o superconjunto
+    assert out["sem_espelhos"]["n"] == 6           # cenários antigos intactos
+    assert out["sem_todos"]["n"] == 6              # união da inspeção manual
+    assert math.isclose(
+        out["sem_locus_externo"]["estratos"]["stadium×forks"]["rho"], -1.0)
+
+
+def test_scenario_section_renderiza_cenarios_v2():
+    results = [{"repo": r, "archetype": "stadium", "score": s,
+                "stars": 10, "forks": f}
+               for r, s, f in [("a/1", 10, 4), ("a/2", 20, 3), ("a/3", 30, 2),
+                               ("golang/go", 40, 1)]]
+    text = "\n".join(scenario_section(
+        exclusion_scenarios(results, {}, heuristic=[])))
+    assert "| sem_locus_externo | 3 |" in text
+    assert "| sem_openinterpreter | 4 |" in text
+    assert "2026-09-13-catalogo-v2-reparo-d1-d5.md" in text
+    assert "`react/react-native`" in text and "`openai/codex`" in text
 
 
 def test_imputation_sensitivity_penaliza_silencio_observado():
