@@ -12,7 +12,9 @@ from govscore.github_client import GitHubClient
 # docs/decisions/2026-09-13-catalogo-v2-reparo-d1-d5.md ("O que NÃO muda").
 try:  # fonte única após o merge do catálogo v2
     from govscore.extract.patterns import SNAPSHOT_UTC
-except ImportError:  # patterns.py ainda não integrado
+except ModuleNotFoundError as exc:  # patterns.py ainda não integrado
+    if exc.name != "govscore.extract.patterns":
+        raise  # dependência ausente DENTRO de patterns.py: nunca mascarar
     SNAPSHOT_UTC = datetime(2026, 7, 24, 23, 59, 59, tzinfo=timezone.utc)
 
 RELEASE_WINDOW_DAYS = 365

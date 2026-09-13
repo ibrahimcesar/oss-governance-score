@@ -5,6 +5,7 @@ Tudo roda em diretórios temporários; nada é escrito sob data/ ou results/.
 """
 import json
 import random
+import shutil
 
 import pytest
 import yaml
@@ -24,11 +25,16 @@ def test_load_progress_filtra_catalog_version(tmp_path):
             {"repo": "b/v1", "backend": "api+git", "score": 2,
              "catalog_version": "v1"},
             {"repo": "c/v2", "backend": "api+git", "score": 3,
-             "catalog_version": "v2"}]
+             "catalog_version": "v2"},
+            {"repo": "d/v1-nulo", "backend": "api+git", "score": 4,
+             "catalog_version": None}]
     p.write_text("\n".join(json.dumps(r) for r in recs) + "\n")
-    assert set(load_progress(p)) == {"a/v1-implicito", "b/v1", "c/v2"}
-    # sem a chave conta como v1 (registros anteriores ao reparo)
-    assert set(load_progress(p, catalog_version="v1")) == {"a/v1-implicito", "b/v1"}
+    assert set(load_progress(p)) == {"a/v1-implicito", "b/v1", "c/v2",
+                                     "d/v1-nulo"}
+    # sem a chave (ou com null explícito) conta como v1 — registros
+    # anteriores ao reparo
+    assert set(load_progress(p, catalog_version="v1")) == {
+        "a/v1-implicito", "b/v1", "d/v1-nulo"}
     assert set(load_progress(p, catalog_version="v2")) == {"c/v2"}
     # combinado com o filtro de backend já existente
     assert load_progress(p, expected_backend="git", catalog_version="v2") == {}
@@ -117,10 +123,20 @@ def test_run_all_usa_diretorios_informados(tmp_path):
     assert (results_dir / "robustez.md").read_text().startswith("# Robustez")
     dumped = json.loads((results_dir / "robustness.json").read_text())
     assert dumped["valores_referencia"].keys() == set(ARCHETYPES)
-    # sem results_dir nada é gravado (apenas cálculo)
-    other = tmp_path / "nada"
-    run_all(data_dir=data_dir)
-    assert not other.exists()
+    # sem results_dir nada é gravado (apenas cálculo): nenhum arquivo novo
+    before = set(tmp_path.rglob("*"))
+    again = run_all(data_dir=data_dir)
+    assert set(tmp_path.rglob("*")) == before
+    assert json.dumps(again, sort_keys=True) == json.dumps(res, sort_keys=True)
+    # config_dir é lido de fato (catálogo, amostra e limiares de arquétipo)
+    cfg_dir = tmp_path / "config"
+    cfg_dir.mkdir()
+    for name in ("metrics.yaml", "sample_full.yaml", "sampling.yaml"):
+        shutil.copy(cli.ROOT / "config" / name, cfg_dir / name)
+    same = run_all(data_dir=data_dir, config_dir=cfg_dir)
+    assert json.dumps(same, sort_keys=True) == json.dumps(res, sort_keys=True)
+    with pytest.raises(FileNotFoundError):
+        run_all(data_dir=data_dir, config_dir=tmp_path / "sem-config")
 
 
 def test_cmd_robustness_e_sensitivity_gravam_em_results_dir(tmp_path, capsys):
@@ -201,6 +217,20 @@ def test_cmd_validate_offline_e_epoca_externa(tmp_path, no_network, monkeypatch)
     (tmp_path / "raw" / "org0__proj0" / "openssf_scorecard.json").unlink()
     with pytest.raises(external.CacheMissError):
         cli.cmd_validate(data_dir, results_dir, offline=True)
+
+
+def test_cmd_validate_sem_cache_algum_avisa_data_de_hoje(tmp_path, no_network,
+                                                        monkeypatch, capsys):
+    """Só sem indicador algum em cache a época recai em hoje — com aviso em
+    stderr, nunca em silêncio. Dataset vazio: nenhuma consulta é feita."""
+    from datetime import date
+    external = no_network
+    monkeypatch.setattr(external, "RAW_DIR", tmp_path / "raw")
+    data_dir, results_dir = tmp_path / "processed", tmp_path / "results"
+    _write_dataset(data_dir, [])
+    res = cli.cmd_validate(data_dir, results_dir, offline=True)
+    assert res["meta"]["external_fetched_at"] == date.today().isoformat()
+    assert "external_fetched_at" in capsys.readouterr().err
 
 
 # -------------------------------------------------------------- (b) figuras

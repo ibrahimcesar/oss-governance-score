@@ -10,7 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 import yaml
@@ -183,10 +183,16 @@ def cmd_validate(data_dir: Path, results_dir: Path,
         if not offline:
             _time.sleep(0.1)  # cortesia com APIs públicas sem auth
     snap = sorted({r["extracted_at"] for r in rows if r.get("extracted_at")})
-    from datetime import date
+    # Época dos indicadores externos: override explícito > intervalo do
+    # `fetched_at` em cache (sobre o cache de julho o valor derivado é
+    # "2026-07-24", idêntico ao relatório v1) > hoje, só sem cache algum —
+    # avisado em stderr, nunca silencioso.
     fetched = (external_fetched_at
-               or external_fetched_range([r["repo"] for r in rows])
-               or date.today().isoformat())
+               or external_fetched_range([r["repo"] for r in rows]))
+    if not fetched:
+        fetched = date.today().isoformat()
+        print(f"aviso: nenhum indicador externo em cache — "
+              f"external_fetched_at = {fetched} (hoje)", file=sys.stderr)
     meta = {"stars_snapshot": "→".join([snap[0], snap[-1]] if snap else []),
             "external_fetched_at": fetched}
     res = validate_correlations(rows, VALIDATION_INDICATORS, meta=meta)
@@ -262,6 +268,10 @@ def build_parser() -> argparse.ArgumentParser:
                         help="robustez pós-revisão adversarial (limiares, "
                              "reclassificação, discriminante, suspeitos)")
     _add_dir_options(ro)
+    # `figures` como subcomando: necessário para os flags --data-dir/
+    # --results-dir/--fig-dir (contrato M4); `make figures` continua em
+    # `python -m govscore.figures`. Integrador: os subcomandos v2 (epoch,
+    # rescore, compare, locus-evidence) entram aqui, ao lado deste.
     fg = sub.add_parser("figures", help="figuras e tabelas das seções 4.2/4.3")
     _add_dir_options(fg)
     fg.add_argument("--fig-dir", type=Path, default=None,
@@ -309,6 +319,9 @@ def main(argv: list[str] | None = None) -> None:
             fn = extract_via_git
         else:
             fn = lambda repo: extract_repo(gh, repo, snapshot=snapshot)  # noqa: E731
+        # Saídas de `run` fixas em data/processed e results/: a extração
+        # completa não é re-executada no reparo v2 (D2–D4 copiados de v1);
+        # só as análises recebem --data-dir/--results-dir.
         progress = DEFAULT_DATA_DIR / "full_metrics_progress.jsonl"
         progress.parent.mkdir(parents=True, exist_ok=True)
         if args.fresh and progress.exists():

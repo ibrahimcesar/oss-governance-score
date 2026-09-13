@@ -8,6 +8,8 @@ deriva silenciosa em qualquer re-execução futura.
 """
 from datetime import datetime, timedelta, timezone
 
+import pytest
+
 from govscore import cli
 from govscore.extract import artifacts
 from govscore.extract.artifacts import (
@@ -106,3 +108,30 @@ def test_cli_snapshot_default_e_override():
         assert ap.parse_args(argv).snapshot == SNAPSHOT_UTC
     args = ap.parse_args(["run", "--snapshot", "2027-01-01"])
     assert args.snapshot == datetime(2027, 1, 1, 23, 59, 59, tzinfo=timezone.utc)
+
+
+def test_snapshot_fonte_unica_em_patterns(monkeypatch):
+    """Após o merge de M1, `extract/patterns.py` é a fonte única de
+    SNAPSHOT_UTC e artifacts.py apenas re-exporta. Um patterns.py presente
+    porém sem a constante é erro explícito: o fallback local cobre só a
+    AUSÊNCIA do módulo, nunca mascara um módulo quebrado."""
+    import importlib
+    import sys
+    import types
+
+    name = "govscore.extract.patterns"
+    fake = datetime(2030, 1, 1, tzinfo=timezone.utc)
+    stub = types.ModuleType(name)
+    stub.SNAPSHOT_UTC = fake
+    monkeypatch.setitem(sys.modules, name, stub)
+    try:
+        importlib.reload(artifacts)
+        assert artifacts.SNAPSHOT_UTC == fake
+        assert artifacts.release_cutoff() == fake - timedelta(days=365)
+        monkeypatch.setitem(sys.modules, name, types.ModuleType(name))
+        with pytest.raises(ImportError):
+            importlib.reload(artifacts)
+    finally:
+        monkeypatch.undo()
+        importlib.reload(artifacts)
+    assert artifacts.SNAPSHOT_UTC == SNAPSHOT_UTC

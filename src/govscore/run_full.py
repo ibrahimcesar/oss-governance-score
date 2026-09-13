@@ -53,8 +53,8 @@ def load_progress(progress_path: Path | None,
     """Registros já extraídos (JSONL, um por linha; linhas corrompidas por
     interrupção no meio da escrita são ignoradas). Proveniência: registros de
     outro backend não são retomados — serão reextraídos. `catalog_version`
-    (opcional) filtra pelo catálogo do registro; registros sem a chave
-    contam como "v1"."""
+    (opcional) filtra pelo catálogo do registro; registros sem a chave (ou
+    com null) contam como "v1"."""
     done: dict[str, dict] = {}
     if progress_path and progress_path.exists():
         for line in progress_path.read_text().splitlines():
@@ -63,7 +63,7 @@ def load_progress(progress_path: Path | None,
                 if expected_backend and r.get("backend") != expected_backend:
                     continue
                 if (catalog_version
-                        and r.get("catalog_version", DEFAULT_CATALOG_VERSION)
+                        and (r.get("catalog_version") or DEFAULT_CATALOG_VERSION)
                         != catalog_version):
                     continue
                 done[r["repo"]] = r
