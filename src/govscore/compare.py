@@ -16,7 +16,9 @@ peso (registro de decisão de 2026-09-13).
 from __future__ import annotations
 
 import json
+import math
 import statistics
+import warnings
 from collections import Counter
 from pathlib import Path
 
@@ -79,8 +81,6 @@ def _inherited(rec: dict, item: str) -> bool:
 def _rho(xs: list[float | None], ys: list[float | None]) -> float | None:
     """ρ de Spearman (exclusão par a par); None quando indefinido — n < 3 ou
     entrada constante (NaN do scipy jamais chega ao JSON/relatório)."""
-    import math
-    import warnings
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")  # ConstantInputWarning tratado abaixo
         rho = spearman(xs, ys)
@@ -123,7 +123,10 @@ def compare_records(v1: list[dict], v2: list[dict], sample_entries: list[dict],
                     min_rank_move: int = MIN_RANK_MOVE) -> dict:
     """Comparação completa v1×v2 sobre a interseção de repositórios (ordem
     de v1). Arquétipo: da amostra (`sample_entries`), com fallback ao próprio
-    registro. Resultado serializável em JSON."""
+    registro. `min_rank_move` é o limiar (em posições) da lista de
+    deslocamentos de ranking — 5 por padrão, como no protocolo (passo 5);
+    ecoado em `res["min_rank_move"]` para o relatório. Resultado
+    serializável em JSON."""
     v1_by = {r["repo"]: r for r in v1}
     v2_by = {r["repo"]: r for r in v2}
     arch_of = {e["repo"]: e.get("archetype") for e in (sample_entries or [])}

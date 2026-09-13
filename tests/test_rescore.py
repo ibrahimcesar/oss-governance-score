@@ -17,6 +17,7 @@ from govscore.rescore import (
     rescore_all,
     rescore_record,
 )
+from govscore.run_full import flatten_record
 from govscore.score.scoring import compute_score, compute_subscores
 
 CFG = yaml.safe_load(open("config/metrics.yaml"))
@@ -233,6 +234,68 @@ def test_inacessivel_ou_nao_verificado_mantem_v1(monkeypatch):
     assert v2["epoch_status"] == "unreachable"
     assert v2["v2_source"] == "v1_cache"
     assert "tree_paths" in v2["epoch_note"]
+
+
+def test_status_do_resolvedor_sem_epoch_status(monkeypatch):
+    """Dicionário no formato de `EpochResult` (M2) — só `status`, sem
+    `epoch_status`: "no_commit_before_cutoff" (cadeia first-parent não cruza
+    o corte) não é "ok" ⇒ itens v1 mantidos e o status é carregado
+    literalmente para a tabela de época."""
+    monkeypatch.setattr(rescore, "_detect", _stub_detect)
+    v1 = _v1()
+    tree = BASE_TREE + [".github/ISSUE_TEMPLATE/bug.yml"]
+    ep = {"sha": None, "committer_ts": None, "cutoff": "2026-07-23T20:15:00Z",
+          "cutoff_source": "repo_metadata", "resolver_step": "depth_6400",
+          "status": "no_commit_before_cutoff"}
+    v2 = rescore_record(v1, ep, tree, None, CFG, "2026-09-13")
+    assert v2["epoch_status"] == "no_commit_before_cutoff"
+    assert v2["v2_source"] == "v1_cache"
+    assert v2["artifacts"] == v1["artifacts"]
+    assert v2["score"] == v1["score"]
+    assert v2["epoch_cutoff_source"] == "repo_metadata"
+    assert v2["epoch_resolver_step"] == "depth_6400"
+
+    # `status` "ok" sem `epoch_status` ⇒ re-medido (compatível com M2)
+    v2 = rescore_record(v1, dict(EPOCH_OK, sha=SHA, epoch_status=None), tree,
+                        None, CFG, "2026-09-13")
+    assert v2["epoch_status"] == "ok" and v2["v2_source"] == "tree"
+    assert v2["artifacts"]["issue_template"] is True
+
+
+def test_campos_v2_no_parquet_via_flatten_record(monkeypatch):
+    """Integração com `run_full.flatten_record`: escalares de época chegam
+    ao parquet/csv como colunas; listas e dicionários (`epoch_unverified_probes`,
+    `v1_artifacts`, `v1_security`, `v2_meta`) ficam só no JSON; os 12 binários
+    e as anotações `*_inherited` saem das seções v2, não das cópias v1."""
+    monkeypatch.setattr(rescore, "_detect", _stub_detect)
+    v1 = _v1()
+    unverified = dict(EPOCH_OK, epoch_status="unverified",
+                      verification={"security_md": {"ok": False}})
+    v2 = rescore_record(v1, unverified, BASE_TREE, ["CONTRIBUTING.md"], CFG,
+                        "2026-09-13")
+    flat = flatten_record(v2)
+    for k in ("catalog_version", "epoch_sha", "epoch_cutoff",
+              "epoch_cutoff_source", "epoch_resolver_step", "epoch_status",
+              "epoch_until_sha", "epoch_note", "remeasured_at", "v2_source",
+              "score", "subscore_artifacts", "subscore_security"):
+        assert k in flat, k
+    for k in ("epoch_unverified_probes", "v1_artifacts", "v1_security",
+              "v2_meta"):
+        assert k not in flat, k
+    assert not any(k.startswith("v1_") for k in flat)
+    assert flat["epoch_status"] == "unverified"
+    assert flat["v2_source"] == "v1_cache"
+    assert flat["artifacts_issue_template"] is False       # v1 mantido
+    assert flat["security_releases_12m"] == 4
+
+    # caminho re-medido: coluna `*_inherited` só quando herdado
+    v2 = rescore_record(v1, EPOCH_OK, BASE_TREE, ["CONTRIBUTING.md"], CFG,
+                        "2026-09-13")
+    flat = flatten_record(v2)
+    assert flat["artifacts_contributing"] is True
+    assert flat["artifacts_contributing_inherited"] is True
+    assert "artifacts_funding_inherited" not in flat
+    assert flat["artifacts_health_percentage"] == 100
 
 
 # ------------------------------------------------------------- cache v2

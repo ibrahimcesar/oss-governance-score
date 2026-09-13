@@ -105,6 +105,20 @@ def test_epoca_flags_e_assercao(monkeypatch):
     assert ep["unverified"] == []
     assert ep["n_until_available"] == 1 and ep["until_divergent"] == ["t/delta"]
     assert ep["cutoff_min"] == ep["cutoff_max"] == "2026-07-23T20:15:00Z"
+    assert res["min_rank_move"] == 5                     # padrão do protocolo
+
+    # "no_commit_before_cutoff" (status do resolvedor M2) conta como
+    # inacessível na tabela de época, com itens v1 mantidos
+    v1b = v1 + [_v1("z/omega", "toy")]
+    v2b = v2 + [rescore_record(v1b[4], {"status": "no_commit_before_cutoff",
+                                        "sha": None, "resolver_step":
+                                        "depth_6400"}, None, None, CFG,
+                               "2026-09-13")]
+    epb = compare_records(v1b, v2b, SAMPLE, None)["epoch"]
+    assert epb["status"] == {"ok": 3, "unreachable": 1,
+                             "no_commit_before_cutoff": 1}
+    assert epb["v2_source"] == {"tree": 3, "v1_cache": 2}
+    assert [u["repo"] for u in epb["unreachable"]] == ["c/gamma", "z/omega"]
 
     fl = res["flags"]
     assert fl["flags"]["issue_template_yaml_only"] == {"n": 1,

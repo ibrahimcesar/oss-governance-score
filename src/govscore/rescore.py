@@ -100,9 +100,15 @@ def rescore_record(v1_record: dict, epoch: dict | None, tree_paths: list[str] | 
     """Registro v2 a partir do registro v1 (cópia profunda; v1 não é mutado).
 
     `epoch` é o dicionário de `epoch_commit.json` (M2) — `None` equivale a
-    inacessível. `tree_paths`/`org_paths` são as listas de blobs (caminhos)
-    da árvore de época do repositório e de `{owner}/.github` (`None` = sem
-    repositório especial ⇒ sem herança).
+    inacessível. O status lido é `epoch_status` ("ok" | "unverified" |
+    "unreachable"); na sua ausência vale `status` do resolvedor ("ok" |
+    "unreachable" | "no_commit_before_cutoff"), e qualquer valor ≠ "ok"
+    mantém os itens v1. `until_candidate_sha` e `note` são opcionais
+    (cross-check REST `commits?until=` e motivo da inacessibilidade).
+    `tree_paths`/`org_paths` são as listas de blobs (caminhos) da árvore de
+    época do repositório e de `{owner}/.github` (`None` em `org_paths` = sem
+    repositório especial ⇒ sem herança; `None` em `tree_paths` com época
+    "ok" ⇒ tratado como inacessível, com nota).
     """
     rec = copy.deepcopy(v1_record)
     epoch = epoch or {}
