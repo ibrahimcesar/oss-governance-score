@@ -1,0 +1,541 @@
+{
+  "limiar_normalizacao": {
+    "per_metric": {
+      "±25%": {
+        "min": 0.9989078907890787,
+        "mean": 0.9996118073345795,
+        "pior_variante": "truck_factor -25%",
+        "variantes": {
+          "top1_share +25%": 0.9991959195919591,
+          "top1_share -25%": 0.9990399039903989,
+          "hhi +25%": 0.9993639363936392,
+          "hhi -25%": 0.9992439243924391,
+          "truck_factor +25%": 0.9994359435943594,
+          "truck_factor -25%": 0.9989078907890787,
+          "median_first_response_hours +25%": 0.9998919891989198,
+          "median_first_response_hours -25%": 0.9999159915991598,
+          "median_pr_merge_hours +25%": 0.99996399639964,
+          "median_pr_merge_hours -25%": 0.9999279927992797,
+          "pr_merge_ratio +25%": 0.9996879687968797,
+          "pr_merge_ratio -25%": 0.999123912391239,
+          "pr_review_coverage +25%": 0.9996879687968797,
+          "pr_review_coverage -25%": 0.9992079207920791,
+          "contributors_5plus +25%": 0.9998079807980798,
+          "contributors_5plus -25%": 0.9997119711971196,
+          "commit_entropy +25%": 0.9998439843984397,
+          "commit_entropy -25%": 0.9994119411941192,
+          "elephant_factor +25%": 0.9996399639963995,
+          "elephant_factor -25%": 0.9997359735973597,
+          "contributor_retention +25%": 0.9997839783978397,
+          "contributor_retention -25%": 0.9997119711971196,
+          "releases_12m +25%": 0.9998079807980798,
+          "releases_12m -25%": 0.9998919891989198,
+          "release_notes_share +25%": 0.99996399639964,
+          "release_notes_share -25%": 0.9999999999999999
+        }
+      },
+      "±50%": {
+        "min": 0.9964596459645962,
+        "mean": 0.9990708301599389,
+        "pior_variante": "truck_factor -50%",
+        "variantes": {
+          "top1_share +50%": 0.9987998799879987,
+          "top1_share -50%": 0.9969876987698768,
+          "hhi +50%": 0.9989918991899188,
+          "hhi -50%": 0.9982238223822382,
+          "truck_factor +50%": 0.9987038703870386,
+          "truck_factor -50%": 0.9964596459645962,
+          "median_first_response_hours +50%": 0.9996999699969996,
+          "median_first_response_hours -50%": 0.9995439543954395,
+          "median_pr_merge_hours +50%": 0.9999519951995199,
+          "median_pr_merge_hours -50%": 0.9997119711971196,
+          "pr_merge_ratio +50%": 0.9993639363936392,
+          "pr_merge_ratio -50%": 0.998103810381038,
+          "pr_review_coverage +50%": 0.9990279027902789,
+          "pr_review_coverage -50%": 0.998175817581758,
+          "contributors_5plus +50%": 0.9997359735973597,
+          "contributors_5plus -50%": 0.9992319231923191,
+          "commit_entropy +50%": 0.9995919591959195,
+          "commit_entropy -50%": 0.999123912391239,
+          "elephant_factor +50%": 0.9992679267926792,
+          "elephant_factor -50%": 0.9992919291929192,
+          "contributor_retention +50%": 0.9996039603960395,
+          "contributor_retention -50%": 0.9989918991899188,
+          "releases_12m +50%": 0.9996639663966396,
+          "releases_12m -50%": 0.9997599759975996,
+          "release_notes_share +50%": 0.9998439843984397,
+          "release_notes_share -50%": 0.9999879987998799
+        }
+      }
+    },
+    "joint": {
+      "±25%": {
+        "todas +25%": 0.9965796579657965,
+        "todas -25%": 0.9963756375637562
+      },
+      "±50%": {
+        "todas +50%": 0.9892709270927091,
+        "todas -50%": 0.9890069006900689
+      }
+    }
+  },
+  "reclassificacao": {
+    "conjunto +50%": {
+      "preservados": 67,
+      "mudam_de_arquetipo": 0,
+      "ficam_fora_das_faixas": 8,
+      "federacoes_indeterminadas": 25,
+      "pct_preservados": 89.3
+    },
+    "conjunto −50%": {
+      "preservados": 42,
+      "mudam_de_arquetipo": 0,
+      "ficam_fora_das_faixas": 58,
+      "federacoes_indeterminadas": 0,
+      "pct_preservados": 42.0
+    },
+    "federation_min_contributors +50%": {
+      "preservados": 75,
+      "mudam_de_arquetipo": 0,
+      "ficam_fora_das_faixas": 0,
+      "federacoes_indeterminadas": 25,
+      "pct_preservados": 100.0
+    },
+    "federation_min_contributors −50%": {
+      "preservados": 100,
+      "mudam_de_arquetipo": 0,
+      "ficam_fora_das_faixas": 0,
+      "federacoes_indeterminadas": 0,
+      "pct_preservados": 100.0
+    },
+    "stadium_max_contributors +50%": {
+      "preservados": 100,
+      "mudam_de_arquetipo": 0,
+      "ficam_fora_das_faixas": 0,
+      "federacoes_indeterminadas": 0,
+      "pct_preservados": 100.0
+    },
+    "stadium_max_contributors −50%": {
+      "preservados": 91,
+      "mudam_de_arquetipo": 0,
+      "ficam_fora_das_faixas": 9,
+      "federacoes_indeterminadas": 0,
+      "pct_preservados": 91.0
+    },
+    "club_min_contributors +50%": {
+      "preservados": 92,
+      "mudam_de_arquetipo": 0,
+      "ficam_fora_das_faixas": 8,
+      "federacoes_indeterminadas": 0,
+      "pct_preservados": 92.0
+    },
+    "club_min_contributors −50%": {
+      "preservados": 100,
+      "mudam_de_arquetipo": 0,
+      "ficam_fora_das_faixas": 0,
+      "federacoes_indeterminadas": 0,
+      "pct_preservados": 100.0
+    },
+    "toy_max_contributors +50%": {
+      "preservados": 100,
+      "mudam_de_arquetipo": 0,
+      "ficam_fora_das_faixas": 0,
+      "federacoes_indeterminadas": 0,
+      "pct_preservados": 100.0
+    },
+    "toy_max_contributors −50%": {
+      "preservados": 81,
+      "mudam_de_arquetipo": 0,
+      "ficam_fora_das_faixas": 19,
+      "federacoes_indeterminadas": 0,
+      "pct_preservados": 81.0
+    },
+    "stars_high_min +50%": {
+      "preservados": 100,
+      "mudam_de_arquetipo": 0,
+      "ficam_fora_das_faixas": 0,
+      "federacoes_indeterminadas": 0,
+      "pct_preservados": 100.0
+    },
+    "stars_high_min −50%": {
+      "preservados": 100,
+      "mudam_de_arquetipo": 0,
+      "ficam_fora_das_faixas": 0,
+      "federacoes_indeterminadas": 0,
+      "pct_preservados": 100.0
+    },
+    "club_stars_max +50%": {
+      "preservados": 100,
+      "mudam_de_arquetipo": 0,
+      "ficam_fora_das_faixas": 0,
+      "federacoes_indeterminadas": 0,
+      "pct_preservados": 100.0
+    },
+    "club_stars_max −50%": {
+      "preservados": 75,
+      "mudam_de_arquetipo": 0,
+      "ficam_fora_das_faixas": 25,
+      "federacoes_indeterminadas": 0,
+      "pct_preservados": 75.0
+    },
+    "toy_stars_max +50%": {
+      "preservados": 100,
+      "mudam_de_arquetipo": 0,
+      "ficam_fora_das_faixas": 0,
+      "federacoes_indeterminadas": 0,
+      "pct_preservados": 100.0
+    },
+    "toy_stars_max −50%": {
+      "preservados": 83,
+      "mudam_de_arquetipo": 0,
+      "ficam_fora_das_faixas": 17,
+      "federacoes_indeterminadas": 0,
+      "pct_preservados": 83.0
+    }
+  },
+  "discriminante": {
+    "por_dimensao": {
+      "artifacts": 0.5598540101980918,
+      "distribution": 0.5800941308715974,
+      "responsiveness": 0.4965754670847679,
+      "diversity": 0.49679298126073423,
+      "security": 0.5877345054709161
+    },
+    "rho_score_cheio": 0.7501110304848488,
+    "rho_composto_social": 0.6257917039654735,
+    "rho_entre_compostos": 0.9131591678761489,
+    "n": 53,
+    "steiger_z": 2.9888563288382874,
+    "steiger_p": 0.0028002377028990555
+  },
+  "suspeitos": {
+    "suspeitos": {
+      "nome": [
+        "MisterBooo/LeetCodeAnimation",
+        "github/explore",
+        "EFanZh/LeetCode",
+        "Au1rxx/free-vpn-subscriptions"
+      ],
+      "sem_resposta_humana": [
+        "torvalds/linux",
+        "FFmpeg/FFmpeg",
+        "git/git",
+        "gitlabhq/gitlabhq",
+        "github/explore",
+        "fustyles/Arduino",
+        "AITabby/opencodex",
+        "yolfinance/yolfi-agent",
+        "EFanZh/LeetCode",
+        "Au1rxx/free-vpn-subscriptions"
+      ],
+      "uniao": [
+        "AITabby/opencodex",
+        "Au1rxx/free-vpn-subscriptions",
+        "EFanZh/LeetCode",
+        "FFmpeg/FFmpeg",
+        "MisterBooo/LeetCodeAnimation",
+        "fustyles/Arduino",
+        "git/git",
+        "github/explore",
+        "gitlabhq/gitlabhq",
+        "torvalds/linux",
+        "yolfinance/yolfi-agent"
+      ]
+    },
+    "n_excluidos": 11,
+    "estadio_forks": {
+      "com": {
+        "rho": -0.4553846153846154,
+        "n": 25
+      },
+      "sem": {
+        "rho": -0.45553359683794475,
+        "n": 23
+      }
+    },
+    "global_sem_suspeitos": {
+      "scorecard": 0.7380540399648242,
+      "stars": 0.3668709567585973,
+      "forks": 0.43299469269498697
+    },
+    "medias_por_arquetipo": {
+      "federation": {
+        "com": 76.07332442005489,
+        "sem": 78.52182331701395,
+        "n_excluidos": 3
+      },
+      "stadium": {
+        "com": 42.20726920726364,
+        "sem": 43.77859270265899,
+        "n_excluidos": 2
+      },
+      "club": {
+        "com": 70.38312099632009,
+        "sem": 70.11584510571863,
+        "n_excluidos": 1
+      },
+      "toy": {
+        "com": 32.04476504841795,
+        "sem": 35.810225587770184,
+        "n_excluidos": 5
+      }
+    },
+    "cenarios": {
+      "completa": {
+        "n": 100,
+        "global": {
+          "scorecard": 0.7501110304848488,
+          "stars": 0.4029882988298829,
+          "forks": 0.45448217511874417
+        },
+        "estratos": {
+          "stadium×forks": {
+            "rho": -0.4553846153846154,
+            "p": 0.022166685245949686,
+            "n": 25
+          },
+          "federation×scorecard": {
+            "rho": 0.5438291349387162,
+            "p": 0.03612139844319254,
+            "n": 15
+          }
+        }
+      },
+      "sem_heuristica": {
+        "n": 89,
+        "global": {
+          "scorecard": 0.7380540399648242,
+          "stars": 0.3668709567585973,
+          "forks": 0.43299469269498697
+        },
+        "estratos": {
+          "stadium×forks": {
+            "rho": -0.45553359683794475,
+            "p": 0.028934891239747622,
+            "n": 23
+          },
+          "federation×scorecard": {
+            "rho": 0.10858160259244368,
+            "p": 0.7369437083547932,
+            "n": 12
+          }
+        }
+      },
+      "sem_conteudo": {
+        "n": 92,
+        "global": {
+          "scorecard": 0.7257225091208562,
+          "stars": 0.44242713807931194,
+          "forks": 0.5065618618421904
+        },
+        "estratos": {
+          "stadium×forks": {
+            "rho": -0.2571428571428571,
+            "p": 0.26047318970040834,
+            "n": 21
+          },
+          "federation×scorecard": {
+            "rho": 0.5438291349387162,
+            "p": 0.03612139844319254,
+            "n": 15
+          }
+        }
+      },
+      "sem_espelhos": {
+        "n": 96,
+        "global": {
+          "scorecard": 0.7535352660814617,
+          "stars": 0.4220021703743896,
+          "forks": 0.48063945090261034
+        },
+        "estratos": {
+          "stadium×forks": {
+            "rho": -0.497391304347826,
+            "p": 0.013398524953480467,
+            "n": 24
+          },
+          "federation×scorecard": {
+            "rho": 0.10858160259244368,
+            "p": 0.7369437083547932,
+            "n": 12
+          }
+        }
+      },
+      "sem_todos": {
+        "n": 85,
+        "global": {
+          "scorecard": 0.7246123099471634,
+          "stars": 0.4213992573773696,
+          "forks": 0.5081127033122169
+        },
+        "estratos": {
+          "stadium×forks": {
+            "rho": -0.26616541353383455,
+            "p": 0.2566708454025406,
+            "n": 20
+          },
+          "federation×scorecard": {
+            "rho": 0.10858160259244368,
+            "p": 0.7369437083547932,
+            "n": 12
+          }
+        }
+      }
+    }
+  },
+  "imputacao": {
+    "n_informativos": 3,
+    "rho": 0.9994599459945993,
+    "deslocamento_max_rank": 9,
+    "deslocamentos": {
+      "fustyles/Arduino": 0,
+      "AITabby/opencodex": 0,
+      "yolfinance/yolfi-agent": 9
+    },
+    "medias_por_arquetipo": {
+      "federation": {
+        "omissao": 76.07332442005489,
+        "imputacao": 76.07332442005489
+      },
+      "stadium": {
+        "omissao": 42.20726920726364,
+        "imputacao": 42.20726920726364
+      },
+      "club": {
+        "omissao": 70.38312099632009,
+        "imputacao": 70.38312099632009
+      },
+      "toy": {
+        "omissao": 32.04476504841795,
+        "imputacao": 31.82400207926815
+      }
+    },
+    "taxonomia": {
+      "d3_informativo": [
+        "fustyles/Arduino",
+        "AITabby/opencodex",
+        "yolfinance/yolfi-agent"
+      ],
+      "d3_estrutural": [
+        "torvalds/linux",
+        "FFmpeg/FFmpeg",
+        "git/git",
+        "gitlabhq/gitlabhq",
+        "github/explore",
+        "EFanZh/LeetCode",
+        "Au1rxx/free-vpn-subscriptions"
+      ],
+      "release_notes_estrutural_sem_release": [
+        "torvalds/linux",
+        "freeCodeCamp/freeCodeCamp",
+        "golang/go",
+        "FFmpeg/FFmpeg",
+        "git/git",
+        "jekyll/jekyll",
+        "macrozheng/mall",
+        "huginn/huginn",
+        "doocs/advanced-java",
+        "MisterBooo/LeetCodeAnimation",
+        "monicahq/monica",
+        "anthropics/skills",
+        "gitlabhq/gitlabhq",
+        "garrytan/gstack",
+        "github/explore",
+        "lobsters/lobsters",
+        "mozilla/uniffi-rs",
+        "dtyq/magic",
+        "pietheinstrengholt/rssmonster",
+        "yan-labs/serenity-aleabitoreddit",
+        "edbrowse/edbrowse",
+        "fustyles/Arduino",
+        "morshedalam/rename",
+        "EFanZh/LeetCode",
+        "Defelo/nixpkgs-review-gha",
+        "tailuge/billiards"
+      ]
+    }
+  },
+  "cobertura_scorecard": {
+    "cobertos": {
+      "n": 53,
+      "por_arquetipo": {
+        "federation": 15,
+        "stadium": 21,
+        "club": 12,
+        "toy": 5
+      },
+      "linguagens": {
+        "c": 10,
+        "c++": 6,
+        "go": 6,
+        "java": 5,
+        "javascript": 2,
+        "php": 7,
+        "python": 1,
+        "ruby": 10,
+        "rust": 3,
+        "typescript": 3
+      },
+      "score_medio": 58.1
+    },
+    "nao_cobertos": {
+      "n": 47,
+      "por_arquetipo": {
+        "federation": 10,
+        "stadium": 4,
+        "club": 13,
+        "toy": 20
+      },
+      "linguagens": {
+        "c": 5,
+        "c++": 7,
+        "go": 7,
+        "java": 3,
+        "javascript": 4,
+        "php": 1,
+        "python": 5,
+        "rust": 6,
+        "typescript": 9
+      },
+      "score_medio": 51.9
+    },
+    "mannwhitney_p_score": 0.20877545378421314
+  },
+  "stars_flags": [
+    {
+      "repo": "yolfinance/yolfi-agent",
+      "archetype": "toy",
+      "stars": 207,
+      "forks": 1,
+      "stars_por_fork": 207.0,
+      "mediana_do_estrato": 7.7,
+      "stars_por_contribuidor_ativo": 104
+    }
+  ],
+  "valores_referencia": {
+    "federation": {
+      "q1": 71.2,
+      "mediana": 77.1,
+      "q3": 81.9,
+      "n": 25
+    },
+    "stadium": {
+      "q1": 32.7,
+      "mediana": 41.7,
+      "q3": 51.6,
+      "n": 25
+    },
+    "club": {
+      "q1": 61.7,
+      "mediana": 75.3,
+      "q3": 79.8,
+      "n": 25
+    },
+    "toy": {
+      "q1": 24.7,
+      "mediana": 32.0,
+      "q3": 40.7,
+      "n": 25
+    }
+  }
+}

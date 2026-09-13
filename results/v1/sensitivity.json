@@ -1,0 +1,35 @@
+{
+  "n": 100,
+  "base_weights": {
+    "artifacts": 0.25,
+    "distribution": 0.25,
+    "responsiveness": 0.2,
+    "diversity": 0.15,
+    "security": 0.15
+  },
+  "equal_vs_base": 0.9958475847584757,
+  "factor": 0.25,
+  "perturbation": {
+    "artifacts +25%": 0.9988118811881187,
+    "artifacts -25%": 0.9988478847884787,
+    "distribution +25%": 0.9992559255925593,
+    "distribution -25%": 0.9977077707770776,
+    "responsiveness +25%": 0.999135913591359,
+    "responsiveness -25%": 0.9989438943894389,
+    "diversity +25%": 0.9995559555955594,
+    "diversity -25%": 0.9994359435943594,
+    "security +25%": 0.9984998499849985,
+    "security -25%": 0.9990999099909991
+  },
+  "perturbation_min": 0.9977077707770776,
+  "perturbation_mean": 0.9989294929492949,
+  "kendalls_w": 0.9983654563803488,
+  "kendalls_w_n": 100,
+  "lodo": {
+    "artifacts": 0.9805700570057004,
+    "distribution": 0.9345694569456945,
+    "responsiveness": 0.981503094823184,
+    "diversity": 0.9919111911191119,
+    "security": 0.9803420342034204
+  }
+}

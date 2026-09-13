@@ -222,8 +222,11 @@ data/raw/*
 !data/raw/.gitkeep
 .pytest_cache/
 .vscode/branch-timer.json
+# worktrees temporários do harness de agentes
+.claude/worktrees/
 # progresso incremental da extração (retomável; artefato final é full_metrics.json)
 data/processed/*_progress.jsonl
+data/processed/v1/*_progress.jsonl
 # texto da monografia fica FORA do repositório público (docs/plano_publicacao.md)
 monografia/
 /*.docx

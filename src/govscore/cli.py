@@ -216,6 +216,119 @@ def cmd_figures(data_dir: Path, results_dir: Path,
                         fig_dir=Path(fig_dir) if fig_dir else None)
 
 
+# ------------------------------------------------------ catálogo v2 (reparo)
+RAW_DIR = ROOT / "data" / "raw"
+DEFAULT_EPOCH_WORKDIR = RAW_DIR / "_epoch_work"   # ignorado pelo git (data/raw/*)
+
+
+def _sample_entries(sample_file: Path | str) -> list[dict]:
+    return yaml.safe_load(Path(sample_file).read_text())["full"]
+
+
+def _code_version() -> str:
+    import subprocess
+    rev = subprocess.run(["git", "rev-parse", "--short", "HEAD"],
+                         capture_output=True, text=True, cwd=ROOT).stdout.strip()
+    if subprocess.run(["git", "status", "--porcelain"], capture_output=True,
+                      text=True, cwd=ROOT).stdout.strip():
+        rev += "-dirty"  # proveniência honesta: código não commitado
+    return rev
+
+
+def cmd_epoch(sample_file: Path | str, only: list[str] | None = None,
+              workdir: Path = DEFAULT_EPOCH_WORKDIR, force: bool = False,
+              keep: bool = False, cache_root: Path = RAW_DIR) -> dict:
+    """`govscore epoch`: commit e árvore de época (passo 3 do protocolo da
+    decisão 2026-09-13) por repositório e por `{owner}/.github` — só git,
+    nenhuma chamada à API. Idempotente e retomável (cache em
+    data/raw/<owner>__<repo>/v2/)."""
+    from govscore.extract.epoch import ensure_epoch_artifacts
+    entries = _sample_entries(sample_file)
+    repos = [e["repo"] for e in entries]
+    if only:
+        repos = [r for r in repos if r in set(only)]
+    summary: dict = {"ok": 0, "unverified": 0, "unreachable": 0, "errors": []}
+    for i, repo in enumerate(repos, 1):
+        print(f"[{i}/{len(repos)}] {repo}", file=sys.stderr, flush=True)
+        try:
+            ep = ensure_epoch_artifacts(repo, Path(cache_root), Path(workdir),
+                                        force=force, keep=keep)
+            status = ep.get("epoch_status", "unreachable")
+            summary[status] = summary.get(status, 0) + 1
+            print(f"    {status} sha={str(ep.get('sha'))[:12]} "
+                  f"step={ep.get('resolver_step')}", file=sys.stderr, flush=True)
+        except KeyboardInterrupt:
+            raise
+        except Exception as ex:  # noqa: BLE001 — a rodada não pode morrer
+            print(f"    ✗ {type(ex).__name__}: {ex}", file=sys.stderr, flush=True)
+            summary["errors"].append({"repo": repo, "error": f"{type(ex).__name__}: {ex}"})
+    print(json.dumps(summary, indent=2, ensure_ascii=False))
+    return summary
+
+
+def cmd_rescore(v1_json: Path | str, data_dir: Path, results_dir: Path,
+                remeasured_at: str | None = None,
+                cache_root: Path = RAW_DIR) -> dict:
+    """`govscore rescore`: passo 4 do protocolo — re-pontua os registros v1
+    com os 12 binários de D1/D5 medidos na árvore de época (regras v2);
+    tudo o mais verbatim. Saídas em data_dir (full_metrics.json,
+    metrics.parquet, scores.csv) e QA em results_dir/qa_extracao.md."""
+    from govscore.qa.declarations import qa_section
+    from govscore.rescore import rescore_all
+    from govscore.run_full import qa_report, write_outputs
+    data_dir, results_dir = Path(data_dir), Path(results_dir)
+    cfg = load_config()
+    v1 = json.loads(Path(v1_json).read_text())["results"]
+    remeasured_at = remeasured_at or date.today().isoformat()
+    v2 = rescore_all(v1, Path(cache_root), cfg, remeasured_at)
+    paths = write_outputs(v2, [], data_dir)
+    report = qa_report(v2, [], code_version=_code_version(),
+                       extra_sections=[qa_section(v2, Path(cache_root))])
+    results_dir.mkdir(parents=True, exist_ok=True)
+    (results_dir / "qa_extracao.md").write_text(report)
+    counts = {}
+    for r in v2:
+        counts[r.get("epoch_status")] = counts.get(r.get("epoch_status"), 0) + 1
+    out = {"n": len(v2), "epoch_status": counts,
+           "saidas": {k: str(v) for k, v in paths.items()},
+           "qa": str(results_dir / "qa_extracao.md")}
+    print(json.dumps(out, indent=2, ensure_ascii=False))
+    return out
+
+
+def cmd_compare(v1_dir: Path, v2_dir: Path, results_dir: Path,
+                sample_file: Path | str, cache_root: Path = RAW_DIR) -> dict:
+    """`govscore compare`: passo 5 do protocolo — results/reparo_v1_v2.md e
+    .json (ρ v1×v2, trocas por item × arquétipo nas duas direções,
+    época, cross-checks descritivos com o Scorecard de julho)."""
+    from govscore.compare import compare_records, report, scorecard_check_rows
+    v1 = json.loads((Path(v1_dir) / "full_metrics.json").read_text())["results"]
+    v2 = json.loads((Path(v2_dir) / "full_metrics.json").read_text())["results"]
+    entries = _sample_entries(sample_file)
+    ext_rows = scorecard_check_rows(Path(cache_root), [r["repo"] for r in v1])
+    res = compare_records(v1, v2, entries, ext_rows=ext_rows)
+    results_dir = Path(results_dir)
+    results_dir.mkdir(parents=True, exist_ok=True)
+    (results_dir / "reparo_v1_v2.md").write_text(report(res))
+    (results_dir / "reparo_v1_v2.json").write_text(
+        json.dumps(res, indent=2, ensure_ascii=False, default=str))
+    print(report(res))
+    return res
+
+
+def cmd_locus(results_dir: Path, sample_file: Path | str,
+              cache_root: Path = RAW_DIR) -> list[dict]:
+    """`govscore locus-evidence`: tabela de evidência do locus de coordenação
+    (descritiva; nunca altera scores) → results/locus_evidence.md."""
+    from govscore.qa.locus import locus_table, report
+    rows = locus_table(Path(cache_root), _sample_entries(sample_file))
+    results_dir = Path(results_dir)
+    results_dir.mkdir(parents=True, exist_ok=True)
+    (results_dir / "locus_evidence.md").write_text(report(rows))
+    print(report(rows))
+    return rows
+
+
 # --------------------------------------------------------------- argparse
 def _add_dir_options(p: argparse.ArgumentParser) -> None:
     p.add_argument("--data-dir", type=Path, default=DEFAULT_DATA_DIR,
@@ -276,6 +389,32 @@ def build_parser() -> argparse.ArgumentParser:
     _add_dir_options(fg)
     fg.add_argument("--fig-dir", type=Path, default=None,
                     help="saída das figuras (default: figures)")
+
+    # --- catálogo v2 (decisão 2026-09-13) ---------------------------------
+    default_sample = str(ROOT / "config" / "sample_full.yaml")
+    ep = sub.add_parser("epoch", help="commit/árvore de época por repositório "
+                                      "(git apenas; passo 3 do reparo v2)")
+    ep.add_argument("--sample-file", default=default_sample)
+    ep.add_argument("--only", nargs="*", metavar="owner/name")
+    ep.add_argument("--workdir", type=Path, default=DEFAULT_EPOCH_WORKDIR)
+    ep.add_argument("--force", action="store_true", help="refaz mesmo com cache v2")
+    ep.add_argument("--keep", action="store_true", help="mantém os clones")
+    rs = sub.add_parser("rescore", help="re-pontuação D1/D5 sobre a árvore de "
+                                        "época (passo 4 do reparo v2)")
+    rs.add_argument("--v1", type=Path,
+                    default=DEFAULT_DATA_DIR / "v1" / "full_metrics.json",
+                    help="registros v1 arquivados")
+    _add_dir_options(rs)
+    rs.add_argument("--remeasured-at", default=None, metavar="YYYY-MM-DD")
+    cp = sub.add_parser("compare", help="relatório v1→v2 (passo 5 do reparo v2)")
+    cp.add_argument("--v1-dir", type=Path, default=DEFAULT_DATA_DIR / "v1")
+    cp.add_argument("--v2-dir", type=Path, default=DEFAULT_DATA_DIR)
+    cp.add_argument("--results-dir", type=Path, default=DEFAULT_RESULTS_DIR)
+    cp.add_argument("--sample-file", default=default_sample)
+    lc = sub.add_parser("locus-evidence",
+                        help="evidência do locus de coordenação (descritiva)")
+    lc.add_argument("--results-dir", type=Path, default=DEFAULT_RESULTS_DIR)
+    lc.add_argument("--sample-file", default=default_sample)
     return ap
 
 
@@ -298,6 +437,24 @@ def main(argv: list[str] | None = None) -> None:
 
     if args.cmd == "figures":
         cmd_figures(args.data_dir, args.results_dir, args.fig_dir)
+        return
+
+    if args.cmd == "epoch":
+        cmd_epoch(args.sample_file, only=args.only, workdir=args.workdir,
+                  force=args.force, keep=args.keep)
+        return
+
+    if args.cmd == "rescore":
+        cmd_rescore(args.v1, args.data_dir, args.results_dir,
+                    remeasured_at=args.remeasured_at)
+        return
+
+    if args.cmd == "compare":
+        cmd_compare(args.v1_dir, args.v2_dir, args.results_dir, args.sample_file)
+        return
+
+    if args.cmd == "locus-evidence":
+        cmd_locus(args.results_dir, args.sample_file)
         return
 
     if args.cmd == "run":

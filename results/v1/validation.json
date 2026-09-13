@@ -1,0 +1,190 @@
+{
+  "n_total": 100,
+  "alpha": 0.05,
+  "indicators": [
+    "stars",
+    "forks",
+    "dependents",
+    "scorecard"
+  ],
+  "global": {
+    "stars": {
+      "rho": 0.4029882988298829,
+      "p": 3.225793562131134e-05,
+      "n": 100,
+      "in_family": true,
+      "p_adj": 3.225793562131134e-05,
+      "significant": true
+    },
+    "forks": {
+      "rho": 0.45448217511874417,
+      "p": 2.035663730590383e-06,
+      "n": 100,
+      "in_family": true,
+      "p_adj": 4.071327461180766e-06,
+      "significant": true
+    },
+    "dependents": {
+      "rho": 0.46169025843831935,
+      "p": 0.43376615616902764,
+      "n": 5,
+      "in_family": false
+    },
+    "scorecard": {
+      "rho": 0.7501110304848488,
+      "p": 1.0126628812025367e-10,
+      "n": 53,
+      "in_family": true,
+      "p_adj": 3.03798864360761e-10,
+      "significant": true
+    }
+  },
+  "by_archetype": {
+    "federation": {
+      "stars": {
+        "rho": 0.026153846153846153,
+        "p": 0.9012399090142549,
+        "n": 25
+      },
+      "forks": {
+        "rho": -0.020769230769230772,
+        "p": 0.9215035687808959,
+        "n": 25
+      },
+      "dependents": {
+        "rho": null,
+        "p": null,
+        "n": 2
+      },
+      "scorecard": {
+        "rho": 0.5438291349387162,
+        "p": 0.03612139844319254,
+        "n": 15
+      }
+    },
+    "stadium": {
+      "stars": {
+        "rho": -0.12461538461538461,
+        "p": 0.5528474184863238,
+        "n": 25
+      },
+      "forks": {
+        "rho": -0.4553846153846154,
+        "p": 0.022166685245949686,
+        "n": 25
+      },
+      "dependents": {
+        "rho": null,
+        "p": null,
+        "n": 1
+      },
+      "scorecard": {
+        "rho": 0.8079301857551636,
+        "p": 9.4434524086192e-06,
+        "n": 21
+      }
+    },
+    "club": {
+      "stars": {
+        "rho": 0.21153846153846154,
+        "p": 0.3100633788322082,
+        "n": 25
+      },
+      "forks": {
+        "rho": 0.29846153846153844,
+        "p": 0.1472878659928139,
+        "n": 25
+      },
+      "dependents": {
+        "rho": null,
+        "p": null,
+        "n": 2
+      },
+      "scorecard": {
+        "rho": 0.5845215366193189,
+        "p": 0.04593204249685693,
+        "n": 12
+      }
+    },
+    "toy": {
+      "stars": {
+        "rho": -0.06999999999999999,
+        "p": 0.7395196738699977,
+        "n": 25
+      },
+      "forks": {
+        "rho": 0.3270488891566829,
+        "p": 0.11054078956127032,
+        "n": 25
+      },
+      "dependents": {
+        "rho": null,
+        "p": null,
+        "n": 0
+      },
+      "scorecard": {
+        "rho": 0.8999999999999998,
+        "p": 0.03738607346849874,
+        "n": 5
+      }
+    }
+  },
+  "coverage": {
+    "stars": {
+      "n": 100,
+      "languages": {
+        "c": 15,
+        "c++": 13,
+        "go": 13,
+        "java": 8,
+        "javascript": 6,
+        "php": 8,
+        "python": 6,
+        "ruby": 10,
+        "rust": 9,
+        "typescript": 12
+      }
+    },
+    "forks": {
+      "n": 100,
+      "languages": {
+        "c": 15,
+        "c++": 13,
+        "go": 13,
+        "java": 8,
+        "javascript": 6,
+        "php": 8,
+        "python": 6,
+        "ruby": 10,
+        "rust": 9,
+        "typescript": 12
+      }
+    },
+    "dependents": {
+      "n": 5,
+      "languages": {
+        "python": 4,
+        "typescript": 1
+      }
+    },
+    "scorecard": {
+      "n": 53,
+      "languages": {
+        "c": 10,
+        "c++": 6,
+        "go": 6,
+        "java": 5,
+        "javascript": 2,
+        "php": 7,
+        "python": 1,
+        "ruby": 10,
+        "rust": 3,
+        "typescript": 3
+      }
+    }
+  },
+  "meta": {
+    "stars_snapshot": "2026-07-23→2026-07-24",
+    "external_fetched_at": "2026-07-24"
+  }
+}
