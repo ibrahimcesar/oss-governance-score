@@ -63,6 +63,18 @@ CONTENT_REPOS = (
 MIRROR_REPOS = ("torvalds/linux", "FFmpeg/FFmpeg", "git/git",
                 "gitlabhq/gitlabhq")
 
+# Conjuntos PRÉ-REGISTRADOS no catálogo v2
+# (docs/decisions/2026-09-13-catalogo-v2-reparo-d1-d5.md, "Instrumentos
+# complementares"). Descritivos: todos MANTIDOS na amostra e nos scores.
+# Locus de coordenação fora do GitHub (Gerrit/Phabricator/Piper/lista de
+# e-mail; evidência em results/locus_evidence.md, `govscore locus-evidence`):
+# cenário `sem_locus_externo` = LOCUS_EXTERNAL_REPOS ∪ MIRROR_REPOS.
+LOCUS_EXTERNAL_REPOS = ("git/git", "gitlabhq/gitlabhq", "golang/go",
+                        "react/react-native", "tensorflow/tensorflow")
+# Par quase-duplicado por histórico (openinterpreter/openinterpreter ⊃
+# openai/codex): cenário `sem_openinterpreter` retira só o superconjunto.
+NEAR_DUPLICATE_REPOS = ("openinterpreter/openinterpreter",)
+
 
 def _scores_with_cfg(results: list[dict], cfg: dict) -> list[float | None]:
     return [compute_score(compute_subscores(r, cfg), cfg["weights"])
@@ -281,13 +293,17 @@ STRATUM_FINDINGS = (("stadium", "forks"), ("federation", "scorecard"))
 def exclusion_scenarios(results: list[dict], ext: dict[str, dict],
                         heuristic: list[str]) -> dict:
     """Resultados globais e intra-arquétipo sob cada conjunto de exclusão
-    da inspeção manual (heurística, conteúdo, espelhos e a união)."""
+    da inspeção manual (heurística, conteúdo, espelhos e a união) e dos
+    cenários pré-registrados do catálogo v2 (locus externo, quase-duplicado).
+    `sem_todos` permanece a união da inspeção manual (2026-09-12)."""
     sets = {
         "completa": set(),
         "sem_heuristica": set(heuristic),
         "sem_conteudo": set(CONTENT_REPOS),
         "sem_espelhos": set(MIRROR_REPOS),
         "sem_todos": set(heuristic) | set(CONTENT_REPOS) | set(MIRROR_REPOS),
+        "sem_locus_externo": set(LOCUS_EXTERNAL_REPOS) | set(MIRROR_REPOS),
+        "sem_openinterpreter": set(NEAR_DUPLICATE_REPOS),
     }
     out = {}
     for name, excl in sets.items():
@@ -479,6 +495,51 @@ def _f(v, nd=3):
     return f"{v:.{nd}f}" if v is not None else "—"
 
 
+def scenario_section(cen: dict) -> list[str]:
+    """Linhas da seção 4.1 (cenários de exclusão): definição dos conjuntos,
+    tabela com uma linha por cenário — inclusive os pré-registrados do
+    catálogo v2 — e leitura da robustez de cada achado intra-arquétipo."""
+    finds = list(next(iter(cen.values()))["estratos"])
+    lines = ["### 4.1 Cenários da inspeção manual (todos mantidos na amostra)",
+             "",
+             "Categorias definidas na inspeção manual (notebook 01; "
+             "`docs/decisions/2026-09-12-inspecao-manual-amostra.md`). "
+             "**Conteúdo**: " + ", ".join(f"`{x}`" for x in CONTENT_REPOS)
+             + ". **Espelhos**: " + ", ".join(f"`{x}`" for x in MIRROR_REPOS)
+             + ". Cenários pré-registrados do catálogo v2 "
+             "(`docs/decisions/2026-09-13-catalogo-v2-reparo-d1-d5.md`): "
+             "**sem_locus_externo** = locus de coordenação fora do GitHub "
+             "(" + ", ".join(f"`{x}`" for x in LOCUS_EXTERNAL_REPOS)
+             + ") ∪ espelhos — evidência em `results/locus_evidence.md`; "
+             "**sem_openinterpreter** = par quase-duplicado "
+             "(" + ", ".join(f"`{x}`" for x in NEAR_DUPLICATE_REPOS)
+             + " ⊃ `openai/codex`). `sem_todos` permanece a união da "
+             "inspeção manual de 2026-09-12 (heurística ∪ conteúdo ∪ "
+             "espelhos) e NÃO incorpora os cenários v2, que são lidos "
+             "isoladamente. Intra-arquétipo: ρ (p nominal, n).", "",
+             "| cenário | n | scorecard | stars | forks | "
+             + " | ".join(finds) + " |",
+             "|---|---|---|---|---|" + "---|" * len(finds)]
+    for name, v in cen.items():
+        g = v["global"]
+        cells = [f"{_f(e['rho'])} (p={_f(e['p'])}, n={e['n']})"
+                 for e in v["estratos"].values()]
+        lines.append(f"| {name} | {v['n']} | {_f(g['scorecard'])} | "
+                     f"{_f(g['stars'])} | {_f(g['forks'])} | "
+                     + " | ".join(cells) + " |")
+    lines.append("")
+    for f in finds:
+        caem = [name for name, v in cen.items()
+                if (v["estratos"][f]["p"] or 1) >= 0.05]
+        lines.append(f"- **{f}**: " + (
+            "p nominal < 0,05 em todos os cenários." if not caem else
+            "perde significância nominal em: "
+            + ", ".join(f"`{c}`" for c in caem)
+            + " — achado NÃO robusto à composição da amostra."))
+    lines.append("")
+    return lines
+
+
 def report(res: dict) -> str:
     lines = ["# Robustez e validade adicional (pós-revisão adversarial)", ""]
 
@@ -539,35 +600,7 @@ def report(res: dict) -> str:
                           for k, v in s["global_sem_suspeitos"].items())
               + ".", ""]
 
-    cen = s["cenarios"]
-    finds = list(next(iter(cen.values()))["estratos"])
-    lines += ["### 4.1 Cenários da inspeção manual (todos mantidos na amostra)",
-              "",
-              "Categorias definidas na inspeção manual (notebook 01; "
-              "`docs/decisions/2026-09-12-inspecao-manual-amostra.md`). "
-              "**Conteúdo**: " + ", ".join(f"`{x}`" for x in CONTENT_REPOS)
-              + ". **Espelhos**: " + ", ".join(f"`{x}`" for x in MIRROR_REPOS)
-              + ". Intra-arquétipo: ρ (p nominal, n).", "",
-              "| cenário | n | scorecard | stars | forks | "
-              + " | ".join(finds) + " |",
-              "|---|---|---|---|---|" + "---|" * len(finds)]
-    for name, v in cen.items():
-        g = v["global"]
-        cells = [f"{_f(e['rho'])} (p={_f(e['p'])}, n={e['n']})"
-                 for e in v["estratos"].values()]
-        lines.append(f"| {name} | {v['n']} | {_f(g['scorecard'])} | "
-                     f"{_f(g['stars'])} | {_f(g['forks'])} | "
-                     + " | ".join(cells) + " |")
-    lines.append("")
-    for f in finds:
-        caem = [name for name, v in cen.items()
-                if (v["estratos"][f]["p"] or 1) >= 0.05]
-        lines.append(f"- **{f}**: " + (
-            "p nominal < 0,05 em todos os cenários." if not caem else
-            "perde significância nominal em: "
-            + ", ".join(f"`{c}`" for c in caem)
-            + " — achado NÃO robusto à composição da amostra."))
-    lines.append("")
+    lines += scenario_section(s["cenarios"])
 
     imp = res["imputacao"]
     lines += ["## 5. Faltantes: taxonomia e sensibilidade de imputação", "",

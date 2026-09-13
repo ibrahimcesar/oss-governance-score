@@ -148,8 +148,13 @@ def _fmt(x: float | None, nd: int = 1) -> str:
 
 
 def qa_report(results: list[dict], errors: list[dict],
-              code_version: str = "") -> str:
-    """Relatório de QA (PT-BR) para results/qa_extracao.md."""
+              code_version: str = "",
+              extra_sections: list[str] | None = None) -> str:
+    """Relatório de QA (PT-BR) para results/qa_extracao.md.
+
+    `extra_sections`: blocos markdown prontos (ex.: `qa.declarations.
+    qa_section`, catálogo v2) anexados ao final, na ordem dada.
+    """
     lines = ["# QA da extração completa (item 5)", ""]
     dates = sorted({r["extracted_at"] for r in results}) or ["—"]
     lines += [f"**Extração:** {dates[0]} → {dates[-1]} · "
@@ -204,4 +209,6 @@ def qa_report(results: list[dict], errors: list[dict],
         lines += ["## Avisos", "",
                   "Sem resposta humana observada nas issues amostradas "
                   "(D3 parcial): " + ", ".join(f"`{r}`" for r in caps), ""]
+    for section in extra_sections or []:
+        lines += [section.rstrip("\n"), ""]
     return "\n".join(lines)
