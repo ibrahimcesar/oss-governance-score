@@ -28,9 +28,17 @@ automação de dependências NUNCA herdam (GOVERNANCE não consta da lista
 
 Variantes NÃO pontuadas (registradas como flags em `meta["flags"]`, para as
 análises de sensibilidade do relatório de reparo): formulários de issue em
-`.yaml` (a documentação fixa `.yml`), diretório de templates contendo apenas
-`config.yml` (configuração do seletor, não é template), `FUNDING.yaml` e
-`dependabot.yaml`.
+`.yaml` (a documentação fixa `.yml`), `config.yml` do seletor de templates
+(configuração, não template), `.github/FUNDING.yaml` e
+`.github/dependabot.yaml`. Semântica uniforme das quatro flags: True quando o
+item correspondente NÃO pontua com arquivo próprio E a variante existe — ou
+seja, "o repositório trocaria de valor se a variante fosse aceita"; por isso
+as variantes são procuradas no MESMO local da regra que pontua (`FUNDING.yaml`
+na raiz não é variante de `.github/FUNDING.yml`) e um repositório pode acionar
+mais de uma flag do mesmo item. As duas flags restantes do registro não
+dependem só de caminhos: `symlink_hits` usa os modos de `ls-tree` (função
+`symlink_hits`, abaixo); `profile_updated_at` é copiado do cache v1
+(`community_profile`) na re-pontuação.
 """
 from __future__ import annotations
 
@@ -41,7 +49,8 @@ from typing import Iterable
 __all__ = [
     "SNAPSHOT_UTC", "LOC", "DOC", "D1_RULES", "D5_RULES", "ORG_RULES",
     "INHERITABLE", "FLAG_RULES", "CI_SYSTEMS", "DEP_TOOLS", "D1_ITEMS",
-    "D5_ITEMS", "normalize", "matches", "joined_source", "detect",
+    "D5_ITEMS", "SYMLINK_MODE", "normalize", "matches", "joined_source",
+    "detect", "symlink_hits",
 ]
 
 # Instante do snapshot da extração completa (fim do último dia da janela
@@ -185,6 +194,9 @@ _FLAG_ITEM = {
     "dependabot_yaml": "dependency_automation",
 }
 
+# Modo de symlink na saída de `git ls-tree` (blobs regulares: 100644/100755).
+SYMLINK_MODE = "120000"
+
 
 # ------------------------------------------------------------------ helpers
 def normalize(paths: Iterable[str]) -> list[str]:
@@ -291,3 +303,21 @@ def detect(paths: Iterable[str],
         "inherited_from_org": inherited,
     }
     return artifacts, security, meta
+
+
+def symlink_hits(entries: Iterable[tuple[str, str]]) -> list[str]:
+    """Flag descritiva `symlink_hits` do registro: caminhos (normalizados) de
+    SYMLINKS que casam alguma regra própria de D1/D5.
+
+    Symlinks são blobs e, portanto, contam na detecção (semântica de
+    `git ls-tree -r` do backend git v1, mantida em v2); esta função só os
+    RELATA, para que o relatório de reparo liste os casos em que o artefato
+    detectado é um link (o alvo não é verificado). Entrada: pares
+    `(mode, path)` na ordem dos campos de `ls-tree` — o chamador converte a
+    sua representação (ex.: `TreeEntry` de `epoch.py` → `(e.mode, e.path)`).
+    Não altera `detect`, cuja entrada continua sendo só a lista de caminhos.
+    """
+    links = normalize(path for mode, path in entries if mode == SYMLINK_MODE)
+    rules = [rx for item_rules in (*D1_RULES.values(), *D5_RULES.values())
+             for rx in item_rules]
+    return matches(links, rules)

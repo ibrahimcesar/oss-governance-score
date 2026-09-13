@@ -174,6 +174,25 @@ def test_git_backend_patterns_are_v2_sources():
     assert _present([".github/CODEOWNERS"], D1_RULES["codeowners"][0])
 
 
+def test_inheritance_needed_only_for_missing_inheritable_items():
+    """O clone de `{owner}/.github` só acontece quando falta algum item
+    HERDÁVEL; itens que nunca herdam (license, codeowners, CI…) não o disparam."""
+    from govscore.extract.git_extractor import _inheritance_needed
+    from govscore.extract.patterns import D1_ITEMS, D5_ITEMS, INHERITABLE
+    full_a = {k: True for k in D1_ITEMS}
+    full_s = {k: True for k in D5_ITEMS}
+    assert not _inheritance_needed(full_a, full_s)
+    # faltam só itens não herdáveis → não precisa da organização
+    a = dict(full_a, license=False, codeowners=False, readme=False, governance=False)
+    s = dict(full_s, ci_configured=False, dependency_automation=False)
+    assert not _inheritance_needed(a, s)
+    # qualquer herdável ausente (em D1 ou em D5) dispara
+    for item in INHERITABLE:
+        a, s = dict(full_a), dict(full_s)
+        (a if item in a else s)[item] = False
+        assert _inheritance_needed(a, s), item
+
+
 def test_parse_ls_tree_keeps_blobs_and_symlinks_only():
     from govscore.extract.git_extractor import _parse_ls_tree
     out = "\0".join([

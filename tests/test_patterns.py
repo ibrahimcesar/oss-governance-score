@@ -9,7 +9,9 @@ golang/go (`.github/PULL_REQUEST_TEMPLATE` sem extensão), tensorflow
 (`.github/renovate.json5`), kubernetes (caminhos vendorizados que NÃO contam).
 Nenhum teste toca a rede: `detect` opera sobre listas de caminhos.
 """
+import re
 from datetime import timezone
+from pathlib import Path
 
 import pytest
 
@@ -22,13 +24,111 @@ from govscore.extract.patterns import (
     DEP_TOOLS,
     FLAG_RULES,
     INHERITABLE,
+    LOC,
+    DOC,
     ORG_RULES,
     SNAPSHOT_UTC,
+    SYMLINK_MODE,
     detect,
     joined_source,
     matches,
     normalize,
+    symlink_hits,
 )
+
+# --------------------------------------------- regras congeladas (verbatim)
+# Cópia LITERAL do bloco "Regras v2" do registro de decisão de 2026-09-13.
+# O teste abaixo garante que nenhuma expressão compilada em `patterns.py`
+# diverge do texto congelado — qualquer ajuste de regra exige catálogo v3
+# com novo registro, e quebra este teste por construção.
+RECORD_PATH = Path(__file__).resolve().parents[1] / "docs" / "decisions" / \
+    "2026-09-13-catalogo-v2-reparo-d1-d5.md"
+RECORD_RULES_BLOCK = r"""
+readme                ^LOC readme DOC$
+contributing          ^LOC contributing DOC$
+code_of_conduct       ^LOC code[-_]of[-_]conduct DOC$
+license (só raiz)     ^((un)?licen[sc]e|copying|copyright)(\.(md|txt|rst|markdown))?$
+                    | ^((un)?licen[sc]e|copying|copyright)[-_.](?!.*\.json[5c]?$)[a-z0-9.+_-]+$
+                    | ^[a-z0-9]+[-_](un)?licen[sc]e(\.[a-z]+)?$
+                    | ^patents$ | ^ofl\.md$
+issue_template        ^LOC issue_template DOC$
+                    | ^\.github/issue_template/(?!config\.ya?ml$)[^/]+\.(md|yml)$
+pull_request_template ^LOC pull_request_template DOC$
+                    | ^LOC pull_request_template/[^/]+\.(md|txt)$
+codeowners            ^LOC codeowners$
+governance            ^LOC governance DOC$
+funding (repo)        ^\.github/funding\.yml$
+funding (org)         ^(\.github/)?funding\.yml$
+security_policy       ^LOC security\.(md|markdown|adoc|rst)$
+ci_configured         ^\.github/workflows/[^/]+\.ya?ml$ | ^\.travis\.ya?ml$
+                    | ^\.circleci/config\.ya?ml$ | ^jenkinsfile$ | ^\.jenkins/.+
+                    | ^azure-pipelines([-.][a-z0-9-]+)?\.ya?ml$ | ^\.azure-pipelines/.+\.ya?ml$
+                    | ^\.gitlab-ci\.ya?ml$ | ^\.gitlab/ci/.+ | ^\.drone\.ya?ml$
+                    | ^\.buildkite/[^/]+\.ya?ml$ | ^\.?appveyor\.ya?ml$ | ^cloudbuild\.ya?ml$
+                    | ^\.cirrus\.ya?ml$ | ^\.semaphore/[^/]+\.ya?ml$ | ^bitbucket-pipelines\.ya?ml$
+                    | ^\.woodpecker\.ya?ml$ | ^\.woodpecker/[^/]+\.ya?ml$ | ^\.prow\.ya?ml$ | ^\.prow/.+
+                    | ^\.zuul\.ya?ml$ | ^zuul\.d/.+ | ^\.tekton/[^/]+\.ya?ml$
+                    | ^\.(forgejo|gitea)/workflows/[^/]+\.ya?ml$
+dependency_automation ^\.github/dependabot\.yml$
+                    | ^(\.github/|\.gitlab/)?renovate\.json[5c]?$ | ^\.renovaterc(\.json[5c]?)?$
+                    | ^(\.github/|\.config/)?\.?scala-steward\.conf$ | ^\.pyup\.ya?ml$
+"""
+
+
+def parse_record_rules(block: str) -> dict[str, str]:
+    """`nome  alt | alt` (+ continuações iniciadas por `|`) → união `a|b|c`
+    com as abreviaturas LOC/DOC expandidas; `funding (repo)`/`(org)` viram
+    `funding:repo`/`funding:org`. As expressões não contêm espaços
+    significativos, logo todo espaço em branco é descartado."""
+    rules: dict[str, list[str]] = {}
+    key = None
+    for line in block.splitlines():
+        if not line.strip():
+            continue
+        if line.lstrip().startswith("|"):
+            body = line.strip()[1:]
+        else:
+            m = re.match(r"^(\w+)(?:\s+\(([^)]*)\))?\s+(.*)$", line)
+            name, qualifier, body = m.group(1), m.group(2), m.group(3)
+            key = f"{name}:{qualifier}" if name == "funding" else name
+            rules.setdefault(key, [])
+        for alt in body.split(" | "):
+            alt = re.sub(r"\s+", "", alt).replace("LOC", LOC).replace("DOC", DOC)
+            if alt:
+                rules[key].append(alt)
+    return {k: "|".join(v) for k, v in rules.items()}
+
+
+def compiled_rules() -> dict[str, str]:
+    out = {k: joined_source(v) for k, v in D1_RULES.items()}
+    out.update({k: joined_source(v) for k, v in D5_RULES.items()})
+    out["funding:repo"] = out.pop("funding")
+    out["funding:org"] = joined_source(ORG_RULES["funding"])
+    return out
+
+
+def test_compiled_rules_are_verbatim_from_decision_record():
+    expected = parse_record_rules(RECORD_RULES_BLOCK)
+    assert set(expected) == set(compiled_rules())
+    for item, source in compiled_rules().items():
+        assert source == expected[item], item
+    # ORG_RULES reutiliza as regras do repositório nos demais itens herdáveis
+    for item in INHERITABLE:
+        if item not in ("funding", "issue_template"):
+            assert ORG_RULES[item] is D1_RULES.get(item, D5_RULES.get(item))
+    assert joined_source(ORG_RULES["issue_template"]) == \
+        r"^\.github/issue_template/(?!config\.ya?ml$)[^/]+\.(md|yml)$"
+
+
+@pytest.mark.skipif(not RECORD_PATH.exists(),
+                    reason="registro de decisão ainda não está nesta árvore")
+def test_embedded_block_equals_decision_record_file():
+    """Quando o registro está no repositório, a cópia embutida acima deve ser
+    idêntica ao bloco `Regras v2` do arquivo (a menos de espaço em branco)."""
+    text = RECORD_PATH.read_text(encoding="utf-8")
+    block = text.split("## Regras v2", 1)[1].split("```", 2)[1]
+    squash = lambda s: re.sub(r"\s+", " ", s).strip()  # noqa: E731
+    assert squash(block) == squash(RECORD_RULES_BLOCK)
 
 
 def art(paths, org=None):
@@ -110,6 +210,17 @@ def test_issue_template_flags_cleared_when_scoring_template_exists():
     assert m["flags"]["issue_template_config_only"] is False
 
 
+def test_issue_template_flags_share_flip_semantics():
+    # Semântica uniforme das flags: "trocaria de valor se a variante fosse
+    # aceita". Um repositório com bug.yaml + config.yml (e nenhum template que
+    # pontue) trocaria sob QUALQUER das duas variantes — aciona as duas flags.
+    a, _, m = detect([".github/ISSUE_TEMPLATE/bug.yaml",
+                      ".github/ISSUE_TEMPLATE/config.yml"])
+    assert a["issue_template"] is False
+    assert m["flags"]["issue_template_yaml_only"] is True
+    assert m["flags"]["issue_template_config_only"] is True
+
+
 def test_issue_template_legacy_single_file():
     assert art([".github/ISSUE_TEMPLATE.md"])["issue_template"]
     assert art(["issue_template.md"])["issue_template"]
@@ -172,6 +283,10 @@ def test_funding_yaml_is_flag_not_score():
     assert m["flags"]["funding_yaml"] is True
     # com o .yml presente, a flag não se aplica
     assert meta([".github/FUNDING.yaml", ".github/FUNDING.yml"])["flags"]["funding_yaml"] is False
+    # a variante é procurada no MESMO local da regra que pontua (.github/):
+    # FUNDING.yaml na raiz não trocaria o valor nem como .yml — sem flag
+    assert meta(["FUNDING.yaml"])["flags"]["funding_yaml"] is False
+    assert meta(["FUNDING.yml"])["flags"]["funding_yaml"] is False
 
 
 # --------------------------------------------------- readme/contrib/coc/gov
@@ -337,6 +452,21 @@ def test_matched_paths_lists_every_ci_file():
     assert m["matched"]["ci_configured"] == [
         ".github/workflows/ci.yml", ".github/workflows/release.yml", ".travis.yml"]
     assert m["ci_systems"] == ["github_actions", "travis"]
+
+
+def test_symlink_hits_reports_only_symlinks_that_match_a_rule():
+    entries = [
+        ("100644", "README.md"),                  # blob regular: não é symlink
+        (SYMLINK_MODE, ".github/SECURITY.md"),    # symlink que casa D5
+        (SYMLINK_MODE, "docs/CONTRIBUTING.md"),   # symlink que casa D1
+        (SYMLINK_MODE, "src/link-to-license"),    # symlink fora das regras
+        ("160000", "vendor/LICENSE"),             # submódulo (não é blob)
+    ]
+    assert symlink_hits(entries) == [".github/security.md", "docs/contributing.md"]
+    assert symlink_hits([]) == []
+    # symlinks continuam CONTANDO na detecção (são blobs); a função só relata
+    blobs = [path for mode, path in entries if mode != "160000"]
+    assert detect(blobs)[1]["security_policy"] is True
 
 
 def test_joined_source_is_union_of_alternatives():
