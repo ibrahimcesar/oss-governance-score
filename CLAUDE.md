@@ -57,7 +57,14 @@ PYTHONPATH=src uv run python -m govscore.cli extract --repo owner/name
   `requirements.txt` e instalam com `uv pip install`.
 - Documentação e comentários voltados ao TCC em PT-BR; código/identificadores em inglês.
 - Toda resposta de API é cacheada em `data/raw/` (nunca commitado); a análise
-  nunca reconsulta a API — reprodutibilidade em primeiro lugar.
+  nunca reconsulta a API — reprodutibilidade em primeiro lugar. Única exceção
+  registrada (catálogo v2, `docs/decisions/2026-09-13-catalogo-v2-reparo-d1-d5.md`):
+  objetos IMUTÁVEIS por SHA (commit/árvore de época via git) em
+  `data/raw/<repo>/v2/`; chaves v1 nunca são reconsultadas nem sobrescritas.
+- Catálogo v2 = D1/D5 re-medidos na árvore do commit first-parent na época da
+  sondagem v1 (regras em `extract/patterns.py`, época em `extract/epoch.py`);
+  saídas v1 arquivadas em `data/processed/v1/`, `results/v1/`, `figures/v1/`.
+  `make repair` reexecuta a sequência; comparação em `results/reparo_v1_v2.md`.
 - Logins de contribuidores devem ser anonimizados (SHA-256 + salt) em qualquer
   dataset publicado.
 - Funções de cálculo novas exigem teste unitário com caso conhecido.
@@ -104,7 +111,14 @@ PYTHONPATH=src uv run python -m govscore.cli extract --repo owner/name
    e Federação×Scorecard NÃO robustos (texto da 4.3.4 reescrito).
    Reescritas gerenciais (Fase 3) concluídas
 10. [x] Inspeção manual da amostra (notebook 01) — 2026-09-12, todos
-    mantidos. **Código e dados concluídos**; resta a redação final
+    mantidos.
+11. [x] Catálogo v2 (2026-09-13): defeito de medição em D1/D5 (perfil
+    comunitário cego a `.github/ISSUE_TEMPLATE/`, caminhos únicos, caixa,
+    herança) reparado por re-medição na época do snapshot — 78 trocas
+    F→T em 63 repos, 0 T→F, ρ v1×v2 = 0,997; Scorecard 0,750→0,770;
+    validação secundária com Scorecard CLI nos 100 (`results/scorecard_cli.md`,
+    ρ = 0,616; 0,271 sem checks sobrepostos). Texto final em `monografia/`
+    (ignorado pelo git). Pendente: v3 (D3 em janela fixa) com registro próprio.
 
 ## Cuidados metodológicos (não violar)
 

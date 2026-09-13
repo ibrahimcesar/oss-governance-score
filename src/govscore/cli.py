@@ -316,6 +316,24 @@ def cmd_compare(v1_dir: Path, v2_dir: Path, results_dir: Path,
     return res
 
 
+def cmd_scorecard_cli(data_dir: Path, results_dir: Path,
+                      sample_file: Path | str, cache_root: Path = RAW_DIR) -> dict:
+    """`govscore scorecard-cli-report`: validação secundária pré-registrada
+    (Scorecard CLI nos 100; cache v2_scorecard_cli.json) →
+    results/scorecard_cli.md/.json."""
+    from govscore.validate.scorecard_cli import analyze, load_results, report
+    records = json.loads((Path(data_dir) / "full_metrics.json").read_text())["results"]
+    rows = load_results(Path(cache_root), [e["repo"] for e in _sample_entries(sample_file)])
+    res = analyze(rows, records)
+    results_dir = Path(results_dir)
+    results_dir.mkdir(parents=True, exist_ok=True)
+    (results_dir / "scorecard_cli.md").write_text(report(res))
+    (results_dir / "scorecard_cli.json").write_text(
+        json.dumps(res, indent=2, ensure_ascii=False))
+    print(report(res))
+    return res
+
+
 def cmd_locus(results_dir: Path, sample_file: Path | str,
               cache_root: Path = RAW_DIR) -> list[dict]:
     """`govscore locus-evidence`: tabela de evidência do locus de coordenação
@@ -415,6 +433,10 @@ def build_parser() -> argparse.ArgumentParser:
                         help="evidência do locus de coordenação (descritiva)")
     lc.add_argument("--results-dir", type=Path, default=DEFAULT_RESULTS_DIR)
     lc.add_argument("--sample-file", default=default_sample)
+    sc = sub.add_parser("scorecard-cli-report",
+                        help="Scorecard CLI nos 100 (validação secundária)")
+    _add_dir_options(sc)
+    sc.add_argument("--sample-file", default=default_sample)
     return ap
 
 
@@ -455,6 +477,10 @@ def main(argv: list[str] | None = None) -> None:
 
     if args.cmd == "locus-evidence":
         cmd_locus(args.results_dir, args.sample_file)
+        return
+
+    if args.cmd == "scorecard-cli-report":
+        cmd_scorecard_cli(args.data_dir, args.results_dir, args.sample_file)
         return
 
     if args.cmd == "run":

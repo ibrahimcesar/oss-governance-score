@@ -22,9 +22,9 @@ reduzidas ("salvage") ou foram refutadas.
 
 | afirmação | verificado | consequência |
 |---|---|---|
-| `issue_template` = True em só 5/100; `nodejs/node` tem `issue_template: null` no `community_profile` embora tenha `.github/ISSUE_TEMPLATE/` | **confirmado** | defeito de medição em D1 (endpoint só vê o template legado de arquivo único); CODEOWNERS só em `.github/`, GOVERNANCE só na raiz (2/100). Decisão necessária: errata (registro de decisão, snapshot congelado) ou reparo (~300 chamadas à API, viola "nunca reconsulta") |
+| `issue_template` = True em só 5/100; `nodejs/node` tem `issue_template: null` no `community_profile` embora tenha `.github/ISSUE_TEMPLATE/` | **confirmado** | defeito de medição em D1 (endpoint só vê o template legado de arquivo único); CODEOWNERS só em `.github/`, GOVERNANCE só na raiz (2/100). **Decisão: reparo** — catálogo v2 (`docs/decisions/2026-09-13-catalogo-v2-reparo-d1-d5.md`, `plano_reparo_v2.md`): árvore git do commit first-parent na época da sondagem, 0 chamadas à API; issue_template 5→61; ρ v1×v2 = 0,997 |
 | A1: baseline de tamanho S0 = ajuste LOO de rank(score) ~ rank(log contribuidores_5+), rank(HHI) | ρ(S0, score) = 0,894; ρ(S0, Scorecard) = 0,652 vs 0,750 do score; médias por arquétipo 80/68/40/33 vs 76/70/42/32 | a versão do relatório (82/63/34/23; "gap Federação–Clube colapsa") está **errada**; a do crítico está certa. Validade incremental da camada de práticas: parcial com Scorecard dado tamanho = 0,53 (bruta 0,71) |
-| A2: envelope de gaming (12 binárias → 1) | medianas fed 13,9 / stadium 16,9 / club 14,1 / toy 25,4 pontos | reproduzido, mas **inflado** pelo defeito de `issue_template` (95 repos ganham 2,78 "de graça") — recalcular após a decisão da errata |
+| A2: envelope de gaming (12 binárias → 1) | v1: medianas fed 13,9 / stadium 16,9 / club 14,1 / toy 25,4; **v2 (após o reparo): 8,3 / 16,7 / 11,3 / 25,4** | a parte inflada pelo defeito de `issue_template` desapareceu nas Federações e Clubes; o envelope restante é propriedade de qualquer índice aditivo |
 | Entropia de commits por arquétipo | Federação 0,695 > Estádio 0,425 | a seta Federação→Estádio do framework CotC falha a checagem de monotonicidade também nestes dados |
 | Loevinger H, locus 8/93, "silêncio paga" 22/96, probabilidades (0,35/0,5/0,2) | **não verificados** | tratar como estimativas dos agentes |
 

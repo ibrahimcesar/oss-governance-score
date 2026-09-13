@@ -12,30 +12,30 @@
 Um algoritmo aberto e reprodutível que mede governança observável de
 repositórios OSS em 5 dimensões, aplicado a 100 repositórios
 estratificados pelos arquétipos de Asparouhova. Três resultados:
-**discrimina** (medianas de 77,1 nas Federações a 32,0 nos Brinquedos,
-com variância intra-estrato), **é robusto** (ρ ≥ 0,935 sob variação de
+**discrimina** (medianas de 82,1 nas Federações a 32,0 nos Brinquedos,
+com variância intra-estrato), **é robusto** (ρ ≥ 0,939 sob variação de
 pesos E limiares; nenhuma troca de arquétipo sob reclassificação ±50%) e
-**converge sem ser redundante** (ρ = 0,750 com o OpenSSF Scorecard, mas
-as dimensões sociais medem construto distinto — Steiger p = 0,003).
+**converge sem ser redundante** (ρ = 0,770 com o OpenSSF Scorecard, mas
+as dimensões sociais medem construto distinto — Steiger p = 0,001).
 
 ## Os três números que sustentam tudo
 
 | Afirmação | Número | Fonte |
 |---|---|---|
-| Validade convergente | ρ = 0,750 (n=53, p aj. < 0,001) | `results/validacao.md` |
-| Não-redundância | composto social 0,626 < 0,750 (Steiger z=2,99, p=0,003) | `results/robustez.md` §3 |
-| Robustez total | pesos ρ≥0,935 · limiares ρ≥0,989 · reclassificação: 0 trocas | `results/sensibilidade.md`, `robustez.md` §1–2 |
+| Validade convergente | ρ = 0,770 (n=53, p aj. < 0,001) | `results/validacao.md` |
+| Não-redundância | composto social 0,626 < 0,770 (Steiger z=3,28, p=0,001) | `results/robustez.md` §3 |
+| Robustez total | pesos ρ≥0,939 · limiares ρ≥0,991 · reclassificação: 0 trocas | `results/sensibilidade.md`, `robustez.md` §1–2 |
 
 ---
 
 ## A. Contribuição e posicionamento
 
-**A1. "Com ρ=0,75 contra o Scorecard, você não reinventou uma ferramenta
+**A1. "Com ρ=0,77 contra o Scorecard, você não reinventou uma ferramenta
 gratuita da Linux Foundation?"**
 Não — e o dado mostra. O composto restrito às dimensões sociais
 (D2/D3/D4) correlaciona 0,626 com o Scorecard, significativamente menos
-que o agregado (Steiger p=0,003), e nenhuma dimensão isolada passa de
-0,588. O Scorecard mede práticas de segurança; este instrumento mede
+que o agregado (Steiger p=0,001), e nenhuma dimensão isolada passa de
+0,652. O Scorecard mede práticas de segurança; este instrumento mede
 **continuidade organizacional** — concentração, responsividade,
 diversidade, retenção — que ele não cobre. E alcança os 47 repositórios
 da amostra fora da varredura do OpenSSF: o pipeline roda em qualquer
@@ -64,18 +64,18 @@ Formativo: as métricas constituem o construto, não o refletem (BOLLEN;
 LENNOX, 1991; DIAMANTOPOULOS; WINKLHOFER, 2001). Consistência interna
 não é requisito para índices formativos — as preocupações corretas são
 colinearidade (tratada: D2×D4 = 0,87, declarada) e cobertura de conteúdo
-(ancorada na revisão). Ainda assim, se quiserem o número: α = 0,80
+(ancorada na revisão). Ainda assim, se quiserem o número: α = 0,82
 (n=96).
 
 **B2. "Os pesos são arbitrários."**
 São decisões fundamentadas — e quase não importam: pesos iguais vs
-literatura dá ρ = 0,996; ±25% em cada peso, ρ mínimo 0,998; W de Kendall
-0,998; leave-one-dimension-out ≥ 0,935. O ranking não depende da
+literatura dá ρ = 0,998; ±25% em cada peso, ρ mínimo 0,998; W de Kendall
+0,998; leave-one-dimension-out ≥ 0,939. O ranking não depende da
 ponderação dentro do espaço testado. *(sensibilidade.md)*
 
 **B3. "E os limiares de normalização? Esses sim moldam os sub-scores."**
-Perturbados em ±25% e ±50%, por métrica e em conjunto: ρ ≥ 0,996 e
-≥ 0,989. E a figura `fig_metricas_limiares` mostra onde os limiares
+Perturbados em ±25% e ±50%, por métrica e em conjunto: ρ ≥ 0,997 e
+≥ 0,991. E a figura `fig_metricas_limiares` mostra onde os limiares
 cortam as distribuições empíricas — eles são anteriores aos dados e
 nunca foram ajustados a eles. *(robustez.md §1)*
 
@@ -83,9 +83,32 @@ nunca foram ajustados a eles. *(robustez.md §1)*
 construto entre repos."**
 Média simples evita dupla ponderação indefensável. Faltantes: taxonomia
 declarada — 7 estruturais (sem issues) e 3 informativos (silêncio
-observado); imputar pior caso nos informativos dá ρ = 0,999 e desloca no
-máximo 9 posições. Apenas 4 repos são pontuados com 4 dimensões, todos
+observado); imputar pior caso nos informativos dá ρ = 0,9997 e desloca no
+máximo 7 posições. Apenas 4 repos são pontuados com 4 dimensões, todos
 declarados. *(robustez.md §5)*
+
+**B5. "Você refez os dados depois de ver os resultados?"**
+Sim, e está registrado: a inspeção do dataset revelou que o caminho de
+API de julho era mais estreito que a convenção do GitHub (`issue_template`
+do perfil comunitário só vê o arquivo legado — 5/100 positivos contra 11
+repos com `health_percentage = 100`). O reparo (catálogo v2) foi feito
+com regras fixadas em registro de decisão ANTES da re-pontuação, sobre a
+árvore do commit first-parent na época da sondagem de julho (objetos
+imutáveis por SHA, git apenas), com thresholds/pesos intactos e v1
+arquivado. Resultado: 78 trocas, todas de ausente para presente, 0 no
+sentido inverso; ρ v1×v2 = 0,997. Tudo comparado item a item em
+`results/reparo_v1_v2.md`. *(decisão 2026-09-13)*
+
+**B6. "O Scorecard rodado localmente nos 100 dá só 0,62 — e 0,27 sem os
+checks em comum. Sua validação convergente não é só sobreposição?"**
+Em parte, e o texto diz isso: a convergência com o Scorecard passa em boa
+parte pelos itens que os dois medem em comum (política de segurança,
+automação de dependências, revisão, CI, licença). É o que a análise
+discriminante mostra pelo outro lado: o composto social D2/D3/D4
+correlaciona menos (0,626) que o agregado. O 0,770 deve ser lido como
+convergência PARCIAL, não redundância — e o instrumento mede, além disso,
+continuidade organizacional que o Scorecard não mede.
+*(results/scorecard_cli.md)*
 
 ## C. Amostra
 
@@ -109,7 +132,7 @@ Tem, e está declarado. A inspeção manual (notebook 01, concluída em
 softwares sem resposta humana. Todos atendem aos critérios de inclusão
 e foram mantidos, porque excluí-los depois de ver os scores seria *post
 hoc*. Os resultados são reportados com e sem cada categoria. Os globais
-não mudam: sem os 15, Scorecard 0,725, stars 0,421, forks 0,508.
+não mudam: sem os 15, Scorecard 0,737, stars 0,436, forks 0,522.
 *(robustez.md §4.1; decisão de 12/09/2026)*
 
 **C4. "Stars podem ser compradas."**
@@ -134,7 +157,7 @@ complementares são trabalho futuro.
 **D2. "A cobertura do Scorecard (53%) não enviesa?"**
 A ausência é estrutural (lista de varredura do OpenSSF), não seleção
 por qualidade: cobertos e não cobertos não diferem no score
-(Mann–Whitney p=0,21). Composição declarada: Federação 15, Estádio 21,
+(Mann–Whitney p=0,17). Composição declarada: Federação 15, Estádio 21,
 Clube 12, Brinquedo 5. *(robustez.md §6)*
 
 **D3. "Por que excluir frequência de releases da validação?"**
@@ -143,10 +166,10 @@ dos dois lados inflaria a validação — correção metodológica registrada.
 
 **D4. "Estádio × forks negativo é ruído."**
 Concordo, e o texto já diz isso. Sem os 4 repositórios de conteúdo do
-estrato, cai para −0,257 (p=0,26). A leitura parcimoniosa é
+estrato, cai para −0,313 (p=0,17). A leitura parcimoniosa é
 fork-como-bookmark de guias de estudo, não a tensão de Asparouhova. O
-mesmo vale para Federação×Scorecard, que depende dos 3 espelhos (0,544 →
-0,109). Por isso nenhuma leitura intra-arquétipo é conclusão; as
+mesmo vale para Federação×Scorecard, que depende dos 3 espelhos (0,589 →
+0,196). Por isso nenhuma leitura intra-arquétipo é conclusão; as
 correlações globais é que sustentam a validação. *(robustez.md §4.1)*
 
 **D5. "Poder estatístico?"**
@@ -171,7 +194,7 @@ fora da plataforma (seção 4.3.6).
 
 **E2. "D2×D4 = 0,87 — não são a mesma coisa?"**
 Redundância parcial esperada (mesma base de commits) e declarada. O LODO
-mostra que remover qualquer uma mantém ρ ≥ 0,935. E a interpretação é
+mostra que remover qualquer uma mantém ρ ≥ 0,939. E a interpretação é
 disciplinada: distribuição é a *menos redundante*, não "a mais
 informativa".
 

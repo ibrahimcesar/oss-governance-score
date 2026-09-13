@@ -4,20 +4,20 @@
 
 | Arquétipo | n | média | mediana | dp | mín | máx |
 |---|---|---|---|---|---|---|
-| Federação | 25 | 76.1 | 77.1 | 9.9 | 56.9 | 94.6 |
-| Estádio | 25 | 42.2 | 41.7 | 13.7 | 15.9 | 66.2 |
-| Clube | 25 | 70.4 | 75.3 | 12.7 | 39.1 | 85.7 |
-| Brinquedo | 25 | 32.0 | 32.0 | 12.6 | 6.5 | 59.4 |
+| Federação | 25 | 79.4 | 82.1 | 10.7 | 56.9 | 97.4 |
+| Estádio | 25 | 44.5 | 44.3 | 14.4 | 15.9 | 68.9 |
+| Clube | 25 | 72.9 | 75.5 | 13.0 | 44.9 | 91.4 |
+| Brinquedo | 25 | 32.9 | 32.0 | 13.4 | 6.5 | 62.1 |
 
 ## Extremos (5 maiores e 5 menores scores)
 
 | repo | arquétipo | linguagem | score |
 |---|---|---|---|
-| nodejs/node | Federação | javascript | 94.6 |
-| supabase/supabase | Federação | typescript | 92.0 |
-| godotengine/godot | Federação | c++ | 87.1 |
-| vllm-project/semantic-router | Clube | go | 85.7 |
-| cilium/tetragon | Clube | c | 85.6 |
+| nodejs/node | Federação | javascript | 97.4 |
+| supabase/supabase | Federação | typescript | 94.8 |
+| cilium/tetragon | Clube | c | 91.4 |
+| rust-lang/rust | Federação | rust | 91.0 |
+| hashicorp/terraform-provider-azurerm | Clube | go | 90.8 |
 | fustyles/Arduino | Brinquedo | c++ | 6.5 |
 | Au1rxx/free-vpn-subscriptions | Brinquedo | go | 12.1 |
 | macrozheng/mall | Estádio | java | 15.9 |

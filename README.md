@@ -51,7 +51,7 @@ Ambiente Python sempre via [`uv`](https://docs.astral.sh/uv/):
 
 ```bash
 uv venv && uv pip install -r requirements.txt
-make test                                   # 60 testes unitários
+make test                                   # 223 testes unitários
 export GITHUB_TOKEN=$(gh auth token)        # ou um PAT (leitura pública)
 ```
 
@@ -66,6 +66,14 @@ PYTHONPATH=src uv run python -m govscore.cli validate     # externos → results
 make figures                                              # figuras + results/tabelas_tcc.md
 ```
 
+Catálogo v2 (reparo da medição de D1/D5 na época do snapshot — decisão de
+13/09/2026): `make repair` executa `epoch` (commit/árvore first-parent por
+repositório, só git) → `rescore` → `compare` (`results/reparo_v1_v2.md`) →
+`locus-evidence` → `validate --offline` → `sensitivity` → `robustness` →
+figuras. As saídas v1 ficam em `data/processed/v1/`, `results/v1/` e
+`figures/v1/`. `scripts/scorecard_cli_run.py` + `scorecard-cli-report` geram a
+validação secundária com o Scorecard CLI nos 100 (`results/scorecard_cli.md`).
+
 Notas de execução:
 
 - **`run` é retomável de qualquer ponto**: cada repositório concluído é
@@ -75,7 +83,10 @@ Notas de execução:
 - **Cache primeiro**: toda resposta de API é persistida em `data/raw/`
   (fora do versionamento) antes de qualquer processamento; a análise nunca
   reconsulta a plataforma. Só respostas definitivas entram no cache —
-  falhas transitórias jamais são gravadas.
+  falhas transitórias jamais são gravadas. Única exceção registrada: os
+  objetos do catálogo v2 (`data/raw/<repo>/v2/`) são commits e árvores
+  IMUTÁVEIS por SHA obtidos via git em 09/2026 — as chaves v1 nunca são
+  reconsultadas nem sobrescritas.
 - Sem token, apenas o backend git funciona
   (`pilot --backend git` — D1/D2/D4 e parte de D5).
 

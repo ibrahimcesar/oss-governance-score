@@ -54,6 +54,30 @@ Compila em abnTeX2 (31 páginas) e converte para Word com citações ABNT.
 Restam: revisão do resumo e do capítulo 3 com o orientador; venue de
 `he2024fakestars`; template Word do departamento para o docx.
 
+## Catálogo v2 — reparo de D1/D5 (13/09/2026)
+
+Defeito de medição confirmado (perfil comunitário cego a
+`.github/ISSUE_TEMPLATE/`; CODEOWNERS/GOVERNANCE em caminho único; `contents`
+sensível a caixa; herança org incompleta; só GitHub Actions/Dependabot) e
+reparado por re-medição dos 12 binários na árvore do commit *first-parent* na
+época da sondagem v1 (git apenas, 0 chamadas à API; regras fixadas antes da
+re-pontuação; `docs/decisions/2026-09-13-catalogo-v2-reparo-d1-d5.md`).
+
+| resultado | v1 | v2 |
+|---|---|---|
+| trocas | — | 78 F→T em 63 repos; 0 T→F; ρ v1×v2 = 0,997 |
+| medianas Fed / Clube / Estádio / Brinquedo | 77,1 / 75,3 / 41,7 / 32,0 | 82,1 / 75,5 / 44,3 / 32,0 |
+| Scorecard (API-53) / forks / stars | 0,750 / 0,454 / 0,403 | 0,770 / 0,463 / 0,411 |
+| discriminante (composto social; Steiger) | 0,626; p = 0,003 | 0,626; p = 0,001 |
+| pesos (LODO mín.) / limiares ±50% | 0,935 / 0,989 | 0,939 / 0,991 |
+| Estádio×forks sem conteúdo | −0,257 (p = 0,26) | −0,313 (p = 0,17) |
+| Scorecard CLI nos 100 (secundária, época 09/2026) | — | ρ = 0,616 (n = 100); 0,271 sem checks sobrepostos |
+
+Saídas v1 arquivadas (`data/processed/v1/`, `results/v1/`, `figures/v1/`);
+comparação em `results/reparo_v1_v2.md`. Monografia atualizada com os números
+v2 e nova seção 4.2.5 (reparo). Deferido: v3 (D3 em janela fixa) com registro
+próprio; regra de locus e Scorecard CLI ficaram como instrumentos descritivos.
+
 ## Fora deste repositório
 
 - **Demais capítulos** (1–3, 4.1 e conclusão): no Claude Project "TCC". O

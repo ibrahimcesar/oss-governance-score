@@ -1,0 +1,2868 @@
+{
+  "n_v1": 100,
+  "n_v2": 100,
+  "n_common": 100,
+  "missing_in_v2": [],
+  "missing_in_v1": [],
+  "remeasured_at": [
+    "2026-09-13"
+  ],
+  "catalog_version": {
+    "v2": 100
+  },
+  "min_rank_move": 5,
+  "items": {
+    "readme": {
+      "section": "artifacts",
+      "v1_true": 100,
+      "v2_true": 100,
+      "false_to_true": [],
+      "true_to_false": [],
+      "by_archetype": {
+        "federation": {
+          "n": 25,
+          "v1_true": 25,
+          "v2_true": 25,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "stadium": {
+          "n": 25,
+          "v1_true": 25,
+          "v2_true": 25,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "club": {
+          "n": 25,
+          "v1_true": 25,
+          "v2_true": 25,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "toy": {
+          "n": 25,
+          "v1_true": 25,
+          "v2_true": 25,
+          "false_to_true": [],
+          "true_to_false": []
+        }
+      }
+    },
+    "contributing": {
+      "section": "artifacts",
+      "v1_true": 64,
+      "v2_true": 64,
+      "false_to_true": [],
+      "true_to_false": [],
+      "by_archetype": {
+        "federation": {
+          "n": 25,
+          "v1_true": 22,
+          "v2_true": 22,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "stadium": {
+          "n": 25,
+          "v1_true": 14,
+          "v2_true": 14,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "club": {
+          "n": 25,
+          "v1_true": 20,
+          "v2_true": 20,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "toy": {
+          "n": 25,
+          "v1_true": 8,
+          "v2_true": 8,
+          "false_to_true": [],
+          "true_to_false": []
+        }
+      }
+    },
+    "code_of_conduct": {
+      "section": "artifacts",
+      "v1_true": 43,
+      "v2_true": 43,
+      "false_to_true": [],
+      "true_to_false": [],
+      "by_archetype": {
+        "federation": {
+          "n": 25,
+          "v1_true": 16,
+          "v2_true": 16,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "stadium": {
+          "n": 25,
+          "v1_true": 8,
+          "v2_true": 8,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "club": {
+          "n": 25,
+          "v1_true": 16,
+          "v2_true": 16,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "toy": {
+          "n": 25,
+          "v1_true": 3,
+          "v2_true": 3,
+          "false_to_true": [],
+          "true_to_false": []
+        }
+      }
+    },
+    "license": {
+      "section": "artifacts",
+      "v1_true": 93,
+      "v2_true": 93,
+      "false_to_true": [],
+      "true_to_false": [],
+      "by_archetype": {
+        "federation": {
+          "n": 25,
+          "v1_true": 25,
+          "v2_true": 25,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "stadium": {
+          "n": 25,
+          "v1_true": 23,
+          "v2_true": 23,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "club": {
+          "n": 25,
+          "v1_true": 25,
+          "v2_true": 25,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "toy": {
+          "n": 25,
+          "v1_true": 20,
+          "v2_true": 20,
+          "false_to_true": [],
+          "true_to_false": []
+        }
+      }
+    },
+    "issue_template": {
+      "section": "artifacts",
+      "v1_true": 5,
+      "v2_true": 61,
+      "false_to_true": [
+        "tensorflow/tensorflow",
+        "rails/rails",
+        "freeCodeCamp/freeCodeCamp",
+        "affaan-m/ECC",
+        "golang/go",
+        "ggml-org/llama.cpp",
+        "laravel/framework",
+        "rust-lang/rust",
+        "godotengine/godot",
+        "filamentphp/filament",
+        "elastic/elasticsearch",
+        "NousResearch/hermes-agent",
+        "openai/codex",
+        "nodejs/node",
+        "langgenius/dify",
+        "infiniflow/ragflow",
+        "zed-industries/zed",
+        "huggingface/transformers",
+        "openinterpreter/openinterpreter",
+        "supabase/supabase",
+        "google-gemini/gemini-cli",
+        "danielmiessler/SecLists",
+        "Genymobile/scrcpy",
+        "jekyll/jekyll",
+        "ventoy/Ventoy",
+        "gohugoio/hugo",
+        "tmux/tmux",
+        "tesseract-ocr/tesseract",
+        "monicahq/monica",
+        "junegunn/fzf",
+        "firefly-iii/firefly-iii",
+        "hashicorp/vagrant",
+        "pbatard/rufus",
+        "flatpak/flatpak",
+        "lemonade-sdk/lemonade",
+        "cilium/tetragon",
+        "vllm-project/aibrix",
+        "statamic/cms",
+        "lobsters/lobsters",
+        "Expensify/App",
+        "SolaceLabs/solace-agent-mesh",
+        "hashicorp/terraform-provider-azurerm",
+        "Gentleman-Programming/gentle-ai",
+        "librenms/librenms",
+        "microsoft/FluidFramework",
+        "X11Libre/xserver",
+        "asterinas/asterinas",
+        "mavlink/qgroundcontrol",
+        "JungHoonGhae/tossinvest-cli",
+        "spring-cloud/spring-cloud-circuitbreaker",
+        "justnullname/QuickView",
+        "gittower/git-flow-next",
+        "containers/conmon-rs",
+        "JChristensen/Timezone",
+        "tailuge/billiards",
+        "ImageMagick/ImageMagick6"
+      ],
+      "true_to_false": [],
+      "by_archetype": {
+        "federation": {
+          "n": 25,
+          "v1_true": 1,
+          "v2_true": 22,
+          "false_to_true": [
+            "tensorflow/tensorflow",
+            "rails/rails",
+            "freeCodeCamp/freeCodeCamp",
+            "affaan-m/ECC",
+            "golang/go",
+            "ggml-org/llama.cpp",
+            "laravel/framework",
+            "rust-lang/rust",
+            "godotengine/godot",
+            "filamentphp/filament",
+            "elastic/elasticsearch",
+            "NousResearch/hermes-agent",
+            "openai/codex",
+            "nodejs/node",
+            "langgenius/dify",
+            "infiniflow/ragflow",
+            "zed-industries/zed",
+            "huggingface/transformers",
+            "openinterpreter/openinterpreter",
+            "supabase/supabase",
+            "google-gemini/gemini-cli"
+          ],
+          "true_to_false": []
+        },
+        "stadium": {
+          "n": 25,
+          "v1_true": 2,
+          "v2_true": 14,
+          "false_to_true": [
+            "danielmiessler/SecLists",
+            "Genymobile/scrcpy",
+            "jekyll/jekyll",
+            "ventoy/Ventoy",
+            "gohugoio/hugo",
+            "tmux/tmux",
+            "tesseract-ocr/tesseract",
+            "monicahq/monica",
+            "junegunn/fzf",
+            "firefly-iii/firefly-iii",
+            "hashicorp/vagrant",
+            "pbatard/rufus"
+          ],
+          "true_to_false": []
+        },
+        "club": {
+          "n": 25,
+          "v1_true": 2,
+          "v2_true": 17,
+          "false_to_true": [
+            "flatpak/flatpak",
+            "lemonade-sdk/lemonade",
+            "cilium/tetragon",
+            "vllm-project/aibrix",
+            "statamic/cms",
+            "lobsters/lobsters",
+            "Expensify/App",
+            "SolaceLabs/solace-agent-mesh",
+            "hashicorp/terraform-provider-azurerm",
+            "Gentleman-Programming/gentle-ai",
+            "librenms/librenms",
+            "microsoft/FluidFramework",
+            "X11Libre/xserver",
+            "asterinas/asterinas",
+            "mavlink/qgroundcontrol"
+          ],
+          "true_to_false": []
+        },
+        "toy": {
+          "n": 25,
+          "v1_true": 0,
+          "v2_true": 8,
+          "false_to_true": [
+            "JungHoonGhae/tossinvest-cli",
+            "spring-cloud/spring-cloud-circuitbreaker",
+            "justnullname/QuickView",
+            "gittower/git-flow-next",
+            "containers/conmon-rs",
+            "JChristensen/Timezone",
+            "tailuge/billiards",
+            "ImageMagick/ImageMagick6"
+          ],
+          "true_to_false": []
+        }
+      }
+    },
+    "pull_request_template": {
+      "section": "artifacts",
+      "v1_true": 53,
+      "v2_true": 54,
+      "false_to_true": [
+        "monicahq/monica"
+      ],
+      "true_to_false": [],
+      "by_archetype": {
+        "federation": {
+          "n": 25,
+          "v1_true": 22,
+          "v2_true": 22,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "stadium": {
+          "n": 25,
+          "v1_true": 10,
+          "v2_true": 11,
+          "false_to_true": [
+            "monicahq/monica"
+          ],
+          "true_to_false": []
+        },
+        "club": {
+          "n": 25,
+          "v1_true": 16,
+          "v2_true": 16,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "toy": {
+          "n": 25,
+          "v1_true": 5,
+          "v2_true": 5,
+          "false_to_true": [],
+          "true_to_false": []
+        }
+      }
+    },
+    "codeowners": {
+      "section": "artifacts",
+      "v1_true": 24,
+      "v2_true": 30,
+      "false_to_true": [
+        "tensorflow/tensorflow",
+        "ggml-org/llama.cpp",
+        "vllm-project/semantic-router",
+        "github/explore",
+        "hashicorp/terraform-provider-azurerm",
+        "asterinas/asterinas"
+      ],
+      "true_to_false": [],
+      "by_archetype": {
+        "federation": {
+          "n": 25,
+          "v1_true": 12,
+          "v2_true": 14,
+          "false_to_true": [
+            "tensorflow/tensorflow",
+            "ggml-org/llama.cpp"
+          ],
+          "true_to_false": []
+        },
+        "stadium": {
+          "n": 25,
+          "v1_true": 4,
+          "v2_true": 4,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "club": {
+          "n": 25,
+          "v1_true": 8,
+          "v2_true": 12,
+          "false_to_true": [
+            "vllm-project/semantic-router",
+            "github/explore",
+            "hashicorp/terraform-provider-azurerm",
+            "asterinas/asterinas"
+          ],
+          "true_to_false": []
+        },
+        "toy": {
+          "n": 25,
+          "v1_true": 0,
+          "v2_true": 0,
+          "false_to_true": [],
+          "true_to_false": []
+        }
+      }
+    },
+    "governance": {
+      "section": "artifacts",
+      "v1_true": 2,
+      "v2_true": 2,
+      "false_to_true": [],
+      "true_to_false": [],
+      "by_archetype": {
+        "federation": {
+          "n": 25,
+          "v1_true": 1,
+          "v2_true": 1,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "stadium": {
+          "n": 25,
+          "v1_true": 0,
+          "v2_true": 0,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "club": {
+          "n": 25,
+          "v1_true": 1,
+          "v2_true": 1,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "toy": {
+          "n": 25,
+          "v1_true": 0,
+          "v2_true": 0,
+          "false_to_true": [],
+          "true_to_false": []
+        }
+      }
+    },
+    "funding": {
+      "section": "artifacts",
+      "v1_true": 26,
+      "v2_true": 27,
+      "false_to_true": [
+        "firefly-iii/firefly-iii"
+      ],
+      "true_to_false": [],
+      "by_archetype": {
+        "federation": {
+          "n": 25,
+          "v1_true": 8,
+          "v2_true": 8,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "stadium": {
+          "n": 25,
+          "v1_true": 12,
+          "v2_true": 13,
+          "false_to_true": [
+            "firefly-iii/firefly-iii"
+          ],
+          "true_to_false": []
+        },
+        "club": {
+          "n": 25,
+          "v1_true": 4,
+          "v2_true": 4,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "toy": {
+          "n": 25,
+          "v1_true": 2,
+          "v2_true": 2,
+          "false_to_true": [],
+          "true_to_false": []
+        }
+      }
+    },
+    "security_policy": {
+      "section": "security",
+      "v1_true": 49,
+      "v2_true": 53,
+      "false_to_true": [
+        "rails/rails",
+        "jekyll/jekyll",
+        "firefly-iii/firefly-iii",
+        "guzzle/guzzle"
+      ],
+      "true_to_false": [],
+      "by_archetype": {
+        "federation": {
+          "n": 25,
+          "v1_true": 20,
+          "v2_true": 21,
+          "false_to_true": [
+            "rails/rails"
+          ],
+          "true_to_false": []
+        },
+        "stadium": {
+          "n": 25,
+          "v1_true": 9,
+          "v2_true": 12,
+          "false_to_true": [
+            "jekyll/jekyll",
+            "firefly-iii/firefly-iii",
+            "guzzle/guzzle"
+          ],
+          "true_to_false": []
+        },
+        "club": {
+          "n": 25,
+          "v1_true": 16,
+          "v2_true": 16,
+          "false_to_true": [],
+          "true_to_false": []
+        },
+        "toy": {
+          "n": 25,
+          "v1_true": 4,
+          "v2_true": 4,
+          "false_to_true": [],
+          "true_to_false": []
+        }
+      }
+    },
+    "ci_configured": {
+      "section": "security",
+      "v1_true": 84,
+      "v2_true": 87,
+      "false_to_true": [
+        "FFmpeg/FFmpeg",
+        "gitlabhq/gitlabhq",
+        "mozilla/uniffi-rs"
+      ],
+      "true_to_false": [],
+      "by_archetype": {
+        "federation": {
+          "n": 25,
+          "v1_true": 22,
+          "v2_true": 23,
+          "false_to_true": [
+            "FFmpeg/FFmpeg"
+          ],
+          "true_to_false": []
+        },
+        "stadium": {
+          "n": 25,
+          "v1_true": 22,
+          "v2_true": 23,
+          "false_to_true": [
+            "gitlabhq/gitlabhq"
+          ],
+          "true_to_false": []
+        },
+        "club": {
+          "n": 25,
+          "v1_true": 23,
+          "v2_true": 24,
+          "false_to_true": [
+            "mozilla/uniffi-rs"
+          ],
+          "true_to_false": []
+        },
+        "toy": {
+          "n": 25,
+          "v1_true": 17,
+          "v2_true": 17,
+          "false_to_true": [],
+          "true_to_false": []
+        }
+      }
+    },
+    "dependency_automation": {
+      "section": "security",
+      "v1_true": 32,
+      "v2_true": 39,
+      "false_to_true": [
+        "freeCodeCamp/freeCodeCamp",
+        "rust-lang/rust",
+        "elastic/elasticsearch",
+        "zed-industries/zed",
+        "huginn/huginn",
+        "cilium/tetragon",
+        "Gentleman-Programming/gentle-ai"
+      ],
+      "true_to_false": [],
+      "by_archetype": {
+        "federation": {
+          "n": 25,
+          "v1_true": 10,
+          "v2_true": 14,
+          "false_to_true": [
+            "freeCodeCamp/freeCodeCamp",
+            "rust-lang/rust",
+            "elastic/elasticsearch",
+            "zed-industries/zed"
+          ],
+          "true_to_false": []
+        },
+        "stadium": {
+          "n": 25,
+          "v1_true": 10,
+          "v2_true": 11,
+          "false_to_true": [
+            "huginn/huginn"
+          ],
+          "true_to_false": []
+        },
+        "club": {
+          "n": 25,
+          "v1_true": 7,
+          "v2_true": 9,
+          "false_to_true": [
+            "cilium/tetragon",
+            "Gentleman-Programming/gentle-ai"
+          ],
+          "true_to_false": []
+        },
+        "toy": {
+          "n": 25,
+          "v1_true": 5,
+          "v2_true": 5,
+          "false_to_true": [],
+          "true_to_false": []
+        }
+      }
+    }
+  },
+  "n_false_to_true": 78,
+  "n_true_to_false": 0,
+  "true_to_false_all": [],
+  "inherited": {
+    "contributing": {
+      "v1": 0,
+      "v2": 3,
+      "v1_repos": [],
+      "v2_repos": [
+        "freeCodeCamp/freeCodeCamp",
+        "doocs/advanced-java",
+        "guzzle/guzzle"
+      ],
+      "by_archetype": {
+        "federation": {
+          "v1": 0,
+          "v2": 1
+        },
+        "stadium": {
+          "v1": 0,
+          "v2": 2
+        },
+        "club": {
+          "v1": 0,
+          "v2": 0
+        },
+        "toy": {
+          "v1": 0,
+          "v2": 0
+        }
+      }
+    },
+    "code_of_conduct": {
+      "v1": 0,
+      "v2": 6,
+      "v1_repos": [],
+      "v2_repos": [
+        "freeCodeCamp/freeCodeCamp",
+        "godotengine/godot",
+        "supabase/supabase",
+        "guzzle/guzzle",
+        "spring-cloud/spring-cloud-gateway",
+        "spring-cloud/spring-cloud-circuitbreaker"
+      ],
+      "by_archetype": {
+        "federation": {
+          "v1": 0,
+          "v2": 3
+        },
+        "stadium": {
+          "v1": 0,
+          "v2": 1
+        },
+        "club": {
+          "v1": 0,
+          "v2": 1
+        },
+        "toy": {
+          "v1": 0,
+          "v2": 1
+        }
+      }
+    },
+    "issue_template": {
+      "v1": 0,
+      "v2": 4,
+      "v1_repos": [],
+      "v2_repos": [
+        "supabase/supabase",
+        "guzzle/guzzle",
+        "SolaceLabs/solace-agent-mesh",
+        "JChristensen/Timezone"
+      ],
+      "by_archetype": {
+        "federation": {
+          "v1": 0,
+          "v2": 1
+        },
+        "stadium": {
+          "v1": 0,
+          "v2": 1
+        },
+        "club": {
+          "v1": 0,
+          "v2": 1
+        },
+        "toy": {
+          "v1": 0,
+          "v2": 1
+        }
+      }
+    },
+    "pull_request_template": {
+      "v1": 0,
+      "v2": 0,
+      "v1_repos": [],
+      "v2_repos": [],
+      "by_archetype": {
+        "federation": {
+          "v1": 0,
+          "v2": 0
+        },
+        "stadium": {
+          "v1": 0,
+          "v2": 0
+        },
+        "club": {
+          "v1": 0,
+          "v2": 0
+        },
+        "toy": {
+          "v1": 0,
+          "v2": 0
+        }
+      }
+    },
+    "funding": {
+      "v1": 5,
+      "v2": 5,
+      "v1_repos": [
+        "godotengine/godot",
+        "nodejs/node",
+        "gohugoio/hugo",
+        "doocs/advanced-java",
+        "cilium/tetragon"
+      ],
+      "v2_repos": [
+        "godotengine/godot",
+        "nodejs/node",
+        "gohugoio/hugo",
+        "doocs/advanced-java",
+        "cilium/tetragon"
+      ],
+      "by_archetype": {
+        "federation": {
+          "v1": 2,
+          "v2": 2
+        },
+        "stadium": {
+          "v1": 2,
+          "v2": 2
+        },
+        "club": {
+          "v1": 1,
+          "v2": 1
+        },
+        "toy": {
+          "v1": 0,
+          "v2": 0
+        }
+      }
+    },
+    "security_policy": {
+      "v1": 11,
+      "v2": 12,
+      "v1_repos": [
+        "freeCodeCamp/freeCodeCamp",
+        "rust-lang/rust",
+        "godotengine/godot",
+        "elastic/elasticsearch",
+        "supabase/supabase",
+        "hashicorp/vagrant",
+        "github/explore",
+        "hashicorp/terraform-provider-azurerm",
+        "X11Libre/xserver",
+        "spring-cloud/spring-cloud-circuitbreaker",
+        "ImageMagick/ImageMagick6"
+      ],
+      "v2_repos": [
+        "freeCodeCamp/freeCodeCamp",
+        "rust-lang/rust",
+        "godotengine/godot",
+        "elastic/elasticsearch",
+        "supabase/supabase",
+        "hashicorp/vagrant",
+        "guzzle/guzzle",
+        "github/explore",
+        "hashicorp/terraform-provider-azurerm",
+        "X11Libre/xserver",
+        "spring-cloud/spring-cloud-circuitbreaker",
+        "ImageMagick/ImageMagick6"
+      ],
+      "by_archetype": {
+        "federation": {
+          "v1": 5,
+          "v2": 5
+        },
+        "stadium": {
+          "v1": 1,
+          "v2": 2
+        },
+        "club": {
+          "v1": 3,
+          "v2": 3
+        },
+        "toy": {
+          "v1": 2,
+          "v2": 2
+        }
+      }
+    }
+  },
+  "repo_flips": [
+    {
+      "repo": "firefly-iii/firefly-iii",
+      "archetype": "stadium",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        },
+        "funding": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        },
+        "security_policy": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 3,
+      "score_v1": 50.26998050968977,
+      "score_v2": 58.82553606524533,
+      "delta_score": 8.555555555555557,
+      "d1_v1": 0.6666666666666666,
+      "d1_v2": 0.8888888888888888,
+      "d5_v1": 0.8,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "freeCodeCamp/freeCodeCamp",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        },
+        "dependency_automation": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 2,
+      "score_v1": 81.35588299097653,
+      "score_v2": 87.8836607687543,
+      "delta_score": 6.5277777777777715,
+      "d1_v1": 0.7777777777777778,
+      "d1_v2": 0.8888888888888888,
+      "d5_v1": 0.5,
+      "d5_v2": 0.75,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "jekyll/jekyll",
+      "archetype": "stadium",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        },
+        "security_policy": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 2,
+      "score_v1": 61.85861498181521,
+      "score_v2": 68.38639275959298,
+      "delta_score": 6.5277777777777715,
+      "d1_v1": 0.7777777777777778,
+      "d1_v2": 0.8888888888888888,
+      "d5_v1": 0.5,
+      "d5_v2": 0.75,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "Gentleman-Programming/gentle-ai",
+      "archetype": "club",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        },
+        "dependency_automation": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 2,
+      "score_v1": 39.14075725382899,
+      "score_v2": 44.918535031606766,
+      "delta_score": 5.777777777777779,
+      "d1_v1": 0.4444444444444444,
+      "d1_v2": 0.5555555555555556,
+      "d5_v1": 0.6,
+      "d5_v2": 0.8,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "rails/rails",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        },
+        "security_policy": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 2,
+      "score_v1": 77.08069946220255,
+      "score_v2": 82.85847723998032,
+      "delta_score": 5.7777777777777715,
+      "d1_v1": 0.6666666666666666,
+      "d1_v2": 0.7777777777777778,
+      "d5_v1": 0.6,
+      "d5_v2": 0.8,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "rust-lang/rust",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        },
+        "dependency_automation": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 2,
+      "score_v1": 85.24654228425167,
+      "score_v2": 91.02432006202945,
+      "delta_score": 5.7777777777777715,
+      "d1_v1": 0.6666666666666666,
+      "d1_v2": 0.7777777777777778,
+      "d5_v1": 0.8,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "elastic/elasticsearch",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        },
+        "dependency_automation": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 2,
+      "score_v1": 81.43009358404176,
+      "score_v2": 87.20787136181953,
+      "delta_score": 5.7777777777777715,
+      "d1_v1": 0.5555555555555556,
+      "d1_v2": 0.6666666666666666,
+      "d5_v1": 0.8,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "zed-industries/zed",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        },
+        "dependency_automation": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 2,
+      "score_v1": 79.88689772574334,
+      "score_v2": 85.66467550352111,
+      "delta_score": 5.7777777777777715,
+      "d1_v1": 0.6666666666666666,
+      "d1_v2": 0.7777777777777778,
+      "d5_v1": 0.6,
+      "d5_v2": 0.8,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "cilium/tetragon",
+      "archetype": "club",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        },
+        "dependency_automation": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 2,
+      "score_v1": 85.59360782549457,
+      "score_v2": 91.37138560327233,
+      "delta_score": 5.777777777777757,
+      "d1_v1": 0.7777777777777778,
+      "d1_v2": 0.8888888888888888,
+      "d5_v1": 0.7666666666666667,
+      "d5_v2": 0.9666666666666666,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "tensorflow/tensorflow",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        },
+        "codeowners": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 2,
+      "score_v1": 73.94954387098626,
+      "score_v2": 79.50509942654182,
+      "delta_score": 5.555555555555557,
+      "d1_v1": 0.4444444444444444,
+      "d1_v2": 0.6666666666666666,
+      "d5_v1": 1.0,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "ggml-org/llama.cpp",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        },
+        "codeowners": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 2,
+      "score_v1": 78.70773524417902,
+      "score_v2": 84.26329079973458,
+      "delta_score": 5.555555555555557,
+      "d1_v1": 0.4444444444444444,
+      "d1_v2": 0.6666666666666666,
+      "d5_v1": 0.8,
+      "d5_v2": 0.8,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "monicahq/monica",
+      "archetype": "stadium",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        },
+        "pull_request_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 2,
+      "score_v1": 36.02415144798174,
+      "score_v2": 41.579707003537294,
+      "delta_score": 5.555555555555557,
+      "d1_v1": 0.4444444444444444,
+      "d1_v2": 0.6666666666666666,
+      "d5_v1": 0.75,
+      "d5_v2": 0.75,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "hashicorp/terraform-provider-azurerm",
+      "archetype": "club",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        },
+        "codeowners": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 2,
+      "score_v1": 85.28113975572631,
+      "score_v2": 90.83669531128186,
+      "delta_score": 5.555555555555543,
+      "d1_v1": 0.4444444444444444,
+      "d1_v2": 0.6666666666666666,
+      "d5_v1": 1.0,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "asterinas/asterinas",
+      "archetype": "club",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        },
+        "codeowners": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 2,
+      "score_v1": 68.28965168592009,
+      "score_v2": 73.84520724147563,
+      "delta_score": 5.555555555555543,
+      "d1_v1": 0.2222222222222222,
+      "d1_v2": 0.4444444444444444,
+      "d5_v1": 0.4583333333333333,
+      "d5_v2": 0.4583333333333333,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "FFmpeg/FFmpeg",
+      "archetype": "federation",
+      "changes": {
+        "ci_configured": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 57.05520795644889,
+      "score_v2": 61.7427079564489,
+      "delta_score": 4.687500000000014,
+      "d1_v1": 0.3333333333333333,
+      "d1_v2": 0.3333333333333333,
+      "d5_v1": 0.0,
+      "d5_v2": 0.25,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "mozilla/uniffi-rs",
+      "archetype": "club",
+      "changes": {
+        "ci_configured": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 54.58149103174621,
+      "score_v2": 58.33149103174622,
+      "delta_score": 3.750000000000007,
+      "d1_v1": 0.5555555555555556,
+      "d1_v2": 0.5555555555555556,
+      "d5_v1": 0.0,
+      "d5_v2": 0.25,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "huginn/huginn",
+      "archetype": "stadium",
+      "changes": {
+        "dependency_automation": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 41.68051721247552,
+      "score_v2": 45.43051721247552,
+      "delta_score": 3.75,
+      "d1_v1": 0.3333333333333333,
+      "d1_v2": 0.3333333333333333,
+      "d5_v1": 0.25,
+      "d5_v2": 0.5,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "gitlabhq/gitlabhq",
+      "archetype": "stadium",
+      "changes": {
+        "ci_configured": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 23.968542464878674,
+      "score_v2": 27.71854246487867,
+      "delta_score": 3.7499999999999964,
+      "d1_v1": 0.5555555555555556,
+      "d1_v2": 0.5555555555555556,
+      "d5_v1": 0.0,
+      "d5_v2": 0.25,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "guzzle/guzzle",
+      "archetype": "stadium",
+      "changes": {
+        "security_policy": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": true
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 44.57868519524661,
+      "score_v2": 47.57868519524661,
+      "delta_score": 3.0,
+      "d1_v1": 0.6666666666666666,
+      "d1_v2": 0.6666666666666666,
+      "d5_v1": 0.6,
+      "d5_v2": 0.8,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "NousResearch/hermes-agent",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 71.34594239300549,
+      "score_v2": 74.12372017078329,
+      "delta_score": 2.7777777777778,
+      "d1_v1": 0.4444444444444444,
+      "d1_v2": 0.5555555555555556,
+      "d5_v1": 1.0,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "filamentphp/filament",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 76.79125994946332,
+      "score_v2": 79.56903772724111,
+      "delta_score": 2.7777777777777857,
+      "d1_v1": 0.6666666666666666,
+      "d1_v2": 0.7777777777777778,
+      "d5_v1": 1.0,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "openai/codex",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 73.55228667758279,
+      "score_v2": 76.33006445536057,
+      "delta_score": 2.7777777777777857,
+      "d1_v1": 0.5555555555555556,
+      "d1_v2": 0.6666666666666666,
+      "d5_v1": 0.8,
+      "d5_v2": 0.8,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "langgenius/dify",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 83.38315051196814,
+      "score_v2": 86.16092828974593,
+      "delta_score": 2.7777777777777857,
+      "d1_v1": 0.6666666666666666,
+      "d1_v2": 0.7777777777777778,
+      "d5_v1": 1.0,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "infiniflow/ragflow",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 77.039314344207,
+      "score_v2": 79.81709212198479,
+      "delta_score": 2.7777777777777857,
+      "d1_v1": 0.3333333333333333,
+      "d1_v2": 0.4444444444444444,
+      "d5_v1": 0.8,
+      "d5_v2": 0.8,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "flatpak/flatpak",
+      "archetype": "club",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 67.59431339754862,
+      "score_v2": 70.3720911753264,
+      "delta_score": 2.7777777777777857,
+      "d1_v1": 0.4444444444444444,
+      "d1_v2": 0.5555555555555556,
+      "d5_v1": 0.8,
+      "d5_v2": 0.8,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "vllm-project/aibrix",
+      "archetype": "club",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 77.00653196032155,
+      "score_v2": 79.78430973809934,
+      "delta_score": 2.7777777777777857,
+      "d1_v1": 0.5555555555555556,
+      "d1_v2": 0.6666666666666666,
+      "d5_v1": 0.7666666666666667,
+      "d5_v2": 0.7666666666666667,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "librenms/librenms",
+      "archetype": "club",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 76.28672858716635,
+      "score_v2": 79.06450636494414,
+      "delta_score": 2.7777777777777857,
+      "d1_v1": 0.6666666666666666,
+      "d1_v2": 0.7777777777777778,
+      "d5_v1": 0.8,
+      "d5_v2": 0.8,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "microsoft/FluidFramework",
+      "archetype": "club",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 79.34589090968348,
+      "score_v2": 82.12366868746126,
+      "delta_score": 2.7777777777777857,
+      "d1_v1": 0.6666666666666666,
+      "d1_v2": 0.7777777777777778,
+      "d5_v1": 0.8,
+      "d5_v2": 0.8,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "Genymobile/scrcpy",
+      "archetype": "stadium",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 30.508398166738747,
+      "score_v2": 33.28617594451653,
+      "delta_score": 2.777777777777782,
+      "d1_v1": 0.3333333333333333,
+      "d1_v2": 0.4444444444444444,
+      "d5_v1": 0.5666666666666667,
+      "d5_v2": 0.5666666666666667,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "JChristensen/Timezone",
+      "archetype": "toy",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": true
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 26.522983516922093,
+      "score_v2": 29.300761294699875,
+      "delta_score": 2.777777777777782,
+      "d1_v1": 0.3333333333333333,
+      "d1_v2": 0.4444444444444444,
+      "d5_v1": 0.3,
+      "d5_v2": 0.3,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "golang/go",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 61.84645884259893,
+      "score_v2": 64.6242366203767,
+      "delta_score": 2.7777777777777786,
+      "d1_v1": 0.5555555555555556,
+      "d1_v2": 0.6666666666666666,
+      "d5_v1": 0.25,
+      "d5_v2": 0.25,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "ventoy/Ventoy",
+      "archetype": "stadium",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 45.35192282160413,
+      "score_v2": 48.129700599381906,
+      "delta_score": 2.7777777777777786,
+      "d1_v1": 0.3333333333333333,
+      "d1_v2": 0.4444444444444444,
+      "d5_v1": 0.6,
+      "d5_v2": 0.6,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "gohugoio/hugo",
+      "archetype": "stadium",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 56.50946990616863,
+      "score_v2": 59.28724768394641,
+      "delta_score": 2.7777777777777786,
+      "d1_v1": 0.4444444444444444,
+      "d1_v2": 0.5555555555555556,
+      "d5_v1": 1.0,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "tmux/tmux",
+      "archetype": "stadium",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 44.110827477568634,
+      "score_v2": 46.88860525534641,
+      "delta_score": 2.7777777777777786,
+      "d1_v1": 0.4444444444444444,
+      "d1_v2": 0.5555555555555556,
+      "d5_v1": 0.8,
+      "d5_v2": 0.8,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "tesseract-ocr/tesseract",
+      "archetype": "stadium",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 51.97838314222554,
+      "score_v2": 54.75616092000332,
+      "delta_score": 2.7777777777777786,
+      "d1_v1": 0.3333333333333333,
+      "d1_v2": 0.4444444444444444,
+      "d5_v1": 0.8333333333333334,
+      "d5_v2": 0.8333333333333334,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "junegunn/fzf",
+      "archetype": "stadium",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 51.32083695317593,
+      "score_v2": 54.098614730953706,
+      "delta_score": 2.7777777777777786,
+      "d1_v1": 0.5555555555555556,
+      "d1_v2": 0.6666666666666666,
+      "d5_v1": 1.0,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "lobsters/lobsters",
+      "archetype": "club",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 59.50393116632772,
+      "score_v2": 62.281708944105496,
+      "delta_score": 2.7777777777777786,
+      "d1_v1": 0.4444444444444444,
+      "d1_v2": 0.5555555555555556,
+      "d5_v1": 0.75,
+      "d5_v2": 0.75,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "X11Libre/xserver",
+      "archetype": "club",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 47.84490773280533,
+      "score_v2": 50.62268551058311,
+      "delta_score": 2.7777777777777786,
+      "d1_v1": 0.4444444444444444,
+      "d1_v2": 0.5555555555555556,
+      "d5_v1": 0.8,
+      "d5_v2": 0.8,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "JungHoonGhae/tossinvest-cli",
+      "archetype": "toy",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 49.091048246367954,
+      "score_v2": 51.86882602414573,
+      "delta_score": 2.7777777777777786,
+      "d1_v1": 0.6666666666666666,
+      "d1_v2": 0.7777777777777778,
+      "d5_v1": 0.8,
+      "d5_v2": 0.8,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "spring-cloud/spring-cloud-circuitbreaker",
+      "archetype": "toy",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 59.35403485052709,
+      "score_v2": 62.13181262830487,
+      "delta_score": 2.7777777777777786,
+      "d1_v1": 0.3333333333333333,
+      "d1_v2": 0.4444444444444444,
+      "d5_v1": 1.0,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "justnullname/QuickView",
+      "archetype": "toy",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 32.61421141873773,
+      "score_v2": 35.39198919651551,
+      "delta_score": 2.7777777777777786,
+      "d1_v1": 0.2222222222222222,
+      "d1_v2": 0.3333333333333333,
+      "d5_v1": 0.6,
+      "d5_v2": 0.6,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "gittower/git-flow-next",
+      "archetype": "toy",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 38.75050403361678,
+      "score_v2": 41.52828181139456,
+      "delta_score": 2.7777777777777786,
+      "d1_v1": 0.4444444444444444,
+      "d1_v2": 0.5555555555555556,
+      "d5_v1": 0.6,
+      "d5_v2": 0.6,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "containers/conmon-rs",
+      "archetype": "toy",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 46.51518705127533,
+      "score_v2": 49.29296482905311,
+      "delta_score": 2.7777777777777786,
+      "d1_v1": 0.4444444444444444,
+      "d1_v2": 0.5555555555555556,
+      "d5_v1": 0.8,
+      "d5_v2": 0.8,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "tailuge/billiards",
+      "archetype": "toy",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 33.67356225528797,
+      "score_v2": 36.45134003306575,
+      "delta_score": 2.7777777777777786,
+      "d1_v1": 0.3333333333333333,
+      "d1_v2": 0.4444444444444444,
+      "d5_v1": 0.25,
+      "d5_v2": 0.25,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "ImageMagick/ImageMagick6",
+      "archetype": "toy",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 54.36166418924632,
+      "score_v2": 57.1394419670241,
+      "delta_score": 2.7777777777777786,
+      "d1_v1": 0.6666666666666666,
+      "d1_v2": 0.7777777777777778,
+      "d5_v1": 0.8340909090909092,
+      "d5_v2": 0.8340909090909092,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "danielmiessler/SecLists",
+      "archetype": "stadium",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 31.23001930593482,
+      "score_v2": 34.007797083712596,
+      "delta_score": 2.777777777777775,
+      "d1_v1": 0.4444444444444444,
+      "d1_v2": 0.5555555555555556,
+      "d5_v1": 0.4666666666666667,
+      "d5_v2": 0.4666666666666667,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "affaan-m/ECC",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 70.97313552667246,
+      "score_v2": 73.75091330445024,
+      "delta_score": 2.7777777777777715,
+      "d1_v1": 0.7777777777777778,
+      "d1_v2": 0.8888888888888888,
+      "d5_v1": 1.0,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "godotengine/godot",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 87.08610229363221,
+      "score_v2": 89.86388007140998,
+      "delta_score": 2.7777777777777715,
+      "d1_v1": 0.7777777777777778,
+      "d1_v2": 0.8888888888888888,
+      "d5_v1": 0.8,
+      "d5_v2": 0.8,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "nodejs/node",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 94.59017408032764,
+      "score_v2": 97.36795185810541,
+      "delta_score": 2.7777777777777715,
+      "d1_v1": 0.8888888888888888,
+      "d1_v2": 1.0,
+      "d5_v1": 1.0,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "huggingface/transformers",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 82.44109004903471,
+      "score_v2": 85.21886782681248,
+      "delta_score": 2.7777777777777715,
+      "d1_v1": 0.5555555555555556,
+      "d1_v2": 0.6666666666666666,
+      "d5_v1": 1.0,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "openinterpreter/openinterpreter",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 66.8797348232815,
+      "score_v2": 69.65751260105927,
+      "delta_score": 2.7777777777777715,
+      "d1_v1": 0.5555555555555556,
+      "d1_v2": 0.6666666666666666,
+      "d5_v1": 0.6,
+      "d5_v2": 0.6,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "supabase/supabase",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": true
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 92.00120125697467,
+      "score_v2": 94.77897903475244,
+      "delta_score": 2.7777777777777715,
+      "d1_v1": 0.7777777777777778,
+      "d1_v2": 0.8888888888888888,
+      "d5_v1": 1.0,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "hashicorp/vagrant",
+      "archetype": "stadium",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 66.15628253102723,
+      "score_v2": 68.934060308805,
+      "delta_score": 2.7777777777777715,
+      "d1_v1": 0.5555555555555556,
+      "d1_v2": 0.6666666666666666,
+      "d5_v1": 1.0,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "pbatard/rufus",
+      "archetype": "stadium",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 37.81419921398075,
+      "score_v2": 40.59197699175852,
+      "delta_score": 2.7777777777777715,
+      "d1_v1": 0.3333333333333333,
+      "d1_v2": 0.4444444444444444,
+      "d5_v1": 1.0,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "lemonade-sdk/lemonade",
+      "archetype": "club",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 75.30341665711833,
+      "score_v2": 78.0811944348961,
+      "delta_score": 2.7777777777777715,
+      "d1_v1": 0.3333333333333333,
+      "d1_v2": 0.4444444444444444,
+      "d5_v1": 0.8,
+      "d5_v2": 0.8,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "vllm-project/semantic-router",
+      "archetype": "club",
+      "changes": {
+        "codeowners": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 85.70140942677901,
+      "score_v2": 88.47918720455678,
+      "delta_score": 2.7777777777777715,
+      "d1_v1": 0.6666666666666666,
+      "d1_v2": 0.7777777777777778,
+      "d5_v1": 0.7,
+      "d5_v2": 0.7,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "github/explore",
+      "archetype": "club",
+      "changes": {
+        "codeowners": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 76.79774237075497,
+      "score_v2": 79.57552014853275,
+      "delta_score": 2.7777777777777715,
+      "d1_v1": 0.5555555555555556,
+      "d1_v2": 0.6666666666666666,
+      "d5_v1": 0.75,
+      "d5_v2": 0.75,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "statamic/cms",
+      "archetype": "club",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 78.02161493886219,
+      "score_v2": 80.79939271663996,
+      "delta_score": 2.7777777777777715,
+      "d1_v1": 0.6666666666666666,
+      "d1_v2": 0.7777777777777778,
+      "d5_v1": 1.0,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "Expensify/App",
+      "archetype": "club",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 85.44403985073436,
+      "score_v2": 88.22181762851213,
+      "delta_score": 2.7777777777777715,
+      "d1_v1": 0.5555555555555556,
+      "d1_v2": 0.6666666666666666,
+      "d5_v1": 0.8,
+      "d5_v2": 0.8,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "SolaceLabs/solace-agent-mesh",
+      "archetype": "club",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": true
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 80.29933047625694,
+      "score_v2": 83.07710825403471,
+      "delta_score": 2.7777777777777715,
+      "d1_v1": 0.5555555555555556,
+      "d1_v2": 0.6666666666666666,
+      "d5_v1": 0.6,
+      "d5_v2": 0.6,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "mavlink/qgroundcontrol",
+      "archetype": "club",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 66.00348608799314,
+      "score_v2": 68.78126386577091,
+      "delta_score": 2.7777777777777715,
+      "d1_v1": 0.7777777777777778,
+      "d1_v2": 0.8888888888888888,
+      "d5_v1": 0.8666666666666666,
+      "d5_v2": 0.8666666666666666,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "laravel/framework",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 79.35981361261666,
+      "score_v2": 82.13759139039442,
+      "delta_score": 2.7777777777777573,
+      "d1_v1": 0.5555555555555556,
+      "d1_v2": 0.6666666666666666,
+      "d5_v1": 1.0,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    },
+    {
+      "repo": "google-gemini/gemini-cli",
+      "archetype": "federation",
+      "changes": {
+        "issue_template": {
+          "v1": false,
+          "v2": true,
+          "inherited_v2": false
+        }
+      },
+      "n_changes": 1,
+      "score_v1": 80.8021345781498,
+      "score_v2": 83.57991235592756,
+      "delta_score": 2.7777777777777573,
+      "d1_v1": 0.5555555555555556,
+      "d1_v2": 0.6666666666666666,
+      "d5_v1": 1.0,
+      "d5_v2": 1.0,
+      "v2_source": "tree",
+      "epoch_status": "ok"
+    }
+  ],
+  "n_repos_changed": 63,
+  "inconsistent_v1_copy": [],
+  "delta_score": {
+    "all": {
+      "n": 100,
+      "mean": 2.252152777777777,
+      "median": 2.7777777777777715,
+      "sd": 2.055998113161898,
+      "q1": 0.0,
+      "q3": 2.7777777777777857,
+      "min": 0.0,
+      "max": 8.555555555555557
+    },
+    "federation": {
+      "n": 25,
+      "mean": 3.3730555555555544,
+      "median": 2.7777777777777857,
+      "sd": 1.8644804354668567,
+      "q1": 2.7777777777777715,
+      "q3": 5.555555555555557,
+      "min": 0.0,
+      "max": 6.5277777777777715
+    },
+    "stadium": {
+      "n": 25,
+      "mean": 2.245555555555555,
+      "median": 2.777777777777775,
+      "sd": 2.3019924497450304,
+      "q1": 0.0,
+      "q3": 2.888888888888891,
+      "min": 0.0,
+      "max": 8.555555555555557
+    },
+    "club": {
+      "n": 25,
+      "mean": 2.501111111111109,
+      "median": 2.7777777777777715,
+      "sd": 1.8982014445995514,
+      "q1": 0.0,
+      "q3": 2.7777777777777857,
+      "min": 0.0,
+      "max": 5.777777777777779
+    },
+    "toy": {
+      "n": 25,
+      "mean": 0.8888888888888893,
+      "median": 0.0,
+      "sd": 1.3224867460264542,
+      "q1": 0.0,
+      "q3": 2.7777777777777786,
+      "min": 0.0,
+      "max": 2.777777777777782
+    }
+  },
+  "stats": {
+    "score": {
+      "all": {
+        "v1": {
+          "n": 100,
+          "mean": 55.17711991801414,
+          "median": 56.974863719811495,
+          "sd": 22.202199092904188,
+          "q1": 35.529387426601005,
+          "q3": 76.66512710888908,
+          "min": 6.527777777777777,
+          "max": 94.59017408032764
+        },
+        "v2": {
+          "n": 100,
+          "mean": 57.429272695791916,
+          "median": 59.4507939125031,
+          "sd": 23.222701186397735,
+          "q1": 35.92218800910166,
+          "q3": 79.5530531520663,
+          "min": 6.527777777777777,
+          "max": 97.36795185810541
+        }
+      },
+      "federation": {
+        "v1": {
+          "n": 25,
+          "mean": 76.07332442005487,
+          "median": 77.08069946220255,
+          "sd": 9.894793266062155,
+          "q1": 71.15953895983898,
+          "q3": 81.93559181653823,
+          "min": 56.89451948317411,
+          "max": 94.59017408032764
+        },
+        "v2": {
+          "n": 25,
+          "mean": 79.44637997561044,
+          "median": 82.13759139039442,
+          "sd": 10.678735786305214,
+          "q1": 72.74091608843045,
+          "q3": 86.68439982578272,
+          "min": 56.89451948317411,
+          "max": 97.36795185810541
+        }
+      },
+      "stadium": {
+        "v1": {
+          "n": 25,
+          "mean": 42.20726920726364,
+          "median": 41.68051721247552,
+          "sd": 13.673262316364351,
+          "q1": 32.65505813949272,
+          "q3": 51.64961004770073,
+          "min": 15.924229772927688,
+          "max": 66.15628253102723
+        },
+        "v2": {
+          "n": 25,
+          "mean": 44.4528247628192,
+          "median": 44.26694084971518,
+          "sd": 14.44611347873264,
+          "q1": 34.04394702838161,
+          "q3": 56.79084849262432,
+          "min": 15.924229772927688,
+          "max": 68.934060308805
+        }
+      },
+      "club": {
+        "v1": {
+          "n": 25,
+          "mean": 70.38312099632009,
+          "median": 75.30341665711833,
+          "sd": 12.740299982827597,
+          "q1": 61.69257768196249,
+          "q3": 79.82261069297022,
+          "min": 39.14075725382899,
+          "max": 85.70140942677901
+        },
+        "v2": {
+          "n": 25,
+          "mean": 72.88423210743119,
+          "median": 75.54353245467217,
+          "sd": 12.980317244736943,
+          "q1": 62.337148594646706,
+          "q3": 82.60038847074799,
+          "min": 44.918535031606766,
+          "max": 91.37138560327233
+        }
+      },
+      "toy": {
+        "v1": {
+          "n": 25,
+          "mean": 32.04476504841795,
+          "median": 32.01819923371648,
+          "sd": 12.564139743490532,
+          "q1": 24.73438215653222,
+          "q3": 40.6986672672094,
+          "min": 6.527777777777777,
+          "max": 59.35403485052709
+        },
+        "v2": {
+          "n": 25,
+          "mean": 32.93365393730684,
+          "median": 32.01819923371648,
+          "sd": 13.385535787226924,
+          "q1": 24.73438215653222,
+          "q3": 42.08755615609829,
+          "min": 6.527777777777777,
+          "max": 62.13181262830487
+        }
+      }
+    },
+    "subscore_artifacts": {
+      "all": {
+        "v1": {
+          "n": 100,
+          "mean": 0.45555555555555555,
+          "median": 0.4444444444444444,
+          "sd": 0.19180101506567157,
+          "q1": 0.3333333333333333,
+          "q3": 0.5555555555555556,
+          "min": 0.1111111111111111,
+          "max": 0.8888888888888888
+        },
+        "v2": {
+          "n": 100,
+          "mean": 0.5266666666666666,
+          "median": 0.5555555555555556,
+          "sd": 0.22755662527806927,
+          "q1": 0.3333333333333333,
+          "q3": 0.6666666666666666,
+          "min": 0.1111111111111111,
+          "max": 1.0
+        }
+      },
+      "federation": {
+        "v1": {
+          "n": 25,
+          "mean": 0.5866666666666667,
+          "median": 0.5555555555555556,
+          "sd": 0.15882801216586345,
+          "q1": 0.5,
+          "q3": 0.6666666666666666,
+          "min": 0.2222222222222222,
+          "max": 0.8888888888888888
+        },
+        "v2": {
+          "n": 25,
+          "mean": 0.6888888888888889,
+          "median": 0.6666666666666666,
+          "sd": 0.17568209223157663,
+          "q1": 0.6666666666666666,
+          "q3": 0.7777777777777778,
+          "min": 0.2222222222222222,
+          "max": 1.0
+        }
+      },
+      "stadium": {
+        "v1": {
+          "n": 25,
+          "mean": 0.4355555555555556,
+          "median": 0.4444444444444444,
+          "sd": 0.16011826904605397,
+          "q1": 0.3333333333333333,
+          "q3": 0.5555555555555556,
+          "min": 0.1111111111111111,
+          "max": 0.7777777777777778
+        },
+        "v2": {
+          "n": 25,
+          "mean": 0.49777777777777776,
+          "median": 0.4444444444444444,
+          "sd": 0.19277057303219414,
+          "q1": 0.3333333333333333,
+          "q3": 0.6666666666666666,
+          "min": 0.1111111111111111,
+          "max": 0.8888888888888888
+        }
+      },
+      "club": {
+        "v1": {
+          "n": 25,
+          "mean": 0.52,
+          "median": 0.5555555555555556,
+          "sd": 0.14948471163415233,
+          "q1": 0.4444444444444444,
+          "q3": 0.6666666666666666,
+          "min": 0.2222222222222222,
+          "max": 0.7777777777777778
+        },
+        "v2": {
+          "n": 25,
+          "mean": 0.6044444444444445,
+          "median": 0.5555555555555556,
+          "sd": 0.16380255101848876,
+          "q1": 0.5,
+          "q3": 0.7222222222222222,
+          "min": 0.2222222222222222,
+          "max": 0.8888888888888888
+        }
+      },
+      "toy": {
+        "v1": {
+          "n": 25,
+          "mean": 0.28,
+          "median": 0.2222222222222222,
+          "sd": 0.1542271319530149,
+          "q1": 0.2222222222222222,
+          "q3": 0.3333333333333333,
+          "min": 0.1111111111111111,
+          "max": 0.6666666666666666
+        },
+        "v2": {
+          "n": 25,
+          "mean": 0.31555555555555553,
+          "median": 0.2222222222222222,
+          "sd": 0.1942591709917534,
+          "q1": 0.2222222222222222,
+          "q3": 0.4444444444444444,
+          "min": 0.1111111111111111,
+          "max": 0.7777777777777778
+        }
+      }
+    },
+    "subscore_security": {
+      "all": {
+        "v1": {
+          "n": 100,
+          "mean": 0.6137575757575757,
+          "median": 0.6333333333333333,
+          "sd": 0.3081496280146825,
+          "q1": 0.4083333333333334,
+          "q3": 0.8,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "v2": {
+          "n": 100,
+          "mean": 0.6447575757575756,
+          "median": 0.75,
+          "sd": 0.30227976920651456,
+          "q1": 0.4333333333333333,
+          "q3": 0.8339015151515153,
+          "min": 0.0,
+          "max": 1.0
+        }
+      },
+      "federation": {
+        "v1": {
+          "n": 25,
+          "mean": 0.738,
+          "median": 0.8,
+          "sd": 0.30457620830699605,
+          "q1": 0.6,
+          "q3": 1.0,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "v2": {
+          "n": 25,
+          "mean": 0.79,
+          "median": 0.8,
+          "sd": 0.2809952550014561,
+          "q1": 0.675,
+          "q3": 1.0,
+          "min": 0.0,
+          "max": 1.0
+        }
+      },
+      "stadium": {
+        "v1": {
+          "n": 25,
+          "mean": 0.5713333333333334,
+          "median": 0.6,
+          "sd": 0.3260850831937602,
+          "q1": 0.25,
+          "q3": 0.8166666666666667,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "v2": {
+          "n": 25,
+          "mean": 0.6173333333333333,
+          "median": 0.6666666666666667,
+          "sd": 0.31540244720626964,
+          "q1": 0.3416666666666667,
+          "q3": 0.8999999999999999,
+          "min": 0.0,
+          "max": 1.0
+        }
+      },
+      "club": {
+        "v1": {
+          "n": 25,
+          "mean": 0.695,
+          "median": 0.7666666666666667,
+          "sd": 0.23419978018144474,
+          "q1": 0.6,
+          "q3": 0.8,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "v2": {
+          "n": 25,
+          "mean": 0.721,
+          "median": 0.8,
+          "sd": 0.21263775491387887,
+          "q1": 0.6,
+          "q3": 0.8,
+          "min": 0.25,
+          "max": 1.0
+        }
+      },
+      "toy": {
+        "v1": {
+          "n": 25,
+          "mean": 0.4506969696969697,
+          "median": 0.4333333333333333,
+          "sd": 0.29192546566254834,
+          "q1": 0.25,
+          "q3": 0.675,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "v2": {
+          "n": 25,
+          "mean": 0.4506969696969697,
+          "median": 0.4333333333333333,
+          "sd": 0.29192546566254834,
+          "q1": 0.25,
+          "q3": 0.675,
+          "min": 0.0,
+          "max": 1.0
+        }
+      }
+    }
+  },
+  "spearman": {
+    "score": {
+      "rho": 0.9965676567656764,
+      "n": 100
+    },
+    "subscore_artifacts": {
+      "rho": 0.96048604609859,
+      "n": 100
+    },
+    "subscore_security": {
+      "rho": 0.9662266167011788,
+      "n": 100
+    }
+  },
+  "ranks": {
+    "n": 100,
+    "max_abs_delta": 6.0,
+    "moved": [
+      {
+        "repo": "firefly-iii/firefly-iii",
+        "archetype": "stadium",
+        "rank_v1": 58.0,
+        "rank_v2": 52.0,
+        "delta_rank": -6.0,
+        "score_v1": 50.26998050968977,
+        "score_v2": 58.82553606524533
+      },
+      {
+        "repo": "ydb-platform/ydb",
+        "archetype": "club",
+        "rank_v1": 9.0,
+        "rank_v2": 15.0,
+        "delta_rank": 6.0,
+        "score_v1": 83.76369135901716,
+        "score_v2": 83.76369135901716
+      },
+      {
+        "repo": "ggml-org/llama.cpp",
+        "archetype": "federation",
+        "rank_v1": 19.0,
+        "rank_v2": 14.0,
+        "delta_rank": -5.0,
+        "score_v1": 78.70773524417902,
+        "score_v2": 84.26329079973458
+      },
+      {
+        "repo": "gitlabhq/gitlabhq",
+        "archetype": "stadium",
+        "rank_v1": 92.0,
+        "rank_v2": 87.0,
+        "delta_rank": -5.0,
+        "score_v1": 23.968542464878674,
+        "score_v2": 27.71854246487867
+      },
+      {
+        "repo": "Gentleman-Programming/gentle-ai",
+        "archetype": "club",
+        "rank_v1": 71.0,
+        "rank_v2": 66.0,
+        "delta_rank": -5.0,
+        "score_v1": 39.14075725382899,
+        "score_v2": 44.918535031606766
+      }
+    ]
+  },
+  "epoch": {
+    "status": {
+      "ok": 99,
+      "unverified": 1
+    },
+    "resolver_step": {
+      "fetch_since_60d": 88,
+      "fetch_since_365d": 3,
+      "fetch_depth_1600": 1,
+      "clone_depth_1": 8
+    },
+    "cutoff_source": {
+      "probes": 100
+    },
+    "v2_source": {
+      "tree": 99,
+      "v1_cache": 1
+    },
+    "cutoff_min": "2026-07-23T22:18:20Z",
+    "cutoff_max": "2026-07-24T12:15:46Z",
+    "unverified": [
+      {
+        "repo": "dtyq/magic",
+        "archetype": "club",
+        "probes": [
+          "workflows"
+        ]
+      }
+    ],
+    "unreachable": [],
+    "n_until_available": 0,
+    "until_divergent": []
+  },
+  "flags": {
+    "flags": {
+      "dependabot_yaml": {
+        "n": 2,
+        "repos": [
+          "openai/codex",
+          "openinterpreter/openinterpreter"
+        ]
+      },
+      "issue_template_config_only": {
+        "n": 4,
+        "repos": [
+          "fatedier/frp",
+          "gin-gonic/gin",
+          "vllm-project/semantic-router",
+          "NVIDIA/nccl"
+        ]
+      },
+      "issue_template_yaml_only": {
+        "n": 5,
+        "repos": [
+          "fatedier/frp",
+          "gin-gonic/gin",
+          "WerWolv/ImHex",
+          "vllm-project/semantic-router",
+          "NVIDIA/nccl"
+        ]
+      }
+    },
+    "ci_systems": {
+      "appveyor": 1,
+      "buildkite": 1,
+      "circleci": 5,
+      "cirrus": 1,
+      "forgejo_gitea_actions": 1,
+      "github_actions": 83,
+      "gitlab_ci": 3,
+      "travis": 3
+    },
+    "dependency_tools": {
+      "dependabot": 32,
+      "renovate": 8
+    },
+    "inherited_from_org": {
+      "code_of_conduct": 6,
+      "contributing": 3,
+      "funding": 5,
+      "issue_template": 4,
+      "security_policy": 12
+    },
+    "symlink_hits": [
+      {
+        "repo": "google-gemini/gemini-cli",
+        "paths": [
+          "docs/contributing.md"
+        ]
+      }
+    ]
+  },
+  "assertions": {
+    "health100_no_issue_template": {
+      "v1": [
+        "freeCodeCamp/freeCodeCamp",
+        "affaan-m/ECC",
+        "godotengine/godot",
+        "nodejs/node",
+        "langgenius/dify",
+        "huggingface/transformers",
+        "WerWolv/ImHex",
+        "librenms/librenms",
+        "mavlink/qgroundcontrol",
+        "JungHoonGhae/tossinvest-cli",
+        "ImageMagick/ImageMagick6"
+      ],
+      "v2": [
+        "WerWolv/ImHex"
+      ]
+    }
+  },
+  "external": {
+    "scorecard_security_policy": {
+      "check": "Security-Policy",
+      "item": "security_policy",
+      "n": 53,
+      "v1": {
+        "agree": 48,
+        "ours_true_ext_false": [
+          "statamic/cms",
+          "mavlink/qgroundcontrol"
+        ],
+        "ours_false_ext_true": [
+          "rails/rails",
+          "jekyll/jekyll",
+          "guzzle/guzzle"
+        ]
+      },
+      "v2": {
+        "agree": 50,
+        "ours_true_ext_false": [
+          "firefly-iii/firefly-iii",
+          "statamic/cms",
+          "mavlink/qgroundcontrol"
+        ],
+        "ours_false_ext_true": []
+      }
+    },
+    "scorecard_license": {
+      "check": "License",
+      "item": "license",
+      "n": 53,
+      "v1": {
+        "agree": 53,
+        "ours_true_ext_false": [],
+        "ours_false_ext_true": []
+      },
+      "v2": {
+        "agree": 53,
+        "ours_true_ext_false": [],
+        "ours_false_ext_true": []
+      }
+    },
+    "scorecard_dependency_update_tool": {
+      "check": "Dependency-Update-Tool",
+      "item": "dependency_automation",
+      "n": 3,
+      "v1": {
+        "agree": 3,
+        "ours_true_ext_false": [],
+        "ours_false_ext_true": []
+      },
+      "v2": {
+        "agree": 3,
+        "ours_true_ext_false": [],
+        "ours_false_ext_true": []
+      }
+    }
+  }
+}

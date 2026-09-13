@@ -6,8 +6,8 @@ Perturbação de best/worst por métrica (individual) e conjunta; ρ do ranking 
 
 | perturbação | ρ mín (por métrica) | ρ médio | pior variante | conjunta + | conjunta − |
 |---|---|---|---|---|---|
-| ±25% | 0.999 | 1.000 | truck_factor -25% | 0.997 | 0.996 |
-| ±50% | 0.996 | 0.999 | truck_factor -50% | 0.989 | 0.989 |
+| ±25% | 0.999 | 1.000 | pr_merge_ratio -25% | 0.997 | 0.997 |
+| ±50% | 0.997 | 0.999 | truck_factor -50% | 0.991 | 0.991 |
 
 ## 2. Reclassificação dos arquétipos (limiares ±50%)
 
@@ -34,52 +34,54 @@ Contagens de Federações são pisos (early stop) — elevar `federation_min` to
 
 ## 3. Validade discriminante vs OpenSSF Scorecard
 
-ρ do score cheio = 0.750; ρ do composto social D2/D3/D4 = 0.626 (n = 53). Teste de Steiger para correlações dependentes (aproximação sobre Spearman): z = 2.99, p = 0.0028 — as dimensões sociais medem construto distinto do Scorecard.
+ρ do score cheio = 0.770; ρ do composto social D2/D3/D4 = 0.626 (n = 53). Teste de Steiger para correlações dependentes (aproximação sobre Spearman): z = 3.28, p = 0.0011 — as dimensões sociais medem construto distinto do Scorecard.
 
 | dimensão | ρ vs Scorecard |
 |---|---|
-| artifacts | 0.560 |
+| artifacts | 0.652 |
 | distribution | 0.580 |
 | responsiveness | 0.497 |
 | diversity | 0.497 |
-| security | 0.588 |
+| security | 0.639 |
 
 ## 4. Robustez à exclusão de suspeitos de não-software
 
 11 repositórios sinalizados (nome típico de não-software ou nenhuma resposta humana): `AITabby/opencodex`, `Au1rxx/free-vpn-subscriptions`, `EFanZh/LeetCode`, `FFmpeg/FFmpeg`, `MisterBooo/LeetCodeAnimation`, `fustyles/Arduino`, `git/git`, `github/explore`, `gitlabhq/gitlabhq`, `torvalds/linux`, `yolfinance/yolfi-agent`.
 
-- **Estádio × forks**: com suspeitos ρ = -0.455 (n=25); sem suspeitos ρ = -0.456 (n=23). O achado exploratório deve ser reportado com esta análise ao lado.
-- Globais sem suspeitos: scorecard ρ=0.738, stars ρ=0.367, forks ρ=0.433.
+- **Estádio × forks**: com suspeitos ρ = -0.524 (n=25); sem suspeitos ρ = -0.528 (n=23). O achado exploratório deve ser reportado com esta análise ao lado.
+- Globais sem suspeitos: scorecard ρ=0.755, stars ρ=0.380, forks ρ=0.446.
 
 ### 4.1 Cenários da inspeção manual (todos mantidos na amostra)
 
-Categorias definidas na inspeção manual (notebook 01; `docs/decisions/2026-09-12-inspecao-manual-amostra.md`). **Conteúdo**: `MisterBooo/LeetCodeAnimation`, `EFanZh/LeetCode`, `github/explore`, `krahets/hello-algo`, `doocs/advanced-java`, `danielmiessler/SecLists`, `SwiftOldDriver/iOS-Weekly`, `Au1rxx/free-vpn-subscriptions`. **Espelhos**: `torvalds/linux`, `FFmpeg/FFmpeg`, `git/git`, `gitlabhq/gitlabhq`. Intra-arquétipo: ρ (p nominal, n).
+Categorias definidas na inspeção manual (notebook 01; `docs/decisions/2026-09-12-inspecao-manual-amostra.md`). **Conteúdo**: `MisterBooo/LeetCodeAnimation`, `EFanZh/LeetCode`, `github/explore`, `krahets/hello-algo`, `doocs/advanced-java`, `danielmiessler/SecLists`, `SwiftOldDriver/iOS-Weekly`, `Au1rxx/free-vpn-subscriptions`. **Espelhos**: `torvalds/linux`, `FFmpeg/FFmpeg`, `git/git`, `gitlabhq/gitlabhq`. Cenários pré-registrados do catálogo v2 (`docs/decisions/2026-09-13-catalogo-v2-reparo-d1-d5.md`): **sem_locus_externo** = locus de coordenação fora do GitHub (`git/git`, `gitlabhq/gitlabhq`, `golang/go`, `react/react-native`, `tensorflow/tensorflow`) ∪ espelhos — evidência em `results/locus_evidence.md`; **sem_openinterpreter** = par quase-duplicado (`openinterpreter/openinterpreter` ⊃ `openai/codex`). `sem_todos` permanece a união da inspeção manual de 2026-09-12 (heurística ∪ conteúdo ∪ espelhos) e NÃO incorpora os cenários v2, que são lidos isoladamente. Intra-arquétipo: ρ (p nominal, n).
 
 | cenário | n | scorecard | stars | forks | stadium×forks | federation×scorecard |
 |---|---|---|---|---|---|---|
-| completa | 100 | 0.750 | 0.403 | 0.454 | -0.455 (p=0.022, n=25) | 0.544 (p=0.036, n=15) |
-| sem_heuristica | 89 | 0.738 | 0.367 | 0.433 | -0.456 (p=0.029, n=23) | 0.109 (p=0.737, n=12) |
-| sem_conteudo | 92 | 0.726 | 0.442 | 0.507 | -0.257 (p=0.260, n=21) | 0.544 (p=0.036, n=15) |
-| sem_espelhos | 96 | 0.754 | 0.422 | 0.481 | -0.497 (p=0.013, n=24) | 0.109 (p=0.737, n=12) |
-| sem_todos | 85 | 0.725 | 0.421 | 0.508 | -0.266 (p=0.257, n=20) | 0.109 (p=0.737, n=12) |
+| completa | 100 | 0.770 | 0.411 | 0.463 | -0.524 (p=0.007, n=25) | 0.589 (p=0.021, n=15) |
+| sem_heuristica | 89 | 0.755 | 0.380 | 0.446 | -0.528 (p=0.010, n=23) | 0.196 (p=0.541, n=12) |
+| sem_conteudo | 92 | 0.745 | 0.452 | 0.517 | -0.313 (p=0.167, n=21) | 0.589 (p=0.021, n=15) |
+| sem_espelhos | 96 | 0.769 | 0.432 | 0.491 | -0.564 (p=0.004, n=24) | 0.196 (p=0.541, n=12) |
+| sem_todos | 85 | 0.737 | 0.436 | 0.522 | -0.326 (p=0.160, n=20) | 0.196 (p=0.541, n=12) |
+| sem_locus_externo | 93 | 0.778 | 0.427 | 0.484 | -0.564 (p=0.004, n=24) | 0.347 (p=0.327, n=10) |
+| sem_openinterpreter | 99 | 0.770 | 0.411 | 0.464 | -0.524 (p=0.007, n=25) | 0.589 (p=0.021, n=15) |
 
 - **stadium×forks**: perde significância nominal em: `sem_conteudo`, `sem_todos` — achado NÃO robusto à composição da amostra.
-- **federation×scorecard**: perde significância nominal em: `sem_heuristica`, `sem_espelhos`, `sem_todos` — achado NÃO robusto à composição da amostra.
+- **federation×scorecard**: perde significância nominal em: `sem_heuristica`, `sem_espelhos`, `sem_todos`, `sem_locus_externo` — achado NÃO robusto à composição da amostra.
 
 ## 5. Faltantes: taxonomia e sensibilidade de imputação
 
-D3 informativo (silêncio observado): 3 repos; omissão vs imputação de pior caso na 1ª resposta: ρ = 0.999, deslocamento máximo de 9 posições.
+D3 informativo (silêncio observado): 3 repos; omissão vs imputação de pior caso na 1ª resposta: ρ = 1.000, deslocamento máximo de 7 posições.
 
 | arquétipo | média (omissão) | média (imputação) |
 |---|---|---|
-| federation | 76.1 | 76.1 |
-| stadium | 42.2 | 42.2 |
-| club | 70.4 | 70.4 |
-| toy | 32.0 | 31.8 |
+| federation | 79.4 | 79.4 |
+| stadium | 44.5 | 44.5 |
+| club | 72.9 | 72.9 |
+| toy | 32.9 | 32.7 |
 
 ## 6. Cobertura do Scorecard (ausência estrutural)
 
-Cobertos n=53 (score médio 58.1), não cobertos n=47 (score médio 51.9); Mann–Whitney sobre o score: p = 0.21 (sem evidência de que a subamostra coberta seja melhor no score).
+Cobertos n=53 (score médio 60.8), não cobertos n=47 (score médio 53.6); Mann–Whitney sobre o score: p = 0.17 (sem evidência de que a subamostra coberta seja melhor no score).
 
 Cobertos por arquétipo: federation 15, stadium 21, club 12, toy 5.
 
@@ -97,7 +99,7 @@ Leitura correta: comparar um repositório com os quartis do SEU arquétipo — n
 
 | arquétipo | Q1 | mediana | Q3 |
 |---|---|---|---|
-| federation | 71.2 | 77.1 | 81.9 |
-| stadium | 32.7 | 41.7 | 51.6 |
-| club | 61.7 | 75.3 | 79.8 |
-| toy | 24.7 | 32.0 | 40.7 |
+| federation | 72.7 | 82.1 | 86.7 |
+| stadium | 34.0 | 44.3 | 56.8 |
+| club | 62.3 | 75.5 | 82.6 |
+| toy | 24.7 | 32.0 | 42.1 |

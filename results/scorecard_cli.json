@@ -1,0 +1,38 @@
+{
+  "n_cli": 100,
+  "n_failed": 0,
+  "failed": [],
+  "repro_max_abs_diff": 0.04999999999999982,
+  "elapsed_median_s": 32.8,
+  "n_api": 53,
+  "rho_cli18_vs_api": 0.8221057840952667,
+  "rho_common_vs_api": 0.9496733731095636,
+  "mean_abs_diff_common": 0.18389674603902656,
+  "cli_mean": 5.1617433603304015,
+  "rho_score_cli_all": 0.6161420987501376,
+  "n_all": 100,
+  "rho_score_cli_nonoverlap": 0.2713674900741176,
+  "por_arquetipo": {
+    "federation": {
+      "n": 25,
+      "rho": 0.49788383831617367,
+      "cli_mean": 5.785756231032093
+    },
+    "stadium": {
+      "n": 25,
+      "rho": 0.726153846153846,
+      "cli_mean": 5.05196707162002
+    },
+    "club": {
+      "n": 25,
+      "rho": 0.2427389927572182,
+      "cli_mean": 5.537161466161466
+    },
+    "toy": {
+      "n": 25,
+      "rho": 0.7386035912739444,
+      "cli_mean": 4.272088672508027
+    }
+  },
+  "rho_score_cli_api53_subset": 0.6672579935270393
+}

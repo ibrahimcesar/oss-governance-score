@@ -11,10 +11,10 @@ Cautelas de leitura (declarar na 4.3):
 
 | indicador | n | ρ | p | p ajustado | significativo |
 |---|---|---|---|---|---|
-| stars | 100 | 0.403 | 0.0000 | 0.0000 | ✅ |
-| forks | 100 | 0.454 | 0.0000 | 0.0000 | ✅ |
+| stars | 100 | 0.411 | 0.0000 | 0.0000 | ✅ |
+| forks | 100 | 0.463 | 0.0000 | 0.0000 | ✅ |
 | dependents | 5 | 0.462 | — | — | fora da família (n<10) |
-| scorecard | 53 | 0.750 | 0.0000 | 0.0000 | ✅ |
+| scorecard | 53 | 0.770 | 0.0000 | 0.0000 | ✅ |
 
 Composição do subamostra de dependentes (linguagens com pacote verificado): python 4, typescript 1. Cobertura efetiva de `:dependents` no deps.dev: NPM/CARGO/PYPI (RubyGems e Packagist retornam 404 — verificado empiricamente); Java/MAVEN fora por mapeamento nome→coordenada inviável; Go sem `:dependents`; C/C++ sem ecossistema (§8 do plano). Com n insuficiente, o indicador é reportado apenas descritivamente.
 
@@ -24,26 +24,26 @@ Composição do subamostra de dependentes (linguagens com pacote verificado): py
 
 | indicador | n | ρ | p |
 |---|---|---|---|
-| stars | 25 | 0.026 | 0.9012 |
-| forks | 25 | -0.021 | 0.9215 |
+| stars | 25 | 0.045 | 0.8323 |
+| forks | 25 | -0.012 | 0.9534 |
 | dependents | 2 | — | — |
-| scorecard | 15 | 0.544 | 0.0361 |
+| scorecard | 15 | 0.589 | 0.0210 |
 
 ### stadium
 
 | indicador | n | ρ | p |
 |---|---|---|---|
-| stars | 25 | -0.125 | 0.5528 |
-| forks | 25 | -0.455 | 0.0222 |
+| stars | 25 | -0.208 | 0.3191 |
+| forks | 25 | -0.524 | 0.0072 |
 | dependents | 1 | — | — |
-| scorecard | 21 | 0.808 | 0.0000 |
+| scorecard | 21 | 0.802 | 0.0000 |
 
 ### club
 
 | indicador | n | ρ | p |
 |---|---|---|---|
-| stars | 25 | 0.212 | 0.3101 |
-| forks | 25 | 0.298 | 0.1473 |
+| stars | 25 | 0.183 | 0.3811 |
+| forks | 25 | 0.295 | 0.1528 |
 | dependents | 2 | — | — |
 | scorecard | 12 | 0.585 | 0.0459 |
 
@@ -51,8 +51,8 @@ Composição do subamostra de dependentes (linguagens com pacote verificado): py
 
 | indicador | n | ρ | p |
 |---|---|---|---|
-| stars | 25 | -0.070 | 0.7395 |
-| forks | 25 | 0.327 | 0.1105 |
+| stars | 25 | -0.105 | 0.6187 |
+| forks | 25 | 0.336 | 0.1003 |
 | dependents | 0 | — | — |
 | scorecard | 5 | 0.900 | — |
 
