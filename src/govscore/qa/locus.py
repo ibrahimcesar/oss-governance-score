@@ -47,10 +47,11 @@ PLATFORM_TRAILERS = ("reviewed_on", "differential_revision", "piper_origin")
 # Contexto, não discriminativos (ver docstring do módulo).
 CONTEXT_SIGNALS = ("change_id", "lore_link", "signed_off_by",
                    "committer_neq_author")
+# Partição das shares calculadas: discriminativas + contexto = todos os
+# trailers de TRAILER_PATTERNS mais committer ≠ autor (teste garante).
+SHARE_KEYS = PLATFORM_TRAILERS + CONTEXT_SIGNALS
 MIRROR_DESCRIPTION = re.compile(r"mirror|read-only|publish-only", re.I)
 EXTERNAL_SHARE_MIN = 0.5
-
-SHARE_KEYS = tuple(TRAILER_PATTERNS) + ("committer_neq_author",)
 
 
 def _repo_dir(cache_root: Path | str, repo: str) -> Path:
@@ -81,8 +82,7 @@ def commit_trailer_shares(commits: list[dict]) -> dict:
     quando o e-mail não está vinculado a uma conta — por isso não são usados).
     """
     n = len(commits)
-    counts = {k: 0 for k in TRAILER_PATTERNS}
-    neq = 0
+    counts = {k: 0 for k in SHARE_KEYS}
     for c in commits:
         meta = c.get("commit") or {}
         msg = meta.get("message") or ""
@@ -92,9 +92,8 @@ def commit_trailer_shares(commits: list[dict]) -> dict:
         author = ((meta.get("author") or {}).get("email") or "").strip().lower()
         committer = ((meta.get("committer") or {}).get("email") or "").strip().lower()
         if author != committer:
-            neq += 1
-    shares: dict = {k: (v / n if n else None) for k, v in counts.items()}
-    shares["committer_neq_author"] = neq / n if n else None
+            counts["committer_neq_author"] += 1
+    shares: dict = {k: (counts[k] / n if n else None) for k in SHARE_KEYS}
     shares["n_commits"] = n
     return shares
 
@@ -111,9 +110,10 @@ def is_external_locus(row: dict) -> bool:
 def scan_commit_messages(cache_root: Path | str, repo: str) -> dict:
     """Linha de evidência de um repositório a partir do cache (sem rede).
 
-    Chaves: repo, n_commits, shares (SHARE_KEYS), has_issues, mirror_declared
-    (descrição casa /mirror|read-only|publish-only/i), mirror_url (informativo,
-    não pontua na regra) e external_locus (is_external_locus).
+    Chaves (contrato M5): repo, shares (SHARE_KEYS) com o denominador
+    n_commits, has_issues e mirror_declared (descrição casa
+    /mirror|read-only|publish-only/i). A sinalização NÃO é gravada na linha:
+    é `is_external_locus(row)`, aplicada por `report`.
     """
     row: dict = {"repo": repo, **commit_trailer_shares(
         iter_cached_commits(cache_root, repo))}
@@ -122,8 +122,6 @@ def scan_commit_messages(cache_root: Path | str, repo: str) -> dict:
     row["has_issues"] = meta.get("has_issues")
     row["mirror_declared"] = bool(
         MIRROR_DESCRIPTION.search(meta.get("description") or ""))
-    row["mirror_url"] = meta.get("mirror_url")
-    row["external_locus"] = is_external_locus(row)
     return row
 
 
@@ -190,7 +188,8 @@ def report(rows: list[dict]) -> str:
              "Diff. Revision | PiperOrigin | lore | Signed-off | "
              "committer≠autor | issues | espelho declarado | sinal |",
              "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
-    for r in sorted(rows, key=lambda x: (not x.get("external_locus"),
+    flagged = [r for r in rows if is_external_locus(r)]
+    for r in sorted(rows, key=lambda x: (not is_external_locus(x),
                                          x["repo"].lower())):
         lines.append(
             f"| `{r['repo']}` | {r.get('archetype') or '—'} | "
@@ -200,10 +199,9 @@ def report(rows: list[dict]) -> str:
             f"{_s(r.get('signed_off_by'))} | "
             f"{_s(r.get('committer_neq_author'))} | "
             f"{_yn(r.get('has_issues'))} | {_yn(r.get('mirror_declared'))} | "
-            f"{'**sim**' if r.get('external_locus') else 'não'} |")
+            f"{'**sim**' if is_external_locus(r) else 'não'} |")
     lines.append("")
 
-    flagged = [r for r in rows if r.get("external_locus")]
     lines += [f"## Repositórios sinalizados ({len(flagged)})", ""]
     if flagged:
         lines += [f"- `{r['repo']}` — " + "; ".join(flag_reasons(r))

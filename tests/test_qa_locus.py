@@ -4,6 +4,10 @@ import json
 import math
 
 from govscore.qa.locus import (
+    CONTEXT_SIGNALS,
+    PLATFORM_TRAILERS,
+    SHARE_KEYS,
+    TRAILER_PATTERNS,
     commit_trailer_shares,
     is_external_locus,
     iter_cached_commits,
@@ -47,6 +51,15 @@ def _write_cache(root, repo, pages, meta=None):
 GERRIT = ("fix: thing\n\nChange-Id: I0123456789abcdef\n"
           "Reviewed-on: https://go-review.googlesource.com/c/go/+/1\n")
 DCO = "doc: typo\n\nSigned-off-by: Someone <s@x.org>\n"
+
+
+def test_particao_das_shares_discriminativas_e_contexto():
+    # discriminativas ∪ contexto = todos os trailers + committer≠autor, sem
+    # sobreposição — CONTEXT_SIGNALS é a parte não pontuada pela regra
+    assert set(PLATFORM_TRAILERS).isdisjoint(CONTEXT_SIGNALS)
+    assert set(SHARE_KEYS) == set(TRAILER_PATTERNS) | {"committer_neq_author"}
+    assert SHARE_KEYS == PLATFORM_TRAILERS + CONTEXT_SIGNALS
+    assert tuple(commit_trailer_shares([]))[:-1] == SHARE_KEYS   # + n_commits
 
 
 def test_commit_trailer_shares_caso_conhecido():
@@ -106,7 +119,10 @@ def test_scan_concatena_paginas_ignora_404_e_le_metadata(tmp_path):
     assert math.isclose(row["reviewed_on"], 0.75)
     assert row["has_issues"] is False
     assert row["mirror_declared"] is True
-    assert row["external_locus"] is True
+    # só as chaves do contrato: a sinalização é is_external_locus(row)
+    assert set(row) == {"repo", "n_commits", "has_issues", "mirror_declared",
+                        *SHARE_KEYS}
+    assert is_external_locus(row) is True
 
 
 def test_scan_sem_espelho_e_sem_metadata(tmp_path):
@@ -114,12 +130,12 @@ def test_scan_sem_espelho_e_sem_metadata(tmp_path):
     _write_cache(tmp_path, repo, pages=[[_commit(DCO), _commit("y")]],
                  meta={"description": "A normal project", "has_issues": True})
     row = scan_commit_messages(tmp_path, repo)
-    assert row["mirror_declared"] is False and row["external_locus"] is False
+    assert row["mirror_declared"] is False and not is_external_locus(row)
     assert row["has_issues"] is True
     # repositório sem nada em cache: linha vazia, não erro
     empty = scan_commit_messages(tmp_path, "o/missing")
     assert empty["n_commits"] == 0 and empty["has_issues"] is None
-    assert empty["external_locus"] is False
+    assert not is_external_locus(empty)
 
 
 def test_locus_table_aceita_nomes_e_entradas_da_amostra(tmp_path):
@@ -130,7 +146,7 @@ def test_locus_table_aceita_nomes_e_entradas_da_amostra(tmp_path):
                                            "archetype": "federation"}])
     assert [r["repo"] for r in rows] == ["o/a", "o/b"]
     assert "archetype" not in rows[0] and rows[1]["archetype"] == "federation"
-    assert [r["external_locus"] for r in rows] == [False, True]
+    assert [is_external_locus(r) for r in rows] == [False, True]
 
 
 def test_report_lista_sinalizados_e_confere_conjunto_pre_registrado(tmp_path):
@@ -142,6 +158,11 @@ def test_report_lista_sinalizados_e_confere_conjunto_pre_registrado(tmp_path):
     md = report(rows)
     assert md.startswith("# Evidência de locus de coordenação")
     assert "| `golang/go` |" in md and "**sim**" in md
+    # sinalizados antes dos demais; o não sinalizado fecha em "não"
+    table = [ln for ln in md.splitlines() if ln.startswith("| `")]
+    assert [ln.split("|")[1].strip() for ln in table] == [
+        "`golang/go`", "`o/surprise`", "`o/plain`"]
+    assert table[-1].endswith("| não |")
     assert "## Repositórios sinalizados (2)" in md
     assert "- `golang/go` — Reviewed-on (Gerrit) em 100% dos commits" in md
     # sinalizado fora do conjunto é reportado, não incorporado ao cenário

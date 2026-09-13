@@ -160,6 +160,8 @@ def test_scenario_section_renderiza_cenarios_v2():
     assert "| sem_openinterpreter | 4 |" in text
     assert "2026-09-13-catalogo-v2-reparo-d1-d5.md" in text
     assert "`react/react-native`" in text and "`openai/codex`" in text
+    # o texto declara que sem_todos não incorpora os cenários v2
+    assert "`sem_todos` permanece a união da inspeção manual" in text
 
 
 def test_imputation_sensitivity_penaliza_silencio_observado():

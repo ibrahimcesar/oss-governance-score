@@ -494,7 +494,10 @@ def scenario_section(cen: dict) -> list[str]:
              + ") ∪ espelhos — evidência em `results/locus_evidence.md`; "
              "**sem_openinterpreter** = par quase-duplicado "
              "(" + ", ".join(f"`{x}`" for x in NEAR_DUPLICATE_REPOS)
-             + " ⊃ `openai/codex`). Intra-arquétipo: ρ (p nominal, n).", "",
+             + " ⊃ `openai/codex`). `sem_todos` permanece a união da "
+             "inspeção manual de 2026-09-12 (heurística ∪ conteúdo ∪ "
+             "espelhos) e NÃO incorpora os cenários v2, que são lidos "
+             "isoladamente. Intra-arquétipo: ρ (p nominal, n).", "",
              "| cenário | n | scorecard | stars | forks | "
              + " | ".join(finds) + " |",
              "|---|---|---|---|---|" + "---|" * len(finds)]
