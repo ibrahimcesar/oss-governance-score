@@ -262,7 +262,7 @@ def test_resolve_epoch_picks_first_parent_not_side_commit(remotes, tmp_path):
     assert res.status == "ok"
     assert res.sha == fx["shas"]["c3"]           # não s1 (lateral, mais novo, ≤ corte)
     assert res.committer_ts == T0 + 3 * DAY
-    assert res.resolver_step == "clone_since_60d"
+    assert res.resolver_step == "fetch_since_60d"   # ponta > corte ⇒ 1º degrau
     assert res.branch == "main"
     assert res.cutoff == fx["cutoff"].strftime("%Y-%m-%dT%H:%M:%SZ")
     # árvore de época: CODEOWNERS de c3, não a versão de c0
@@ -276,17 +276,103 @@ def test_resolve_epoch_picks_first_parent_not_side_commit(remotes, tmp_path):
 def test_resolve_epoch_cutoff_after_tip_uses_tip(remotes, tmp_path):
     fx = make_merged_repo(remotes)
     res = resolve_epoch("owner/repo", "main", dt(T0 + 6 * DAY), tmp_path / "wd")
-    assert (res.status, res.sha) == ("ok", fx["shas"]["c4"])
+    assert (res.status, res.sha, res.resolver_step) == ("ok", fx["shas"]["c4"], "clone_depth_1")
 
 
-def test_resolve_epoch_inactive_branch_depth1_fallback(remotes, tmp_path):
-    # ponta 100 dias antes do corte: --shallow-since=corte−60d não seleciona
-    # commit algum ("no commits selected") ⇒ --depth=1; a ponta é a época
+def record_git_calls(monkeypatch) -> list[list[str]]:
+    """Registra os argumentos de cada git executado (delegando ao real)."""
+    real = epoch._run_git
+    calls: list[list[str]] = []
+
+    def spy(args, cwd=None, timeout=epoch.TIMEOUT_LOG):
+        calls.append(list(args))
+        return real(args, cwd=cwd, timeout=timeout)
+
+    monkeypatch.setattr(epoch, "_run_git", spy)
+    return calls
+
+
+def test_resolve_epoch_inactive_branch_resolved_by_depth1(remotes, tmp_path, monkeypatch):
+    # ponta 100 dias antes do corte (branch inativo): --depth=1 basta e
+    # NENHUMA requisição --shallow-since é emitida — uma com corte−60d não
+    # selecionaria commit algum, falha que o HTTP do GitHub não relata
     src = init_repo(remotes / "owner" / "old.git")
     commit(src, T0, "c0")
     tip = commit(src, T0 + 10 * DAY, "c1")
+    calls = record_git_calls(monkeypatch)
     res = resolve_epoch("owner/old", "main", dt(T0 + 110 * DAY), tmp_path / "wd")
     assert (res.status, res.sha, res.resolver_step) == ("ok", tip, "clone_depth_1")
+    assert not any(a.startswith("--shallow-since") for c in calls for a in c)
+    assert any("--depth=1" in c for c in calls)
+
+
+def github_like_transport(monkeypatch, tip_ts: int) -> list[list[str]]:
+    """Simula o transporte HTTP do GitHub (protocolo v2, git 2.50).
+
+    Um ``--shallow-since`` que não seleciona commit algum (data posterior à
+    ponta) termina a resposta sem repassar o die() de upload-pack: o cliente
+    vê só "error processing shallow info: 4". Reproduzido pela revisão contra
+    guzzle/.github e macrozheng/mall com os cortes reais de v1.
+    """
+    real = epoch._run_git
+    calls: list[list[str]] = []
+
+    def fake(args, cwd=None, timeout=epoch.TIMEOUT_LOG):
+        calls.append(list(args))
+        for a in args:
+            if a.startswith("--shallow-since=") and int(a.split("=", 1)[1]) > tip_ts:
+                msg = "fatal: error processing shallow info: 4"
+                raise GitError(f"git {' '.join(args[:2])}: {msg}", epoch._classify(msg))
+        return real(args, cwd=cwd, timeout=timeout)
+
+    monkeypatch.setattr(epoch, "_run_git", fake)
+    return calls
+
+
+def test_resolve_epoch_github_like_transport_inactive_branch(remotes, tmp_path, monkeypatch):
+    # caso-manchete do registro: org guzzle/.github inativa há > 60 d da
+    # sondagem — com o clone --shallow-since original virava "unreachable"
+    src = init_repo(remotes / "owner" / "old.git")
+    commit(src, T0, "c0")
+    tip = commit(src, T0 + 10 * DAY, "c1")
+    org = init_repo(remotes / "owner" / ".github.git")
+    o0 = commit(org, T0, "o0", {".github/SECURITY.md": "s"})
+    github_like_transport(monkeypatch, tip_ts=T0 + 10 * DAY)
+    res = resolve_epoch("owner/old", "main", dt(T0 + 110 * DAY), tmp_path / "wd")
+    assert (res.status, res.sha, res.resolver_step) == ("ok", tip, "clone_depth_1")
+    org_res = resolve_org("owner", dt(T0 + 110 * DAY), tmp_path / "wd")
+    assert org_res is not None
+    assert (org_res.status, org_res.sha, org_res.resolver_step) == ("ok", o0, "clone_depth_1")
+    assert {e.path for e in list_tree(tmp_path / "wd" / "org", o0)} == {".github/SECURITY.md"}
+
+
+def test_resolve_epoch_github_like_transport_active_branch(remotes, tmp_path, monkeypatch):
+    # branch ativo: ponta > corte ⇒ o fetch --shallow-since=corte−60d é
+    # satisfazível por construção e o transporte nunca é levado ao erro
+    fx = make_merged_repo(remotes)
+    calls = github_like_transport(monkeypatch, tip_ts=T0 + 5 * DAY)
+    res = resolve_epoch("owner/repo", "main", fx["cutoff"], tmp_path / "wd")
+    assert (res.status, res.sha, res.resolver_step) == ("ok", fx["shas"]["c3"], "fetch_since_60d")
+    since = [a for c in calls for a in c if a.startswith("--shallow-since=")]
+    assert len(since) == 1 and int(since[0].split("=")[1]) == int(fx["cutoff"].timestamp()) - 60 * DAY
+
+
+def test_resolve_epoch_ladder_deepens_v1_branch_not_remote_head(remotes, tmp_path):
+    # default v1 = 4.x, HEAD remoto = main (5 casos na amostra). O clone
+    # --bare --single-branch não grava remote.origin.fetch: sem refspec
+    # explícito, "fetch origin" aprofundaria main e 4.x ficaria na ponta
+    src = init_repo(remotes / "owner" / "lts.git")
+    commit(src, T0, "m0")
+    git("checkout", "-q", "-b", "4.x", cwd=src)
+    x1 = commit(src, T0 + 1 * DAY, "x1")
+    commit(src, T0 + 100 * DAY, "x2")
+    git("checkout", "-q", "main", cwd=src)
+    for i in range(1, 4):
+        commit(src, T0 + 50 * DAY + i * DAY, f"n{i}")
+    assert git("symbolic-ref", "--short", "HEAD", cwd=src).strip() == "main"
+    res = resolve_epoch("owner/lts", "4.x", dt(T0 + 30 * DAY), tmp_path / "wd")
+    assert (res.status, res.sha, res.resolver_step) == ("ok", x1, "fetch_since_60d")
+    assert res.branch == "4.x"
 
 
 def test_resolve_epoch_ladder_since_365d(remotes, tmp_path):
@@ -356,6 +442,10 @@ def test_run_git_timeout_and_classification(tmp_path):
     assert epoch._classify("fatal: no commits selected for shallow requests\n"
                            "fatal: the remote end hung up unexpectedly") == "no_commits_selected"
     assert epoch._classify("fatal: Remote branch dev not found in upstream origin") == "branch_not_found"
+    # HTTP do GitHub (protocolo v2): resposta encerrada na seção shallow-info
+    # = o mesmo "no commits selected" — definitivo, sem nova tentativa
+    assert epoch._classify("fatal: error processing shallow info: 4") == "no_commits_selected"
+    assert epoch._classify("fatal: error processing shallow info: 0") == "transient"   # EOF real
     assert epoch._classify("fatal: shallow file has changed since we read it") == "transient"
     assert epoch._classify("error: RPC failed; curl 56 ...") == "transient"
     assert epoch._classify("fatal: something else") == "other"
@@ -480,6 +570,44 @@ def test_ensure_epoch_artifacts_tree_fetch_failure_is_unreachable(remotes, tmp_p
     assert out["status"] == "unreachable" and out["epoch_status"] == "unreachable"
     assert out["sha"] == fx["shas"]["c3"] and "ls-tree" in out["error"]
     assert not list((cache_root / "owner__repo" / "v2").glob("tree_paths_*.json"))
-    # marcador consistente: 2ª chamada lê o cache, sem git
+    # marcador consistente: com retry_unreachable=False a 2ª chamada lê o
+    # cache, sem git
     monkeypatch.setattr(epoch, "_run_git", lambda *a, **k: pytest.fail("git chamado"))
-    assert ensure_epoch_artifacts("owner/repo", cache_root, tmp_path / "wd") == out
+    assert ensure_epoch_artifacts("owner/repo", cache_root, tmp_path / "wd",
+                                  retry_unreachable=False) == out
+    # padrão: "unreachable" é resolvido de novo — a falha transitória passou
+    monkeypatch.setattr(epoch, "_run_git", _run_git)
+    monkeypatch.setattr(epoch, "list_tree", list_tree)
+    healed = ensure_epoch_artifacts("owner/repo", cache_root, tmp_path / "wd")
+    assert healed["status"] == "ok" and healed["sha"] == fx["shas"]["c3"]
+    assert (cache_root / "owner__repo" / "v2" / f"tree_paths_{fx['shas']['c3'][:12]}.json").exists()
+
+
+def test_ensure_epoch_artifacts_retries_unreachable_org_only(remotes, tmp_path, monkeypatch):
+    # repo ok, org "unreachable" por falha de rede: o próximo passe refaz o
+    # par; um 404 genuíno ("absent") e "no_commit_before_cutoff" não são refeitos
+    fx = make_merged_repo(remotes)
+    cache_root = tmp_path / "raw"
+    sha_c3 = git("rev-parse", f"{fx['shas']['c3']}:.github/CODEOWNERS", cwd=fx["src"]).strip()
+    make_v1_cache(cache_root, fx, sha_c3, fx["cutoff"])
+    org = init_repo(remotes / "owner" / ".github.git")
+    o0 = commit(org, T0, "o0", {"SECURITY.md": "s"})
+    real_resolve_org = epoch.resolve_org
+
+    def org_down(owner, cutoff, workdir, cutoff_source="probes"):
+        return EpochResult(None, None, epoch._fmt(cutoff), cutoff_source, "clone",
+                           "unreachable", None, "git clone: fatal: unable to access")
+
+    monkeypatch.setattr(epoch, "resolve_org", org_down)
+    first = ensure_epoch_artifacts("owner/repo", cache_root, tmp_path / "wd")
+    v2 = cache_root / "owner__repo" / "v2"
+    assert first["status"] == "ok"
+    assert json.loads((v2 / "org_epoch_commit.json").read_text())["status"] == "unreachable"
+    monkeypatch.setattr(epoch, "resolve_org", real_resolve_org)
+    second = ensure_epoch_artifacts("owner/repo", cache_root, tmp_path / "wd")
+    assert second["sha"] == first["sha"]
+    org_json = json.loads((v2 / "org_epoch_commit.json").read_text())
+    assert (org_json["status"], org_json["sha"]) == ("ok", o0)
+    # agora completo: 3ª chamada é só leitura
+    monkeypatch.setattr(epoch, "_run_git", lambda *a, **k: pytest.fail("git chamado"))
+    assert ensure_epoch_artifacts("owner/repo", cache_root, tmp_path / "wd") == second

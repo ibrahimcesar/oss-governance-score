@@ -13,19 +13,36 @@ Obtenção (só git, nunca REST/GraphQL — exceção única e declarada à regr
 por SHA):
 
 1. ``git clone --bare --single-branch --branch <branch> --filter=tree:0
-   --shallow-since=<cutoff-60d>`` (``--no-tags`` adicionado: tags não
-   participam da cadeia). Se o servidor responde "no commits selected for
-   shallow requests" (nenhum commit nos 60 dias que antecedem o corte —
-   branch inativo), recorre-se a ``--depth=1``: a ponta é, por construção,
-   anterior ao corte.
-2. Escada de aprofundamento enquanto a cadeia não cruza o corte:
-   ``git fetch --shallow-since=<cutoff-365d>`` → ``--depth 400`` → ``1600``
-   → ``6400``. Usa-se ``--depth=N`` (absoluto a partir da ponta, como no
+   --depth=1`` (``--no-tags`` adicionado: tags não participam da cadeia):
+   a ponta do branch, sempre obtenível quando repositório e branch existem.
+   Ponta com data ≤ corte (branch inativo nos 60 dias anteriores ao corte,
+   ou corte posterior à ponta) ⇒ a ponta é o commit de época.
+2. Caso contrário, escada de aprofundamento enquanto a cadeia não cruza o
+   corte: ``git fetch --shallow-since=<cutoff-60d>`` →
+   ``--shallow-since=<cutoff-365d>`` → ``--depth 400`` → ``1600`` →
+   ``6400``. Usa-se ``--depth=N`` (absoluto a partir da ponta, como no
    registro), NÃO ``--deepen``; degraus com ``N`` ≤ comprimento já obtido da
-   cadeia são pulados, porque ``--depth`` menor ENCURTARIA a história.
+   cadeia são pulados, porque ``--depth`` menor ENCURTARIA a história. Todo
+   fetch leva refspec explícito (``+refs/heads/<branch>:refs/heads/<branch>``):
+   o clone ``--bare --single-branch`` NÃO grava ``remote.origin.fetch`` e,
+   sem refspec, ``git fetch origin`` aprofundaria o HEAD remoto — branch
+   errado nos 5 repositórios cujo default v1 não é main/master.
 3. Seleção em Python sobre ``git log --first-parent --format=%H%x09%ct``
    (mais novo primeiro): primeira entrada com ``ts <= cutoff``. Não se usa
    ``rev-list --before`` (falhou em linux, cf. registro).
+
+Desvio declarado em relação ao comando verbatim do registro (clone com
+``--shallow-since=<cutoff-60d>``): a história obtida em cada degrau é a
+mesma, mas o primeiro degrau é dividido em ``--depth=1`` + ``fetch
+--shallow-since``. Motivo: quando ``--shallow-since`` não seleciona commit
+algum (branch inativo), ``upload-pack`` morre com "no commits selected for
+shallow requests", mensagem que o transporte HTTP do GitHub NÃO repassa —
+o cliente vê apenas ``error processing shallow info: 4`` (protocolo v2)
+ou ``the remote end hung up unexpectedly`` (v1), indistinguíveis de uma
+falha de rede. Com a ponta obtida primeiro, toda requisição
+``--shallow-since`` subsequente é satisfazível por construção (ponta >
+corte ≥ corte−60d) e a mensagem do servidor deixa de importar. O custo
+extra é um único objeto de commit.
 
 Verificação: cada blob positivo em v1 (respostas do endpoint ``contents``
 em cache) deve existir com o mesmo ``sha`` na árvore de época; divergência
@@ -92,7 +109,7 @@ class EpochResult:
 
     status: "ok" | "unreachable" | "no_commit_before_cutoff".
     resolver_step: degrau da escada em que a cadeia cruzou o corte
-    (clone_since_60d, clone_depth_1, fetch_since_365d, fetch_depth_400/1600/
+    (clone_depth_1, fetch_since_60d, fetch_since_365d, fetch_depth_400/1600/
     6400) ou, sem cruzar, history_exhausted / ladder_exhausted; "clone" quando
     o clone falhou. Campos com default (branch, error) foram acrescentados ao
     contrato para relato — não alteram a ordem posicional.
@@ -130,8 +147,14 @@ class GitError(RuntimeError):
 
 # Ordem importa: mensagens definitivas primeiro ("Could not read from remote
 # repository" acompanha tanto 404 quanto falhas de rede).
+# "no commits selected" é o die() de upload-pack (file://, ssh); pelo HTTP do
+# GitHub a resposta simplesmente termina na seção shallow-info sem a mensagem
+# — o cliente relata "error processing shallow info: 4" (4 =
+# PACKET_READ_RESPONSE_END, fetch-pack.c). Mesmo evento, não é transitório;
+# outros códigos (0 = EOF) continuam classificados como transitórios abaixo.
 _DEFINITIVE = (
-    ("no_commits_selected", r"no commits selected for shallow requests"),
+    ("no_commits_selected", r"no commits selected for shallow requests"
+                            r"|error processing shallow info: 4\b"),
     ("branch_not_found", r"remote branch .* not found"),
     ("not_found", r"repository .*not found|does not appear to be a git repository"
                   r"|is not a git repository|authentication failed"
@@ -336,19 +359,13 @@ def _resolve(url: str, branch: str | None, cutoff: datetime, clone: Path,
                            cutoff_source=cutoff_source, resolver_step=step,
                            status=status, branch=branch, error=error)
 
-    # 1. clone raso por data; branch inativo (nenhum commit nos 60 dias
-    #    anteriores ao corte) ⇒ --depth=1
-    step = "clone_since_60d"
+    # 1. ponta do branch (--depth=1): sempre satisfazível quando repositório
+    #    e branch existem — nenhuma dependência da mensagem do servidor
+    step = "clone_depth_1"
     try:
-        _clone(url, branch, clone, _since_arg(cutoff - timedelta(days=SINCE_CLONE_DAYS)))
+        _clone(url, branch, clone, "--depth=1")
     except GitError as e:
-        if e.kind != "no_commits_selected":
-            return result(None, None, "clone", "unreachable", str(e))
-        step = "clone_depth_1"
-        try:
-            _clone(url, branch, clone, "--depth=1")
-        except GitError as e2:
-            return result(None, None, "clone", "unreachable", str(e2))
+        return result(None, None, "clone", "unreachable", str(e))
 
     ref = f"refs/heads/{branch}" if branch else "HEAD"
     if branch is None:
@@ -356,6 +373,9 @@ def _resolve(url: str, branch: str | None, cutoff: datetime, clone: Path,
             branch = _run_git(["symbolic-ref", "--short", "HEAD"], cwd=clone).strip() or None
         except GitError:
             branch = None
+    # refspec explícito: o clone --bare --single-branch não grava
+    # remote.origin.fetch e "fetch origin" aprofundaria o HEAD remoto
+    refspec = f"+refs/heads/{branch}:refs/heads/{branch}" if branch else "HEAD"
 
     def chain_now() -> list[tuple[str, int]]:
         try:
@@ -371,10 +391,14 @@ def _resolve(url: str, branch: str | None, cutoff: datetime, clone: Path,
             return result(None, None, step, "unreachable", "repositório vazio")
         sel = select_first_parent(chain, cutoff_ts)
         if sel:
+            # ponta ≤ corte: branch inativo ou corte posterior à ponta
             return result(sel[0], sel[1], step, "ok")
 
-        # 2. escada de aprofundamento
+        # 2. escada de aprofundamento; ponta > corte ⇒ cada --shallow-since
+        #    abaixo seleciona ao menos a ponta (nunca "no commits selected")
         ladder: list[tuple[str, list[str], int | None]] = [
+            ("fetch_since_60d",
+             [_since_arg(cutoff - timedelta(days=SINCE_CLONE_DAYS))], None),
             ("fetch_since_365d",
              [_since_arg(cutoff - timedelta(days=SINCE_FETCH_DAYS))], None)]
         ladder += [(f"fetch_depth_{d}", [f"--depth={d}"], d) for d in DEPTH_LADDER]
@@ -384,11 +408,11 @@ def _resolve(url: str, branch: str | None, cutoff: datetime, clone: Path,
             if depth is not None and len(chain) >= depth:
                 continue  # --depth menor encurtaria a história já obtida
             try:
-                _run_git_retry(["fetch", "--quiet", *args, "origin"], cwd=clone,
-                               timeout=TIMEOUT_FETCH)
+                _run_git_retry(["fetch", "--quiet", *args, "origin", refspec],
+                               cwd=clone, timeout=TIMEOUT_FETCH)
             except GitError as e:
                 if e.kind == "no_commits_selected":
-                    continue
+                    continue  # defensivo: impossível por construção, segue ao --depth
                 raise
             chain = chain_now()
             sel = select_first_parent(chain, cutoff_ts)
@@ -516,8 +540,14 @@ def _tree_file(v2_dir: Path, prefix: str, sha: str) -> Path:
     return v2_dir / f"{prefix}tree_paths_{sha[:12]}.json"
 
 
-def _artifacts_complete(v2_dir: Path) -> dict | None:
-    """epoch_commit.json (+ árvore quando ok) e org_epoch_commit.json presentes."""
+def _artifacts_complete(v2_dir: Path, retry_unreachable: bool = False) -> dict | None:
+    """epoch_commit.json (+ árvore quando ok) e org_epoch_commit.json presentes.
+
+    Com ``retry_unreachable``, um status "unreachable" em cache (repositório
+    ou ``{owner}/.github``) conta como incompleto: falhas de rede não se
+    congelam no primeiro passe. "no_commit_before_cutoff" e "absent" são
+    determinísticos (história imutável / 404) e ficam.
+    """
     epoch = _read_json(v2_dir / "epoch_commit.json")
     if not epoch or not (v2_dir / "org_epoch_commit.json").exists():
         return None
@@ -526,25 +556,32 @@ def _artifacts_complete(v2_dir: Path) -> dict | None:
     org = _read_json(v2_dir / "org_epoch_commit.json") or {}
     if org.get("status") == "ok" and not _tree_file(v2_dir, "org_", org["sha"]).exists():
         return None
+    if retry_unreachable and "unreachable" in (epoch.get("status"), org.get("status")):
+        return None
     return epoch
 
 
 def ensure_epoch_artifacts(repo: str, cache_root: Path, workdir: Path,
-                           force: bool = False, keep: bool = False) -> dict:
+                           force: bool = False, keep: bool = False,
+                           retry_unreachable: bool = True) -> dict:
     """Idempotente: resolve época + árvore do repo e de ``{owner}/.github``.
 
     Escreve em ``cache_root/<owner>__<repo>/v2/``: ``epoch_commit.json``,
     ``tree_paths_<sha12>.json``, ``org_epoch_commit.json`` (ou
     ``{"status": "absent"}``), ``org_tree_paths_<sha12>.json``. Com os
-    arquivos presentes e ``force=False`` apenas lê (nenhum git). O clone em
-    ``workdir/<owner>__<repo>/`` é removido ao final, salvo ``keep=True``.
-    Retorna o dicionário de ``epoch_commit.json``.
+    arquivos presentes e ``force=False`` apenas lê (nenhum git) — exceto
+    status "unreachable" (repo ou org) quando ``retry_unreachable=True``
+    (padrão): esses são resolvidos de novo a cada passe, para que uma
+    falha transitória de rede não congele o status errado (um 404 genuíno
+    custa um clone falho rápido). O clone em ``workdir/<owner>__<repo>/`` é
+    removido ao final, salvo ``keep=True``. Retorna o dicionário de
+    ``epoch_commit.json``.
     """
     owner, name = repo.split("/", 1)
     repo_cache = cache_root / f"{owner}__{name}"
     v2_dir = repo_cache / "v2"
     if not force:
-        cached = _artifacts_complete(v2_dir)
+        cached = _artifacts_complete(v2_dir, retry_unreachable=retry_unreachable)
         if cached is not None:
             return cached
 
